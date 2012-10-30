@@ -15,15 +15,16 @@
         <title>Mantis Kanban</title>
 
     </head>
-    <body>
+    <body>  
+        <div class="loadingdiv" id="loadingdiv" style="float: right;">
+            Status: <img id="loadingimage" src="images/loading.gif"  style="width: 20px; height: 20px; display: none;"/><img id="loadedimage" src="images/loaded.png"  style="width: 20px; height: 20px;"/>
+        </div>
+
 
         <div class="loginarea">
             Username: <input type="text" id="username" value="corey.gaspard" />
             Password: <input type="password" id="password" value="">
             <div class="loginbutton" onclick="Login();">Login</div>
-            <div class="loadingdiv" id="loadingdiv" style="float: right;">
-                Status: <img id="loadingimage" src="images/loading.gif"  style="width: 20px; height: 20px; display: none;"/><img id="loadedimage" src="images/loaded.png"  style="width: 20px; height: 20px;"/>
-            </div>
         </div>
         <div class="projectarea">
             Project: 
