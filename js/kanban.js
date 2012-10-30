@@ -1,6 +1,9 @@
 
 
 var Kanban = {
+
+    _listIDField : "ScrumBucket",
+
     get Container() {
         return document.getElementById("kanbancontent");
     },
@@ -31,7 +34,7 @@ var Kanban = {
      },
 
      BuildProjectsGUI : function() {
-        
+
 
      },
     
@@ -146,15 +149,30 @@ function HandleDragLeave(e) {
   e.target.classList.remove('over');  // this / e.target is previous target element.
 }
 
+function ObjectContainsField(myObject) {
+
+
+}
+
 var KanbanStory = function(StoryID, StoryStatus, StorySummary, StoryDescription, StoryNotes, StoryAssignedTo, RawObject) {
     this.ID = StoryID;
+    this.ListID = null;
+
+    for(var counter in RawObject.custom_fields) {
+        var customfield = RawObject.custom_fields[counter];
+        if(customfield.field.name == Kanban._listIDField) {
+            this.ListID = customfield.value;
+        }
+    }
+    if(this.ListID == null) this.ListID = StoryStatus.id;
+
     this.Summary = StorySummary;
     this.Status = StoryStatus;
     this.Notes = StoryNotes;
     this.Description = StoryDescription;
     this.AssignedTo = StoryAssignedTo;
     for(var li = 0; li < Kanban.Lists.length; li++){
-        if(Kanban.Lists[li].ID == StoryStatus.id) {
+        if(Kanban.Lists[li].ID == this.ListID) {
             this.List = Kanban.Lists[li];
             var foundStoryInList = false;
             for(var sti = 0; sti < Kanban.Lists[li].Stories.length; sti++) {

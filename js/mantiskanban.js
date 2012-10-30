@@ -71,6 +71,9 @@ function SelectProject() {
     Kanban.ClearListGUI();
 
     Mantis.CurrentProjectID = document.getElementById("kanbanprojects").value;
+
+    //alert(JSON.stringify(Mantis.ProjectCustomFields));
+
     BuildKanbanListFromMantisStatuses();
     Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0, CreateKanbanStoriesFromMantisIssues);
 
@@ -88,9 +91,24 @@ function StopLoading() {
 }
 
 function BuildKanbanListFromMantisStatuses() {
-    for(var si = 0; si < Mantis.Statuses.length; si++) {
-        var status = Mantis.Statuses[si]
-        Kanban.AddList(new KanbanList(status.name, status.id));
+    var hasCutomFieldForStatus = false;
+    if(Mantis.ProjectCustomFields.length > 0) {
+        for(var cf = 0; cf < Mantis.ProjectCustomFields.length; cf++) {
+            var customfield = Mantis.ProjectCustomFields[cf]
+            if(customfield.field.name == Kanban._listIDField) {
+                hasCutomFieldForStatus = true;
+                var possiblevalues = customfield.possible_values.split("|");
+                for(var pv = 0; pv < possiblevalues.length; pv++ ) {
+                    possiblevalue = possiblevalues[pv];
+                    Kanban.AddList(new KanbanList(possiblevalue, possiblevalue));
+                }
+            }
+        }
+    } else {
+        for(var si = 0; si < Mantis.Statuses.length; si++) {
+            var status = Mantis.Statuses[si]
+            Kanban.AddList(new KanbanList(status.name, status.id));
+        }
     }
     
 }

@@ -187,6 +187,11 @@
     margin-right: 10px;
     border-radius: 5px 5px 5px 5px;
 }
+
+.kanbanstoryseverity[severity="minor"]{
+    background-color: #FFFFFF;
+}
+
 .kanbanstorytitle{
     width: 105px;
     cursor: pointer;
