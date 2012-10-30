@@ -40,15 +40,40 @@ function Login() {
     Mantis.CurrentUser.UserName = document.getElementById("username").value;
     Mantis.CurrentUser.Password = document.getElementById("password").value;
     
+    BuildProjectSelectBox();
+    
+    HideLoginArea();
+    ShowProjectArea();
+
+    StopLoading();
+}
+
+function HideLoginArea() {
+    $(".loginarea").hide();
+}
+function ShowLoginArea() {
+    $(".loginarea").show();
+}
+
+function ShowProjectArea() {
+    $(".projectarea").show();
+}
+
+function HideProjectArea() {
+    $(".projectarea").hide();
+}
+
+function SelectProject() {
+    StartLoading();
+
     Kanban.Lists = [];
     Kanban.Stories = [];
     Kanban.ClearListGUI();
-    
+
+    Mantis.CurrentProjectID = document.getElementById("kanbanprojects").value;
     BuildKanbanListFromMantisStatuses();
-    Mantis.ProjectsGetUserAccessible(SelectFirstMantisProjectUserAccessAccessTo);
     Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0, CreateKanbanStoriesFromMantisIssues);
-    //alert(JSON.stringify(Mantis.AccessLevels))
-    //alert(JSON.stringify(Mantis.ProjectUsers));
+
     StopLoading();
 }
 
@@ -72,6 +97,13 @@ function BuildKanbanListFromMantisStatuses() {
 
 function EnumServerities_callBack(r) {
     alert("EnumServerities:" + JSON.stringify(r));
+}
+
+function BuildProjectSelectBox() {
+    var projectSelectBox = document.getElementById("kanbanprojects");
+    for(var i = 0; i < Mantis.UserProjects.length; i++) {
+        projectSelectBox.options[projectSelectBox.options.length] = new Option(Mantis.UserProjects[i].name, Mantis.UserProjects[i].id);
+    }
 }
 
 function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {

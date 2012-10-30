@@ -22,6 +22,24 @@ body{
 }
 .loadingdiv img{
 }
+
+.projectarea {
+    display: none;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.projectarea select {
+    height: 30px;
+    font-size: 15px;
+    color: #000000;
+    width: 120px;
+    border-radius: 5px 5px 5px 5px;
+    
+}
+
 .loginarea{
     margin-bottom: 10px;
     margin-left: 10px;
@@ -34,6 +52,16 @@ body{
     color: #000000;
     width: 120px;
     border-radius: 5px 5px 5px 5px;
+}
+
+.loginarea select {
+
+    height: 30px;
+    font-size: 15px;
+    color: #000000;
+    width: 120px;
+    border-radius: 5px 5px 5px 5px;
+
 }
 .loginbutton{
     font-family: Arial, Helvetica, sans-serif;

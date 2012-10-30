@@ -29,6 +29,11 @@ var Kanban = {
             Kanban.Container.removeChild(Kanban.Container.firstChild);
         }
      },
+
+     BuildProjectsGUI : function() {
+        
+
+     },
     
     BuildListGUI : function() {
         for(var li = 0; li < Kanban.Lists.length; li++) {
@@ -89,12 +94,12 @@ var Kanban = {
                 listDiv.appendChild(storyDiv);
             }
             
-            var addStoryDiv = document.createElement("div");
-            addStoryDiv.innerHTML = "Add New Story";
-            addStoryDiv.setAttribute("class", "kanbannewstory");
-            addStoryDiv.setAttribute("onclick", "$('#story-form').dialog('open');");
+            //var addStoryDiv = document.createElement("div");
+            //addStoryDiv.innerHTML = "Add New Story";
+            //addStoryDiv.setAttribute("class", "kanbannewstory");
+            //addStoryDiv.setAttribute("onclick", "$('#story-form').dialog('open');");
             
-            listDiv.appendChild(addStoryDiv);
+            //listDiv.appendChild(addStoryDiv);
             
             ///Add it all to the container div
             Kanban.Container.appendChild(listDiv);

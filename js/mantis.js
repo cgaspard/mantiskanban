@@ -5,15 +5,25 @@ String.prototype.capitalize = function() {
 }
 
 var Mantis = {
-    
+    _currentprojectid : 0,
     _statues : null,
     _severities : null,
     _projectusers : [],
+    _projectcustomfields : [],
     _accesslevels : [],
+    _userprojects : [],
+    _defaultaccesslevelforuserenum : 10,
     
     CurrentUser : {
         UserName : "",
         Password : ""
+    },
+
+    get UserProjects() {
+        if(Mantis._userprojects.length == 0) {
+            Mantis._userprojects = Mantis.ProjectsGetUserAccessible();
+        }
+        return Mantis._userprojects;
     },
 
     get AccessLevels() {
@@ -33,20 +43,39 @@ var Mantis = {
     
     get ProjectUsers() {
         if(Mantis._projectusers.length == 0) {
-            Mantis._projectusers = Mantis.ProjectGetUsers(10);
+            Mantis._projectusers = Mantis.ProjectGetUsers(Mantis._defaultaccesslevelforuserenum);
         }
         return Mantis._projectusers;
+    },
+
+    get ProjectCustomFields() {
+        if(Mantis._projectcustomfields.length == 0) {
+            Mantis._projectcustomfields = Mantis.ProjectGetCustomFields(Mantis.CurrentProjectID);
+        }
+        return Mantis._projectcustomfields;
     },
 
     get  Serverities() {
         if(Mantis._severities == null) {
             Mantis._severities = Mantis.EnumServerities(Mantis.CurrentUser.UserName, Mantis.CurrentUser.Password, null);
         }
-        
         return Mantis._severities;
     },
     
-    CurrentProjectID : 0,
+    get CurrentProjectID() {
+        return Mantis._currentprojectid;
+    },
+    
+    set CurrentProjectID(value) {
+
+        if(Mantis._currentprojectid != value) {
+            ///Clear the project specific stuff
+            Mantis._projectusers = [];
+            Mantis._projectcustomfields = [];
+        }
+
+        Mantis._currentprojectid = value;
+    },
 
     Params : {
         Access : "access",
@@ -154,6 +183,17 @@ var Mantis = {
                 return pl;
             }
         },
+
+        ProjectGetCustomFields : {
+            Name : "mc_project_get_custom_fields",
+            BuildParams : function(projectid) {
+                pl = new SOAPClientParameters();
+                pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+                pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+                pl.add(Mantis.Params.ProjectID, projectid);
+                return pl;
+            }
+        },
         
         IssueUpdate : {
             Name : "mc_issue_update",
@@ -187,6 +227,11 @@ var Mantis = {
     ProjectsGetUserAccessible :  function(callBack) {
         hascallback = callBack == null ? false : true;
         return SOAPClient.invoke(mantisConnectURL, Mantis.Methods.ProjectsGetUserAccessible.Name, Mantis.Methods.ProjectsGetUserAccessible.BuildParams(), hascallback, callBack);
+    },
+
+    ProjectGetCustomFields : function (ProjectID, callBack) {
+        hascallback = callBack == null ? false : true;
+        return SOAPClient.invoke(mantisConnectURL, Mantis.Methods.ProjectGetCustomFields.Name, Mantis.Methods.ProjectGetCustomFields.BuildParams(ProjectID), hascallback, callBack);
     },
     
     EnumGet : function(Enumeration, callBack) {

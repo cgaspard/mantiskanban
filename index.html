@@ -17,13 +17,20 @@
     </head>
     <body>
 
-        <div class="loginarea" style="">
+        <div class="loginarea">
             Username: <input type="text" id="username" value="corey.gaspard" />
             Password: <input type="password" id="password" value="">
             <div class="loginbutton" onclick="Login();">Login</div>
             <div class="loadingdiv" id="loadingdiv" style="float: right;">
                 Status: <img id="loadingimage" src="images/loading.gif"  style="width: 20px; height: 20px; display: none;"/><img id="loadedimage" src="images/loaded.png"  style="width: 20px; height: 20px;"/>
             </div>
+        </div>
+        <div class="projectarea">
+            Project: 
+            <select id="kanbanprojects" onchange="SelectProject();">
+                <option value="">Select Project</option>
+            </select>
+            <div class="kanbannewstory" onclick="$('#story-form').dialog('open');">Add Story</div>
             <!--
             <input type="button" onclick="Kanban.ClearListGUI()" value="Clear" />
             <input type="button" onclick="Kanban.BuildListGUI()" value="Build" />
