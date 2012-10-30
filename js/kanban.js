@@ -182,10 +182,17 @@ KanbanList.prototype = {
 
 
 function EditStory(storyID) {
-    thisStory = Kanban.GetStoryByFieldValue("ID", storyID);    
+    thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
     $("#edit-summary").val(thisStory.Summary);
     $("#edit-description").val(thisStory.Description);
+    document.getElementById("edit-reporter").innerHTML = thisStory.Issue.reporter.real_name;
+    var selectAssignedUser = document.getElementById("edit-assignedto");
+    selectAssignedUser.options.length = 0;
+    for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
+        var user = Mantis.ProjectUsers[i];
+        selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
+        if(user.id == thisStory.Issue.handler.id) { selectAssignedUser.selectedIndex = i; }
+
+    }
     $("#edit-story-form").dialog("open");
-
-
 }

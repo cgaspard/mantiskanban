@@ -19,7 +19,7 @@
 
         <div class="loginarea" style="">
             Username: <input type="text" id="username" value="corey.gaspard" />
-            Password: <input type="password" id="password" value="rbg76cjg">
+            Password: <input type="password" id="password" value="">
             <div class="loginbutton" onclick="Login();">Login</div>
             <div class="loadingdiv" id="loadingdiv" style="float: right;">
                 Status: <img id="loadingimage" src="images/loading.gif"  style="width: 20px; height: 20px; display: none;"/><img id="loadedimage" src="images/loaded.png"  style="width: 20px; height: 20px;"/>
@@ -57,9 +57,12 @@
             <form>
                 <label for="text">Summary:</label>
                 <input type="text" name="edit-summary" id="edit-summary" style="width:300px;" class="text ui-widget-content ui-corner-all" />
-                <label for="text">Subbmited By:</label>
-                <select id="edit-submitedby" name="edit-submitedby">
+                <label for="select">Assigned To</label>
+                <select name="edit-assignedto" id="edit-assignedto" class="text ui-widget-content ui-corner-all">
                 </select>
+                <br>
+                <label for="text">Subbmited By:</label>
+                <div style="display:inline-block;" id="edit-reporter"></div>
                 <br>
                 <label for="text">Description:</labal>
                     <br>

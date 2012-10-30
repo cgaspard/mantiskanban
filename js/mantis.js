@@ -1,6 +1,4 @@
 var mantisConnectURL = "http://bugz.mygait.net/api/soap/mantisconnect.php";
-var mantisUsername = "corey.gaspard";
-var mantisPassword = "rbg76cjg";
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -10,20 +8,36 @@ var Mantis = {
     
     _statues : null,
     _severities : null,
+    _projectusers : [],
+    _accesslevels : [],
     
     CurrentUser : {
         UserName : "",
         Password : ""
     },
 
+    get AccessLevels() {
+        if(Mantis._accesslevels.length == 0) {
+            Mantis._accesslevels = Mantis.EnumAccessLevels();
+        }
+        return Mantis._accesslevels;
+    },
+
     get Statuses() {
-        if(_statues == null) {
-            Mantis._statues = Mantis.EnumStatus(Mantis.CurrentUser.UserName, Mantis.CurrentUser.Password, null);  
+        if(Mantis._statues == null) {
+            Mantis._statues = Mantis.EnumStatus(null);  
         }
         
         return Mantis._statues;
     },
     
+    get ProjectUsers() {
+        if(Mantis._projectusers.length == 0) {
+            Mantis._projectusers = Mantis.ProjectGetUsers(10);
+        }
+        return Mantis._projectusers;
+    },
+
     get  Serverities() {
         if(Mantis._severities == null) {
             Mantis._severities = Mantis.EnumServerities(Mantis.CurrentUser.UserName, Mantis.CurrentUser.Password, null);
@@ -96,6 +110,16 @@ var Mantis = {
             }
         },
 
+        EnumAccessLevels : {
+            Name : "mc_enum_access_levels",
+            BuildParams : function() {
+                pl = new SOAPClientParameters();
+                pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+                pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+                return pl;
+            }
+        } ,
+
         ProjectGetUsers :  {
             Name : "mc_project_get_users",
             BuildParams : function(access) {
@@ -145,37 +169,53 @@ var Mantis = {
     },
     
     ProjectGetIssues : function(ProjectID, PageNumber, PerPage, callBack) {
-        hascallback = callBack == null ? true : false;
+        hascallback = callBack == null ? false : true;
         return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.ProjectGetIssues.Name, Mantis.Methods.ProjectGetIssues.BuildParams(ProjectID, PageNumber, PerPage), hascallback, callBack);
+    },
+
+    /**
+    * This function assumes that you want to enumerate the users on the current project
+    * @param {int} Access           This is the access level that you want to filter the users by
+    * @param {function} callBack    This is the callback method that will be called if its passed in.   If its null then it will by call synchronously
+    * @returns {array}              Array of the users that were collected
+    */
+    ProjectGetUsers : function(Access, callBack) {
+        hascallback = callBack == null ? false : true;
+        return SOAPClient.invoke(mantisConnectURL, Mantis.Methods.ProjectGetUsers.Name, Mantis.Methods.ProjectGetUsers.BuildParams(Access), hascallback, callBack);
     },
     
     ProjectsGetUserAccessible :  function(callBack) {
-        hascallback = callBack == null ? true : false;
-        return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.ProjectsGetUserAccessible.Name, Mantis.Methods.ProjectsGetUserAccessible.BuildParams(), hascallback, callBack);
+        hascallback = callBack == null ? false : true;
+        return SOAPClient.invoke(mantisConnectURL, Mantis.Methods.ProjectsGetUserAccessible.Name, Mantis.Methods.ProjectsGetUserAccessible.BuildParams(), hascallback, callBack);
     },
     
     EnumGet : function(Enumeration, callBack) {
-        hascallback = callBack == null ? true : false;
+        hascallback = callBack == null ? false : true;
         return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumGet.Name, Mantis.Methods.EnumGet.BuildParams(Enumeration), hascallback, callBack);
+    },
+
+    EnumAccessLevels : function(callBack) {
+        hascallback = callBack == null ? false : true;
+        return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumAccessLevels.Name, Mantis.Methods.EnumAccessLevels.BuildParams(), hascallback, callBack);
     },
     
     EnumServerities : function(callBack) {
-        hascallback = callBack == null ? true : false;
+        hascallback = callBack == null ? false : true;
         return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumServerities.Name, Mantis.Methods.EnumServerities.BuildParams(), hascallback, callBack);
     },
     
     EnumPriority : function(callBack) {
-        hascallback = callBack == null ? true : false;
+        hascallback = callBack == null ? false : true;
         return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumPriority.Name, Mantis.Methods.EnumPriority.BuildParams(), hascallback, callBack);
     },
     
     EnumStatus : function(callBack) {
-        hascallback = callBack == null ? true : false;
+        hascallback = callBack == null ? false : true;
         return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumStatus.Name, Mantis.Methods.EnumStatus.BuildParams(), hascallback, callBack);
     },
     
     Version : function(callBack) {
-        hascallback = callBack == null ? true : false;
+        hascallback = callBack == null ? false : true;
         return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.Version.Name, Mantis.Methods.Version.BuildParams(), hascallback, callBack);
     }    
 }

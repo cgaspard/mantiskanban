@@ -44,10 +44,11 @@ function Login() {
     Kanban.Stories = [];
     Kanban.ClearListGUI();
     
-    Mantis.EnumStatus(EnumStatus_callBack);
-    Mantis.ProjectsGetUserAccessible(ProjectsGetUserAccessible_callBack);
-    Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0, ProjectGetIssues_callBack);
-
+    BuildKanbanListFromMantisStatuses();
+    Mantis.ProjectsGetUserAccessible(SelectFirstMantisProjectUserAccessAccessTo);
+    Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0, CreateKanbanStoriesFromMantisIssues);
+    //alert(JSON.stringify(Mantis.AccessLevels))
+    //alert(JSON.stringify(Mantis.ProjectUsers));
     StopLoading();
 }
 
@@ -61,38 +62,24 @@ function StopLoading() {
     document.getElementById("loadedimage").style.display = "inline";
 }
 
-function Version_callBack(r) {
-    alert(r);
-}
-
-function EnumStatus_callBack(statusArray) {
-    //alert(JSON.stringify(statusArray));
-    for(var si = 0; si < statusArray.length; si++) {
-        var status = statusArray[si]
+function BuildKanbanListFromMantisStatuses() {
+    for(var si = 0; si < Mantis.Statuses.length; si++) {
+        var status = Mantis.Statuses[si]
         Kanban.AddList(new KanbanList(status.name, status.id));
     }
     
-}
-
-function EnumPriority_callBack(r) {
-    //alert(JSON.stringify(r));
 }
 
 function EnumServerities_callBack(r) {
     alert("EnumServerities:" + JSON.stringify(r));
 }
 
-function EnumGet_callBack(r, xml) {
-    //alert(xml);
-}
-
-function ProjectsGetUserAccessible_callBack(obj, doc) {
-    //alert("ProjectsGetUserAccessible:" + JSON.stringify(obj));
+function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {
     Mantis.CurrentProjectID = obj[0].id;
 }
 
 
-function ProjectGetIssues_callBack(obj, doc) {
+function CreateKanbanStoriesFromMantisIssues(obj, doc) {
     
     //alert(JSON.stringify(obj[0]));
     
