@@ -67,6 +67,7 @@ var Kanban = {
                 var thisStory = kanbanListItem.Stories[si];
                 var storyDiv = document.createElement("div");
                 storyDiv.setAttribute("class", "kanbanstory");
+                storyDiv.setAttribute("listid", thisStory.ListID);
                 storyDiv.setAttribute("id", thisStory.ID);
                 storyDiv.setAttribute("draggable", "true");
                 storyDiv.addEventListener('dragstart', Drag, false);
@@ -76,8 +77,9 @@ var Kanban = {
 
                 var storyDivSeverity = document.createElement("div");
                 //storyDivSeverity.innerHTML = thisStory.Summary;
-                storyDivSeverity.setAttribute("class", "kanbanstoryseverity");
+                storyDivSeverity.setAttribute("class", "kanbanstoryseverity kanbanstorypriority");
                 storyDivSeverity.setAttribute("severity", thisStory.Issue.severity.name);
+                storyDivSeverity.setAttribute("priority", thisStory.Issue.priority.name);
                 storyDiv.appendChild(storyDivSeverity);
 
                 
