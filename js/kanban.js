@@ -63,7 +63,7 @@ var Kanban = {
                 storyDiv.setAttribute("draggable", "true");
                 storyDiv.addEventListener('dragstart', Drag, false);
                 storyDiv.addEventListener("dragend", DragEnd, false);
-                storyDiv.addEventListener("click", "EditStory('" + thisStory.ID + "');", false);
+                storyDiv.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
                 storyDiv.Story = thisStory;
 
                 var storyDivSeverity = document.createElement("div");
@@ -76,7 +76,7 @@ var Kanban = {
                 var storyDivTitle = document.createElement("div");
                 storyDivTitle.innerHTML = thisStory.Summary;
                 storyDivTitle.setAttribute("class", "kanbanstorytitle");
-                storyDivTitle.addEventListener("click", "EditStory('" + thisStory.ID + "');", false);
+                storyDivTitle.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
                 storyDiv.appendChild(storyDivTitle);
                 
                 var storyDivButton = document.createElement("img");
