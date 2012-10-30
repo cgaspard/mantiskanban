@@ -63,6 +63,7 @@ var Kanban = {
                 storyDiv.setAttribute("draggable", "true");
                 storyDiv.addEventListener('dragstart', Drag, false);
                 storyDiv.addEventListener("dragend", DragEnd, false);
+                storyDiv.addEventListener("click", "EditStory('" + thisStory.ID + "');", false);
                 storyDiv.Story = thisStory;
 
                 var storyDivSeverity = document.createElement("div");
@@ -75,6 +76,7 @@ var Kanban = {
                 var storyDivTitle = document.createElement("div");
                 storyDivTitle.innerHTML = thisStory.Summary;
                 storyDivTitle.setAttribute("class", "kanbanstorytitle");
+                storyDivTitle.addEventListener("click", "EditStory('" + thisStory.ID + "');", false);
                 storyDiv.appendChild(storyDivTitle);
                 
                 var storyDivButton = document.createElement("img");
@@ -139,8 +141,6 @@ function HandleDragLeave(e) {
   e.target.classList.remove('over');  // this / e.target is previous target element.
 }
 
-
-
 var KanbanStory = function(StoryID, StoryStatus, StorySummary, StoryDescription, StoryNotes, StoryAssignedTo, RawObject) {
     this.ID = StoryID;
     this.Summary = StorySummary;
@@ -182,11 +182,10 @@ KanbanList.prototype = {
 
 
 function EditStory(storyID) {
-
-    
     thisStory = Kanban.GetStoryByFieldValue("ID", storyID);    
     $("#edit-summary").val(thisStory.Summary);
     $("#edit-description").val(thisStory.Description);
     $("#edit-story-form").dialog("open");
+
 
 }
