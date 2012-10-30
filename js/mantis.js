@@ -1,4 +1,4 @@
-var mantisConnectURL = "http://example.com/api/soap/mantisconnect.php";
+var mantisConnectURL = "http://bugz.mygait.net/api/soap/mantisconnect.php";
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);

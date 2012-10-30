@@ -45,6 +45,9 @@ var Kanban = {
             ///The main container
             var listDiv = document.createElement("div");
             listDiv.setAttribute("class", "kanbanlist");
+            listDiv.setAttribute("id", "listid" + kanbanListItem.ID);
+            listDiv.addEventListener('dragover', HandleDragOver, false);
+            listDiv.addEventListener("drop", Drop, false);
             listDiv.List = kanbanListItem;
             
             ///The title container
@@ -53,49 +56,80 @@ var Kanban = {
             listDivTitle.innerHTML = kanbanListItem.Name.capitalize();
             listDiv.appendChild(listDivTitle);
             
-            var dropDiv = document.createElement("div");
-            dropDiv.setAttribute("class", "kanbandropper");            
-            dropDiv.addEventListener('dragenter', HandleDragEnter, false);
-            dropDiv.addEventListener('dragover', HandleDragOver, false);
-            dropDiv.addEventListener('dragleave', HandleDragLeave, false);
-            dropDiv.addEventListener('drop', Drop, false);
-            dropDiv.innerHTML = "Drop";
-            listDiv.appendChild(dropDiv);
-            
             for(var si = 0; si < kanbanListItem.Stories.length; si++) {
-                //var thisStory = new KanbanStory();i could write it in 
+
                 var thisStory = kanbanListItem.Stories[si];
+
                 var storyDiv = document.createElement("div");
-                storyDiv.setAttribute("class", "kanbanstory");
-                storyDiv.setAttribute("listid", thisStory.ListID);
-                storyDiv.setAttribute("id", thisStory.ID);
-                storyDiv.setAttribute("draggable", "true");
-                storyDiv.addEventListener('dragstart', Drag, false);
-                storyDiv.addEventListener("dragend", DragEnd, false);
-                storyDiv.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
                 storyDiv.Story = thisStory;
+                thisStory.Element = storyDiv;
+                
+                storyDiv.setAttribute("id", "storydiv" + thisStory.ID);
+                storyDiv.setAttribute("listid", "listid" + kanbanListItem.ID);
+                storyDiv.setAttribute("storyid", "storydiv" + thisStory.ID);
+                storyDiv.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
+                storyDiv.setAttribute("draggable", "true");
+                storyDiv.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
+
+                storyDiv.addEventListener('dragstart', DragStart, false);
+                storyDiv.addEventListener("dragend", DragEnd, false);
+
+                storyDiv.addEventListener('dragenter', HandleDragEnter, false);
+                storyDiv.addEventListener('dragover', HandleDragOver, false);
+                storyDiv.addEventListener('dragleave', HandleDragLeave, false);
+
+                storyDiv.addEventListener('drop', Drop, false);
+
+                var dropDiv = document.createElement("div");
+                dropDiv.setAttribute("class", "kanbandropper");
+                dropDiv.setAttribute("id", "dropdiv" + thisStory.ID); 
+                dropDiv.setAttribute("listid", "listid" + kanbanListItem.ID);
+                dropDiv.setAttribute("storyid", "storydiv" + thisStory.ID);
+                dropDiv.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
+                //dropDiv.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+                storyDiv.appendChild(dropDiv);
+
+                var storyContainerDiv = document.createElement("div");
+                storyContainerDiv.setAttribute("class", "kanbanstory");
+                storyContainerDiv.setAttribute("id", "storycontainer" + thisStory.ID);
+                storyContainerDiv.setAttribute("listid", "listid" + kanbanListItem.ID);
+                storyContainerDiv.setAttribute("storyid", "storydiv" + thisStory.ID);
+                storyContainerDiv.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
+                storyContainerDiv.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+                storyDiv.appendChild(storyContainerDiv);
 
                 var storyDivSeverity = document.createElement("div");
-                //storyDivSeverity.innerHTML = thisStory.Summary;
                 storyDivSeverity.setAttribute("class", "kanbanstoryseverity kanbanstorypriority");
-                storyDivSeverity.setAttribute("severity", thisStory.Issue.severity.name);
+                storyDivSeverity.setAttribute("id", "storyseverity" + thisStory.ID);
                 storyDivSeverity.setAttribute("priority", thisStory.Issue.priority.name);
-                storyDiv.appendChild(storyDivSeverity);
+                storyDivSeverity.setAttribute("listid", "listid" + kanbanListItem.ID);
+                storyDivSeverity.setAttribute("storyid", "storydiv" + thisStory.ID);
+                storyDivSeverity.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
+                storyDivSeverity.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+                storyContainerDiv.appendChild(storyDivSeverity);
 
-                
                 var storyDivTitle = document.createElement("div");
                 storyDivTitle.innerHTML = thisStory.Summary;
                 storyDivTitle.setAttribute("class", "kanbanstorytitle");
+                storyDivTitle.setAttribute("id", "storytitle" + thisStory.ID);
                 storyDivTitle.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
-                storyDiv.appendChild(storyDivTitle);
+                storyDivTitle.setAttribute("listid", "listid" + kanbanListItem.ID);
+                storyDivTitle.setAttribute("storyid", "storydiv" + thisStory.ID);
+                storyDivTitle.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
+                storyDivTitle.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+                storyContainerDiv.appendChild(storyDivTitle);
                 
                 var storyDivButton = document.createElement("img");
                 storyDivButton.setAttribute("src", "images/info.png");
+                storyDivButton.setAttribute("id", "storydivbutton" + thisStory.ID);
                 storyDivButton.setAttribute("class", "storyinfobutton");
                 storyDivButton.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
-                storyDiv.appendChild(storyDivButton);
+                storyDivButton.setAttribute("listid", "listid" + kanbanListItem.ID);
+                storyDivButton.setAttribute("storyid", "storydiv" + thisStory.ID);
+                storyDivButton.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
+                storyDivButton.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+                storyContainerDiv.appendChild(storyDivButton);
                 
-                //storyDiv.setAttribute("ondragstart", "HandleDragStart(event);");
                 listDiv.appendChild(storyDiv);
             }
             
@@ -112,48 +146,63 @@ var Kanban = {
     }
 }
 
-function Drag(event) {
-  event.target.style.opacity = '.999999';  // this / e.target is the source node.
-  event.dataTransfer.setData("Text",event.target.id);
-  event.target.classList.add("rotation");
+var Dragging = false;
+
+function DragCancel(event) {
+    event.preventDefault();
+}
+
+function DragStart(event) {
+    Dragging = true;
+    event.target.style.opacity = '.999999';  // this / e.target is the source node.
+    event.dataTransfer.setData("Text",event.target.id);
+    event.target.classList.add("rotation");
 }
 
 function DragEnd(event) {
+    Dragging = false;
     event.target.classList.remove("rotation");
-    
 }
 
 function Drop(event) {
     event.preventDefault();
-    var data=event.dataTransfer.getData("Text");
-    //alert(event.target.parentNode.nextSibling);
+    var data = event.dataTransfer.getData("Text");
     event.target.classList.remove('over');
-    event.target.parentNode.insertBefore(document.getElementById(data),  event.target.nextSibling);
+        
+    if(event.target.getAttribute("class") == "kanbanlist") {
+        event.target.appendChild(document.getElementById(data));
+    }  else {
+        var listToDropIn = document.getElementById(event.target.getAttribute("listid"));
+        var targetStoryDiv = document.getElementById(event.target.getAttribute("storyid"));
+        document.getElementById(targetStoryDiv.getAttribute("dropdivid")).classList.remove("over");
+        listToDropIn.insertBefore(document.getElementById(data), targetStoryDiv);
+    }
 }
 
+function ClearAllDragHoverAreas() {
+    var elements = document.getElementsByClassName("over");
+    for(var i = 0; i < elements.length; i++) {
+        elements[i].classList.remove("over");
+    }
+}
 
 function HandleDragOver(e) {
   if (e.preventDefault) {
     e.preventDefault(); // Necessary. Allows us to drop.
   }
-
-  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
-
+  e.dataTransfer.dropEffect = 'move';
   return false;
 }
 
 function HandleDragEnter(e) {
-  // this / e.target is the current hover target.
-  e.target.classList.add('over');
+    console.log("HandleDragEnter: StoryID: " + e.target.getAttribute("storyid") + "  ID: " + e.target.id);
+    if(e.target.getAttribute("storyid") != e.target.getAttribute("id")) {
+        document.getElementById(e.target.getAttribute("dropdivid")).classList.add("over");
+    }
 }
 
 function HandleDragLeave(e) {
-  e.target.classList.remove('over');  // this / e.target is previous target element.
-}
-
-function ObjectContainsField(myObject) {
-
-
+        document.getElementById(e.target.getAttribute("dropdivid")).classList.remove("over");
 }
 
 var KanbanStory = function(StoryID, StoryStatus, StorySummary, StoryDescription, StoryNotes, StoryAssignedTo, RawObject) {
