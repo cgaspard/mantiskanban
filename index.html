@@ -1,0 +1,76 @@
+<html>
+    <head>
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+
+        <link rel="stylesheet" href="kanban.css" />
+        <link rel="stylesheet" href="mantiskanban.css" />
+        <script language="javascript" type="text/javascript" src="js/soapclient.js"></script>
+        <script language="javascript" type="text/javascript" src="js/mantis.js"></script>
+        <script language="javascript" type="text/javascript" src="js/kanban.js"></script>
+        <script language="javascript" type="text/javascript" src="js/mantiskanban.js"></script>
+        
+        <title>Mantis Kanban</title>
+
+    </head>
+    <body>
+
+        <div class="loginarea" style="">
+            Username: <input type="text" id="username" value="corey.gaspard" />
+            Password: <input type="password" id="password" value="rbg76cjg">
+            <div class="loginbutton" onclick="Login();">Login</div>
+            <div class="loadingdiv" id="loadingdiv" style="float: right;">
+                Status: <img id="loadingimage" src="images/loading.gif"  style="width: 20px; height: 20px; display: none;"/><img id="loadedimage" src="images/loaded.png"  style="width: 20px; height: 20px;"/>
+            </div>
+            <!--
+            <input type="button" onclick="Kanban.ClearListGUI()" value="Clear" />
+            <input type="button" onclick="Kanban.BuildListGUI()" value="Build" />
+            -->
+        </div>
+
+        <center>
+        <div id="kanbancontent"></div>
+        </center>
+        
+        
+        <div id="story-form" title="Create New Story" style="display:none;">
+            <p class="validateTips">All form fields are required.</p>
+            <form>
+                <fieldset>
+                    <label for="text">Summary</label>
+                    <input type="text" name="summary" id="summary" class="text ui-widget-content ui-corner-all" />
+                    <label for="select">Assigned To</label>
+                    <select name="assignedto" id="assignedto"   class="text ui-widget-content ui-corner-all">
+                        <option value="">Select Assigned To</option>
+                    </select>
+                    <label for="select">Pirority</label>
+                    <select name="priority" id="priority" class="text ui-widget-content ui-corner-all">
+                        <option value="">Select Assigned To</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
+
+        <div id="edit-story-form" title="Edit Story" style="display:none;">
+            <form>
+                <fieldset>
+                    <label for="text">Summary:</label>
+                    <input type="text" name="edit-summary" id="edit-summary" style="width:300px;" class="text ui-widget-content ui-corner-all" />
+                    <label for="text">Subbmited By:</label>
+                    <select id="edit-submitedby" name="edit-submitedby">
+                    </select>
+                    <br>
+                    <label for="text">Description:</labal>
+                        <br>
+                    <textarea name="edit-description" id="edit-description" style="width: 100%;" class="text ui-widget-content ui-corner-all"></textarea>
+
+                    Notes:
+
+                </fieldset>
+            </form>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,74 @@
+     body {
+      background: rgb(125,126,125); /* Old browsers */
+      background: -moz-linear-gradient(top,  rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+     }
+     
+     .loadingdiv {
+         padding-right: 30px; 
+         padding-top: 10px;
+     }
+     
+     .loadingdiv img {
+         
+     }
+     
+   .loginarea {
+       margin-bottom: 10px;
+       margin-left: 10px;
+       color: #FFFFFF;
+       font-size: 20px;
+   }
+   
+   .loginarea input {
+      height: 30px;
+      font-size: 15px;
+      color: #000000;
+      width: 120px;
+      border-radius: 5px 5px 5px 5px;
+   }
+   
+   .loginbutton {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #ffffff;
+	padding: 7px 15px;
+	background: -moz-linear-gradient(
+		top,
+		#bcd900 0%,
+		#8ba10f);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#bcd900),
+		to(#8ba10f));
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #003366;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+            display: inline-block;
+            cursor: pointer;
+            user-select:none;
+}
+
+#edit-story-description {
+  width: 400px;
+  height:200px;
+
+}

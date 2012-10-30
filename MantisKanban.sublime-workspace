@@ -1,0 +1,271 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Console",
+				"ConsoleHistory"
+			],
+			[
+				"get",
+				"getcounter"
+			],
+			[
+				"un",
+				"unlink"
+			],
+			[
+				"lock",
+				"LOCKFILE"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/User/ArcticFox.sublime-build",
+	"command_palette":
+	{
+		"height": 327.0,
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"packages",
+				"Preferences: Browse Packages"
+			],
+			[
+				"inte",
+				"Package Control: Install Package"
+			],
+			[
+				"tidy",
+				"Tidy HTML"
+			],
+			[
+				"tid",
+				"Tidy HTML"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"consol",
+				"Set Syntax: R Console"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Volumes/C/Projects/MyGait/MyGaitFramework/trunk/MyGaitFramework/Mygait.csproj",
+		"/Volumes/C/Projects/MyGait/Web/www.prod/tags/1.1.0/external/orders/orderproc.aspx.cs",
+		"/Users/cgaspard/Desktop/LicenseAgreementTasks.html",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/root/apps/browser.afx/content/browser.js",
+		"/Applications/ArcticFox.app/Contents/Info.plist",
+		"/Users/cgaspard/Projects/MyGait/MyGaitFramework/trunk/MyGaitFramework/Mygait.csproj",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/.codeintel/config",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/chrome/content/browser.js",
+		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/SublimeCodeIntel/Base File.sublime-settings",
+		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/application.ini",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/root/apps/creatures.afx/appinfo.json",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/root/apps/jplayer.afx/content/default.html",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/chrome/content/nsBrowserAccess.js",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/chrome/content/browser.css",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/chrome/content/dialog.xul",
+		"/etc/hosts",
+		"/etc/host",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/root/apps/amazonplayer.afx/content/default.html",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/arcticfox-win.bat",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/arcticfox-lnx.sh",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/arcticfox-osx.sh",
+		"/Users/cgaspard/Projects/ArcticFox/ArcticFox/arcticfox-ub.sh",
+		"/Users/cgaspard/Desktop/Soccer Practice.txt",
+		"/Users/cgaspard/Projects/Fun/O-ToolsCalculator/otoolscalc.manifest",
+		"/Users/cgaspard/Projects/B2G/gaia/apps/camera/index.html",
+		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/cgaspard/Projects/Fun/O-ToolsCalculator/otoolscalc.appcache",
+		"/Users/cgaspard/Projects/B2G/gaia/README.md",
+		"/Users/cgaspard/Desktop/test2.sh",
+		"/Users/cgaspard/Desktop/sample.sh",
+		"/Users/cgaspard/Projects/B2G/gaia/apps/towerjelly/manifest.webapp",
+		"/Users/cgaspard/Temp/omni.jar Folder/defaults/preferences/firefox.js",
+		"/Applications/Galactians2.app/Contents/Info.plist",
+		"/Users/cgaspard/Downloads/mygaitbrowser1.4.1/content/forms/firstrun.js",
+		"/Users/cgaspard/Scripts/MoveFilesToAlfaFolders.sh",
+		"/Applications/Firefox 3.6.app/Contents/MacOS/application.ini"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"InsertCommand"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"ProjectTypeGuids",
+			"Type",
+			"ProjectTypeGuids",
+			"[\\r\\n]",
+			"terms of",
+			"RISK OF",
+			"Application",
+			"insertCommand",
+			"LaunchStartupApps",
+			"LoadShell",
+			"OfflineAppPermForURI",
+			"OfflineAppAllowedForURI",
+			"mozApps",
+			"/otoolscalc/",
+			"$TEMPFILE",
+			"while [$currentcount -ge $publishcount]; do",
+			"while [[$currentcount -ge $publishcount]]; do",
+			"while [[$($currentcount==$publishcount)]]; do",
+			"while [[$($currentcount=$publishcount)]]; do",
+			"while [[$currentcount=$publishcount]]; do",
+			"while [[ currentcount = publishcount ]]; do",
+			"<",
+			"pause",
+			"(bootloader) ",
+			"<<<< Identifier Token Start >>>>\n(bootloader) B82264D75C482719B4C321F77E296CD2\n(bootloader) DCAF075CCB74B0B080152E081115A100\n(bootloader) 8EC044922C77E2B9DEB1881C194DD7B6\n(bootloader) 645753107854447A8C8265B0D35F2F28\n(bootloader) 982A49F888554575981A1B0B17105AB2\n(bootloader) 5336597337F4691C71D5C383F3E4AA6E\n(bootloader) 5D85B74D4268BA5C06A15DAC690FC58C\n(bootloader) C187ED7794DE9BA74A679B02770D1248\n(bootloader) 8BEA19628AA719FCE1BE0F0CC35EB219\n(bootloader) E915402D8B9F10CC8EB9CCE6D2DC0245\n(bootloader) 1F35BC2805F935AA367D6ED419A2E127\n(bootloader) 986A1344B148EFB12CD215652E9A3207\n(bootloader) 17AD736BEF515BD72DB5CF6BE4CF64DB\n(bootloader) 9A4AC3CDCA1DB003451074F5F1C5BE70\n(bootloader) F1E3C5F61FE7AB50C00AAF6EF8C05155\n(bootloader) 73F3D6F8E0EB6074CD749E023D48C25B\n(bootloader) ",
+			"in2lsync",
+			",.*",
+			"26833",
+			",.*",
+			"http",
+			".*40404,"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			"/tmp/publishall.tmp",
+			"while [ $currentcount -gt $publishcount ]; do",
+			"while [$currentcount -ge $publishcount]; do",
+			"while [[$currentcount -ge $publishcount]]; do",
+			"while [[$($currentcount==$publishcount)]]; do",
+			"while [[$($currentcount=$publishcount)]]; do",
+			"while [[$currentcount=$publishcount]]; do",
+			"=",
+			"sleep",
+			"",
+			"wget http",
+			"http://mygait.com/allsites/resource.aspx?resourceuserid=40404&resourceid=26833"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 195.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 303.0,
+	"status_bar_visible": true
+}
