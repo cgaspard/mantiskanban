@@ -153,6 +153,7 @@ function DragCancel(event) {
 }
 
 function DragStart(event) {
+
     Dragging = true;
     event.target.style.opacity = '.999999';  // this / e.target is the source node.
     event.dataTransfer.setData("Text",event.target.id);
@@ -195,6 +196,7 @@ function HandleDragOver(e) {
 }
 
 function HandleDragEnter(e) {
+    ClearAllDragHoverAreas();
     console.log("HandleDragEnter: StoryID: " + e.target.getAttribute("storyid") + "  ID: " + e.target.id);
     if(e.target.getAttribute("storyid") != e.target.getAttribute("id")) {
         document.getElementById(e.target.getAttribute("dropdivid")).classList.add("over");
