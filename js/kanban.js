@@ -264,10 +264,14 @@ function EditStory(storyID) {
     document.getElementById("edit-reporter").innerHTML = thisStory.Issue.reporter.real_name;
     var selectAssignedUser = document.getElementById("edit-assignedto");
     selectAssignedUser.options.length = 0;
+    ///Add a blank option
+    selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To ---", "");
     for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
         var user = Mantis.ProjectUsers[i];
         selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
-        if(user.id == thisStory.Issue.handler.id) { selectAssignedUser.selectedIndex = i; }
+        if(this.Issue.handler !== "undefined" && user.id == thisStory.Issue.handler.id) {
+             selectAssignedUser.selectedIndex = i;
+        }
 
     }
     $("#edit-story-form").dialog("open");

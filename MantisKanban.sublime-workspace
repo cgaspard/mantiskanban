@@ -4,12 +4,96 @@
 		"selected_items":
 		[
 			[
-				"Console",
-				"ConsoleHistory"
+				"container",
+				"storyContainerDiv"
+			],
+			[
+				"storydiv",
+				"storyDiv"
+			],
+			[
+				"current",
+				"currentDragOverItem"
 			],
 			[
 				"get",
-				"getcounter"
+				"getElementsByClassName  (function)"
+			],
+			[
+				"DropOn",
+				"DropOnChildOfStory"
+			],
+			[
+				"id",
+				"ID"
+			],
+			[
+				"storyid",
+				"StoryID"
+			],
+			[
+				"List",
+				"ListID  (variable)"
+			],
+			[
+				"project",
+				"ProjectCustomFields"
+			],
+			[
+				"custom",
+				"ProjectCustomFields  (variable)"
+			],
+			[
+				"projectsel",
+				"projectSelectBox"
+			],
+			[
+				"getle",
+				"getElementById()  (namespace)"
+			],
+			[
+				"Get",
+				"ProjectsGetUserAccessible  (function)"
+			],
+			[
+				"cur",
+				"CurrentProjectID  (variable)"
+			],
+			[
+				"Proj",
+				"ProjectCustomFields  (variable)"
+			],
+			[
+				"Proje",
+				"ProjectGetCustomFields  (function)"
+			],
+			[
+				"inner",
+				"innerHTML  (variable)"
+			],
+			[
+				"ProjectGet",
+				"ProjectGetUsers"
+			],
+			[
+				"Enum",
+				"EnumAccessLevels"
+			],
+			[
+				"Projec",
+				"ProjectGetUsers  (namespace)"
+			],
+			[
+				"Curr",
+				"CurrentProjectID"
+			],
+			[
+				"this",
+				"thisStory"
+			],
+			[
+				"Console",
+				"ConsoleHistory"
 			],
 			[
 				"un",
@@ -23,20 +107,93 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "js/kanban.js",
+			"settings":
+			{
+				"buffer_size": 11267,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 3990,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mantiskanban.css",
+			"settings":
+			{
+				"buffer_size": 2599,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "kanban.css",
+			"settings":
+			{
+				"buffer_size": 7632,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/mantis.js",
+			"settings":
+			{
+				"buffer_size": 12633,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/mantiskanban.js",
+			"settings":
+			{
+				"buffer_size": 4115,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "6410 Fannin, 77030",
+			"settings":
+			{
+				"buffer_size": 18,
+				"line_ending": "Unix",
+				"name": "6410 Fannin, 77030"
+			}
+		}
 	],
-	"build_system": "Packages/User/ArcticFox.sublime-build",
+	"build_system": "Packages/User/ViewInSafari.sublime-build",
 	"command_palette":
 	{
-		"height": 327.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"pack",
-				"Package Control: Install Package"
+				"",
+				"Build: Build"
+			],
+			[
+				"form",
+				"Clientside Format Javascript/CSS"
+			],
+			[
+				"client",
+				"Clientside Format Javascript/CSS"
 			],
 			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Discover Packages"
+			],
+			[
+				"tidy",
+				"Tidy HTML"
 			],
 			[
 				"packages",
@@ -45,10 +202,6 @@
 			[
 				"inte",
 				"Package Control: Install Package"
-			],
-			[
-				"tidy",
-				"Tidy HTML"
 			],
 			[
 				"tid",
@@ -67,7 +220,7 @@
 				"Set Syntax: R Console"
 			]
 		],
-		"width": 449.0
+		"width": 602.0
 	},
 	"console":
 	{
@@ -84,6 +237,15 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/mantiskanban.css",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/kanban.css",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantiskanban.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/ViewInSafari.sublime-build",
+		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/User/ViewInSafari.sublime-build",
 		"/Volumes/C/Projects/MyGait/MyGaitFramework/trunk/MyGaitFramework/Mygait.csproj",
 		"/Volumes/C/Projects/MyGait/Web/www.prod/tags/1.1.0/external/orders/orderproc.aspx.cs",
 		"/Users/cgaspard/Desktop/LicenseAgreementTasks.html",
@@ -110,7 +272,6 @@
 		"/Users/cgaspard/Desktop/Soccer Practice.txt",
 		"/Users/cgaspard/Projects/Fun/O-ToolsCalculator/otoolscalc.manifest",
 		"/Users/cgaspard/Projects/B2G/gaia/apps/camera/index.html",
-		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/cgaspard/Projects/Fun/O-ToolsCalculator/otoolscalc.appcache",
 		"/Users/cgaspard/Projects/B2G/gaia/README.md",
 		"/Users/cgaspard/Desktop/test2.sh",
@@ -131,6 +292,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"<open files>",
 			"",
 			"InsertCommand"
 		]
@@ -140,6 +302,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"HandleDragLeave",
+			"alert",
+			"kanbanlist",
+			"BuildProjectSelectBox",
+			"SelectFirstMantisProjectUserAccessAccessTo",
+			"kanbannewstory",
+			"edit-assignedto",
+			"callBack == null ? true : false;",
+			"EnumStatus",
+			"projectusers",
+			"rotate",
 			"ProjectTypeGuids",
 			"Type",
 			"ProjectTypeGuids",
@@ -175,9 +348,10 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"callBack == null ? false : true;",
 			"",
 			"/tmp/publishall.tmp",
 			"while [ $currentcount -gt $publishcount ]; do",
@@ -201,8 +375,203 @@
 	"groups":
 	[
 		{
+			"selected": 6,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "js/kanban.js",
+					"settings":
+					{
+						"buffer_size": 11267,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8568,
+								8568
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2934.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 3990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1109,
+								827
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 223.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "mantiskanban.css",
+					"settings":
+					{
+						"buffer_size": 2599,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1256,
+								1256
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 274.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "kanban.css",
+					"settings":
+					{
+						"buffer_size": 7632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								545,
+								545
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 74.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/mantis.js",
+					"settings":
+					{
+						"buffer_size": 12633,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								46,
+								46
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/mantiskanban.js",
+					"settings":
+					{
+						"buffer_size": 4115,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								587,
+								587
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"settings":
+					{
+						"buffer_size": 18,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "6410 Fannin, 77030",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -239,7 +608,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 195.0
+		"height": 84.0
 	},
 	"replace":
 	{
@@ -251,6 +620,38 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"mantis.js",
+				"js/mantis.js"
+			],
+			[
+				"mantiskan",
+				"js/mantiskanban.js"
+			],
+			[
+				"kanban.css",
+				"kanban.css"
+			],
+			[
+				"kanban.js",
+				"js/kanban.js"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"css",
+				"kanban.css"
+			],
+			[
+				"kan",
+				"js/kanban.js"
+			],
+			[
+				"ind",
+				"index.html"
+			]
 		],
 		"width": 0.0
 	},
