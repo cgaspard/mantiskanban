@@ -47,6 +47,7 @@ var Kanban = {
             listDiv.setAttribute("class", "kanbanlist");
             listDiv.setAttribute("id", "listid" + kanbanListItem.ID);
             listDiv.addEventListener('dragover', HandleDragOver, false);
+            listDiv.addEventListener('dragenter', HandleDragEnter, false);
             listDiv.addEventListener("drop", Drop, false);
             listDiv.List = kanbanListItem;
             
@@ -130,6 +131,7 @@ var Kanban = {
                 storyDivButton.setAttribute("listid", "listid" + kanbanListItem.ID);
                 storyDivButton.setAttribute("storyid", "storydiv" + thisStory.ID);
                 storyDivButton.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
+                storyDivButton.setAttribute("draggable", false);
                 storyDivButton.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
                 storyContainerDiv.appendChild(storyDivButton);
 
@@ -145,6 +147,7 @@ var Kanban = {
             
             ///Add it all to the container div
             Kanban.Container.appendChild(listDiv);
+            Kanban.Container.addEventListener('dragenter', HandleDragEnter, false);
         }
     }
 }
@@ -178,7 +181,7 @@ function Drop(event) {
     var sourceElementDropDiv = document.getElementById(sourceElement.getAttribute("dropdivid"));
     var targetStoryDiv = document.getElementById(event.target.getAttribute("storyid"));
 
-    if(event.target.getAttribute("class") == "kanbanlist") {
+    if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
         listToDropIn = event.target;
         event.target.appendChild(document.getElementById(data));
     }  else {

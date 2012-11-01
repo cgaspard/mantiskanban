@@ -1,12 +1,14 @@
 
 window.onload = function() {
 
+    /*
     window.setInterval(function() {
         if(!Dragging) {
             ClearAllDragHoverAreas();
         }
     }, 5000);
-
+    */
+    
     $( "#story-form" ).dialog({
         autoOpen: false,
         height: 550,
