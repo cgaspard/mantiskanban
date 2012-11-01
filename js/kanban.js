@@ -95,6 +95,9 @@ var Kanban = {
                 storyContainerDiv.setAttribute("listid", "listid" + kanbanListItem.ID);
                 storyContainerDiv.setAttribute("storyid", "storydiv" + thisStory.ID);
                 storyContainerDiv.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
+                if(thisStory.AssignedTo.name == Mantis.CurrentUser.UserName) {
+                    storyContainerDiv.classList.add("mystory");
+                }
                 storyContainerDiv.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
                 storyDiv.appendChild(storyContainerDiv);
 
@@ -169,15 +172,23 @@ function Drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("Text");
     event.target.classList.remove('over');
-        
+    var listToDropIn = null;
+
+    var sourceElement = document.getElementById(data);
+    var sourceElementDropDiv = document.getElementById(sourceElement.getAttribute("dropdivid"));
+    var targetStoryDiv = document.getElementById(event.target.getAttribute("storyid"));
+
     if(event.target.getAttribute("class") == "kanbanlist") {
+        listToDropIn = event.target;
         event.target.appendChild(document.getElementById(data));
     }  else {
-        var listToDropIn = document.getElementById(event.target.getAttribute("listid"));
-        var targetStoryDiv = document.getElementById(event.target.getAttribute("storyid"));
-        document.getElementById(targetStoryDiv.getAttribute("dropdivid")).classList.remove("over");
+        listToDropIn = document.getElementById(event.target.getAttribute("listid"));
+        sourceElementDropDiv.classList.remove("over");
         listToDropIn.insertBefore(document.getElementById(data), targetStoryDiv);
     }
+
+    sourceElement.setAttribute("listid", listToDropIn.getAttribute("id"));
+    sourceElementDropDiv.setAttribute("listid", listToDropIn.getAttribute("id"));
 }
 
 function ClearAllDragHoverAreas() {
@@ -212,9 +223,6 @@ function AddNotesToStoryEditForm(KanbanStory) {
     var notesContainer = document.getElementById("edit-story-notes-container");
     try { while(notesContainer.childNodes.length > 0) { notesContainer.removeChild(notesContainer.firstChild); } } catch(e) { }
     if(KanbanStory.Notes === undefined) return;
-
-    
-    
 
     for(var i = 0; i < KanbanStory.Notes.length; i++) {
         var thisNote = KanbanStory.Notes[i];
