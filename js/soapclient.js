@@ -239,7 +239,7 @@ SOAPClient._node2object = function(node, wsdlTypes)
 		/// loop thru its attributs looking for type = array or something like that
 		for(var q = 0; q < node.attributes.length; q++) {
 			if(node.attributes[q].nodeType == 2 && node.attributes[q].name == "xsi:type") {
-				if(node.attributes[q].nodeValue.toLowerCase().indexOf("array") != -1) {
+				if(node.attributes[q].value.toLowerCase().indexOf("array") != -1) {
 					isarray = true;
 					break;
 				}
