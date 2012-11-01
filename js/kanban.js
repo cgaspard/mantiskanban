@@ -269,7 +269,7 @@ function EditStory(storyID) {
     for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
         var user = Mantis.ProjectUsers[i];
         selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
-        if(thisStory.Issue.handler !== "undefined" && user.id == thisStory.Issue.handler.id) {
+        if(thisStory.Issue.handler !== undefined && user.id == thisStory.Issue.handler.id) {
              selectAssignedUser.selectedIndex = i;
         }
 
