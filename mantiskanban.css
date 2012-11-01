@@ -96,18 +96,14 @@ body{
     cursor: pointer;
     user-select:none;
 }
-#edit-story-form {
-    width: 700px;
-    height: 500px;
-}
 
 #edit-story-description{
     width: 700px;
-    height: 200px;
+    height: 140px;
 }
 
 .notesarea {
-    width: 650px;
-    max-height: 400px;
+    width: 740px;
+    max-height: 140px;
     overflow: auto;
 }

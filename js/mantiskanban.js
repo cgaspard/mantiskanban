@@ -24,8 +24,8 @@ window.onload = function() {
     $("#edit-story-form").dialog({
         autoOpen: false,
         modal: true,
-        height: 550,
-        width: 700,
+        height: 590,
+        width: 780,
         close: function() {
             allFields.val( "" ).removeClass( "ui-state-error" );
         }
