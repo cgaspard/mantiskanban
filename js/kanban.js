@@ -209,10 +209,12 @@ function HandleDragLeave(e) {
 
 
 function AddNotesToStoryEditForm(KanbanStory) {
+    var notesContainer = document.getElementById("edit-story-notes-container");
+    try { while(notesContainer.childNodes.length > 0) { notesContainer.removeChild(notesContainer.firstChild); } } catch(e) { }
     if(KanbanStory.Notes === undefined) return;
 
-    var notesContainer = document.getElementById("edit-story-notes-container");
-    try { notesContainer.childNodes.length = 0; } catch(e) { }
+    
+    
 
     for(var i = 0; i < KanbanStory.Notes.length; i++) {
         var thisNote = KanbanStory.Notes[i];

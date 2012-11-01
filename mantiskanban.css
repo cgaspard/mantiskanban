@@ -108,6 +108,6 @@ body{
 
 .notesarea {
     width: 650px;
-    height: 400px;
+    max-height: 400px;
     overflow: auto;
 }
