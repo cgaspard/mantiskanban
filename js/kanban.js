@@ -129,7 +129,7 @@ var Kanban = {
                 storyDivButton.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
                 storyDivButton.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
                 storyContainerDiv.appendChild(storyDivButton);
-                
+
                 listDiv.appendChild(storyDiv);
             }
             
@@ -207,6 +207,38 @@ function HandleDragLeave(e) {
         document.getElementById(e.target.getAttribute("dropdivid")).classList.remove("over");
 }
 
+
+function AddNotesToStoryEditForm(KanbanStory) {
+    if(KanbanStory.Notes === undefined) return;
+
+    var notesContainer = document.getElementById("edit-story-notes-container");
+    try { notesContainer.childNodes.length = 0; } catch(e) { }
+
+    for(var i = 0; i < KanbanStory.Notes.length; i++) {
+        var thisNote = KanbanStory.Notes[i];
+        var noteDiv = document.createElement("div");
+        noteDiv.setAttribute("class", "notecontainer");
+        noteDiv.setAttribute("storyid", KanbanStory.ID);
+
+        var noteSubmitterDiv = document.createElement("div");
+        noteSubmitterDiv.setAttribute("class", "notesubmitter");
+        noteSubmitterDiv.innerHTML = thisNote.reporter.real_name;
+        noteDiv.appendChild(noteSubmitterDiv);
+
+        var noteDateSubbmitedDiv = document.createElement("div");
+        noteDateSubbmitedDiv.setAttribute("class", "notedatesubmitted");
+        noteDateSubbmitedDiv.innerHTML = thisNote.date_submitted;
+        noteDiv.appendChild(noteDateSubbmitedDiv);
+
+        var noteTextDiv = document.createElement("div");
+        noteTextDiv.setAttribute("class", "notetext");
+        noteTextDiv.innerHTML = thisNote.text;
+        noteDiv.appendChild(noteTextDiv);
+
+        notesContainer.appendChild(noteDiv);
+    }
+}
+
 var KanbanStory = function(StoryID, StoryStatus, StorySummary, StoryDescription, StoryNotes, StoryAssignedTo, RawObject) {
     this.ID = StoryID;
     this.ListID = null;
@@ -274,5 +306,6 @@ function EditStory(storyID) {
         }
 
     }
+    AddNotesToStoryEditForm(thisStory)
     $("#edit-story-form").dialog("open");
 }

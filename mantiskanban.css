@@ -96,7 +96,18 @@ body{
     cursor: pointer;
     user-select:none;
 }
+#edit-story-form {
+    width: 700px;
+    height: 500px;
+}
+
 #edit-story-description{
-    width: 400px;
-    height:200px;
+    width: 700px;
+    height: 200px;
+}
+
+.notesarea {
+    width: 700px;
+    height: 400px;
+    overflow: auto;
 }

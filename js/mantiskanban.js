@@ -3,8 +3,8 @@ window.onload = function() {
 
     $( "#story-form" ).dialog({
         autoOpen: false,
-        height: 400,
-        width: 450,
+        height: 550,
+        width: 700,
         modal: true,
         buttons: {
             "Create a story": function() {
