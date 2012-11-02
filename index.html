@@ -15,29 +15,35 @@
         <title>Mantis Kanban</title>
 
     </head>
-    <body>  
-        <div class="loadingdiv" id="loadingdiv" style="float: right;">
-            <img id="loadingimage" src="images/loading.gif"  style="width: 40px; height: 40px; display: none;"/>
-            <img id="loadedimage" src="images/loaded.png"  style="width: 40px; height: 40px;"/>
-        </div>
+    <body>
 
-        <img src="images/mantis_logo.png" class="mantislogo">
-        <div class="loginarea">
-            <input type="text" id="username" value="corey.gaspard" placeholder="Username:"  />
-            <input type="password" id="password" value="" placeholder="Password: ">
-            <div class="loginbutton" onclick="Login();">Login</div>
-        </div>
-        <div class="projectarea">
-            <div id="projectlist" class="projectlist">
-                
+        <div style="background-color:transparent;z-index:50; position: absolute; top: 0px; width: 100%; height:100%; display: table;">
+            <div class="headerarea">
+                <div style="position:absolute; top:0px; left:0px; width:100%;">
+                <div class="loadingdiv" id="loadingdiv" style="float: right;">
+                    <img id="loadingimage" src="images/loading.gif"  style="width: 40px; height: 40px; display: none;"/>
+                    <img id="loadedimage" src="images/loaded.png"  style="width: 40px; height: 40px;"/>
+                </div>                        
+                <img src="images/mantis_logo.png" class="mantislogo" />
+                <div class="loginarea">
+                    <input type="text" id="username" value="corey.gaspard" placeholder="Username:"  />
+                    <input type="password" id="password" value="" placeholder="Password: ">
+                    <div class="loginbutton" onclick="Login();">Login</div>
+                </div>
+                <div class="projectarea">
+                    <div id="projectlist" class="projectlist">
+                    </div>
+                    <div class="kanbannewstory" onclick="$('#story-form').dialog('open');">Add Story</div>
+                    <div class="refreshprojectbutton" onclick="SelectProject();">Refresh</div>
+                    <div class="logoutbutton" onclick="Logout();">Logout</div>
+                </div>
+            
+                </div>
             </div>
-            <div class="kanbannewstory" onclick="$('#story-form').dialog('open');">Add Story</div>
-            <div class="refreshprojectbutton" onclick="SelectProject();">Refresh</div>
-            <div class="logoutbutton" onclick="Logout();">Logout</div>
+            <div class="contentarea">
+                <div id="kanbancontent"></div>
+            </div>
         </div>
-
-        <div id="kanbancontent"></div>
-        
         
         <div id="story-form" title="Create New Story" style="display:none;">
             <p class="validateTips">All form fields are required.</p>

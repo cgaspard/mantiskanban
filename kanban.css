@@ -1,3 +1,9 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 body{
 		background: #666c70;
 		background: -moz-linear-gradient(top,  #666c70 1%, #555b60 90px, #d3d3d3 91px, #dbdbdb 100%);
@@ -7,7 +13,7 @@ body{
 		background: -ms-linear-gradient(top,  #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
 		background: linear-gradient(to bottom,  #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666c70', endColorstr='#dbdbdb',GradientType=0 );
-
+		margin: 0px 0px 0px 0px;
 }
 .loadingdiv{
     position: relative;
@@ -202,20 +208,34 @@ body{
     overflow: auto;
 }
 
+.headerarea {
+		height: 70px;
+		width:100%;
+		display: table-row;
+}
+
+.contentarea {
+		height: 100%;
+    width: 100%;
+		text-align: center;
+		padding: 20px 20px 20px 20px;
+		display: table-row !important;
+}
+
 #kanbancontent{
     text-align: left;
-    position: relative;
-    height: 85%;
-    width: 95%;
     overflow: auto;
+		display: table;
+		width: 95%;
+		height: 95%;
+		margin-left: 2%;
     background-color: #f4f4f4;
     border-radius: 5px 5px 5px 5px;
     -moz-box-shadow: 8px 6px 10px 1px #444;
     -webkit-box-shadow: 8px 6px 10px 1px #444;
     box-shadow: 8px 6px 10px 1px #444;
+		border: solid 10px transparent;
     white-space: nowrap;
-    padding: 10px 10px 10px 10px;
-		margin-left: 20px;
 }
 
 .kanbandropper{
@@ -262,24 +282,22 @@ body{
 }
 
 .kanbanlist{
-    position: relative;
     border-radius: 10px 10px 2px 2px;
-    border: solid 1px black;
-    min-width: 180px;
-    max-width: 280px;
-    
+    min-width: 100px;
     vertical-align: top;
-    margin-right: 5px;
-    padding-bottom: 20px;
-    display: inline-block;
-    
+    display: table-cell;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background: #d2ff52; /* Old browsers */
+		border: solid 10px transparent;    
+}
+
+
+.kanbanlistdroparea {
+		background: #d2ff52; /* Old browsers */
     background: -moz-linear-gradient(top,  #d2ff52 0%, #91e842 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2ff52), color-stop(100%,#91e842)); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top,  #d2ff52 0%,#91e842 100%); /* Chrome10+,Safari5.1+ */
@@ -287,7 +305,18 @@ body{
     background: -ms-linear-gradient(top,  #d2ff52 0%,#91e842 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #d2ff52 0%,#91e842 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=0 ); /* IE6-9 */
-
+		border-radius: 0 0 5 5;
+		color: transparent;
+		padding: 5 10 5 10;
+		    -moz-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+    -webkit-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+    text-shadow:
+    0px -1px 0px rgba(000,000,000,0.4),
+    0px 1px 0px rgba(255,255,255,0.3);
 }
 
 .newnotesavebutton {
@@ -401,9 +430,6 @@ body{
     -webkit-box-shadow:
     0px 1px 3px rgba(000,000,000,0.5),
     inset 0px 0px 1px rgba(255,255,255,0.7);
-    box-shadow:
-    0px 1px 3px rgba(000,000,000,0.5),
-    inset 0px 0px 1px rgba(255,255,255,0.7);
     text-shadow:
     0px -1px 0px rgba(000,000,000,0.4),
     0px 1px 0px rgba(255,255,255,0.3);
@@ -442,6 +468,15 @@ body{
     overflow: hidden;
     padding: 5px 5px 5px 5px;
     cursor: move;
+		    -moz-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+    -webkit-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+    text-shadow:
+    0px -1px 0px rgba(000,000,000,0.4),
+    0px 1px 0px rgba(255,255,255,0.3);
 }
 
 .kanbanstory.mystory {
@@ -504,7 +539,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 
 
 .kanbanstorytitle{
-    width: 105px;
+    min-width: 100px;
+		max-width: 120px;
     cursor: pointer;
     text-overflow:ellipsis;
     display: inline-block;

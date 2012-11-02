@@ -71,6 +71,8 @@ var Kanban = {
             listDivTitle.setAttribute("class", "kanbanlisttitle");
             listDivTitle.innerHTML = kanbanListItem.Name.capitalize();
             listDiv.appendChild(listDivTitle);
+         
+
             
             for(var si = 0; si < kanbanListItem.Stories.length; si++) {
 
@@ -153,6 +155,17 @@ var Kanban = {
                 listDiv.appendChild(storyDiv);
             }
             
+                        
+            var listDropArea = document.createElement("div");
+            listDropArea.setAttribute("class", "kanbanlistdroparea");
+            listDropArea.setAttribute("id", "droplistid" + kanbanListItem.ID);
+            listDropArea.setAttribute("listid", "listid" + kanbanListItem.ID);
+            listDropArea.addEventListener('dragover', HandleDragOver, false);
+            listDropArea.addEventListener('dragenter', HandleDragEnter, false);
+            listDropArea.addEventListener("drop", Drop, false);
+            listDropArea.innerHTML = "Drop Here";
+            listDiv.appendChild(listDropArea);
+            
             //var addStoryDiv = document.createElement("div");
             //addStoryDiv.innerHTML = "Add New Story";
             //addStoryDiv.setAttribute("class", "kanbannewstory");
@@ -208,7 +221,11 @@ function Drop(event) {
             listToDropIn = event.target;
             UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
             event.target.appendChild(sourceElement);
-        }  else {
+        } else if(event.target.getAttribute("class") == "kanbanlistdroparea") {
+            listToDropIn = document.getElementById(event.target.getAttribute("listid"));
+            UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
+            listToDropIn.insertBefore(sourceElement, listToDropIn.lastChild);
+        } else {
             listToDropIn = document.getElementById(event.target.getAttribute("listid"));
             UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
             sourceElementDropDiv.classList.remove("over");
