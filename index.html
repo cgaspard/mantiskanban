@@ -17,31 +17,26 @@
     </head>
     <body>  
         <div class="loadingdiv" id="loadingdiv" style="float: right;">
-            <span>Status:</span>
-            <img id="loadingimage" src="images/loading.gif"  style="width: 20px; height: 20px; display: none;"/><img id="loadedimage" src="images/loaded.png"  style="width: 20px; height: 20px;"/>
+            <img id="loadingimage" src="images/loading.gif"  style="width: 40px; height: 40px; display: none;"/>
+            <img id="loadedimage" src="images/loaded.png"  style="width: 40px; height: 40px;"/>
         </div>
 
-
+        <img src="images/mantis_logo.png" class="mantislogo">
         <div class="loginarea">
-            Username: <input type="text" id="username" value="corey.gaspard" />
-            Password: <input type="password" id="password" value="">
+            <input type="text" id="username" value="corey.gaspard" placeholder="Username:"  />
+            <input type="password" id="password" value="" placeholder="Password: ">
             <div class="loginbutton" onclick="Login();">Login</div>
         </div>
         <div class="projectarea">
-            Project: 
-            <select id="kanbanprojects" onchange="SelectProject();">
-                <option value="">Select Project</option>
-            </select>
+            <div id="projectlist" class="projectlist">
+                
+            </div>
             <div class="kanbannewstory" onclick="$('#story-form').dialog('open');">Add Story</div>
-            <!--
-            <input type="button" onclick="Kanban.ClearListGUI()" value="Clear" />
-            <input type="button" onclick="Kanban.BuildListGUI()" value="Build" />
-            -->
+            <div class="refreshprojectbutton" onclick="SelectProject();">Refresh</div>
+            <div class="logoutbutton" onclick="Logout();">Logout</div>
         </div>
 
-        <center>
         <div id="kanbancontent"></div>
-        </center>
         
         
         <div id="story-form" title="Create New Story" style="display:none;">
@@ -84,6 +79,6 @@
                 <div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea">
                 </div>
         </div>
-        
+        <input type="hidden" style="display:none;" id="seletedproject" name="selectedproject" />
     </body>
 </html>
