@@ -558,6 +558,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
     height: 20px;
     padding-left: 10px;
     cursor: pointer;
+		float: right;
 }
 [draggable]{
     -moz-user-select: none;
