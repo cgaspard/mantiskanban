@@ -87,9 +87,7 @@ function Logout() {
     Kanban.Stories = [];
     Kanban.ClearListGUI();
 
-    Mantis.CurrentProjectID = 0;
-    Mantis.CurrentUser.UserName = "";
-    Mantis.CurrentUser.Password = "";
+    Mantis.ClearForLogout();
     
     HideProjectArea();
     ShowLoginArea();
@@ -164,6 +162,7 @@ function SwapSelectedProject(newProjectID) {
 
 function BuildProjectSelectBox() {
     var projectDivContainer = document.getElementById("projectlist");
+    try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
     for(var i = 0; i < Mantis.UserProjects.length; i++) {
         var projectDiv = document.createElement("div");
         projectDiv.setAttribute("class", "projectbutton");

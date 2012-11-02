@@ -14,6 +14,17 @@ var Mantis = {
     _userprojects : [],
     _defaultaccesslevelforuserenum : 10,
     
+    ClearForLogout : function() {
+        Mantis._currentprojectid = 0;
+        Mantis._statues = null;
+        Mantis._severities = null;
+        Mantis._projectusers = [];
+        Mantis._projectcustomfields = [];
+        Mantis._accesslevels = [];
+        Mantis._userprojects = [];
+        Mantis._defaultaccesslevelforuserenum = 10;
+    },
+    
     CurrentUser : {
         UserName : "",
         Password : "",
