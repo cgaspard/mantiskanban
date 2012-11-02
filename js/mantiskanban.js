@@ -105,7 +105,8 @@ function SelectProject() {
     //alert(JSON.stringify(Mantis.ProjectCustomFields));
 
     BuildKanbanListFromMantisStatuses();
-    Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0, CreateKanbanStoriesFromMantisIssues);
+    Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID, CreateKanbanStoriesFromMantisIssues);
+    //Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0, CreateKanbanStoriesFromMantisIssues);
 
     StopLoading();
 }

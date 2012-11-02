@@ -13,6 +13,7 @@ var Mantis = {
     _accesslevels : [],
     _userprojects : [],
     _defaultaccesslevelforuserenum : 10,
+    _defaultfilterid : "22",
     
     ClearForLogout : function() {
         Mantis._currentprojectid = 0;
@@ -36,6 +37,10 @@ var Mantis = {
             }
             return null;
         }
+    },
+    
+    get DefaultFilterID() {
+        return Mantis._defaultfilterid;  
     },
     
     get UserProjects() {
@@ -99,6 +104,7 @@ var Mantis = {
     Params : {
         Access : "access",
         Enumeration: "enumeration",
+        FilterID : "filter_id",
         IssueID : "issue_id",
         Issue : "issue",
         Note : "note",
@@ -168,6 +174,20 @@ var Mantis = {
                 return pl;
             }
         } ,
+        
+        FilterGetIssues : {
+            Name : "mc_filter_get_issues",
+            BuildParams : function(projectid, filterid, pagenumber, perpage) {
+                var pl = new SOAPClientParameters();
+                pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+                pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+                pl.add(Mantis.Params.ProjectID, projectid);
+                pl.add(Mantis.Params.FilterID, filterid);
+                pl.add(Mantis.Params.PageNumber, pagenumber);
+                pl.add(Mantis.Params.PerPage, perpage);
+                return pl;
+            }
+        },
 
         ProjectGetUsers :  {
             Name : "mc_project_get_users",
@@ -280,6 +300,11 @@ var Mantis = {
                 };
             }
         }
+    },
+    
+    FilterGetIssues : function(ProjectID, FilterID, callBack) {
+        hascallback = callBack == null ? false : true;
+        return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.FilterGetIssues.Name, Mantis.Methods.FilterGetIssues.BuildParams(ProjectID, FilterID, 0, 0), hascallback, callBack);
     },
     
     IssueGet : function(IssueID, callBack) {
