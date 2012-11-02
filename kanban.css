@@ -200,7 +200,18 @@ background-image: -webkit-gradient(
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=0 ); /* IE6-9 */
 
 }
-.kanbannewstory{
+
+.newnotesavebutton {
+		float: right;
+}
+
+#newnotetext {
+		width: 100%;
+		
+}
+
+
+.newnotesavebutton, .kanbannewstory{
     cursor: pointer;
     display: inline-block;
     -webkit-touch-callout: none;

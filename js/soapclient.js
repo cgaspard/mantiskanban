@@ -92,6 +92,7 @@ SOAPClientParameters._serialize = function(o)
                             case "Date":
                                 type = "DateTime"; break;
                         }
+												//s += "<item>" + SOAPClientParameters._serialize(o[p]) + "</item>"
                         s += "<" + type + ">" + SOAPClientParameters._serialize(o[p]) + "</" + type + ">"
                     }
                     else    // associative array
@@ -169,6 +170,7 @@ SOAPClient._sendSoapRequest = function(url, method, parameters, async, callback,
 				"<" + method + " xmlns=\"" + ns + "\">" +
 				parameters.toXml() +
 				"</" + method + "></soap:Body></soap:Envelope>";
+//alert("Sending Request: \r\n" + sr)
 	// send request
 	var xmlHttp = SOAPClient._getXmlHttp();
 	if (SOAPClient.userName && SOAPClient.password){
@@ -205,9 +207,9 @@ SOAPClient._onSendSoapRequest = function(method, async, callback, wsdl, req)
 		if(req.responseXML.getElementsByTagName("faultcode").length > 0)
 		{
 		    if(async || callback)
-		        o = new Error(500, req.responseXML.getElementsByTagName("faultstring")[0].childNodes[0].nodeValue);
+		        o = new Error(req.responseXML.getElementsByTagName("faultstring")[0].textContent);
 			else
-			    throw new Error(500, req.responseXML.getElementsByTagName("faultstring")[0].childNodes[0].nodeValue);			
+			    throw new Error(req.responseXML.getElementsByTagName("faultstring")[0].textContent);			
 		}
 	}
 	else

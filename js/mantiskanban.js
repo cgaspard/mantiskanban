@@ -144,7 +144,7 @@ function CreateKanbanStoriesFromMantisIssues(obj, doc) {
     var output = "";
     for(var is = 0; is < obj.length; is++) {
         output += obj[is].id + " " + obj[is].status.name.capitalize() + " " + obj[is].summary + "\r\n";
-        Kanban.AddStory(new KanbanStory(obj[is].id, obj[is].status, obj[is].summary, obj[is].description, obj[is].notes, obj[is].handler, obj[is]));
+        Kanban.AddStory(new KanbanStory(obj[is]));
         //output += obj[is];
     }
     Kanban.BuildListGUI();

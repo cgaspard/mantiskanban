@@ -223,7 +223,7 @@ function Drop(event) {
 
 function UndoLastKanbanMove() {
     Kanban.UndoInfo.ListDiv.appendChild(Kanban.UndoInfo.StoryDiv);
-    Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.Undo.ListDiv.getAttribut("id"));
+    Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.UndoInfo.ListDiv.getAttribute("id"));
 }
 
 function UpdateKanbanStoryComplete(result) {
@@ -237,7 +237,7 @@ function UpdateKanbanStoryComplete(result) {
 
 function UpdateKanbanStoryList(KanbanStoryToUpdate, KanbanListToMoveTo, UpdateKanbanStoryCallback) {
     
-    var updateIssue = Mantis.Structures.Issue.Status(KanbanStoryToUpdate.Issue, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);
+    var updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateStatus(KanbanStoryToUpdate.Issue, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);
     
     var updateSucceeded = false;
     try {
@@ -275,12 +275,37 @@ function HandleDragLeave(e) {
         document.getElementById(e.target.getAttribute("dropdivid")).classList.remove("over");
 }
 
+function SaveNewNote(storyID, noteText) {
+    try {
+        Kanban.BlockUpdates = true;
+        StartLoading();
+        var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
+        var newNote = Mantis.UpdateStructureMethods.Note.NewNote(noteText);
+        Mantis.IssueNoteAdd(editStory.Issue.id, newNote);
+        var newStory = new KanbanStory(Mantis.IssueGet(storyID));
+        newStory.Element = editStory.Element;
+        editStory = newStory;
+        AddNotesToStoryEditForm(editStory);
+        document.getElementById("newnotetext").value = "";
+        
+    } catch(e) {
+        alert("Error Saving Note: " + e.message);
+    } finally {
+        StopLoading();
+        Kanban.BlockUpdates = false;
+    }
+}
 
 function AddNotesToStoryEditForm(KanbanStory) {
     var notesContainer = document.getElementById("edit-story-notes-container");
+    var noteSaveButton = document.getElementById("edit-story-new-note-save-button");
+    
     try { while(notesContainer.childNodes.length > 0) { notesContainer.removeChild(notesContainer.firstChild); } } catch(e) { }
-    if(KanbanStory.Notes === undefined) return;
+    
+    noteSaveButton.setAttribute("onclick", "SaveNewNote(" + KanbanStory.ID + ", document.getElementById('newnotetext').value);")
 
+    if(KanbanStory.Notes === undefined) return;
+    
     for(var i = 0; i < KanbanStory.Notes.length; i++) {
         var thisNote = KanbanStory.Notes[i];
         var noteDiv = document.createElement("div");
@@ -306,39 +331,38 @@ function AddNotesToStoryEditForm(KanbanStory) {
     }
 }
 
-var KanbanStory = function(StoryID, StoryStatus, StorySummary, StoryDescription, StoryNotes, StoryAssignedTo, RawObject) {
-    this.ID = StoryID;
-    this.ListID = null;
-
-    for(var counter in RawObject.custom_fields) {
-        var customfield = RawObject.custom_fields[counter];
-        if(customfield.field.name == Kanban._listIDField) {
-            this.ListID = customfield.value;
-        }
-    }
-    if(this.ListID == null) this.ListID = StoryStatus.id;
-
-    this.Summary = StorySummary;
-    this.Status = StoryStatus;
-    this.Notes = StoryNotes;
-    this.Description = StoryDescription;
-    this.AssignedTo = StoryAssignedTo;
+var KanbanStory = function(RawObject) {
+    this.Issue = RawObject;
+    
     for(var li = 0; li < Kanban.Lists.length; li++){
         if(Kanban.Lists[li].ID == this.ListID) {
             this.List = Kanban.Lists[li];
             var foundStoryInList = false;
             for(var sti = 0; sti < Kanban.Lists[li].Stories.length; sti++) {
-                if(Kanban.Lists[li].Stories[sti].ID == StoryID) foundStoryInList = true;
+                if(Kanban.Lists[li].Stories[sti].ID == this.ID) foundStoryInList = true;
             }
             if(!foundStoryInList) Kanban.Lists[li].Stories[Kanban.Lists[li].Stories.length] = this;
             break;
         }
     }
-    
-    this.Issue = RawObject;
 }
 
 KanbanStory.prototype = {
+    get ID() { return this.Issue.id; },
+    get ListID() {
+        for(var counter in this.Issue.custom_fields) {
+            var customfield = this.Issue.custom_fields[counter];
+            if(customfield.field.name == Kanban._listIDField) {
+                return customfield.value;
+            }
+        }
+        return this.Issue.status.id;
+    },
+    get Status() { return this.Issue.status; },
+    get Notes() { return this.Issue.notes; },
+    get Description() { return this.Issue.description; },
+    get AssignedTo() { return this.Issue.handler; },
+    get Summary() { return this.Issue.summary },
     Save : function() {
         this.Issue.summary = this.Summary;
         this.Issue.status.id = this.List.ID;
