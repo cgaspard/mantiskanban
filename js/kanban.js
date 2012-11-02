@@ -25,7 +25,14 @@ var Kanban = {
         }
         return null;
     },
-
+    
+    ReplaceStory : function(Story) {
+        for(var i = 0; i < Kanban.Stories.length; i++) {
+            if(Story.Issue.id == Kanban.Stories[i].Issue.id) {
+                Kanban.Stories[i] = Story;
+            }
+        }
+    },
     
     AddStory : function(storyToAdd) {
       Kanban.Stories[Kanban.Stories.length] = storyToAdd;  
@@ -197,20 +204,20 @@ function Drop(event) {
     
     try {
     
-    if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
-        listToDropIn = event.target;
-        UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
-        event.target.appendChild(sourceElement);
-    }  else {
-        listToDropIn = document.getElementById(event.target.getAttribute("listid"));
-        UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
-        sourceElementDropDiv.classList.remove("over");
-        listToDropIn.insertBefore(sourceElement, targetStoryDiv);
-    }
-    
-    sourceElement.setAttribute("listid", listToDropIn.getAttribute("id"));
-    sourceElementDropDiv.setAttribute("listid", listToDropIn.getAttribute("id"));
-    
+        if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
+            listToDropIn = event.target;
+            UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
+            event.target.appendChild(sourceElement);
+        }  else {
+            listToDropIn = document.getElementById(event.target.getAttribute("listid"));
+            UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
+            sourceElementDropDiv.classList.remove("over");
+            listToDropIn.insertBefore(sourceElement, targetStoryDiv);
+        }
+        
+        sourceElement.setAttribute("listid", listToDropIn.getAttribute("id"));
+        sourceElementDropDiv.setAttribute("listid", listToDropIn.getAttribute("id"));
+        
     } catch (e) {
         alert("Error:" + e.message);
         Kanban.BlockUpdates = false;
@@ -230,8 +237,37 @@ function UpdateKanbanStoryComplete(result) {
     Kanban.BlockUpdates = false;
     StopLoading();
     if(result != "true") {
-        UndoLastKanbanMove();
+        try {
+            Kanban.Replace.Story(UpdateUnderlyingStory(Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value)));
+        } catch (e) { }
+        try {
+            UndoLastKanbanMove();
+        } catch (e) {}
         alert("Error Updating: " + result);
+    } else {
+        Kanban.UndoInfo.ListDiv = null;
+        Kanban.UndoInfo.StoryDiv = null;
+    }
+}
+
+function UpdateStoryFromFormData() {
+    try {
+        Kanban.BlockUpdates = true;
+        StartLoading();
+        
+        Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
+        thisStory.Issue.summary = $("#edit-summary").val();
+        thisStory.Issue.description = $("#edit-description").val();
+        thisStory.Issue.handler.id = document.getElementById("edit-assignedto").value;
+        Mantis.IssueUpdate(thisStory.Issue.id, thisStory.Issue, UpdateKanbanStoryComplete)
+        
+        $("#edit-story-form").dialog("close");
+    } catch (e) {
+        alert("Error:" + e.message);
+        Kanban.BlockUpdates = false;
+        StopLoading();
+    } finally {
+        
     }
 }
 
@@ -275,6 +311,12 @@ function HandleDragLeave(e) {
         document.getElementById(e.target.getAttribute("dropdivid")).classList.remove("over");
 }
 
+function UpdateUnderlyingStory(originalStory) {
+    var newStory = new KanbanStory(Mantis.IssueGet(originalStory.Issue.id));
+    newStory.Element = originalStory.Element;
+    return newStory;
+}
+
 function SaveNewNote(storyID, noteText) {
     try {
         Kanban.BlockUpdates = true;
@@ -282,9 +324,7 @@ function SaveNewNote(storyID, noteText) {
         var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
         var newNote = Mantis.UpdateStructureMethods.Note.NewNote(noteText);
         Mantis.IssueNoteAdd(editStory.Issue.id, newNote);
-        var newStory = new KanbanStory(Mantis.IssueGet(storyID));
-        newStory.Element = editStory.Element;
-        editStory = newStory;
+        editStory = UpdateUnderlyingStory(editStory);
         AddNotesToStoryEditForm(editStory);
         document.getElementById("newnotetext").value = "";
         
@@ -382,6 +422,7 @@ KanbanList.prototype = {
 
 function EditStory(storyID) {
     thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
+    $("#edit-story-id").val(thisStory.ID);
     $("#edit-summary").val(thisStory.Summary);
     $("#edit-description").val(thisStory.Description);
     document.getElementById("edit-reporter").innerHTML = thisStory.Issue.reporter.real_name;

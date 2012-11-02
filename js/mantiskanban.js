@@ -25,7 +25,7 @@ window.onload = function() {
             }
         },
         close: function() {
-            allFields.val( "" ).removeClass( "ui-state-error" );
+            
         }
     });
 
@@ -35,7 +35,16 @@ window.onload = function() {
         height: 590,
         width: 780,
         close: function() {
-            allFields.val( "" ).removeClass( "ui-state-error" );
+            
+        },
+        buttons: {
+            "Save": function() {
+                UpdateStoryFromFormData();
+             ///Code here to add a story to a list 
+            },
+            Cancel: function() {
+                $( this ).dialog( "close" );
+            }
         }
     });
 }

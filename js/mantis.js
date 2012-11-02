@@ -283,7 +283,10 @@ var Mantis = {
     
     IssueUpdate : function(IssueID, Issue, callBack) {
         hascallback = callBack == null ? false : true;
-        return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueUpdate.Name, Mantis.Methods.IssueUpdate.BuildParams(IssueID, Issue), hascallback, callBack);
+        var updateIssue = jQuery.extend(true, {}, Issue);
+        delete updateIssue.notes;
+        
+        return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueUpdate.Name, Mantis.Methods.IssueUpdate.BuildParams(IssueID, updateIssue), hascallback, callBack);
     },
     
     ProjectGetIssues : function(ProjectID, PageNumber, PerPage, callBack) {

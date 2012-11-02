@@ -92,7 +92,6 @@ SOAPClientParameters._serialize = function(o)
                             case "Date":
                                 type = "DateTime"; break;
                         }
-												//s += "<item>" + SOAPClientParameters._serialize(o[p]) + "</item>"
                         s += "<" + type + ">" + SOAPClientParameters._serialize(o[p]) + "</" + type + ">"
                     }
                     else    // associative array
@@ -170,7 +169,7 @@ SOAPClient._sendSoapRequest = function(url, method, parameters, async, callback,
 				"<" + method + " xmlns=\"" + ns + "\">" +
 				parameters.toXml() +
 				"</" + method + "></soap:Body></soap:Envelope>";
-//alert("Sending Request: \r\n" + sr)
+				//sr = prompt("Change Request", sr);
 	// send request
 	var xmlHttp = SOAPClient._getXmlHttp();
 	if (SOAPClient.userName && SOAPClient.password){
