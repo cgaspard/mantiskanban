@@ -1,11 +1,11 @@
 body{
 background: #666c70;
-background: -moz-linear-gradient(top,  #666c70 1%, #555b60 8%, #d3d3d3 8%, #dbdbdb 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#666c70), color-stop(8%,#555b60), color-stop(8%,#d3d3d3), color-stop(100%,#dbdbdb));
+background: -moz-linear-gradient(top,  #666c70 1%, #555b60 90px, #d3d3d3 91px, #dbdbdb 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#666c70), color-stop(90px,#555b60), color-stop(91px,#d3d3d3), color-stop(100%,#dbdbdb));
 background: -webkit-linear-gradient(top,  #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
-background: -o-linear-gradient(top,  #666c70 1%,#555b60 8%,#d3d3d3 8%,#dbdbdb 100%);
-background: -ms-linear-gradient(top,  #666c70 1%,#555b60 60px,#d3d3d3 61px,#dbdbdb 100%);
-background: linear-gradient(to bottom,  #666c70 1%,#555b60 60px,#d3d3d3 61px,#dbdbdb 100%);
+background: -o-linear-gradient(top,  #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
+background: -ms-linear-gradient(top,  #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
+background: linear-gradient(to bottom,  #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666c70', endColorstr='#dbdbdb',GradientType=0 );
 
 }
