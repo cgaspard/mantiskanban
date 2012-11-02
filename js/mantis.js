@@ -85,7 +85,7 @@ var Mantis = {
         ProjectID : "project_id",
         PageNumber : "page_number",
         PerPage : "per_page",
-        IssueID : "issueId",
+        IssueID : "issue_id",
         Issue : "issue"
     },
     
@@ -206,6 +206,34 @@ var Mantis = {
                 return pl;
             }
         }
+    },
+    
+    Structures : {
+        Issue : {
+            Status : function(issue, statusid, statusname) {
+                /*
+                var statusObject = {
+                    "id" : issue.id,
+                    "status" : {
+                        "name" : statusname,
+                        "id" : statusid
+                    },
+                    "project" : {
+                        "id" : issue.project.id,
+                        "name" : issue.project.name
+                    }
+                };
+                */
+                issue.status.name = statusname;
+                issue.status.id = statusid;
+                return issue;
+            }
+        }
+    },
+    
+    IssueUpdate : function(IssueID, Issue, callBack) {
+        hascallback = callBack == null ? false : true;
+        return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueUpdate.Name, Mantis.Methods.IssueUpdate.BuildParams(IssueID, Issue), hascallback, callBack);
     },
     
     ProjectGetIssues : function(ProjectID, PageNumber, PerPage, callBack) {

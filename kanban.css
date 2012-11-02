@@ -1,7 +1,123 @@
+body{
+background-image: linear-gradient(bottom, rgb(143,143,143) 15%, rgb(166,166,166) 49%);
+background-image: -o-linear-gradient(bottom, rgb(143,143,143) 15%, rgb(166,166,166) 49%);
+background-image: -moz-linear-gradient(bottom, rgb(143,143,143) 15%, rgb(166,166,166) 49%);
+background-image: -webkit-linear-gradient(bottom, rgb(143,143,143) 15%, rgb(166,166,166) 49%);
+background-image: -ms-linear-gradient(bottom, rgb(143,143,143) 15%, rgb(166,166,166) 49%);
+
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.15, rgb(143,143,143)),
+    color-stop(0.49, rgb(166,166,166))
+);
+}
+.loadingdiv{
+    position: relative;
+    padding-right: 30px;
+    padding-top: 10px;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+}
+.loadingdiv img{
+}
+.loadingdiv span {
+    position:absolute;
+    left: -50px;
+    margin-bottom: 10px;
+}
+
+.projectarea {
+    display: none;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.projectarea select {
+    height: 30px;
+    font-size: 15px;
+    color: #000000;
+    width: 120px;
+    border-radius: 5px 5px 5px 5px;
+    
+}
+
+.loginarea{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+.loginarea input{
+    height: 30px;
+    font-size: 15px;
+    color: #000000;
+    width: 120px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.loginarea select {
+
+    height: 30px;
+    font-size: 15px;
+    color: #000000;
+    width: 120px;
+    border-radius: 5px 5px 5px 5px;
+
+}
+.loginbutton{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 7px 15px;
+    background: -moz-linear-gradient(
+    top,
+    #bcd900 0%,
+    #8ba10f);
+    background: -webkit-gradient(
+    linear, left top, left bottom,
+    from(#bcd900),
+    to(#8ba10f));
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #003366;
+    -moz-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,1);
+    -webkit-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,1);
+    box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,1);
+    text-shadow:
+    0px -1px 0px rgba(000,000,000,0.7),
+    0px 1px 0px rgba(255,255,255,0.3);
+    display: inline-block;
+    cursor: pointer;
+    user-select:none;
+}
+
+#edit-story-description{
+    width: 700px;
+    height: 140px;
+}
+
+.notesarea {
+    width: 740px;
+    max-height: 140px;
+    overflow: auto;
+}
+
 #kanbancontent{
     text-align: left;
     position: relative;
-    height: 90%;
+    height: 85%;
     width: 95%;
     overflow: auto;
     background-color: #f4f4f4;

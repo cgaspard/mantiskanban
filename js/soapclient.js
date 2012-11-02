@@ -38,6 +38,7 @@ function SOAPClientParameters()
 SOAPClientParameters._serialize = function(o)
 {
     var s = "";
+		if(o !== null) {
     switch(typeof(o))
     {
         case "string":
@@ -47,7 +48,7 @@ SOAPClientParameters._serialize = function(o)
             s += o.toString(); break;
         case "object":
             // Date
-            if(o.constructor.toString().indexOf("function Date()") > -1)
+            if(o.constructor !== undefined && o.constructor.toString().indexOf("function Date()") > -1)
             {
         
                 var year = o.getFullYear().toString();
@@ -70,7 +71,7 @@ SOAPClientParameters._serialize = function(o)
                 s += year + "-" + month + "-" + date + "T" + hours + ":" + minutes + ":" + seconds + "." + milliseconds + timezone;
             }
             // Array
-            else if(o.constructor.toString().indexOf("function Array()") > -1)
+            else if(o.constructor !== undefined && o.constructor.toString().indexOf("function Array()") > -1)
             {
                 for(var p in o)
                 {
@@ -105,6 +106,7 @@ SOAPClientParameters._serialize = function(o)
         default:
             break; // throw new Error(500, "SOAPClientParameters: type '" + typeof(o) + "' is not supported");
     }
+		}
     return s;
 }
 

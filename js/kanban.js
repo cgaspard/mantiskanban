@@ -2,6 +2,13 @@
 
 var Kanban = {
 
+    BlockUpdates : false,
+    
+    UndoInfo : {
+        StoryDiv : null,
+        ListDiv : null
+    },
+
     _listIDField : "ScrumBucket",
 
     get Container() {
@@ -16,6 +23,7 @@ var Kanban = {
         for(var i = 0; i < Kanban.Stories.length; i++) {
             if(Kanban.Stories[i][field] == value) return Kanban.Stories[i];
         }
+        return null;
     },
 
     
@@ -159,7 +167,6 @@ function DragCancel(event) {
 }
 
 function DragStart(event) {
-
     Dragging = true;
     event.target.style.opacity = '.999999';  // this / e.target is the source node.
     event.dataTransfer.setData("Text",event.target.id);
@@ -173,25 +180,72 @@ function DragEnd(event) {
 
 function Drop(event) {
     event.preventDefault();
+    if(Kanban.BlockUpdates) return;
+    
     var data = event.dataTransfer.getData("Text");
     event.target.classList.remove('over');
     var listToDropIn = null;
 
     var sourceElement = document.getElementById(data);
+    Kanban.UndoInfo.StoryDiv = sourceElement;
+    Kanban.UndoInfo.ListDiv = document.getElementById(sourceElement.getAttribute("listid"));
     var sourceElementDropDiv = document.getElementById(sourceElement.getAttribute("dropdivid"));
     var targetStoryDiv = document.getElementById(event.target.getAttribute("storyid"));
 
+    StartLoading();
+    Kanban.BlockUpdates = true;
+    
+    try {
+    
     if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
         listToDropIn = event.target;
-        event.target.appendChild(document.getElementById(data));
+        UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
+        event.target.appendChild(sourceElement);
     }  else {
         listToDropIn = document.getElementById(event.target.getAttribute("listid"));
+        UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
         sourceElementDropDiv.classList.remove("over");
-        listToDropIn.insertBefore(document.getElementById(data), targetStoryDiv);
+        listToDropIn.insertBefore(sourceElement, targetStoryDiv);
     }
-
+    
     sourceElement.setAttribute("listid", listToDropIn.getAttribute("id"));
     sourceElementDropDiv.setAttribute("listid", listToDropIn.getAttribute("id"));
+    
+    } catch (e) {
+        alert("Error:" + e.message);
+        Kanban.BlockUpdates = false;
+        StopLoading();
+    } finally {
+        
+    }
+    
+}
+
+function UndoLastKanbanMove() {
+    Kanban.UndoInfo.ListDiv.appendChild(Kanban.UndoInfo.StoryDiv);
+    Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.Undo.ListDiv.getAttribut("id"));
+}
+
+function UpdateKanbanStoryComplete(result) {
+    Kanban.BlockUpdates = false;
+    StopLoading();
+    if(result != "true") {
+        UndoLastKanbanMove();
+        alert("Error Updating: " + result);
+    }
+}
+
+function UpdateKanbanStoryList(KanbanStoryToUpdate, KanbanListToMoveTo, UpdateKanbanStoryCallback) {
+    
+    var updateIssue = Mantis.Structures.Issue.Status(KanbanStoryToUpdate.Issue, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);
+    
+    var updateSucceeded = false;
+    try {
+        Mantis.IssueUpdate(KanbanStoryToUpdate.ID, updateIssue, UpdateKanbanStoryCallback);
+    } catch (e) {
+        alert("Error Updating Story: " + e.message);    
+    }
+    
 }
 
 function ClearAllDragHoverAreas() {
@@ -315,7 +369,7 @@ function EditStory(storyID) {
         var user = Mantis.ProjectUsers[i];
         selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
         if(thisStory.Issue.handler !== undefined && user.id == thisStory.Issue.handler.id) {
-             selectAssignedUser.selectedIndex = i;
+             selectAssignedUser.selectedIndex = i + 1;
         }
 
     }
