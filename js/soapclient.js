@@ -173,7 +173,7 @@ SOAPClient._sendSoapRequest = function(url, method, parameters, async, callback,
 				"<" + method + " xmlns=\"" + ns + "\">" +
 				parameters.toXml() +
 				"</" + method + "></soap:Body></soap:Envelope>";
-				if(method == "mc_issue_update") { sr = prompt("Change Request", sr); }
+				//if(method == "mc_issue_update") { sr = prompt("Change Request", sr); }
 	// send request
 	var xmlHttp = SOAPClient._getXmlHttp();
 	if (SOAPClient.userName && SOAPClient.password){
