@@ -72,8 +72,6 @@ var Kanban = {
             listDivTitle.innerHTML = kanbanListItem.Name.capitalize();
             listDiv.appendChild(listDivTitle);
          
-
-            
             for(var si = 0; si < kanbanListItem.Stories.length; si++) {
 
                 var thisStory = kanbanListItem.Stories[si];
@@ -113,7 +111,7 @@ var Kanban = {
                 storyContainerDiv.setAttribute("listid", "listid" + kanbanListItem.ID);
                 storyContainerDiv.setAttribute("storyid", "storydiv" + thisStory.ID);
                 storyContainerDiv.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
-                if(thisStory.AssignedTo.name == Mantis.CurrentUser.UserName) {
+                if(thisStory.HandlerName == Mantis.CurrentUser.UserName) {
                     storyContainerDiv.classList.add("mystory");
                 }
                 storyContainerDiv.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
@@ -122,7 +120,7 @@ var Kanban = {
                 var storyDivSeverity = document.createElement("div");
                 storyDivSeverity.setAttribute("class", "kanbanstoryseverity kanbanstorypriority");
                 storyDivSeverity.setAttribute("id", "storyseverity" + thisStory.ID);
-                storyDivSeverity.setAttribute("priority", thisStory.Issue.priority.name);
+                storyDivSeverity.setAttribute("priority", thisStory.PriorityName);
                 storyDivSeverity.setAttribute("listid", "listid" + kanbanListItem.ID);
                 storyDivSeverity.setAttribute("storyid", "storydiv" + thisStory.ID);
                 storyDivSeverity.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
@@ -148,14 +146,14 @@ var Kanban = {
                 storyDivButton.setAttribute("listid", "listid" + kanbanListItem.ID);
                 storyDivButton.setAttribute("storyid", "storydiv" + thisStory.ID);
                 storyDivButton.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
-                storyDivButton.setAttribute("draggable", false);
+                //storyDivButton.setAttribute("draggable", false);
                 storyDivButton.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
                 storyContainerDiv.appendChild(storyDivButton);
 
                 listDiv.appendChild(storyDiv);
             }
             
-                        
+            
             var listDropArea = document.createElement("div");
             listDropArea.setAttribute("class", "kanbanlistdroparea");
             listDropArea.setAttribute("id", "droplistid" + kanbanListItem.ID);
@@ -183,19 +181,26 @@ var Kanban = {
 var Dragging = false;
 
 function DragCancel(event) {
+    console.log("DragCancel1");
     event.preventDefault();
+    console.log("DragCancel2");
 }
 
 function DragStart(event) {
+    console.log("DragStart1");
+    event.preventDefault();
     Dragging = true;
     event.target.style.opacity = '.999999';  // this / e.target is the source node.
     event.dataTransfer.setData("Text",event.target.id);
     event.target.classList.add("rotation");
+    console.log("DragStart2");
 }
 
 function DragEnd(event) {
+    console.log("DragEnd1");
     Dragging = false;
     event.target.classList.remove("rotation");
+    console.log("DragEnd1");
 }
 
 function Drop(event) {
@@ -220,7 +225,7 @@ function Drop(event) {
         if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
             listToDropIn = event.target;
             UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
-            event.target.appendChild(sourceElement);
+            listToDropIn.insertBefore(sourceElement, listToDropIn.lastChild);
         } else if(event.target.getAttribute("class") == "kanbanlistdroparea") {
             listToDropIn = document.getElementById(event.target.getAttribute("listid"));
             UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
@@ -236,6 +241,7 @@ function Drop(event) {
         sourceElementDropDiv.setAttribute("listid", listToDropIn.getAttribute("id"));
         
     } catch (e) {
+        console.log(e); 
         alert("Error:" + e.message);
         Kanban.BlockUpdates = false;
         StopLoading();
@@ -250,21 +256,55 @@ function UndoLastKanbanMove() {
     Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.UndoInfo.ListDiv.getAttribute("id"));
 }
 
+function AddIssueComplete(result) {
+    Kanban.BlockUpdates = false;
+    StopLoading();
+    if(result != "true") {
+        alert("Error Adding: " + result);
+    } else {
+        try {
+            Kanban.Stories[Kanban.Stories.length] = new KanbanStory(Mantis.IssueGet(result));
+            var newFoundStory = Kanban.GetStoryByFieldValue("ID", result);
+            Kanban.ClearListGUI();
+            Kanban.BuildListGUI();
+        } catch (e) { console.log(e); }
+        
+    }
+
+}
+
 function UpdateKanbanStoryComplete(result) {
     Kanban.BlockUpdates = false;
     StopLoading();
     if(result != "true") {
         try {
-            Kanban.Replace.Story(UpdateUnderlyingStory(Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value)));
-        } catch (e) { }
-        try {
             UndoLastKanbanMove();
-        } catch (e) {}
+        } catch (e) { console.log(e); }
         alert("Error Updating: " + result);
     } else {
+        try {
+            var foundStory = Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
+            Kanban.ReplaceStory(UpdateUnderlyingStory(foundStory));
+            var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
+            foundStory.Element.children[1].children[1].innerHTML = newFoundStory.Summary;
+        } catch (e) { console.log(e); }
+        
         Kanban.UndoInfo.ListDiv = null;
         Kanban.UndoInfo.StoryDiv = null;
     }
+}
+
+function AddStoryFromFormData() {
+    var summary = $("#add-summary").val();
+    var description = $("#add-description").val();
+    var handlerid = document.getElementById("add-assignedto").value;
+    var statusid = document.getElementById("add-status").value;
+    var priorityid = document.getElementById("add-priority").value;
+    var category = document.getElementById("add-category").value
+    
+    var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, statusid, priorityid, category);
+    
+    Mantis.IssueAdd(newIssueStruct, AddIssueComplete);
 }
 
 function UpdateStoryFromFormData() {
@@ -276,10 +316,13 @@ function UpdateStoryFromFormData() {
         thisStory.Issue.summary = $("#edit-summary").val();
         thisStory.Issue.description = $("#edit-description").val();
         thisStory.Issue.handler.id = document.getElementById("edit-assignedto").value;
+        thisStory.Issue.priority.id = document.getElementById("edit-priority").value;
+        thisStory.Issue.status.id = document.getElementById("edit-status").value;
         Mantis.IssueUpdate(thisStory.Issue.id, thisStory.Issue, UpdateKanbanStoryComplete)
         
         $("#edit-story-form").dialog("close");
     } catch (e) {
+        console.log(e);
         alert("Error:" + e.message);
         Kanban.BlockUpdates = false;
         StopLoading();
@@ -290,12 +333,13 @@ function UpdateStoryFromFormData() {
 
 function UpdateKanbanStoryList(KanbanStoryToUpdate, KanbanListToMoveTo, UpdateKanbanStoryCallback) {
     
-    var updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateStatus(KanbanStoryToUpdate.Issue, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);
+    var updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateStatus(KanbanStoryToUpdate.StorySource, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);
     
     var updateSucceeded = false;
     try {
         Mantis.IssueUpdate(KanbanStoryToUpdate.ID, updateIssue, UpdateKanbanStoryCallback);
     } catch (e) {
+        console.log(e);
         alert("Error Updating Story: " + e.message);    
     }
     
@@ -340,12 +384,13 @@ function SaveNewNote(storyID, noteText) {
         StartLoading();
         var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
         var newNote = Mantis.UpdateStructureMethods.Note.NewNote(noteText);
-        Mantis.IssueNoteAdd(editStory.Issue.id, newNote);
+        Mantis.IssueNoteAdd(editStory.ID, newNote);
         editStory = UpdateUnderlyingStory(editStory);
         AddNotesToStoryEditForm(editStory);
         document.getElementById("newnotetext").value = "";
         
     } catch(e) {
+        console.log(e);
         alert("Error Saving Note: " + e.message);
     } finally {
         StopLoading();
@@ -388,73 +433,90 @@ function AddNotesToStoryEditForm(KanbanStory) {
     }
 }
 
-var KanbanStory = function(RawObject) {
-    this.Issue = RawObject;
+
+function OpenAddStory() {
     
-    for(var li = 0; li < Kanban.Lists.length; li++){
-        if(Kanban.Lists[li].ID == this.ListID) {
-            this.List = Kanban.Lists[li];
-            var foundStoryInList = false;
-            for(var sti = 0; sti < Kanban.Lists[li].Stories.length; sti++) {
-                if(Kanban.Lists[li].Stories[sti].ID == this.ID) foundStoryInList = true;
-            }
-            if(!foundStoryInList) Kanban.Lists[li].Stories[Kanban.Lists[li].Stories.length] = this;
-            break;
+    var selectAssignedUser = document.getElementById("add-assignedto");
+    selectAssignedUser.options.length = 0;
+    var selectAddStatus = document.getElementById("add-status");
+    selectAddStatus.options.length = 0;
+    var selectAddPriority = document.getElementById("add-priority");
+    selectAddPriority.options.length = 0;
+    var selectAddCategories = document.getElementById("add-category");
+    selectAddCategories.options.length = 0;
+
+    for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
+        var user = Mantis.ProjectUsers[i];
+        selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
+        if(Mantis.CurrentUser.MantisUser.id == user.id) {
+             selectAssignedUser.selectedIndex = i + 1;
         }
+
     }
-}
 
-KanbanStory.prototype = {
-    get ID() { return this.Issue.id; },
-    get ListID() {
-        for(var counter in this.Issue.custom_fields) {
-            var customfield = this.Issue.custom_fields[counter];
-            if(customfield.field.name == Kanban._listIDField) {
-                return customfield.value;
-            }
-        }
-        return this.Issue.status.id;
-    },
-    get Status() { return this.Issue.status; },
-    get Notes() { return this.Issue.notes; },
-    get Description() { return this.Issue.description; },
-    get AssignedTo() { return this.Issue.handler; },
-    get Summary() { return this.Issue.summary },
-    Save : function() {
-        this.Issue.summary = this.Summary;
-        this.Issue.status.id = this.List.ID;
+    for(var i = 0; i < Mantis.Statuses.length; i++) {
+        var status = Mantis.Statuses[i];
+        selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name, status.id);
     }
+    selectAddStatus.selectedIndex = 0;
+
+    for(var i = 0; i < Mantis.Priorities.length; i++) {
+        var priority = Mantis.Priorities[i];
+        selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name, priority.id);
+    }
+    selectAddPriority.selectedIndex = 0;
+    
+    for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
+        var category = Mantis.ProjectCategories[i];
+        selectAddCategories.options[selectAddCategories.options.length] = new Option(category, category);
+    }
+    selectAddCategories.selectedIndex = 0;
+    
+    $('#story-form').dialog('open');
+
 }
-
-var KanbanList = function(ListName, ListID){
-    this.Name = ListName;
-    this.ID = ListID;
-    this.Stories = new Array();
-}
-
-KanbanList.prototype = {
-
-}
-
 
 function EditStory(storyID) {
-    thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
+    var thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
     $("#edit-story-id").val(thisStory.ID);
     $("#edit-summary").val(thisStory.Summary);
     $("#edit-description").val(thisStory.Description);
-    document.getElementById("edit-reporter").innerHTML = thisStory.Issue.reporter.real_name;
+    document.getElementById("edit-reporter").innerHTML = thisStory.ReporterName;
+
     var selectAssignedUser = document.getElementById("edit-assignedto");
     selectAssignedUser.options.length = 0;
+    var selectAddStatus = document.getElementById("edit-status");
+    selectAddStatus.options.length = 0;
+    var selectAddPriority = document.getElementById("edit-priority");
+    selectAddPriority.options.length = 0;
+    
     ///Add a blank option
     selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To ---", "");
     for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
         var user = Mantis.ProjectUsers[i];
         selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
-        if(thisStory.Issue.handler !== undefined && user.id == thisStory.Issue.handler.id) {
+        if(thisStory.HandlerID !== undefined && user.id == thisStory.HandlerID) {
              selectAssignedUser.selectedIndex = i + 1;
         }
-
     }
+    
+    for(var i = 0; i < Mantis.Statuses.length; i++) {
+        var status = Mantis.Statuses[i];
+        selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name, status.id);
+        if(thisStory.StatusID == status.id) {
+             selectAddStatus.selectedIndex = i;
+        }
+        
+    }
+
+    for(var i = 0; i < Mantis.Priorities.length; i++) {
+        var priority = Mantis.Priorities[i];
+        selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name, priority.id);
+        if(thisStory.PriorityID == priority.id) {
+             selectAddPriority.selectedIndex = i;
+        }
+    }
+    
     AddNotesToStoryEditForm(thisStory)
     $("#edit-story-form").dialog("open");
 }

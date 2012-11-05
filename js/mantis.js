@@ -6,6 +6,7 @@ String.prototype.capitalize = function() {
 
 var Mantis = {
     _currentprojectid : 0,
+    _projectcategories : [],
     _statues : null,
     _severities : null,
     _projectusers : [],
@@ -17,8 +18,10 @@ var Mantis = {
     
     ClearForLogout : function() {
         Mantis._currentprojectid = 0;
+        Mantis._projectcategories = [];
         Mantis._statues = null;
         Mantis._severities = null;
+        Mantis._priorities = [];
         Mantis._projectusers = [];
         Mantis._projectcustomfields = [];
         Mantis._accesslevels = [];
@@ -57,12 +60,26 @@ var Mantis = {
         return Mantis._accesslevels;
     },
 
+    get Priorities () {
+        if(Mantis._priorities == null) {
+            Mantis._priorities = Mantis.EnumPriority();
+        }
+        return Mantis._priorities;
+    },
+    
     get Statuses() {
         if(Mantis._statues == null) {
             Mantis._statues = Mantis.EnumStatus(null);  
         }
         
         return Mantis._statues;
+    },
+    
+    get ProjectCategories() {
+        if(Mantis._projectcategories.length == 0) {
+            Mantis._projectcategories = Mantis.ProjectGetCategories();
+        }
+      return Mantis._projectcategories;  
     },
     
     get ProjectUsers() {
@@ -96,6 +113,7 @@ var Mantis = {
             ///Clear the project specific stuff
             Mantis._projectusers = [];
             Mantis._projectcustomfields = [];
+            Mantis._projectcategories = [];
         }
 
         Mantis._currentprojectid = value;
@@ -188,6 +206,17 @@ var Mantis = {
                 return pl;
             }
         },
+        
+        ProjectGetCategories : {
+          Name : "mc_project_get_categories",
+          BuildParams : function(projectid) {
+                var pl = new SOAPClientParameters();
+                pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+                pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+                pl.add(Mantis.Params.ProjectID, projectid);
+                return pl;
+          }
+        },
 
         ProjectGetUsers :  {
             Name : "mc_project_get_users",
@@ -233,6 +262,18 @@ var Mantis = {
                 pl.add(Mantis.Params.ProjectID, projectid);
                 return pl;
             }
+        },
+        
+        IssueAdd : {
+            Name : "mc_issue_add",
+            BuildParams : function(issue) {
+                var pl = new SOAPClientParameters();
+                pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+                pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+                pl.add(Mantis.Params.Issue, issue);
+                return pl;
+            }
+            
         },
         
         IssueUpdate : {
@@ -286,6 +327,22 @@ var Mantis = {
                         customfield.value = fieldvalue;
                     }
                 }
+            },
+            
+            NewIssue : function(summary, description, projectid, handlerid, statusid, priorityid, category) {
+                var newIssue = {
+                    "id" : "",
+                    "summary" : summary,
+                    "description" : description,
+                    "status" : { "id" : statusid },
+                    "project" : { "id" : projectid },
+                    "reporter" : { "id" : Mantis.CurrentUser.MantisUser.id },
+                    "handler" : { "id" : handlerid },
+                    "category" : category
+                };
+                
+                if(priorityid !== undefined && priorityid !== null) newIssue["priority"] = { "id" : priorityid };
+                return newIssue;   
             }
         },
         Note : {
@@ -306,6 +363,11 @@ var Mantis = {
         hascallback = callBack == null ? false : true;
         return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.FilterGetIssues.Name, Mantis.Methods.FilterGetIssues.BuildParams(ProjectID, FilterID, 0, 0), hascallback, callBack);
     },
+
+    IssueAdd : function(Issue, callBack) {
+        hascallback = callBack == null ? false : true;
+        return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueAdd.Name, Mantis.Methods.IssueAdd.BuildParams(Issue), hascallback, callBack);
+    },
     
     IssueGet : function(IssueID, callBack) {
         hascallback = callBack == null ? false : true;
@@ -323,6 +385,11 @@ var Mantis = {
         delete updateIssue.notes;
         
         return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueUpdate.Name, Mantis.Methods.IssueUpdate.BuildParams(IssueID, updateIssue), hascallback, callBack);
+    },
+    
+    ProjectGetCategories :  function(callBack){
+        hascallback = callBack == null ? false : true;
+        return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.ProjectGetCategories.Name, Mantis.Methods.ProjectGetCategories.BuildParams(Mantis.CurrentProjectID), hascallback, callBack);
     },
     
     ProjectGetIssues : function(ProjectID, PageNumber, PerPage, callBack) {
