@@ -188,7 +188,6 @@ function DragCancel(event) {
 
 function DragStart(event) {
     console.log("DragStart1");
-    event.preventDefault();
     Dragging = true;
     event.target.style.opacity = '.999999';  // this / e.target is the source node.
     event.dataTransfer.setData("Text",event.target.id);
@@ -224,15 +223,15 @@ function Drop(event) {
     
         if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
             listToDropIn = event.target;
-            UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
+            UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
             listToDropIn.insertBefore(sourceElement, listToDropIn.lastChild);
         } else if(event.target.getAttribute("class") == "kanbanlistdroparea") {
             listToDropIn = document.getElementById(event.target.getAttribute("listid"));
-            UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
+            UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
             listToDropIn.insertBefore(sourceElement, listToDropIn.lastChild);
         } else {
             listToDropIn = document.getElementById(event.target.getAttribute("listid"));
-            UpdateKanbanStoryList(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
+            UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
             sourceElementDropDiv.classList.remove("over");
             listToDropIn.insertBefore(sourceElement, targetStoryDiv);
         }
@@ -252,7 +251,7 @@ function Drop(event) {
 }
 
 function UndoLastKanbanMove() {
-    Kanban.UndoInfo.ListDiv.appendChild(Kanban.UndoInfo.StoryDiv);
+    Kanban.UndoInfo.ListDiv.insertBefore(Kanban.UndoInfo.StoryDiv, Kanban.UndoInfo.ListDiv.lastChild);
     Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.UndoInfo.ListDiv.getAttribute("id"));
 }
 
@@ -274,6 +273,7 @@ function AddIssueComplete(result) {
 }
 
 function UpdateKanbanStoryComplete(result) {
+    console.log("UpdateKanbanStoryCompletely " + result);
     Kanban.BlockUpdates = false;
     StopLoading();
     if(result != "true") {
@@ -284,9 +284,12 @@ function UpdateKanbanStoryComplete(result) {
     } else {
         try {
             var foundStory = Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
-            Kanban.ReplaceStory(UpdateUnderlyingStory(foundStory));
-            var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
-            foundStory.Element.children[1].children[1].innerHTML = newFoundStory.Summary;
+            if(foundStory !== null) {
+                ///If its null, then we werent' editing the story, just dropping between the lists
+                Kanban.ReplaceStory(UpdateUnderlyingStory(foundStory));
+                var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
+                foundStory.Element.children[1].children[1].innerHTML = newFoundStory.Summary;
+            }
         } catch (e) { console.log(e); }
         
         Kanban.UndoInfo.ListDiv = null;
@@ -312,13 +315,13 @@ function UpdateStoryFromFormData() {
         Kanban.BlockUpdates = true;
         StartLoading();
         
-        Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
-        thisStory.Issue.summary = $("#edit-summary").val();
-        thisStory.Issue.description = $("#edit-description").val();
-        thisStory.Issue.handler.id = document.getElementById("edit-assignedto").value;
-        thisStory.Issue.priority.id = document.getElementById("edit-priority").value;
-        thisStory.Issue.status.id = document.getElementById("edit-status").value;
-        Mantis.IssueUpdate(thisStory.Issue.id, thisStory.Issue, UpdateKanbanStoryComplete)
+        var thisStory = Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
+        thisStory.Summary = $("#edit-summary").val();
+        thisStory.Description = $("#edit-description").val();
+        thisStory.HandlerID = document.getElementById("edit-assignedto").value;
+        thisStory.PriorityID = document.getElementById("edit-priority").value;
+        thisStory.StatusID = document.getElementById("edit-status").value;
+        Mantis.IssueUpdate(thisStory.StoryID, thisStory.StorySource, UpdateKanbanStoryComplete)
         
         $("#edit-story-form").dialog("close");
     } catch (e) {
@@ -331,7 +334,7 @@ function UpdateStoryFromFormData() {
     }
 }
 
-function UpdateKanbanStoryList(KanbanStoryToUpdate, KanbanListToMoveTo, UpdateKanbanStoryCallback) {
+function UpdateListForCanbanStory(KanbanStoryToUpdate, KanbanListToMoveTo, UpdateKanbanStoryCallback) {
     
     var updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateStatus(KanbanStoryToUpdate.StorySource, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);
     
@@ -364,16 +367,18 @@ function HandleDragEnter(e) {
     ClearAllDragHoverAreas();
     console.log("HandleDragEnter: StoryID: " + e.target.getAttribute("storyid") + "  ID: " + e.target.id);
     if(e.target.getAttribute("storyid") != e.target.getAttribute("id")) {
-        document.getElementById(e.target.getAttribute("dropdivid")).classList.add("over");
+        var dropDiv = document.getElementById(e.target.getAttribute("dropdivid"));
+        if(dropDiv != null) dropDiv.classList.add("over");
     }
 }
 
 function HandleDragLeave(e) {
-        document.getElementById(e.target.getAttribute("dropdivid")).classList.remove("over");
+        var dropDiv = document.getElementById(e.target.getAttribute("dropdivid"));
+        if(dropDiv != null) dropDiv.classList.remove("over");
 }
 
 function UpdateUnderlyingStory(originalStory) {
-    var newStory = new KanbanStory(Mantis.IssueGet(originalStory.Issue.id));
+    var newStory = new KanbanStory(Mantis.IssueGet(originalStory.StoryID));
     newStory.Element = originalStory.Element;
     return newStory;
 }

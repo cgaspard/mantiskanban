@@ -79,7 +79,7 @@ KanbanStory.prototype = {
 		set PriorityID(value) { this.StorySource.priority.id = value; },
     
 		get Summary() { return this.StorySource.summary },
-		set Summary(value) { this.Issu.summary = value; },
+		set Summary(value) { this.StorySource.summary = value; },
     
 		JoinList : function() {
 			for(var li = 0; li < Kanban.Lists.length; li++){

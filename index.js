@@ -53,6 +53,7 @@ function Login() {
     
     StartLoading();
     
+		document.getElementById("username").focus();
     Mantis.CurrentUser.UserName = document.getElementById("username").value;
     Mantis.CurrentUser.Password = document.getElementById("password").value;
     
