@@ -59,6 +59,7 @@ var Kanban = {
             
             ///The main container
             var listDiv = document.createElement("div");
+            kanbanListItem.Element = listDiv;
             listDiv.setAttribute("class", "kanbanlist");
             listDiv.setAttribute("id", "listid" + kanbanListItem.ID);
             listDiv.addEventListener('dragover', HandleDragOver, false);
@@ -76,79 +77,7 @@ var Kanban = {
 
                 var thisStory = kanbanListItem.Stories[si];
 
-                var storyDiv = document.createElement("div");
-                storyDiv.Story = thisStory;
-                thisStory.Element = storyDiv;
-                
-                storyDiv.setAttribute("id", "storydiv" + thisStory.ID);
-                storyDiv.setAttribute("listid", "listid" + kanbanListItem.ID);
-                storyDiv.setAttribute("storyid", "storydiv" + thisStory.ID);
-                storyDiv.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
-                storyDiv.setAttribute("draggable", "true");
-                storyDiv.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
-
-                storyDiv.addEventListener('dragstart', DragStart, false);
-                storyDiv.addEventListener("dragend", DragEnd, false);
-
-                storyDiv.addEventListener('dragenter', HandleDragEnter, false);
-                storyDiv.addEventListener('dragover', HandleDragOver, false);
-                storyDiv.addEventListener('dragleave', HandleDragLeave, false);
-
-                storyDiv.addEventListener('drop', Drop, false);
-
-                var dropDiv = document.createElement("div");
-                dropDiv.setAttribute("class", "kanbandropper");
-                dropDiv.setAttribute("id", "dropdiv" + thisStory.ID); 
-                dropDiv.setAttribute("listid", "listid" + kanbanListItem.ID);
-                dropDiv.setAttribute("storyid", "storydiv" + thisStory.ID);
-                dropDiv.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
-                //dropDiv.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
-                storyDiv.appendChild(dropDiv);
-
-                var storyContainerDiv = document.createElement("div");
-                storyContainerDiv.setAttribute("class", "kanbanstory");
-                storyContainerDiv.setAttribute("id", "storycontainer" + thisStory.ID);
-                storyContainerDiv.setAttribute("listid", "listid" + kanbanListItem.ID);
-                storyContainerDiv.setAttribute("storyid", "storydiv" + thisStory.ID);
-                storyContainerDiv.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
-                if(thisStory.HandlerName == Mantis.CurrentUser.UserName) {
-                    storyContainerDiv.classList.add("mystory");
-                }
-                storyContainerDiv.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
-                storyDiv.appendChild(storyContainerDiv);
-
-                var storyDivSeverity = document.createElement("div");
-                storyDivSeverity.setAttribute("class", "kanbanstoryseverity kanbanstorypriority");
-                storyDivSeverity.setAttribute("id", "storyseverity" + thisStory.ID);
-                storyDivSeverity.setAttribute("priority", thisStory.PriorityName);
-                storyDivSeverity.setAttribute("listid", "listid" + kanbanListItem.ID);
-                storyDivSeverity.setAttribute("storyid", "storydiv" + thisStory.ID);
-                storyDivSeverity.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
-                storyDivSeverity.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
-                storyContainerDiv.appendChild(storyDivSeverity);
-
-                var storyDivTitle = document.createElement("div");
-                storyDivTitle.innerHTML = thisStory.Summary;
-                storyDivTitle.setAttribute("class", "kanbanstorytitle");
-                storyDivTitle.setAttribute("id", "storytitle" + thisStory.ID);
-                storyDivTitle.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
-                storyDivTitle.setAttribute("listid", "listid" + kanbanListItem.ID);
-                storyDivTitle.setAttribute("storyid", "storydiv" + thisStory.ID);
-                storyDivTitle.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
-                storyDivTitle.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
-                storyContainerDiv.appendChild(storyDivTitle);
-                
-                var storyDivButton = document.createElement("img");
-                storyDivButton.setAttribute("src", "images/info.png");
-                storyDivButton.setAttribute("id", "storydivbutton" + thisStory.ID);
-                storyDivButton.setAttribute("class", "storyinfobutton");
-                storyDivButton.setAttribute("onclick", "EditStory('" + thisStory.ID + "');");
-                storyDivButton.setAttribute("listid", "listid" + kanbanListItem.ID);
-                storyDivButton.setAttribute("storyid", "storydiv" + thisStory.ID);
-                storyDivButton.setAttribute("dropdivid", "dropdiv" + thisStory.ID);
-                //storyDivButton.setAttribute("draggable", false);
-                storyDivButton.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
-                storyContainerDiv.appendChild(storyDivButton);
+                var storyDiv = thisStory.BuildKanbanStoryDiv();
 
                 listDiv.appendChild(storyDiv);
             }
@@ -260,14 +189,14 @@ function UndoLastKanbanMove() {
 function AddIssueComplete(result) {
     Kanban.BlockUpdates = false;
     StopLoading();
-    if(result != "true") {
+    if(isNaN(result)) {
         alert("Error Adding: " + result);
     } else {
         try {
-            Kanban.Stories[Kanban.Stories.length] = new KanbanStory(Mantis.IssueGet(result));
-            var newFoundStory = Kanban.GetStoryByFieldValue("ID", result);
-            Kanban.ClearListGUI();
-            Kanban.BuildListGUI();
+            var newStory = new KanbanStory(Mantis.IssueGet(result));
+            newStory.BuildKanbanStoryDiv();
+            newStory.List.AddNewStoryUI(newStory);
+            $("#story-form").dialog("close");            
         } catch (e) { console.log(e); }
         
     }
@@ -291,6 +220,20 @@ function UpdateKanbanStoryComplete(result) {
                 UpdateUnderlyingStorySource(foundStory);
                 //var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
                 foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
+                if(foundStory.HandlerName == Mantis.CurrentUser.UserName) {
+                    document.getElementById("storycontainer" + foundStory.ID).classList.add("mystory");
+                } else {
+                    document.getElementById("storycontainer" + foundStory.ID).classList.remove("mystory");
+                }
+                /// Make sure the list is still valid
+                if(foundStory.List.ID != foundStory.ListID) {
+                    for(var li = 0; li < Kanban.Lists.length; li++) {
+                        var thisList = Kanban.Lists[li];
+                        if(thisList.ID == foundStory.ListID) {
+                            thisList.AddNewStoryUI(foundStory);
+                        }
+                    }
+                }
                 //foundStory.Element.children[1].children[1].innerHTML = newFoundStory.Summary;
             }
         } catch (e) { console.log(e); }
@@ -321,7 +264,11 @@ function UpdateStoryFromFormData() {
         var thisStory = Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
         thisStory.Summary = $("#edit-summary").val();
         thisStory.Description = $("#edit-description").val();
-        thisStory.HandlerID = document.getElementById("edit-assignedto").value;
+        if(document.getElementById("edit-assignedto").value == "") {
+            thisStory.HandlerID = null;
+        } else {
+            thisStory.HandlerID = document.getElementById("edit-assignedto").value;
+        }
         thisStory.PriorityID = document.getElementById("edit-priority").value;
         thisStory.StatusID = document.getElementById("edit-status").value;
         Mantis.IssueUpdate(thisStory.ID, thisStory.StorySource, UpdateKanbanStoryComplete)
@@ -443,6 +390,9 @@ function AddNotesToStoryEditForm(KanbanStory) {
 
 function OpenAddStory() {
     
+    document.getElementById("add-summary").value = "";
+    document.getElementById("add-description").value = "";
+    
     var selectAssignedUser = document.getElementById("add-assignedto");
     selectAssignedUser.options.length = 0;
     var selectAddStatus = document.getElementById("add-status");
@@ -452,6 +402,7 @@ function OpenAddStory() {
     var selectAddCategories = document.getElementById("add-category");
     selectAddCategories.options.length = 0;
 
+    selectAssignedUser.options[selectAssignedUser.options.length] = new Option("None", "");
     for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
         var user = Mantis.ProjectUsers[i];
         selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
@@ -498,7 +449,7 @@ function EditStory(storyID) {
     selectAddPriority.options.length = 0;
     
     ///Add a blank option
-    selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To ---", "");
+    selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To No One ---", "");
     for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
         var user = Mantis.ProjectUsers[i];
         selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);

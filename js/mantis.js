@@ -347,11 +347,11 @@ var Mantis = {
                     "status" : { "id" : statusid },
                     "project" : { "id" : projectid },
                     "reporter" : { "id" : Mantis.CurrentUser.MantisUser.id },
-                    "handler" : { "id" : handlerid },
                     "category" : category
                 };
                 
                 if(priorityid !== undefined && priorityid !== null) newIssue["priority"] = { "id" : priorityid };
+                if(handlerid !== undefined && handlerid !== null) newIssue["handler"] = { "id" : handlerid };
                 return newIssue;   
             }
         },

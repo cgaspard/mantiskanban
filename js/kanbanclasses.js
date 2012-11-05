@@ -10,6 +10,7 @@ KanbanProject.prototype = {
 var KanbanList = function(RawObject){
 		this.ListSource = RawObject;
 		this._stories = [];
+		this.Element = null;
 }
 KanbanList.prototype = {
 	
@@ -20,13 +21,15 @@ KanbanList.prototype = {
 		this._stories = value;	
 	},
 	
-	Element : null,
-	
 	get Name() { return this.ListSource.name; },
 	set Name(value) { this.ListSource.name = value; },
 	
 	get ID() { return this.ListSource.id; },
-	set ID(value) { this.ListSource.id = value; }
+	set ID(value) { this.ListSource.id = value; },
+	
+	AddNewStoryUI: function(Story) {
+		this.Element.insertBefore(Story.Element, this.Element.lastChild);
+	}
 }
 
 
@@ -35,6 +38,7 @@ var KanbanStory = function(RawObject) {
 		this.StorySource = RawObject;
 		//alert(JSON.stringify(RawObject.notes))
 		this.JoinList();
+		Kanban.Stories[Kanban.Stories.length] = this;
 		
 }
 KanbanStory.prototype = {
@@ -45,10 +49,7 @@ KanbanStory.prototype = {
 		get ID() { return this.StorySource.id; },
 		set ID(value) { this.StorySource.id = value; },
 		
-    get ListID() { return this.List.ID },
-		set ListID(value) {
-			//this.StorySource.status.id = value;
-		},
+    get ListID() { return this.StorySource.status.id },
 		
     get StatusID() { return this.StorySource.status.id; },
 		set StatusID(value) { this.StorySource.status.id = value },
@@ -61,11 +62,28 @@ KanbanStory.prototype = {
 		get Description() { return this.StorySource.description; },
 		set Description(value) { this.StorySource.description = value; },
     
-		get HandlerID() { return this.StorySource.handler.id; },
-		set HandlerID(value) { this.StorySource.handler.id = value; },
+		get HandlerID() { return this.StorySource.handler !== undefined ? this.StorySource.handler.id : ""; },
+		set HandlerID(value) {
+			
+			if(value === null && this.StorySource.handler === undefined) {
+				return;
+			} else if( value === null && this.StorySource.handler !== undefined) {
+				delete this.StorySource.handler;
+			}
+			
+			if(this.StorySource.handler === undefined) {
+				this.StorySource.handler = { "name" : "", "id" : "" };
+			}
+			this.StorySource.handler.id = value;
+		},
 		
-		get HandlerName() { return this.StorySource.handler.name; },
-		set HandlerName(value) { this.StorySource.handler.name = value; },
+		get HandlerName() { return this.StorySource.handler !== undefined ? this.StorySource.handler.name : ""; },
+		set HandlerName(value) {
+			if(this.StorySource.handler === undefined) {
+				this.StorySource.handler = { "name" : "", "id" : "" };
+			}
+			this.StorySource.handler.name = value;
+		},
 		
 		get ReporterName() { return this.StorySource.reporter.name; },
 		set ReporterName(value) { this.StorySource.reporter.name = value; },
@@ -85,8 +103,8 @@ KanbanStory.prototype = {
 		JoinList : function() {
 			for(var li = 0; li < Kanban.Lists.length; li++){
         if(Kanban.Lists[li].ID == this.StorySource.status.id) {
-            this.List = Kanban.Lists[li];
-            this.List.Stories[this.List.Stories.length] = this;
+            this._list = Kanban.Lists[li];
+            this._list.Stories[this.List.Stories.length] = this;
             break;
         }
 			}
@@ -99,7 +117,86 @@ KanbanStory.prototype = {
 		
 		Refresh : function() {
 			
-		}
+		},
 		
-		
+		BuildKanbanStoryDiv : function() {
+			
+			if(this.Element != null) { return this.Element; }
+			
+			var storyDiv = document.createElement("div");
+			storyDiv.Story = this;
+			this.Element = storyDiv;
+			
+			storyDiv.setAttribute("id", "storydiv" + this.ID);
+			storyDiv.setAttribute("listid", "listid" + this.ListID);
+			storyDiv.setAttribute("storyid", "storydiv" + this.ID);
+			storyDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
+			storyDiv.setAttribute("draggable", "true");
+			storyDiv.setAttribute("onclick", "EditStory('" + this.ID + "');");
+	
+			storyDiv.addEventListener('dragstart', DragStart, false);
+			storyDiv.addEventListener("dragend", DragEnd, false);
+	
+			storyDiv.addEventListener('dragenter', HandleDragEnter, false);
+			storyDiv.addEventListener('dragover', HandleDragOver, false);
+			storyDiv.addEventListener('dragleave', HandleDragLeave, false);
+	
+			storyDiv.addEventListener('drop', Drop, false);
+	
+			var dropDiv = document.createElement("div");
+			dropDiv.setAttribute("class", "kanbandropper");
+			dropDiv.setAttribute("id", "dropdiv" + this.ID); 
+			dropDiv.setAttribute("listid", "listid" + this.ListID);
+			dropDiv.setAttribute("storyid", "storydiv" + this.ID);
+			dropDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
+			//dropDiv.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+			storyDiv.appendChild(dropDiv);
+	
+			var storyContainerDiv = document.createElement("div");
+			storyContainerDiv.setAttribute("class", "kanbanstory");
+			storyContainerDiv.setAttribute("id", "storycontainer" + this.ID);
+			storyContainerDiv.setAttribute("listid", "listid" + this.ListID);
+			storyContainerDiv.setAttribute("storyid", "storydiv" + this.ID);
+			storyContainerDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
+			if(this.HandlerName == Mantis.CurrentUser.UserName) {
+					storyContainerDiv.classList.add("mystory");
+			}
+			storyContainerDiv.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+			storyDiv.appendChild(storyContainerDiv);
+	
+			var storyDivSeverity = document.createElement("div");
+			storyDivSeverity.setAttribute("class", "kanbanstoryseverity kanbanstorypriority");
+			storyDivSeverity.setAttribute("id", "storyseverity" + this.ID);
+			storyDivSeverity.setAttribute("priority", this.PriorityName);
+			storyDivSeverity.setAttribute("listid", "listid" + this.ListID);
+			storyDivSeverity.setAttribute("storyid", "storydiv" + this.ID);
+			storyDivSeverity.setAttribute("dropdivid", "dropdiv" + this.ID);
+			storyDivSeverity.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+			storyContainerDiv.appendChild(storyDivSeverity);
+	
+			var storyDivTitle = document.createElement("div");
+			storyDivTitle.innerHTML = this.Summary;
+			storyDivTitle.setAttribute("class", "kanbanstorytitle");
+			storyDivTitle.setAttribute("id", "storytitle" + this.ID);
+			storyDivTitle.setAttribute("onclick", "EditStory('" + this.ID + "');");
+			storyDivTitle.setAttribute("listid", "listid" + this.ListID);
+			storyDivTitle.setAttribute("storyid", "storydiv" + this.ID);
+			storyDivTitle.setAttribute("dropdivid", "dropdiv" + this.ID);
+			storyDivTitle.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+			storyContainerDiv.appendChild(storyDivTitle);
+			
+			var storyDivButton = document.createElement("img");
+			storyDivButton.setAttribute("src", "images/info.png");
+			storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
+			storyDivButton.setAttribute("class", "storyinfobutton");
+			storyDivButton.setAttribute("onclick", "EditStory('" + this.ID + "');");
+			storyDivButton.setAttribute("listid", "listid" + this.ListID);
+			storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
+			storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
+			//storyDivButton.setAttribute("draggable", false);
+			storyDivButton.addEventListener('dragleave', function(event) {event.stopPropagation();}, false);
+			storyContainerDiv.appendChild(storyDivButton);
+	
+			return storyDiv;
+		}	
 }
