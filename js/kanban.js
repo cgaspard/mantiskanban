@@ -28,7 +28,7 @@ var Kanban = {
     
     ReplaceStory : function(Story) {
         for(var i = 0; i < Kanban.Stories.length; i++) {
-            if(Story.Issue.id == Kanban.Stories[i].Issue.id) {
+            if(Story.ID == Kanban.Stories[i].ID) {
                 Kanban.Stories[i] = Story;
             }
         }
@@ -251,8 +251,10 @@ function Drop(event) {
 }
 
 function UndoLastKanbanMove() {
-    Kanban.UndoInfo.ListDiv.insertBefore(Kanban.UndoInfo.StoryDiv, Kanban.UndoInfo.ListDiv.lastChild);
-    Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.UndoInfo.ListDiv.getAttribute("id"));
+    if(Kanban.UndoInfo.ListDiv !== null) {
+        Kanban.UndoInfo.ListDiv.insertBefore(Kanban.UndoInfo.StoryDiv, Kanban.UndoInfo.ListDiv.lastChild);
+        Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.UndoInfo.ListDiv.getAttribute("id"));
+    }
 }
 
 function AddIssueComplete(result) {
@@ -273,7 +275,7 @@ function AddIssueComplete(result) {
 }
 
 function UpdateKanbanStoryComplete(result) {
-    console.log("UpdateKanbanStoryCompletely " + result);
+    console.log("UpdateKanbanStoryComplete " + result);
     Kanban.BlockUpdates = false;
     StopLoading();
     if(result != "true") {
@@ -286,9 +288,10 @@ function UpdateKanbanStoryComplete(result) {
             var foundStory = Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
             if(foundStory !== null) {
                 ///If its null, then we werent' editing the story, just dropping between the lists
-                Kanban.ReplaceStory(UpdateUnderlyingStory(foundStory));
-                var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
-                foundStory.Element.children[1].children[1].innerHTML = newFoundStory.Summary;
+                UpdateUnderlyingStorySource(foundStory);
+                //var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
+                foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
+                //foundStory.Element.children[1].children[1].innerHTML = newFoundStory.Summary;
             }
         } catch (e) { console.log(e); }
         
@@ -321,7 +324,7 @@ function UpdateStoryFromFormData() {
         thisStory.HandlerID = document.getElementById("edit-assignedto").value;
         thisStory.PriorityID = document.getElementById("edit-priority").value;
         thisStory.StatusID = document.getElementById("edit-status").value;
-        Mantis.IssueUpdate(thisStory.StoryID, thisStory.StorySource, UpdateKanbanStoryComplete)
+        Mantis.IssueUpdate(thisStory.ID, thisStory.StorySource, UpdateKanbanStoryComplete)
         
         $("#edit-story-form").dialog("close");
     } catch (e) {
@@ -377,10 +380,10 @@ function HandleDragLeave(e) {
         if(dropDiv != null) dropDiv.classList.remove("over");
 }
 
-function UpdateUnderlyingStory(originalStory) {
-    var newStory = new KanbanStory(Mantis.IssueGet(originalStory.StoryID));
-    newStory.Element = originalStory.Element;
-    return newStory;
+function UpdateUnderlyingStorySource(originalStory) {
+    var mantisIssue = Mantis.IssueGet(originalStory.ID);
+    originalStory.StorySource = mantisIssue;
+    return originalStory;
 }
 
 function SaveNewNote(storyID, noteText) {
@@ -390,10 +393,9 @@ function SaveNewNote(storyID, noteText) {
         var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
         var newNote = Mantis.UpdateStructureMethods.Note.NewNote(noteText);
         Mantis.IssueNoteAdd(editStory.ID, newNote);
-        editStory = UpdateUnderlyingStory(editStory);
+        editStory = UpdateUnderlyingStorySource(editStory);
         AddNotesToStoryEditForm(editStory);
         document.getElementById("newnotetext").value = "";
-        
     } catch(e) {
         console.log(e);
         alert("Error Saving Note: " + e.message);

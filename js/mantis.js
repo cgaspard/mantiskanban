@@ -279,6 +279,16 @@ var Mantis = {
         IssueUpdate : {
             Name : "mc_issue_update",
             BuildParams : function(issueid, issue) {
+                try {
+                    delete issue.notes;
+                    delete issue.last_updated;
+                    delete issue.due_date;
+                    delete issue.pl;
+                    delete issue.monitors;
+                } catch (e) { }
+                //delete issue.due_date;
+                //delete issue.monitors;
+                
                 var pl = new SOAPClientParameters();
                 pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
                 pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);

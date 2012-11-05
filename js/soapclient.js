@@ -92,7 +92,11 @@ SOAPClientParameters._serialize = function(o)
                             case "Date":
                                 type = "DateTime"; break;
                         }
-                        s += "<" + type + ">" + SOAPClientParameters._serialize(o[p]) + "</" + type + ">"
+												if(type == "Object") {
+																s += "<Object>" + SOAPClientParameters._serialize(o[p]) + "</Object>"
+												} else {
+																s += "<" + type + ">" + SOAPClientParameters._serialize(o[p]) + "</" + type + ">"
+												}
                     }
                     else    // associative array
                         s += "<" + p + ">" + SOAPClientParameters._serialize(o[p]) + "</" + p + ">"
@@ -169,7 +173,7 @@ SOAPClient._sendSoapRequest = function(url, method, parameters, async, callback,
 				"<" + method + " xmlns=\"" + ns + "\">" +
 				parameters.toXml() +
 				"</" + method + "></soap:Body></soap:Envelope>";
-				//sr = prompt("Change Request", sr);
+				if(method == "mc_issue_update") { sr = prompt("Change Request", sr); }
 	// send request
 	var xmlHttp = SOAPClient._getXmlHttp();
 	if (SOAPClient.userName && SOAPClient.password){

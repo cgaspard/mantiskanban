@@ -33,6 +33,7 @@ KanbanList.prototype = {
 var KanbanStory = function(RawObject) {
     this._list = null;
 		this.StorySource = RawObject;
+		//alert(JSON.stringify(RawObject.notes))
 		this.JoinList();
 		
 }
