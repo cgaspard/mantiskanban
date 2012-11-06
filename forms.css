@@ -1,0 +1,74 @@
+
+.editform label {
+		display: inline-block;
+		width: 130px;
+		text-align: right;
+		font-weight: bold;
+}
+
+#edit-story-form label {
+	width: 180px;
+}
+
+.editform input[type="text"] {
+		width: 450px;
+}
+
+.editform select {
+		width: 450px;
+}
+
+.editform label[for="add-description"] {
+		text-align: left;
+		padding-left: 5px;
+}
+
+
+.editform label[for="edit-description"] {
+		text-align: left;
+		padding-left: 5px;
+}
+
+.editform label[for="newnotetext"] {
+	dislay: inline;
+}
+
+#add-description {
+		width: 590px;
+		height: 120px;
+}
+
+#edit-description{
+		width: 750px;
+		height: 80px;
+}
+
+
+.notecontainer {
+		margin: 5px 5px 5px 5px;
+		padding: 8px 8px 8px 8px;
+		background-color: #ffff66;
+		font-size: 10pt;
+}
+
+.notesubmitter {
+		border-bottom: solid 2px #000000;
+}
+
+.notedatesubmitted {
+		
+}
+
+.notetext {
+	font-size: 8pt;
+}
+
+
+.newnotesavebutton {
+		float: right;
+}
+
+#newnotetext {
+		width: 600px;
+		
+}
