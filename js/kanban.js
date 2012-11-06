@@ -1,23 +1,27 @@
 
-
 var Kanban = {
 
+    CurrentProject : null,
     BlockUpdates : false,
+    Dragging : false,
+    _listIDField : "ScrumBucket",
     
     UndoInfo : {
         StoryDiv : null,
         ListDiv : null
     },
 
-    _listIDField : "ScrumBucket",
-
     get Container() {
         return document.getElementById("kanbancontent");
     },
     
+    Projects : [],
     Lists : [],
-    
     Stories : [],
+    
+    CloseAddStoryDialog : function() {
+        $("#story-form").dialog("close");
+    },
 
     GetStoryByFieldValue : function(field, value) {
         for(var i = 0; i < Kanban.Stories.length; i++) {
@@ -34,11 +38,21 @@ var Kanban = {
         }
     },
     
-    AddStory : function(storyToAdd) {
+    AddStoryFromFormData : function() {
+        var summary = $("#add-summary").val();
+        var description = $("#add-description").val();
+        var handlerid = document.getElementById("add-assignedto").value;
+        var statusid = document.getElementById("add-status").value;
+        var priorityid = document.getElementById("add-priority").value;
+        var category = document.getElementById("add-category").value
+        Kanban.AddStory(summary, description, handlerid, statusid, priorityid, category);
+    },
+    
+    AddStoryToArray : function(storyToAdd) {
       Kanban.Stories[Kanban.Stories.length] = storyToAdd;  
     },
     
-    AddList : function(listToAdd) {
+    AddListToArray : function(listToAdd) {
         Kanban.Lists[Kanban.Lists.length] = listToAdd;
     },
     
@@ -52,6 +66,14 @@ var Kanban = {
 
 
      },
+     
+    UndoLastKanbanMove : function() {
+        if(Kanban.UndoInfo.ListDiv !== null) {
+            Kanban.UndoInfo.ListDiv.insertBefore(Kanban.UndoInfo.StoryDiv, Kanban.UndoInfo.ListDiv.lastChild);
+            Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.UndoInfo.ListDiv.getAttribute("id"));
+        }
+    },
+     
     
     BuildListGUI : function() {
         for(var li = 0; li < Kanban.Lists.length; li++) {
@@ -107,8 +129,6 @@ var Kanban = {
     }
 }
 
-var Dragging = false;
-
 function DragCancel(event) {
     console.log("DragCancel1");
     event.preventDefault();
@@ -117,7 +137,7 @@ function DragCancel(event) {
 
 function DragStart(event) {
     console.log("DragStart1");
-    Dragging = true;
+    Kanban.Dragging = true;
     event.target.style.opacity = '.999999';  // this / e.target is the source node.
     event.dataTransfer.setData("Text",event.target.id);
     event.target.classList.add("rotation");
@@ -126,7 +146,7 @@ function DragStart(event) {
 
 function DragEnd(event) {
     console.log("DragEnd1");
-    Dragging = false;
+    Kanban.Dragging = false;
     event.target.classList.remove("rotation");
     console.log("DragEnd1");
 }
@@ -179,37 +199,13 @@ function Drop(event) {
     
 }
 
-function UndoLastKanbanMove() {
-    if(Kanban.UndoInfo.ListDiv !== null) {
-        Kanban.UndoInfo.ListDiv.insertBefore(Kanban.UndoInfo.StoryDiv, Kanban.UndoInfo.ListDiv.lastChild);
-        Kanban.UndoInfo.StoryDiv.setAttribute("listid", Kanban.UndoInfo.ListDiv.getAttribute("id"));
-    }
-}
-
-function AddIssueComplete(result) {
-    Kanban.BlockUpdates = false;
-    StopLoading();
-    if(isNaN(result)) {
-        alert("Error Adding: " + result);
-    } else {
-        try {
-            var newStory = new KanbanStory(Mantis.IssueGet(result));
-            newStory.BuildKanbanStoryDiv();
-            newStory.List.AddNewStoryUI(newStory);
-            $("#story-form").dialog("close");            
-        } catch (e) { console.log(e); }
-        
-    }
-
-}
-
 function UpdateKanbanStoryComplete(result) {
     console.log("UpdateKanbanStoryComplete " + result);
     Kanban.BlockUpdates = false;
     StopLoading();
     if(result != "true") {
         try {
-            UndoLastKanbanMove();
+            Kanban.UndoLastKanbanMove();
         } catch (e) { console.log(e); }
         alert("Error Updating: " + result);
     } else {
@@ -217,7 +213,7 @@ function UpdateKanbanStoryComplete(result) {
             var foundStory = Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
             if(foundStory !== null) {
                 ///If its null, then we werent' editing the story, just dropping between the lists
-                UpdateUnderlyingStorySource(foundStory);
+                Kanban.UpdateUnderlyingStorySource(foundStory);
                 //var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
                 foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
                 if(foundStory.HandlerName == Mantis.CurrentUser.UserName) {
@@ -243,18 +239,6 @@ function UpdateKanbanStoryComplete(result) {
     }
 }
 
-function AddStoryFromFormData() {
-    var summary = $("#add-summary").val();
-    var description = $("#add-description").val();
-    var handlerid = document.getElementById("add-assignedto").value;
-    var statusid = document.getElementById("add-status").value;
-    var priorityid = document.getElementById("add-priority").value;
-    var category = document.getElementById("add-category").value
-    
-    var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, statusid, priorityid, category);
-    
-    Mantis.IssueAdd(newIssueStruct, AddIssueComplete);
-}
 
 function UpdateStoryFromFormData() {
     try {
@@ -327,11 +311,6 @@ function HandleDragLeave(e) {
         if(dropDiv != null) dropDiv.classList.remove("over");
 }
 
-function UpdateUnderlyingStorySource(originalStory) {
-    var mantisIssue = Mantis.IssueGet(originalStory.ID);
-    originalStory.StorySource = mantisIssue;
-    return originalStory;
-}
 
 function SaveNewNote(storyID, noteText) {
     try {
@@ -340,7 +319,7 @@ function SaveNewNote(storyID, noteText) {
         var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
         var newNote = Mantis.UpdateStructureMethods.Note.NewNote(noteText);
         Mantis.IssueNoteAdd(editStory.ID, newNote);
-        editStory = UpdateUnderlyingStorySource(editStory);
+        editStory = Kanban.UpdateUnderlyingStorySource(editStory);
         AddNotesToStoryEditForm(editStory);
         document.getElementById("newnotetext").value = "";
     } catch(e) {

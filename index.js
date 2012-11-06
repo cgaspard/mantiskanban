@@ -17,7 +17,7 @@ window.onload = function() {
         modal: true,
         buttons: {
             "Create a story": function() {
-                AddStoryFromFormData();
+                Kanban.AddStoryFromFormData();
             },
             Cancel: function() {
                 $( this ).dialog( "close" );
@@ -131,14 +131,14 @@ function BuildKanbanListFromMantisStatuses() {
                 var possiblevalues = customfield.possible_values.split("|");
                 for(var pv = 0; pv < possiblevalues.length; pv++ ) {
                     possiblevalue = possiblevalues[pv];
-                    Kanban.AddList(new KanbanList(possiblevalue, possiblevalue));
+                    Kanban.AddListToArray(new KanbanList(possiblevalue, possiblevalue));
                 }
             }
         }
     } else {
         for(var si = 0; si < Mantis.Statuses.length; si++) {
             var status = Mantis.Statuses[si]
-            Kanban.AddList(new KanbanList(status));
+            Kanban.AddListToArray(new KanbanList(status));
         }
     }
     
@@ -186,7 +186,7 @@ function CreateKanbanStoriesFromMantisIssues(obj, doc) {
     var output = "";
     for(var is = 0; is < obj.length; is++) {
         output += obj[is].id + " " + obj[is].status.name.capitalize() + " " + obj[is].summary + "\r\n";
-        Kanban.AddStory(new KanbanStory(obj[is]));
+        Kanban.AddStoryToArray(new KanbanStory(obj[is]));
         //output += obj[is];
     }
     Kanban.BuildListGUI();

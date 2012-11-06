@@ -1,10 +1,49 @@
+Kanban.AddStory = function(summary, description, handlerid, statusid, priorityid, category) {
+    var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, statusid, priorityid, category);
+    Mantis.IssueAdd(newIssueStruct, Kanban.AddStoryAsyncCallback);
+};
+
+Kanban.AddStoryAsyncCallback = function(result) {
+	Kanban.BlockUpdates = false;
+	StopLoading();
+	if(isNaN(result)) {
+			alert("Error Adding: " + result);
+	} else {
+			try {
+					var newStory = new KanbanStory(Mantis.IssueGet(result));
+					newStory.BuildKanbanStoryDiv();
+					newStory.List.AddNewStoryUI(newStory);
+					Kanban.CloseAddStoryDialog();
+			} catch (e) { console.log(e); }
+	}	
+};
+
+Kanban.UpdateUnderlyingStorySource = function(originalStory) {
+    var mantisIssue = Mantis.IssueGet(originalStory.ID);
+    originalStory.StorySource = mantisIssue;
+    return originalStory;
+};
+
+
+Kanban.UpdateStory = function() {
+	
+};
+
+
 var KanbanProject = function(RawObject) {
 	this.ProjectSource = RawObject;
+	this._lists = [];
 }
 KanbanProject.prototype = {
-	Lists : [],
-	Name : "",
-	ID : 0
+	get Lists() {
+		return this._lists;
+	},
+	get Name() {
+		return this.ProjectSource.name;
+	},
+	get ID () {
+		return this.ProjectSource.id;
+	}
 }
 
 var KanbanList = function(RawObject){
