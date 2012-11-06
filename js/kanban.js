@@ -4,6 +4,7 @@ var Kanban = {
     CurrentProject : null,
     BlockUpdates : false,
     Dragging : false,
+    UsingCustomField : false,
     _listIDField : "ScrumBucket",
     
     UndoInfo : {
@@ -45,7 +46,11 @@ var Kanban = {
         var statusid = document.getElementById("add-status").value;
         var priorityid = document.getElementById("add-priority").value;
         var category = document.getElementById("add-category").value
-        Kanban.AddStory(summary, description, handlerid, statusid, priorityid, category);
+        var customfieldvalue = null;
+        if(Kanban.UsingCustomField) {
+            customfieldvalue = document.getElementById("add-custom-field").value;
+        }
+        Kanban.AddStory(summary, description, handlerid, statusid, priorityid, category, customfieldvalue);
     },
     
     AddStoryToArray : function(storyToAdd) {
@@ -269,8 +274,12 @@ function UpdateStoryFromFormData() {
 }
 
 function UpdateListForCanbanStory(KanbanStoryToUpdate, KanbanListToMoveTo, UpdateKanbanStoryCallback) {
-    
-    var updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateStatus(KanbanStoryToUpdate.StorySource, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);
+    var updateIssue  = null;
+    if(KanbanStoryToUpdate.UsesCustomField) {
+        updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateCustomField(KanbanStoryToUpdate.StorySource, Kanban._listIDField, KanbanListToMoveTo.ID);
+    } else {
+        updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateStatus(KanbanStoryToUpdate.StorySource, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);        
+    }
     
     var updateSucceeded = false;
     try {
@@ -376,6 +385,8 @@ function OpenAddStory() {
     selectAssignedUser.options.length = 0;
     var selectAddStatus = document.getElementById("add-status");
     selectAddStatus.options.length = 0;
+    var selectAddCustomField = document.getElementById("add-custom-field");
+    selectAddCustomField.options.length = 0;
     var selectAddPriority = document.getElementById("add-priority");
     selectAddPriority.options.length = 0;
     var selectAddCategories = document.getElementById("add-category");
@@ -388,24 +399,38 @@ function OpenAddStory() {
         if(Mantis.CurrentUser.MantisUser.id == user.id) {
              selectAssignedUser.selectedIndex = i + 1;
         }
-
+    }
+    
+    if(Kanban.UsingCustomField) {
+        for(var i = 0; i < Mantis.ProjectCustomFields.length; i++) {
+            var custom_field = Mantis.ProjectCustomFields[i];
+            if(custom_field.field.name == Kanban._listIDField) {
+                var possiblevalues = custom_field.possible_values.split("|");
+                for(var pv = 0; pv < possiblevalues.length; pv++ ) {
+                    selectAddCustomField.options[selectAddCustomField.options.length] = new Option(possiblevalues[pv], possiblevalues[pv]);
+                }
+            }
+        }
+        document.getElementById("add-custom-field-container").style.display = "block";
+    } else {
+        document.getElementById("add-custom-field-container").style.display = "none";
     }
 
     for(var i = 0; i < Mantis.Statuses.length; i++) {
         var status = Mantis.Statuses[i];
-        selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name, status.id);
+        selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name.capitalize(), status.id);
     }
     selectAddStatus.selectedIndex = 0;
 
     for(var i = 0; i < Mantis.Priorities.length; i++) {
         var priority = Mantis.Priorities[i];
-        selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name, priority.id);
+        selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name.capitalize(), priority.id);
     }
     selectAddPriority.selectedIndex = 0;
     
     for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
         var category = Mantis.ProjectCategories[i];
-        selectAddCategories.options[selectAddCategories.options.length] = new Option(category, category);
+        selectAddCategories.options[selectAddCategories.options.length] = new Option(category.capitalize(), category);
     }
     selectAddCategories.selectedIndex = 0;
     
@@ -439,7 +464,7 @@ function EditStory(storyID) {
     
     for(var i = 0; i < Mantis.Statuses.length; i++) {
         var status = Mantis.Statuses[i];
-        selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name, status.id);
+        selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name.capitalize(), status.id);
         if(thisStory.StatusID == status.id) {
              selectAddStatus.selectedIndex = i;
         }
@@ -448,7 +473,7 @@ function EditStory(storyID) {
 
     for(var i = 0; i < Mantis.Priorities.length; i++) {
         var priority = Mantis.Priorities[i];
-        selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name, priority.id);
+        selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name.capitalize(), priority.id);
         if(thisStory.PriorityID == priority.id) {
              selectAddPriority.selectedIndex = i;
         }

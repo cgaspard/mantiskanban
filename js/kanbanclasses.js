@@ -1,6 +1,9 @@
-Kanban.AddStory = function(summary, description, handlerid, statusid, priorityid, category) {
-    var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, statusid, priorityid, category);
-    Mantis.IssueAdd(newIssueStruct, Kanban.AddStoryAsyncCallback);
+Kanban.AddStory = function(summary, description, handlerid, statusid, priorityid, category, customfield) {
+	var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, statusid, priorityid, category);
+	if(customfield !== null) {
+		Mantis.UpdateStructureMethods.Issue.UpdateCustomField(newIssueStruct, Kanban._listIDField, customfield);
+	}
+  Mantis.IssueAdd(newIssueStruct, Kanban.AddStoryAsyncCallback);
 };
 
 Kanban.AddStoryAsyncCallback = function(result) {
@@ -31,7 +34,11 @@ Kanban.UpdateStory = function() {
 
 
 var KanbanProject = function(RawObject) {
-	this.ProjectSource = RawObject;
+	if(typeof(RawObject == "string")){
+		this.ProjectSource = { "name" : RawObject, "id" : RawObject };
+	} else {
+		this.ProjectSource = RawObject;
+	}
 	this._lists = [];
 }
 KanbanProject.prototype = {
@@ -47,9 +54,14 @@ KanbanProject.prototype = {
 }
 
 var KanbanList = function(RawObject){
+	if(typeof(RawObject) == "string"){
+		this.ListSource = { "name" : RawObject, "id" : RawObject };
+	} else {
 		this.ListSource = RawObject;
-		this._stories = [];
-		this.Element = null;
+	}
+	this._stories = [];
+	this.Element = null;
+	this.UsesCustomField = false;
 }
 KanbanList.prototype = {
 	
@@ -76,8 +88,10 @@ var KanbanStory = function(RawObject) {
     this._list = null;
 		this.StorySource = RawObject;
 		//alert(JSON.stringify(RawObject.notes))
+		this.UsesCustomField = false;
 		this.JoinList();
 		Kanban.Stories[Kanban.Stories.length] = this;
+		
 		
 }
 KanbanStory.prototype = {
@@ -88,7 +102,16 @@ KanbanStory.prototype = {
 		get ID() { return this.StorySource.id; },
 		set ID(value) { this.StorySource.id = value; },
 		
-    get ListID() { return this.StorySource.status.id },
+    get ListID() {
+			if(this.UsesCustomField) {
+				for(var ci =0; ci < this.StorySource.custom_fields.length; ci++) {
+					if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
+						return this.StorySource.custom_fields[ci].value
+					}
+				}
+			}
+			return this.StorySource.status.id
+		},
 		
     get StatusID() { return this.StorySource.status.id; },
 		set StatusID(value) { this.StorySource.status.id = value },
@@ -141,11 +164,25 @@ KanbanStory.prototype = {
     
 		JoinList : function() {
 			for(var li = 0; li < Kanban.Lists.length; li++){
-        if(Kanban.Lists[li].ID == this.StorySource.status.id) {
-            this._list = Kanban.Lists[li];
-            this._list.Stories[this.List.Stories.length] = this;
-            break;
-        }
+				var thisList = Kanban.Lists[li];
+				if(thisList.UsesCustomField)  {
+					for(var ci =0; ci < this.StorySource.custom_fields.length; ci++) {
+						if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
+							if(this.StorySource.custom_fields[ci].value == thisList.ID) {
+								this._list = thisList;
+								this._list.Stories[this.List.Stories.length] = this;
+								this.UsesCustomField = true;
+								return;
+							}
+						}
+					}
+				} else {
+					if(Kanban.Lists[li].ID == this.StorySource.status.id) {
+							this._list = Kanban.Lists[li];
+							this._list.Stories[this.List.Stories.length] = this;
+							return;
+					}
+				}
 			}
 		},
 		

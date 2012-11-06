@@ -6,6 +6,7 @@
         <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 
         <link rel="stylesheet" href="kanban.css" />
+        <link rel="stylesheet" href="forms.css" />
         
         <script language="javascript" type="text/javascript" src="js/soapclient.js"></script>
         <script language="javascript" type="text/javascript" src="js/mantis.js"></script>
@@ -46,63 +47,67 @@
             </div>
         </div>
         
-        <div id="story-form" title="Create New Story" style="display:none;">
+        <div id="story-form" class="editform" title="Create New Story" style="display:none;">
             <p class="validateTips">All form fields are required.</p>
                 <input type="hidden" id="add-story-id" name="add-story-id" />
-                <label for="text">Summary:</label>
-                <input type="text" name="add-summary" id="add-summary" style="width:300px;" class="text ui-widget-content ui-corner-all" />
+                <label for="add-summary">Summary:</label>
+                <input type="text" name="add-summary" id="add-summary" class="text ui-widget-content ui-corner-all" />
                 <br>
-                <label for="select">Status:</label>
+                <div id="add-custom-field-container" name="add-custom-field-container" style="display:none;">
+                    <label for="add-custom-field">Bucket:</label>
+                    <select name="add-custom-field" id="add-custom-field" class="text ui-widget-content ui-corner-all"></select>
+                </div>
+                <label for="add-status">Status:</label>
                 <select name="add-status" id="add-status" class="text ui-widget-content ui-corner-all">
                 </select>
                 <br>
-                <label for="select">Priority:</label>
+                <label for="add-priority">Priority:</label>
                 <select name="add-priority" id="add-priority" class="text ui-widget-content ui-corner-all">
                 </select>
                 <br>
-                <label for="select">Category:</label>
+                <label for="add-cateogry">Category:</label>
                 <select name="add-category" id="add-category" class="text ui-widget-content ui-corner-all">
                 </select>
                 <br>
-                <label for="select">Assigned To</label>
+                <label for="add-assignedto">Handler:</label>
                 <select name="add-assignedto" id="add-assignedto" class="text ui-widget-content ui-corner-all">
                 </select>
                 <br>
                 <div style="display:inline-block;" id="add-reporter"></div>
                 <br>
-                <label for="text">Description:</labal>
+                <label for="add-description">Description:</labal>
                 <br>
-                <textarea name="add-description" id="add-description" style="width: 100%;" class="text ui-widget-content ui-corner-all"></textarea>
+                <textarea name="add-description" id="add-description" class="text ui-widget-content ui-corner-all"></textarea>
                 <br>
         </div>
 
-        <div id="edit-story-form" title="Edit Story" style="display:none;">
+        <div id="edit-story-form" class="editform" title="Edit Story" style="display:none;">
                 <input type="hidden" id="edit-story-id" name="edit-story-id" />
-                <label for="text">Summary:</label>
-                <input type="text" name="edit-summary" id="edit-summary" style="width:300px;" class="text ui-widget-content ui-corner-all" />
+                <label for="edit-summary">Summary:</label>
+                <input type="text" name="edit-summary" id="edit-summary" class="text ui-widget-content ui-corner-all" />
                 <br>
-                <label for="select">Status:</label>
+                <label for="edit-status">Status:</label>
                 <select name="edit-status" id="edit-status" class="text ui-widget-content ui-corner-all">
                 </select>
                 <br>
-                <label for="select">Priority:</label>
+                <label for="edit-priority">Priority:</label>
                 <select name="edit-priority" id="edit-priority" class="text ui-widget-content ui-corner-all">
                 </select>
                 <br>
-                <label for="select">Assigned To:</label>
+                <label for="edit-assignedto">Assigned To:</label>
                 <select name="edit-assignedto" id="edit-assignedto" class="text ui-widget-content ui-corner-all">
                 </select>
                 <br>
-                <label for="text">Subbmited By:</label>
+                <label for="edit-reporter">Subbmited By:</label>
                 <div style="display:inline-block;" id="edit-reporter"></div>
                 <br>
-                <label for="text">Description:</labal>
+                <label for="edit-description">Description:</label>
                 <br>
                 <textarea name="edit-description" id="edit-description" style="width: 100%;" class="text ui-widget-content ui-corner-all"></textarea>
                 <br>
-                <div class="newnotesavebutton" id="edit-story-new-note-save-button" name="edit-story-new-note-save-button">Add Note</div>
                 <textarea class="newnotetext" id="newnotetext" name="newnotetext"></textarea>
-                Notes:
+                <div class="newnotesavebutton" id="edit-story-new-note-save-button" name="edit-story-new-note-save-button">Add Note</div>
+                
                 <div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea">
                 </div>
         </div>

@@ -13,7 +13,7 @@ window.onload = function() {
     $( "#story-form" ).dialog({
         autoOpen: false,
         height: 550,
-        width: 700,
+        width: 620,
         modal: true,
         buttons: {
             "Create a story": function() {
@@ -57,7 +57,7 @@ function Login() {
     Mantis.CurrentUser.UserName = document.getElementById("username").value;
     Mantis.CurrentUser.Password = document.getElementById("password").value;
     
-    BuildProjectSelectBox();
+    BuildProjectsGUI();
     
     HideLoginArea();
     ShowProjectArea();
@@ -123,15 +123,19 @@ function StopLoading() {
 
 function BuildKanbanListFromMantisStatuses() {
     var hasCutomFieldForStatus = false;
+		Kanban.UsingCustomField = false;
     if(Mantis.ProjectCustomFields.length > 0) {
         for(var cf = 0; cf < Mantis.ProjectCustomFields.length; cf++) {
             var customfield = Mantis.ProjectCustomFields[cf]
             if(customfield.field.name == Kanban._listIDField) {
                 hasCutomFieldForStatus = true;
+								Kanban.UsingCustomField = true;
                 var possiblevalues = customfield.possible_values.split("|");
                 for(var pv = 0; pv < possiblevalues.length; pv++ ) {
                     possiblevalue = possiblevalues[pv];
-                    Kanban.AddListToArray(new KanbanList(possiblevalue, possiblevalue));
+										var newKanbanList = new KanbanList(possiblevalue);
+										newKanbanList.UsesCustomField = true;
+                    Kanban.AddListToArray(newKanbanList);
                 }
             }
         }
@@ -161,7 +165,7 @@ function SwapSelectedProject(newProjectID) {
     }
 }
 
-function BuildProjectSelectBox() {
+function BuildProjectsGUI() {
     var projectDivContainer = document.getElementById("projectlist");
     try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
     for(var i = 0; i < Mantis.UserProjects.length; i++) {

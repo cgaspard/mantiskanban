@@ -331,12 +331,31 @@ var Mantis = {
             },
             
             UpdateCustomField : function(issue, fieldname, fieldvalue) {
-                for(var counter in issue.custom_fields) {
-                    var customfield = issue.custom_fields[counter];
-                    if(customfield.field.name == fieldname) {
-                        customfield.value = fieldvalue;
+                var fieldID = "";
+                if(issue.custom_fields === undefined) {
+                    for(var fi = 0; fi < Mantis.ProjectCustomFields.length; fi++) {
+                        if(Mantis.ProjectCustomFields[fi].field.name == fieldname) {
+                            fieldID = Mantis.ProjectCustomFields[fi].field.id;
+                        }
+                    }
+                    
+                    issue["custom_fields"] = [{
+                        "field" : {
+                            "name" : fieldname,
+                            "id" : fieldID
+                        },
+                        "value" : fieldvalue
+                    }];
+                    
+                } else {
+                    for(var counter in issue.custom_fields) {
+                        var customfield = issue.custom_fields[counter];
+                        if(customfield.field.name == fieldname) {
+                            customfield.value = fieldvalue;
+                        }
                     }
                 }
+                return issue;
             },
             
             NewIssue : function(summary, description, projectid, handlerid, statusid, priorityid, category) {

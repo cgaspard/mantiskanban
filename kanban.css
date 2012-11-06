@@ -1,9 +1,11 @@
 html, body {
-    margin: 0;
-    padding: 0;
-    border: 0;
+		margin: 0;
+		padding: 0;
+		border: 0;
+}
 
-				
+#add-custom-field-container {
+		display: none;
 }
 
 .realcontentcontainer {
@@ -20,19 +22,19 @@ html, body {
 }
 
 .loadingdiv{
-    position: relative;
-    padding-right: 30px;
-    padding-top: 10px;
-    color: #FFFFFF;
-    font-size: 15px;
-    font-weight: bold;
+		position: relative;
+		padding-right: 30px;
+		padding-top: 10px;
+		color: #FFFFFF;
+		font-size: 15px;
+		font-weight: bold;
 }
 .loadingdiv img{
 }
 .loadingdiv span {
-    position:absolute;
-    left: -50px;
-    margin-bottom: 10px;
+		position:absolute;
+		left: -50px;
+		margin-bottom: 10px;
 }
 
 .projectlist{
@@ -42,12 +44,12 @@ html, body {
 .projectarea {
 		vertical-align: bottom;
 		margin-bottom: 10px;
-    margin-left: 200px;
+		margin-left: 200px;
 		padding-top: 10px;
 		padding-left: 10px;
 		display:none;
-    color: #FFFFFF;
-    font-size: 20px;
+		color: #FFFFFF;
+		font-size: 20px;
 		text-wrap: none;
 }
 
@@ -114,84 +116,71 @@ html, body {
 }
 
 .projectarea select {
-    height: 30px;
-    font-size: 15px;
-    color: #000000;
-    width: 120px;
-    border-radius: 5px 5px 5px 5px;
-   
+		height: 30px;
+		font-size: 15px;
+		color: #000000;
+		width: 120px;
+		border-radius: 5px 5px 5px 5px;
+	 
 }
 
 .loginarea{
 		vertical-align: bottom;
 		margin-bottom: 10px;
-    margin-left: 200px;
+		margin-left: 200px;
 		padding-top: 10px;
 		padding-left: 10px;
-    color: #FFFFFF;
-    font-size: 20px;
+		color: #FFFFFF;
+		font-size: 20px;
 }
 .loginarea input{
-    height: 30px;
-    font-size: 15px;
-    color: #000000;
-    width: 120px;
-    border-radius: 5px 5px 5px 5px;
+		height: 30px;
+		font-size: 15px;
+		color: #000000;
+		width: 120px;
+		border-radius: 5px 5px 5px 5px;
 }
 
-.loginarea select {
-
-    height: 30px;
-    font-size: 15px;
-    color: #000000;
-    width: 120px;
-    border-radius: 5px 5px 5px 5px;
-
-}
 .loginbutton{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    color: #ffffff;
-    padding: 7px 15px;
-    background: -moz-linear-gradient(
-    top,
-    #bcd900 0%,
-    #8ba10f);
-    background: -webkit-gradient(
-    linear, left top, left bottom,
-    from(#bcd900),
-    to(#8ba10f));
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    border: 1px solid #003366;
-    -moz-box-shadow:
-    0px 1px 3px rgba(000,000,000,0.5),
-    inset 0px 0px 1px rgba(255,255,255,1);
-    -webkit-box-shadow:
-    0px 1px 3px rgba(000,000,000,0.5),
-    inset 0px 0px 1px rgba(255,255,255,1);
-    box-shadow:
-    0px 1px 3px rgba(000,000,000,0.5),
-    inset 0px 0px 1px rgba(255,255,255,1);
-    text-shadow:
-    0px -1px 0px rgba(000,000,000,0.7),
-    0px 1px 0px rgba(255,255,255,0.3);
-    display: inline-block;
-    cursor: pointer;
-    user-select:none;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		color: #ffffff;
+		padding: 7px 15px;
+		background: -moz-linear-gradient(
+		top,
+		#bcd900 0%,
+		#8ba10f);
+		background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#bcd900),
+		to(#8ba10f));
+		-moz-border-radius: 6px;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		border: 1px solid #003366;
+		-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+		-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+		box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+		text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+		display: inline-block;
+		cursor: pointer;
+		user-select:none;
 }
 
-
-#edit-description{
-    width: 100%
-    height: 120px;
-}
 
 .notesarea {
-    width: 740px;
-    max-height: 140px;
-    overflow: auto;
+		width: 740px;
+		height: 140px;
+		overflow: scroll;
+		border: solid 2px #000000;
 }
 
 .headerarea {
@@ -202,130 +191,102 @@ html, body {
 
 .contentarea {
 		height: 100%;
-    width: 100%;
+		width: 100%;
 		text-align: center;
 		padding: 20px 20px 20px 20px;
 		display: table-row !important;
 }
 
 #kanbancontent{
-    text-align: left;
-    overflow: auto;
+		text-align: left;
+		overflow: auto;
 		display: table;
 		width: 95%;
 		height: 95%;
 		margin-left: 2%;
-    background-color: #f4f4f4;
-    border-radius: 5px 5px 5px 5px;
-    -moz-box-shadow: 8px 6px 10px 1px #444;
-    -webkit-box-shadow: 8px 6px 10px 1px #444;
-    box-shadow: 8px 6px 10px 1px #444;
+		background-color: #f4f4f4;
+		border-radius: 5px 5px 5px 5px;
+		-moz-box-shadow: 8px 6px 10px 1px #444;
+		-webkit-box-shadow: 8px 6px 10px 1px #444;
+		box-shadow: 8px 6px 10px 1px #444;
 		border: solid 10px transparent;
-    white-space: nowrap;
+		white-space: nowrap;
 }
 
 .kanbandropper{
-    display:none;
-    border: solid 1px black;
-    color: #222222;
-    height: 20px;
-    text-align: center;
-    padding-top: 5px;
-    padding-bottom: 3px;
-    background: #7d7e7d; /* Old browsers */
-    background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+		display:none;
+		border: solid 1px black;
+		color: #222222;
+		height: 20px;
+		text-align: center;
+		padding-top: 5px;
+		padding-bottom: 3px;
+		background: #7d7e7d; /* Old browsers */
+		background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
 
 }
 
-.notecontainer {
-    margin: 5px 5px 5px 5px;
-    padding: 8px 8px 8px 8px;
-    background-color: #ffff66;
-    font-size: 10pt;
-
-}
-
-.notesubmitter {
-    border-bottom: solid 2px #000000;
-}
-
-.notedatesubmitted {
-    flot:right;
-}
-
-.notetext {
-
-}
 
 .kanbanstory.over>.kanbandropper{
-    display: block;
+		display: block;
 }
 
 .kanbanlist{
 		max-width: 120px;
-    border-radius: 10px 10px 2px 2px;
-    vertical-align: top;
-    display: table-cell;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+		border-radius: 10px 10px 2px 2px;
+		vertical-align: top;
+		display: table-cell;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 		border: solid 10px transparent;    
 }
 
 
 .kanbanlistdroparea {
 		background: #d2ff52; /* Old browsers */
-    background: -moz-linear-gradient(top,  #d2ff52 0%, #91e842 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2ff52), color-stop(100%,#91e842)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #d2ff52 0%,#91e842 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #d2ff52 0%,#91e842 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #d2ff52 0%,#91e842 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #d2ff52 0%,#91e842 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=0 ); /* IE6-9 */
+		background: -moz-linear-gradient(top,  #d2ff52 0%, #91e842 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2ff52), color-stop(100%,#91e842)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #d2ff52 0%,#91e842 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #d2ff52 0%,#91e842 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #d2ff52 0%,#91e842 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #d2ff52 0%,#91e842 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=0 ); /* IE6-9 */
 		border-radius: 0 0 5 5;
 		color: transparent;
 		padding: 5 10 5 10;
-		    -moz-box-shadow:
-    0px 1px 3px rgba(000,000,000,0.5),
-    inset 0px 0px 1px rgba(255,255,255,0.7);
-    -webkit-box-shadow:
-    0px 1px 3px rgba(000,000,000,0.5),
-    inset 0px 0px 1px rgba(255,255,255,0.7);
-    text-shadow:
-    0px -1px 0px rgba(000,000,000,0.4),
-    0px 1px 0px rgba(255,255,255,0.3);
+				-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.7);
+		-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.7);
+		text-shadow:
+		0px -1px 0px rgba(000,000,000,0.4),
+		0px 1px 0px rgba(255,255,255,0.3);
 		border-bottom: solid 1px #000000;
 		border-left: solid 1px #000000;
 		border-right: solid 1px #000000;
 }
 
-.newnotesavebutton {
-		float: right;
-}
-
-#newnotetext {
-		width: 600px;
-		
-}
-
 .refreshprojectbutton {
 		cursor: pointer;
 		display: inline-block;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
@@ -346,92 +307,92 @@ html, body {
 }
 
 .newnotesavebutton, .kanbannewstory{
-    cursor: pointer;
-    display: inline-block;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    color: #ffffff;
-    padding: 10px 20px;
-		    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    background: -moz-linear-gradient(
-        top,
-        #ff2819 0%,
-        #ab0000);
-        background: -webkit-gradient(
-        linear, left top, left bottom,
-        from(#ff2819),
-        to(#ab0000));
-        border: 1px solid #7d0000;
-    text-shadow:
-        0px -1px 0px rgba(000,000,000,0.4),
-        0px 1px 0px rgba(255,255,255,0.3);
+		cursor: pointer;
+		display: inline-block;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		color: #ffffff;
+		padding: 10px 20px;
+				-moz-border-radius: 6px;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		background: -moz-linear-gradient(
+				top,
+				#ff2819 0%,
+				#ab0000);
+				background: -webkit-gradient(
+				linear, left top, left bottom,
+				from(#ff2819),
+				to(#ab0000));
+				border: 1px solid #7d0000;
+		text-shadow:
+				0px -1px 0px rgba(000,000,000,0.4),
+				0px 1px 0px rgba(255,255,255,0.3);
 }
 
 .kanbanlisttitle{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    color: #ffffff;
-    padding: 10px 20px;
-    background: -moz-linear-gradient(
-    top,
-    #6b6b6b 0%,
-    #000000);
-    background: -webkit-gradient(
-    linear, left top, left bottom,
-    from(#6b6b6b),
-    to(#000000));
-    -moz-border-radius: 7px 7px 0px 0px;
-    -webkit-border-radius: 7px 7px 0px 0px;
-    border-radius: 7px 7px 0px 0px;
-    text-shadow:
-    0px -1px 0px rgba(000,000,000,0.4),
-    0px 1px 0px rgba(255,255,255,0.3);
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		color: #ffffff;
+		padding: 10px 20px;
+		background: -moz-linear-gradient(
+		top,
+		#6b6b6b 0%,
+		#000000);
+		background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#6b6b6b),
+		to(#000000));
+		-moz-border-radius: 7px 7px 0px 0px;
+		-webkit-border-radius: 7px 7px 0px 0px;
+		border-radius: 7px 7px 0px 0px;
+		text-shadow:
+		0px -1px 0px rgba(000,000,000,0.4),
+		0px 1px 0px rgba(255,255,255,0.3);
 }
 .kanbanstory.rotation{
-    /*
-    -webkit-transform: translate(100px) rotate(20deg);
-    -webkit-transform-origin: 60% 100%;
-    -o-transform:translate(100px) rotate(20deg);
-    -o-transform-origin:60% 100%;
-    */
-    
-    transform: rotate(20deg);
-    transform-origin: 60% 100%;
-    
+		/*
+		-webkit-transform: translate(100px) rotate(20deg);
+		-webkit-transform-origin: 60% 100%;
+		-o-transform:translate(100px) rotate(20deg);
+		-o-transform-origin:60% 100%;
+		*/
+		
+		transform: rotate(20deg);
+		transform-origin: 60% 100%;
+		
 }
 .kanbanstory{
-    background: rgb(238,238,238);
-    /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%);
-    /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1)));
-    /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-    /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-    /* IE10+ */
-    background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-    /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
-    /* IE6-9 */
-    border: solid 1px #000000;
-    border-radius: 2px 2px 2px 2px
-    overflow: hidden;
-    padding: 5px 5px 5px 5px;
-    cursor: move;
-    text-shadow:
-    0px -1px 0px rgba(000,000,000,0.4),
-    0px 1px 0px rgba(255,255,255,0.3);
+		background: rgb(238,238,238);
+		/* Old browsers */
+		background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%);
+		/* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1)));
+		/* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
+		/* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
+		/* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
+		/* IE10+ */
+		background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
+		/* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
+		/* IE6-9 */
+		border: solid 1px #000000;
+		border-radius: 2px 2px 2px 2px
+		overflow: hidden;
+		padding: 5px 5px 5px 5px;
+		cursor: move;
+		text-shadow:
+		0px -1px 0px rgba(000,000,000,0.4),
+		0px 1px 0px rgba(255,255,255,0.3);
 		
 }
 
@@ -447,72 +408,72 @@ html, body {
 }
 
 .kanbandropper.over{
-    display: block;
+		display: block;
 }
 
 .kanbanstory[listid="10"] {
-    background-color: yellow;
+		background-color: yellow;
 }
 .kanbanstory[listid="20"] {
-    background-color: orange;   
+		background-color: orange;   
 }
 .kanbanstory[listid="30"] {
-    background-color: green;
+		background-color: green;
 }
 .kanbanstory[listid="40"] {
-    background-color: purple;
+		background-color: purple;
 }
 .kanbanstory[listid="50"] {
-    background-color: black;
+		background-color: black;
 }
 .kanbanstory[listid="60"] {
-    background-color: white;
+		background-color: white;
 }
 .kanbanstory[listid="70"] {
-    background-color: lightblue;
+		background-color: lightblue;
 }
 .kanbanstory[listid="80"] {
-    background-color: navyblue;
+		background-color: navyblue;
 }
 
 .kanbanstoryseverity{
-    width: 20px;
-    height: 20px;
+		width: 20px;
+		height: 20px;
 		text-align:right;
-    display: inline-block;
-    background-color: #004080;
-    margin-right: 10px;
-    border-radius: 5px 5px 5px 5px;
+		display: inline-block;
+		background-color: #004080;
+		margin-right: 10px;
+		border-radius: 5px 5px 5px 5px;
 }
 
 .kanbanstoryseverity[priority="immediate"]{
-    background-color: red;
+		background-color: red;
 }
 .kanbanstoryseverity[severity="urgent"]{
-    background-color: yellow);
+		background-color: yellow);
 }
 
 
 .kanbanstorytitle{
-    min-width: 120px;
+		min-width: 120px;
 		max-width: 120px;
-    cursor: pointer;
-    text-overflow:ellipsis;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    -o-text-overflow: ellipsis;
-    -ms-text-overflow: ellipsis;
+		cursor: pointer;
+		text-overflow:ellipsis;
+		display: inline-block;
+		overflow: hidden;
+		white-space: nowrap;
+		-o-text-overflow: ellipsis;
+		-ms-text-overflow: ellipsis;
 }
 .storyinfobutton{
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
 		/* float: right;*/
 }
 [draggable]{
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
 }
