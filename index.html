@@ -1,7 +1,12 @@
 <html>
     <head>
 
+        
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+        <!--<link href="css/black-tie/jquery-ui-1.9.1.custom.css" rel="stylesheet">-->
+
+        <script language="javascript" type="text/javascript" src="js/iso8601.min.js"></script>
+        
         <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
         <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 
@@ -47,6 +52,7 @@
             </div>
         </div>
         
+        
         <div id="story-form" class="editform" title="Create New Story" style="display:none;">
             <p class="validateTips">All form fields are required.</p>
                 <input type="hidden" id="add-story-id" name="add-story-id" />
@@ -82,34 +88,44 @@
         </div>
 
         <div id="edit-story-form" class="editform" title="Edit Story" style="display:none;">
-                <input type="hidden" id="edit-story-id" name="edit-story-id" />
-                <label for="edit-summary">Summary:</label>
-                <input type="text" name="edit-summary" id="edit-summary" class="text ui-widget-content ui-corner-all" />
-                <br>
-                <label for="edit-status">Status:</label>
-                <select name="edit-status" id="edit-status" class="text ui-widget-content ui-corner-all">
-                </select>
-                <br>
-                <label for="edit-priority">Priority:</label>
-                <select name="edit-priority" id="edit-priority" class="text ui-widget-content ui-corner-all">
-                </select>
-                <br>
-                <label for="edit-assignedto">Assigned To:</label>
-                <select name="edit-assignedto" id="edit-assignedto" class="text ui-widget-content ui-corner-all">
-                </select>
-                <br>
-                <label for="edit-reporter">Subbmited By:</label>
-                <div style="display:inline-block;" id="edit-reporter"></div>
-                <br>
-                <label for="edit-description">Description:</label>
-                <br>
-                <textarea name="edit-description" id="edit-description" style="width: 100%;" class="text ui-widget-content ui-corner-all"></textarea>
-                <br>
-                <textarea class="newnotetext" id="newnotetext" name="newnotetext"></textarea>
-                <div class="newnotesavebutton" id="edit-story-new-note-save-button" name="edit-story-new-note-save-button">Add Note</div>
-                
-                <div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea">
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">General</a></li>
+                    <li><a href="#tabs-2">Notes</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <input type="hidden" id="edit-story-id" name="edit-story-id" />
+                    <label for="edit-summary">Summary:</label>
+                    <input type="text" name="edit-summary" id="edit-summary" class="text ui-widget-content ui-corner-all" />
+                    <br>
+                    <label for="edit-status">Status:</label>
+                    <select name="edit-status" id="edit-status" class="text ui-widget-content ui-corner-all">
+                    </select>
+                    <br>
+                    <label for="edit-priority">Priority:</label>
+                    <select name="edit-priority" id="edit-priority" class="text ui-widget-content ui-corner-all">
+                    </select>
+                    <br>
+                    <label for="edit-assignedto">Assigned To:</label>
+                    <select name="edit-assignedto" id="edit-assignedto" class="text ui-widget-content ui-corner-all">
+                    </select>
+                    <br>
+                    <label for="edit-reporter">Subbmited By:</label>
+                    <div style="display:inline-block;" id="edit-reporter"></div>
+                    <div id="accordion-desc">
+                        <h3>Description: </h3>
+                        <textarea name="edit-description" id="edit-description" style="width: 100%;" class="text ui-widget-content ui-corner-all"></textarea>
+                        <h3>Steps To Reproduce: </h3>
+                        <textarea name="edit-reproduce" id="edit-reproduce" style="width: 100%;" class="text ui-widget-content ui-corner-all"></textarea>
+                    </div>
                 </div>
+                <div id="tabs-2">
+                    <br>
+                    <textarea class="newnotetext" id="newnotetext" name="newnotetext" title="Enter new notes here."></textarea>
+                    <div class="newnotesavebutton" id="edit-story-new-note-save-button" name="edit-story-new-note-save-button">Add Note</div>
+                    <div id="edit-story-notes-container" name="edit-story-notes-container"></div>
+                </div>
+            </div>
         </div>
         <input type="hidden" style="display:none;" id="seletedproject" name="selectedproject" />
     </body>

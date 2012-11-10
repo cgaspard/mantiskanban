@@ -9,7 +9,25 @@ window.onload = function() {
         }
     }, 5000);
     */
-    
+    $(function() {
+        $( "#tabs" ).tabs({ heightStyle: "content" });
+    });
+		
+		$(function() {
+        $( document ).tooltip();
+    });
+		
+		$(function() {
+			$("#accordion-desc").accordion();	
+		});
+		
+		$(function() {
+			$("#edit-story-notes-container").accordion();	
+		});
+		
+		//$(function() {
+		//		$("#newnotetext").button();
+		//});
     $( "#story-form" ).dialog({
         autoOpen: false,
         height: 550,
@@ -106,8 +124,11 @@ function SelectProject() {
 
     BuildKanbanListFromMantisStatuses();
     Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID, CreateKanbanStoriesFromMantisIssues);
+		//Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.ClosedIssuesFilterID, CreateKanbanStoriesFromMantisIssues);
     //Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0, CreateKanbanStoriesFromMantisIssues);
 
+		
+		
     StopLoading();
 }
 
@@ -186,13 +207,8 @@ function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {
 
 
 function CreateKanbanStoriesFromMantisIssues(obj, doc) {
-    Kanban.Stories = [];
-    var output = "";
     for(var is = 0; is < obj.length; is++) {
-        output += obj[is].id + " " + obj[is].status.name.capitalize() + " " + obj[is].summary + "\r\n";
         Kanban.AddStoryToArray(new KanbanStory(obj[is]));
-        //output += obj[is];
     }
-    Kanban.BuildListGUI();
-    //alert("ProjectGetIssues:" +obj.length + " found\r\n\r\n" + output);
+		Kanban.BuildListGUI();
 }

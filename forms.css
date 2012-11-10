@@ -39,8 +39,7 @@
 }
 
 #edit-description{
-		width: 750px;
-		height: 80px;
+		height: 120px;
 }
 
 
@@ -65,10 +64,15 @@
 
 
 .newnotesavebutton {
-		float: right;
+		
 }
 
+.notesarea{
+    width: 100%;
+}
+
+
 #newnotetext {
-		width: 600px;
-		
+		width: 100%;
+		padding-bottom: 50px;
 }

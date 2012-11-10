@@ -15,6 +15,7 @@ var Mantis = {
     _userprojects : [],
     _defaultaccesslevelforuserenum : 10,
     _defaultfilterid : "22",
+    _closedissuesfilterid : "23",
     
     ClearForLogout : function() {
         Mantis._currentprojectid = 0;
@@ -44,6 +45,10 @@ var Mantis = {
     
     get DefaultFilterID() {
         return Mantis._defaultfilterid;  
+    },
+    
+    get ClosedIssuesFilterID() {
+        return Mantis._closedissuesfilterid;  
     },
     
     get UserProjects() {

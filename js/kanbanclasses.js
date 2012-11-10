@@ -124,6 +124,9 @@ KanbanStory.prototype = {
 		get Description() { return this.StorySource.description; },
 		set Description(value) { this.StorySource.description = value; },
     
+		get Reproduce() { return this.StorySource.steps_to_reproduce; },
+		set Reproduce(value)  { this.StorySource.steps_to_reproduce = value; },
+		
 		get HandlerID() { return this.StorySource.handler !== undefined ? this.StorySource.handler.id : ""; },
 		set HandlerID(value) {
 			
