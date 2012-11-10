@@ -51,10 +51,9 @@
 		border-radius: 5px 5px 5px 5px;
 		border: solid 1px #b3b3b3;
 		display: inline-block;
+		vertical-align: top;
 		width: 300;
-		float: left;
-		min-height: 200px;
-		max-height: 200px;
+		height: 200;
 		overflow: auto;
 		-webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.47);
 		-moz-box-shadow:    4px 4px 6px rgba(0, 0, 0, 0.47);
@@ -93,6 +92,5 @@
 
 #newnotetext {
 		width: 100%;
-		text-align: center;
-		
+		text-align: left;
 }
