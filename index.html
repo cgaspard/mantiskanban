@@ -88,10 +88,11 @@
         </div>
 
         <div id="edit-story-form" class="editform" title="Edit Story" style="display:none;">
-            <div id="tabs">
+            <div id="tabs" class="edit-tabs">
                 <ul>
                     <li><a href="#tabs-1">General</a></li>
                     <li><a href="#tabs-2">Notes</a></li>
+                    <li><a href="#tabs-3">Attachments</a></li>
                 </ul>
                 <div id="tabs-1">
                     <input type="hidden" id="edit-story-id" name="edit-story-id" />
@@ -120,10 +121,12 @@
                     </div>
                 </div>
                 <div id="tabs-2">
-                    <br>
                     <textarea class="newnotetext" id="newnotetext" name="newnotetext" title="Enter new notes here."></textarea>
                     <div class="newnotesavebutton" id="edit-story-new-note-save-button" name="edit-story-new-note-save-button">Add Note</div>
-                    <div id="edit-story-notes-container" name="edit-story-notes-container"></div>
+                    <div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
+                </div>
+                <div id="tabs-3">
+                    
                 </div>
             </div>
         </div>

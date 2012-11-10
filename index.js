@@ -21,9 +21,9 @@ window.onload = function() {
 			$("#accordion-desc").accordion();	
 		});
 		
-		$(function() {
-			$("#edit-story-notes-container").accordion();	
-		});
+		//$(function() {
+		//	$("#edit-story-notes-container").accordion();	
+		//});
 		
 		//$(function() {
 		//		$("#newnotetext").button();

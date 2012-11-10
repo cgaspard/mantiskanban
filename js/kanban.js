@@ -354,21 +354,21 @@ function AddNotesToStoryEditForm(KanbanStory) {
     for(var i = 0; i < KanbanStory.Notes.length; i++) {
         var thisNote = KanbanStory.Notes[i];
         
-        var noteHeader = document.createElement("h3");
-        noteHeader.innerHTML = "<a href='#'>" + thisNote.reporter.real_name + ": " + thisNote.text.substring(0, thisNote.text.length < 30 ? thisNote.text.length : 30) + "...</a>";
-        notesContainer.appendChild(noteHeader);
+        //var noteHeader = document.createElement("h3");
+        //noteHeader.innerHTML = "<a href='#'>" + thisNote.reporter.real_name + ": " + thisNote.text.substring(0, thisNote.text.length < 30 ? thisNote.text.length : 30) + "...</a>";
+        //notesContainer.appendChild(noteHeader);
         
         var noteDiv = document.createElement("div");
-        //noteDiv.setAttribute("class", "notecontainer");
+        noteDiv.setAttribute("class", "notecontainer");
         noteDiv.setAttribute("storyid", KanbanStory.ID);
 
         var noteSubmitterDiv = document.createElement("div");
-        //noteSubmitterDiv.setAttribute("class", "notesubmitter");
+        noteSubmitterDiv.setAttribute("class", "notesubmitter");
         noteSubmitterDiv.innerHTML = thisNote.reporter.real_name;
         noteDiv.appendChild(noteSubmitterDiv);
 
         var noteDateSubbmitedDiv = document.createElement("div");
-        //noteDateSubbmitedDiv.setAttribute("class", "notedatesubmitted");
+        noteDateSubbmitedDiv.setAttribute("class", "notedatesubmitted");
         var testDate = new Date(Date.parse(thisNote.date_submitted));
         
         //noteDateSubbmitedDiv.innerHTML = thisNote.date_submitted;
@@ -457,6 +457,7 @@ function EditStory(storyID) {
     $("#edit-description").val(thisStory.Description);
     $("#edit-reproduce").val(thisStory.Reproduce);
     $("#accordion-desc").accordion({ active: 0 });
+    document.getElementById("edit-story-notes-container").scrollTop = 0;
     document.getElementById("edit-reporter").innerHTML = thisStory.ReporterName;
 
     var selectAssignedUser = document.getElementById("edit-assignedto");
@@ -494,7 +495,7 @@ function EditStory(storyID) {
     
     AddNotesToStoryEditForm(thisStory);
     
-		$("#edit-story-notes-container").accordion();	
+		// $("#edit-story-notes-container").accordion();	
 		
     $("#edit-story-form").dialog("open");
 }
