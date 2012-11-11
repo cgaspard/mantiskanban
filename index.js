@@ -49,7 +49,7 @@ window.onload = function() {
     $("#edit-story-form").dialog({
         autoOpen: false,
         modal: true,
-        height: 590,
+        height: 610,
         width: 780,
         close: function() {
             
