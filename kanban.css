@@ -432,8 +432,8 @@ html, body{
 .kanbanstoryseverity[priority="immediate"]{
     background-color: red;
 }
-.kanbanstoryseverity[severity="urgent"]{
-    background-color: yellow);
+.kanbanstoryseverity[priority="urgent"]{
+    background-color: #FFFFFF;
 }
 .kanbanstorytitle{
     min-width: 120px;

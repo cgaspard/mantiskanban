@@ -474,6 +474,7 @@ function EditStory(storyID) {
     $("#edit-summary").val(thisStory.Summary);
     $("#edit-description").val(thisStory.Description);
     $("#edit-reproduce").val(thisStory.Reproduce);
+    $("#newnotetext").val("");
     $("#accordion-desc").accordion({
         active: 0
     });
