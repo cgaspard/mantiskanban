@@ -2,13 +2,7 @@
 window.onload = function() {
 
     document.getElementById("password").focus();
-    /*
-    window.setInterval(function() {
-        if(!Dragging) {
-            ClearAllDragHoverAreas();
-        }
-    }, 5000);
-    */
+    
     $(function() {
         $( "#tabs" ).tabs({ heightStyle: "content" });
     });
@@ -21,13 +15,6 @@ window.onload = function() {
 			$("#accordion-desc").accordion();	
 		});
 		
-		//$(function() {
-		//	$("#edit-story-notes-container").accordion();	
-		//});
-		
-		//$(function() {
-		//		$("#newnotetext").button();
-		//});
     $( "#story-form" ).dialog({
         autoOpen: false,
         height: 550,
@@ -120,13 +107,12 @@ function SelectProject() {
 
     Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
-    //alert(JSON.stringify(Mantis.ProjectCustomFields));
-
     BuildKanbanListFromMantisStatuses();
-    Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID, CreateKanbanStoriesFromMantisIssues);
-		//Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.ClosedIssuesFilterID, CreateKanbanStoriesFromMantisIssues);
-    //Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0, CreateKanbanStoriesFromMantisIssues);
-
+		
+		Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID, CreateKanbanStoriesFromMantisIssues);
+    //CreateKanbanStoriesFromMantisIssues(Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID));
+		//CreateKanbanStoriesFromMantisIssues(Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.ClosedIssuesFilterID));
+    
 		
 		
     StopLoading();
@@ -169,16 +155,12 @@ function BuildKanbanListFromMantisStatuses() {
     
 }
 
-function EnumServerities_callBack(r) {
-    alert("EnumServerities:" + JSON.stringify(r));
-}
 
 function SwapSelectedProject(newProjectID) {
     var nodeList = document.getElementsByClassName("projectbutton");
     for(var i = 0; i < nodeList.length; i++) {
         if(nodeList[i].id == newProjectID) {
             nodeList[i].setAttribute("selected", "true");
-            
         } else {
             nodeList[i].setAttribute("selected", "false");
         }
@@ -206,7 +188,7 @@ function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {
 }
 
 
-function CreateKanbanStoriesFromMantisIssues(obj, doc) {
+function CreateKanbanStoriesFromMantisIssues(obj) {
     for(var is = 0; is < obj.length; is++) {
         Kanban.AddStoryToArray(new KanbanStory(obj[is]));
     }

@@ -80,7 +80,31 @@ KanbanList.prototype = {
 	
 	AddNewStoryUI: function(Story) {
 		this.Element.insertBefore(Story.Element, this.Element.lastChild);
-	}
+	},
+	
+	/*
+	 * @name AddStory
+	 * @param {KanbanStory} Story The story you want to add.
+	 * @returns {null} Doesn't return anything
+	 */
+	AddStory : function(Story) {
+		if(!this.HasStory(Story.ID)) {
+			this._stories[this._stories.length] = Story;
+		}
+	},
+	
+	/*
+	* @name HasStory
+	* @param {int} id The ID of the story to look for
+	* @returns {boolean} Returns true if the story is already loaded into the "Mantis.Stories" array.
+	*/
+	HasStory: function(id) {
+			for(var i = 0; i < this._stories.length; i++) {
+					if(this._stories[i].ID == id) return true;
+			}
+			return false;
+	},
+	
 }
 
 
@@ -90,9 +114,9 @@ var KanbanStory = function(RawObject) {
 		//alert(JSON.stringify(RawObject.notes))
 		this.UsesCustomField = false;
 		this.JoinList();
-		Kanban.Stories[Kanban.Stories.length] = this;
-		
-		
+		if(!Kanban.HasStory(this)) {
+			Kanban.AddStoryToArray(this);
+		}
 }
 KanbanStory.prototype = {
 
@@ -165,6 +189,10 @@ KanbanStory.prototype = {
 		get Summary() { return this.StorySource.summary },
 		set Summary(value) { this.StorySource.summary = value; },
     
+		/*
+		 * @name JoinList
+		 * @description Adds the story to a KanbanList.Stories array
+		 */
 		JoinList : function() {
 			for(var li = 0; li < Kanban.Lists.length; li++){
 				var thisList = Kanban.Lists[li];
@@ -173,7 +201,7 @@ KanbanStory.prototype = {
 						if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
 							if(this.StorySource.custom_fields[ci].value == thisList.ID) {
 								this._list = thisList;
-								this._list.Stories[this.List.Stories.length] = this;
+								this._list.AddStory(this);
 								this.UsesCustomField = true;
 								return;
 							}
@@ -182,7 +210,7 @@ KanbanStory.prototype = {
 				} else {
 					if(Kanban.Lists[li].ID == this.StorySource.status.id) {
 							this._list = Kanban.Lists[li];
-							this._list.Stories[this.List.Stories.length] = this;
+							this._list.AddStory(this);
 							return;
 					}
 				}

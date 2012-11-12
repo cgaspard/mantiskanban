@@ -1,8 +1,5 @@
 var mantisConnectURL = "http://bugz.mygait.net/api/soap/mantisconnect.php";
 
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
 
 var Mantis = {
     _currentprojectid : 0,
@@ -290,6 +287,7 @@ var Mantis = {
                     delete issue.due_date;
                     delete issue.pl;
                     delete issue.monitors;
+                    delete issue.sticky;
                 } catch (e) { }
                 //delete issue.due_date;
                 //delete issue.monitors;
