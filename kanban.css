@@ -14,12 +14,12 @@ html, body{
     height:100%;
     display: table;
     background: #666c70;
-    background: -moz-linear-gradient(top, #666c70 1%, #555b60 90px, #d3d3d3 91px, #dbdbdb 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#666c70), color-stop(90px,#555b60), color-stop(91px,#d3d3d3), color-stop(100%,#dbdbdb));
-    background: -webkit-linear-gradient(top, #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
-    background: -o-linear-gradient(top, #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
-    background: -ms-linear-gradient(top, #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
-    background: linear-gradient(to bottom, #666c70 1%,#555b60 90px,#d3d3d3 91px,#dbdbdb 100%);
+    background: -moz-linear-gradient(top, #666c70 1%, #555b60 98px, #d3d3d3 99px, #dbdbdb 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#666c70), color-stop(98px,#555b60), color-stop(99px,#d3d3d3), color-stop(100%,#dbdbdb));
+    background: -webkit-linear-gradient(top, #666c70 1%,#555b60 98px,#d3d3d3 99px,#dbdbdb 100%);
+    background: -o-linear-gradient(top, #666c70 1%,#555b60 98px,#d3d3d3 99px,#dbdbdb 100%);
+    background: -ms-linear-gradient(top, #666c70 1%,#555b60 98px,#d3d3d3 99px,#dbdbdb 100%);
+    background: linear-gradient(to bottom, #666c70 1%,#555b60 98px,#d3d3d3 99px,#dbdbdb 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666c70', endColorstr='#dbdbdb',GradientType=0 );
 }
 .loadingdiv{
@@ -44,7 +44,7 @@ html, body{
     vertical-align: bottom;
     margin-bottom: 10px;
     margin-left: 200px;
-    padding-top: 10px;
+    padding-top: 35px;
     padding-left: 10px;
     display:none;
     color: #FFFFFF;
@@ -103,11 +103,11 @@ html, body{
 }
 .mantislogo{
     float: left;
-    width: 160px;
+    width: 210px;
     margin-left: 30px;
 }
 .projectarea select{
-    height: 30px;
+    height: 50px;
     font-size: 15px;
     color: #000000;
     width: 120px;
@@ -163,7 +163,7 @@ html, body{
     user-select:none;
 }
 .headerarea{
-    height: 60px;
+    height: 85px;
     width:100%;
     display: table-row;
 }
