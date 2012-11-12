@@ -1,196 +1,194 @@
 
 window.onload = function() {
 
-    document.getElementById("password").focus();
-    
-    $(function() {
-        $( "#tabs" ).tabs({ heightStyle: "content" });
-    });
+	document.getElementById("password").focus();
+	
+	$(function() {
+		$( "#tabs" ).tabs({ heightStyle: "content" });
+	});
 		
 		$(function() {
-        $( document ).tooltip();
-    });
+		$( document ).tooltip();
+	});
 		
-		$(function() {
-			$("#accordion-desc").accordion();	
-		});
-		
-    $( "#story-form" ).dialog({
-        autoOpen: false,
-        height: 550,
-        width: 640,
-        modal: true,
-        buttons: {
-            "Create a story": function() {
-                Kanban.AddStoryFromFormData();
-            },
-            Cancel: function() {
-                $( this ).dialog( "close" );
-            }
-        },
-        close: function() {
-            
-        }
-    });
+	$(function() {
+		$("#accordion-desc").accordion();	
+	});
+	
+	$( "#story-form" ).dialog({
+		autoOpen: false,
+		height: 550,
+		width: 640,
+		modal: true,
+		buttons: {
+			"Create a story": function() {
+				Kanban.AddStoryFromFormData();
+			},
+			Cancel: function() {
+				$( this ).dialog( "close" );
+			}
+		},
+		close: function() {
+			
+		}
+	});
 
-    $("#edit-story-form").dialog({
-        autoOpen: false,
-        modal: true,
-        height: 610,
-        width: 780,
-        close: function() {
-            
-        },
-        buttons: {
-            "Save": function() {
-                UpdateStoryFromFormData();
-             ///Code here to add a story to a list 
-            },
-            Cancel: function() {
-                $( this ).dialog( "close" );
-            }
-        }
-    });
+	$("#edit-story-form").dialog({
+		autoOpen: false,
+		modal: true,
+		height: 610,
+		width: 780,
+		close: function() {
+			
+		},
+		buttons: {
+			"Save": function() {
+				UpdateStoryFromFormData();
+			 ///Code here to add a story to a list 
+			},
+			Cancel: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
 }
 
  
 function Login() {
-    
-    StartLoading();
-    
-		document.getElementById("username").focus();
-    Mantis.CurrentUser.UserName = document.getElementById("username").value;
-    Mantis.CurrentUser.Password = document.getElementById("password").value;
-    
-    BuildProjectsGUI();
-    
-    HideLoginArea();
-    ShowProjectArea();
-    
-    SelectProject();
+	
+	StartLoading();
+	
+	document.getElementById("username").focus();
+	Mantis.CurrentUser.UserName = document.getElementById("username").value;
+	Mantis.CurrentUser.Password = document.getElementById("password").value;
+	
+	BuildProjectsGUI();
+	
+	HideLoginArea();
+	ShowProjectArea();
+	
+	SelectProject();
 
-    StopLoading();
+	StopLoading();
 }
 
 function HideLoginArea() {
-    $(".loginarea").hide();
+	$(".loginarea").hide();
 }
 function ShowLoginArea() {
-    $(".loginarea").show();
+	$(".loginarea").show();
 }
 
 function ShowProjectArea() {
-    $(".projectarea").show();
+	$(".projectarea").show();
 }
 
 function HideProjectArea() {
-    $(".projectarea").hide();
+	$(".projectarea").hide();
 }
 
 function Logout() {
-    Kanban.Lists = [];
-    Kanban.Stories = [];
-    Kanban.ClearListGUI();
+	Kanban.Lists = [];
+	Kanban.Stories = [];
+	Kanban.ClearListGUI();
 
-    Mantis.ClearForLogout();
-    
-    HideProjectArea();
-    ShowLoginArea();
+	Mantis.ClearForLogout();
+	
+	HideProjectArea();
+	ShowLoginArea();
 }
 
 function SelectProject() {
-    StartLoading();
+	StartLoading();
 
-    Kanban.Lists = [];
-    Kanban.Stories = [];
-    Kanban.ClearListGUI();
+	Kanban.Lists = [];
+	Kanban.Stories = [];
+	Kanban.ClearListGUI();
 
-    Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
+	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
-    BuildKanbanListFromMantisStatuses();
+	BuildKanbanListFromMantisStatuses();
 		
-		Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID, CreateKanbanStoriesFromMantisIssues);
-    //CreateKanbanStoriesFromMantisIssues(Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID));
-		//CreateKanbanStoriesFromMantisIssues(Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.ClosedIssuesFilterID));
-    
-		
-		
-    StopLoading();
+	Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID, CreateKanbanStoriesFromMantisIssues);
+	//CreateKanbanStoriesFromMantisIssues(Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID));
+	//CreateKanbanStoriesFromMantisIssues(Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.ClosedIssuesFilterID));
+	
+	StopLoading();
 }
 
 function StartLoading() {
-    document.getElementById("loadedimage").style.display = "none";
-    document.getElementById("loadingimage").style.display = "inline";
+	document.getElementById("loadedimage").style.display = "none";
+	document.getElementById("loadingimage").style.display = "inline";
 }
 
 function StopLoading() {
-    document.getElementById("loadingimage").style.display = "none";
-    document.getElementById("loadedimage").style.display = "inline";
+	document.getElementById("loadingimage").style.display = "none";
+	document.getElementById("loadedimage").style.display = "inline";
 }
 
 function BuildKanbanListFromMantisStatuses() {
-    var hasCutomFieldForStatus = false;
+	var hasCutomFieldForStatus = false;
 		Kanban.UsingCustomField = false;
-    if(Mantis.ProjectCustomFields.length > 0) {
-        for(var cf = 0; cf < Mantis.ProjectCustomFields.length; cf++) {
-            var customfield = Mantis.ProjectCustomFields[cf]
-            if(customfield.field.name == Kanban._listIDField) {
-                hasCutomFieldForStatus = true;
+	if(Mantis.ProjectCustomFields.length > 0) {
+		for(var cf = 0; cf < Mantis.ProjectCustomFields.length; cf++) {
+			var customfield = Mantis.ProjectCustomFields[cf]
+			if(customfield.field.name == Kanban._listIDField) {
+				hasCutomFieldForStatus = true;
 								Kanban.UsingCustomField = true;
-                var possiblevalues = customfield.possible_values.split("|");
-                for(var pv = 0; pv < possiblevalues.length; pv++ ) {
-                    possiblevalue = possiblevalues[pv];
+				var possiblevalues = customfield.possible_values.split("|");
+				for(var pv = 0; pv < possiblevalues.length; pv++ ) {
+					possiblevalue = possiblevalues[pv];
 										var newKanbanList = new KanbanList(possiblevalue);
 										newKanbanList.UsesCustomField = true;
-                    Kanban.AddListToArray(newKanbanList);
-                }
-            }
-        }
-    } else {
-        for(var si = 0; si < Mantis.Statuses.length; si++) {
-            var status = Mantis.Statuses[si]
-            Kanban.AddListToArray(new KanbanList(status));
-        }
-    }
-    
+					Kanban.AddListToArray(newKanbanList);
+				}
+			}
+		}
+	} else {
+		for(var si = 0; si < Mantis.Statuses.length; si++) {
+			var status = Mantis.Statuses[si]
+			Kanban.AddListToArray(new KanbanList(status));
+		}
+	}
+	
 }
 
 
 function SwapSelectedProject(newProjectID) {
-    var nodeList = document.getElementsByClassName("projectbutton");
-    for(var i = 0; i < nodeList.length; i++) {
-        if(nodeList[i].id == newProjectID) {
-            nodeList[i].setAttribute("selected", "true");
-        } else {
-            nodeList[i].setAttribute("selected", "false");
-        }
-        
-    }
+	var nodeList = document.getElementsByClassName("projectbutton");
+	for(var i = 0; i < nodeList.length; i++) {
+		if(nodeList[i].id == newProjectID) {
+			nodeList[i].setAttribute("selected", "true");
+		} else {
+			nodeList[i].setAttribute("selected", "false");
+		}
+		
+	}
 }
 
 function BuildProjectsGUI() {
-    var projectDivContainer = document.getElementById("projectlist");
-    try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
-    for(var i = 0; i < Mantis.UserProjects.length; i++) {
-        var projectDiv = document.createElement("div");
-        projectDiv.setAttribute("class", "projectbutton");
-        projectDiv.setAttribute("id", "project" + Mantis.UserProjects[i].id );
-        projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Mantis.UserProjects[i].id + "'; SelectProject(); SwapSelectedProject(this.id);");
-        projectDiv.setAttribute("selected", i == 0 ? "true" : "false");
-        projectDiv.innerHTML = Mantis.UserProjects[i].name;
-        projectDivContainer.appendChild(projectDiv);
-    }
-    document.getElementById("seletedproject").value = Mantis.UserProjects[0].id;
+	var projectDivContainer = document.getElementById("projectlist");
+	try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
+	for(var i = 0; i < Mantis.UserProjects.length; i++) {
+		var projectDiv = document.createElement("div");
+		projectDiv.setAttribute("class", "projectbutton");
+		projectDiv.setAttribute("id", "project" + Mantis.UserProjects[i].id );
+		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Mantis.UserProjects[i].id + "'; SelectProject(); SwapSelectedProject(this.id);");
+		projectDiv.setAttribute("selected", i == 0 ? "true" : "false");
+		projectDiv.innerHTML = Mantis.UserProjects[i].name;
+		projectDivContainer.appendChild(projectDiv);
+	}
+	document.getElementById("seletedproject").value = Mantis.UserProjects[0].id;
 }
 
 function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {
-    Mantis.CurrentProjectID = obj[0].id;
+	Mantis.CurrentProjectID = obj[0].id;
 }
 
 
 function CreateKanbanStoriesFromMantisIssues(obj) {
-    for(var is = 0; is < obj.length; is++) {
-        Kanban.AddStoryToArray(new KanbanStory(obj[is]));
-    }
+	for(var is = 0; is < obj.length; is++) {
+		Kanban.AddStoryToArray(new KanbanStory(obj[is]));
+	}
 		Kanban.BuildListGUI();
 }

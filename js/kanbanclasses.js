@@ -1,38 +1,3 @@
-Kanban.AddStory = function(summary, description, handlerid, statusid, priorityid, category, customfield) {
-	var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, statusid, priorityid, category);
-	if(customfield !== null) {
-		Mantis.UpdateStructureMethods.Issue.UpdateCustomField(newIssueStruct, Kanban._listIDField, customfield);
-	}
-	Mantis.IssueAdd(newIssueStruct, Kanban.AddStoryAsyncCallback);
-};
-
-Kanban.AddStoryAsyncCallback = function(result) {
-	Kanban.BlockUpdates = false;
-	StopLoading();
-	if(isNaN(result)) {
-		alert("Error Adding: " + result);
-	} else {
-		try {
-			var newStory = new KanbanStory(Mantis.IssueGet(result));
-			newStory.BuildKanbanStoryDiv();
-			newStory.List.AddNewStoryUI(newStory);
-			Kanban.CloseAddStoryDialog();
-		} catch(e) {
-			console.log(e);
-		}
-	}
-};
-
-Kanban.UpdateUnderlyingStorySource = function(originalStory) {
-	var mantisIssue = Mantis.IssueGet(originalStory.ID);
-	originalStory.StorySource = mantisIssue;
-	return originalStory;
-};
-
-
-Kanban.UpdateStory = function() {
-
-};
 
 
 var KanbanProject = function(RawObject) {
@@ -129,7 +94,8 @@ var KanbanStory = function(RawObject) {
 		if(!Kanban.HasStory(this)) {
 			Kanban.AddStoryToArray(this);
 		}
-	}
+}
+
 KanbanStory.prototype = {
 
 	get List() {
@@ -181,6 +147,10 @@ KanbanStory.prototype = {
 		return this.StorySource.steps_to_reproduce;
 	}, set Reproduce(value) {
 		this.StorySource.steps_to_reproduce = value;
+	},
+
+	get DateSubmitted() {
+		return new Date(Date.parse(this.StorySource.date_submitted));
 	},
 
 	get HandlerID() {
@@ -322,6 +292,7 @@ KanbanStory.prototype = {
 		storyContainerDiv.setAttribute("listid", "listid" + this.ListID);
 		storyContainerDiv.setAttribute("storyid", "storydiv" + this.ID);
 		storyContainerDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
+		storyContainerDiv.setAttribute("title", this.Summary.htmlencode());
 		if(this.HandlerName == Mantis.CurrentUser.UserName) {
 			storyContainerDiv.classList.add("mystory");
 		}
@@ -372,3 +343,35 @@ KanbanStory.prototype = {
 		return storyDiv;
 	}
 }
+
+Kanban.AddStory = function(summary, description, handlerid, statusid, priorityid, category, customfield) {
+	var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, statusid, priorityid, category);
+	if(customfield !== null) {
+		Mantis.UpdateStructureMethods.Issue.UpdateCustomField(newIssueStruct, Kanban._listIDField, customfield);
+	}
+	Mantis.IssueAdd(newIssueStruct, Kanban.AddStoryAsyncCallback);
+};
+
+Kanban.AddStoryAsyncCallback = function(result) {
+	Kanban.BlockUpdates = false;
+	StopLoading();
+	if(isNaN(result)) {
+		alert("Error Adding: " + result);
+	} else {
+		try {
+			var newStory = new KanbanStory(Mantis.IssueGet(result));
+			newStory.BuildKanbanStoryDiv();
+			newStory.List.AddNewStoryUI(newStory);
+			Kanban.CloseAddStoryDialog();
+		} catch(e) {
+			console.log(e);
+		}
+	}
+};
+
+Kanban.UpdateUnderlyingStorySource = function(originalStory) {
+	var mantisIssue = Mantis.IssueGet(originalStory.ID);
+	originalStory.StorySource = mantisIssue;
+	return originalStory;
+};
+

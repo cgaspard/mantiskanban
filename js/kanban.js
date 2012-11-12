@@ -481,12 +481,14 @@ function EditStory(storyID) {
 	$("#edit-summary").val(thisStory.Summary);
 	$("#edit-description").val(thisStory.Description);
 	$("#edit-reproduce").val(thisStory.Reproduce);
+
 	$("#newnotetext").val("");
 	$("#accordion-desc").accordion({
 		active: 0
 	});
 	document.getElementById("edit-story-notes-container").scrollTop = 0;
 	document.getElementById("edit-reporter").innerHTML = thisStory.ReporterName;
+	document.getElementById("edit-datesubmitted").innerHTML = thisStory.DateSubmitted;
 
 	var selectAssignedUser = document.getElementById("edit-assignedto");
 	selectAssignedUser.options.length = 0;

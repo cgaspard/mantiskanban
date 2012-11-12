@@ -24,7 +24,7 @@ html, body{
 }
 .loadingdiv{
     position: relative;
-    padding-right: 30px;
+    padding-right: 60px;
     padding-top: 10px;
     color: #FFFFFF;
     font-size: 15px;
@@ -428,6 +428,7 @@ html, body{
     background-color: #004080;
     margin-right: 10px;
     border-radius: 5px 5px 5px 5px;
+    border: solid 1px #000000;
 }
 .kanbanstoryseverity[priority="immediate"]{
     background-color: red;
@@ -450,8 +451,7 @@ html, body{
     width: 20px;
     height: 20px;
     cursor: pointer;
-    /* float: right;
-    */
+    padding-left: 7px;
 }
 [draggable]{
     -moz-user-select: none;
