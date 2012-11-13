@@ -314,11 +314,11 @@ html, body{
 }
 
 .kanbanlistspacer {
-	display: table-cell;
+	display: table-cell;;
 	width: 10px;
 }
 
-.kanbanstorycontainer { }
+.kanbanstorycontainer { overflow:hidden; border: solid 1px #000000; }
 
 .kanbandropper{
 	display:none;
@@ -367,10 +367,9 @@ html, body{
 	/* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
 	/* IE6-9 */
-	border: solid 1px #000000;
 	display: table;
-  table-layout: fixed;
-  width: 100%;
+    table-layout: fixed;
+    width: 100%;
 	/* border-radius: 2px 2px 2px 2px; */
 	padding: 5 5 5 5;
 	cursor: move;
@@ -434,7 +433,7 @@ html, body{
 }
 .storyinfobutton{
 	display: table-cell;
-	width: 25px;
+	width: 30px;
 	cursor: pointer;
 	vertical-align: middle;
 }
