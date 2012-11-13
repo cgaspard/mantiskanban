@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Edi",
+				"EditStory"
+			],
+			[
 				"get",
 				"getAttribute"
 			],
@@ -143,80 +147,72 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "js/kanban.js",
-			"settings":
-			{
-				"buffer_size": 13582,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 4119,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "mantiskanban.css",
-			"settings":
-			{
-				"buffer_size": 2565,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "kanban.css",
-			"settings":
-			{
-				"buffer_size": 8329,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/mantis.js",
-			"settings":
-			{
-				"buffer_size": 12633,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/mantiskanban.js",
-			"settings":
-			{
-				"buffer_size": 4256,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/soapclient.js",
-			"settings":
-			{
-				"buffer_size": 13764,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/User/ViewInSafari.sublime-build",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 187.0,
 		"selected_items":
 		[
 			[
-				"color",
-				"Color Picker: Insert Color"
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
 			],
 			[
 				"install",
 				"Package Control: Install Package"
 			],
 			[
+				"codeintel",
+				"SublimeCodeIntel: Reset"
+			],
+			[
+				"autocom",
+				"SublimeCodeIntel: Enable Live Autocompletion"
+			],
+			[
+				"codein",
+				"SublimeCodeIntel: Disable Live Autocompletion"
+			],
+			[
+				"color",
+				"Color Picker: Insert Color"
+			],
+			[
+				"git diff",
+				"Git: Diff Current File"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade Package"
+			],
+			[
 				"",
-				"Build: Build"
+				"Bracket Highlighter: Fold by Brackets"
+			],
+			[
+				"git",
+				"Git: Custom Command"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"format",
+				"Format: Javascript"
+			],
+			[
+				"tidy",
+				"Tidy HTML"
 			],
 			[
 				"form",
@@ -229,10 +225,6 @@
 			[
 				"pack",
 				"Package Control: Discover Packages"
-			],
-			[
-				"tidy",
-				"Tidy HTML"
 			],
 			[
 				"packages",
@@ -276,13 +268,19 @@
 	},
 	"file_history":
 	[
-		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/mantiskanban.css",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/kanban.css",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantiskanban.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/global.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/kanban.css",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/date.js",
+		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/forms.css",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/mantiskanban.css",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantiskanban.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/soapclient.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/ViewInSafari.sublime-build",
 		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/User/ViewInSafari.sublime-build",
 		"/Volumes/C/Projects/MyGait/MyGaitFramework/trunk/MyGaitFramework/Mygait.csproj",
@@ -341,6 +339,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"91px",
+			"90px",
+			"kanbanstory",
+			"kanbanListItem",
+			"storyID",
+			"editStory",
+			"Mantis",
+			"undefined",
+			"editstory(",
+			"EditStory",
 			"editstoryform",
 			"270",
 			"HandleDragLeave",
@@ -416,209 +424,14 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "js/kanban.js",
-					"settings":
-					{
-						"buffer_size": 13582,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7408,
-								7408
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2074.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "index.html",
-					"settings":
-					{
-						"buffer_size": 4119,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								935,
-								935
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 241.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "mantiskanban.css",
-					"settings":
-					{
-						"buffer_size": 2565,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								622,
-								622
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "kanban.css",
-					"settings":
-					{
-						"buffer_size": 8329,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7067,
-								7078
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3633.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "js/mantis.js",
-					"settings":
-					{
-						"buffer_size": 12633,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								46,
-								46
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "js/mantiskanban.js",
-					"settings":
-					{
-						"buffer_size": 4256,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								171,
-								171
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/soapclient.js",
-					"settings":
-					{
-						"buffer_size": 13764,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9149,
-								9149
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 4002.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -651,6 +464,10 @@
 	{
 		"height": 84.0
 	},
+	"output.git":
+	{
+		"height": 112.0
+	},
 	"replace":
 	{
 		"height": 64.0
@@ -661,6 +478,30 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"css",
+				"kanban.css"
+			],
+			[
+				"ka",
+				"kanban.css"
+			],
+			[
+				"kanbanclass",
+				"js/kanbanclasses.js"
+			],
+			[
+				"kanba",
+				"js/kanban.js"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				".css",
+				"kanban.css"
+			],
 			[
 				"mantis.js",
 				"js/mantis.js"
@@ -676,14 +517,6 @@
 			[
 				"kanban.js",
 				"js/kanban.js"
-			],
-			[
-				"inde",
-				"index.html"
-			],
-			[
-				"css",
-				"kanban.css"
 			],
 			[
 				"kan",

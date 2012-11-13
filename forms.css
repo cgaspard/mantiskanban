@@ -29,7 +29,7 @@
 		padding-left: 5px;
 }
 
-.editform label[for="newnotetext"] {
+.editform label[for="edit-newnotetext"] {
 	dislay: inline;
 }
 

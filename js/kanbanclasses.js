@@ -33,8 +33,7 @@ var KanbanList = function(RawObject) {
 		this._stories = [];
 		this.Element = null;
 		this.UsesCustomField = false;
-	}
-	
+	}	
 KanbanList.prototype = {
 
 	get Stories() {
@@ -84,7 +83,6 @@ KanbanList.prototype = {
 
 }
 
-
 var KanbanStory = function(RawObject) {
 		this._list = null;
 		this.StorySource = RawObject;
@@ -95,7 +93,6 @@ var KanbanStory = function(RawObject) {
 			Kanban.AddStoryToArray(this);
 		}
 }
-
 KanbanStory.prototype = {
 
 	get List() {
@@ -263,6 +260,7 @@ KanbanStory.prototype = {
 
 		storyDiv.setAttribute("id", "storydiv" + this.ID);
 		storyDiv.setAttribute("listid", "listid" + this.ListID);
+		storyDiv.setAttribute("class", "kanbanstorycontainer");
 		storyDiv.setAttribute("storyid", "storydiv" + this.ID);
 		storyDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyDiv.setAttribute("draggable", "true");
@@ -301,8 +299,18 @@ KanbanStory.prototype = {
 		}, false);
 		storyDiv.appendChild(storyContainerDiv);
 
+		var storyDivSeverityContainer = document.createElement("div");
+		storyDivSeverityContainer.setAttribute("class", "kanbanstoryprioritycontainer");
+		storyDivSeverityContainer.setAttribute("listid", "listid" + this.ListID);
+		storyDivSeverityContainer.setAttribute("storyid", "storydiv" + this.ID);
+		storyDivSeverityContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
+		storyDivSeverityContainer.addEventListener('dragleave', function(event) {
+			event.stopPropagation();
+		}, false);
+		storyContainerDiv.appendChild(storyDivSeverityContainer);
+
 		var storyDivSeverity = document.createElement("div");
-		storyDivSeverity.setAttribute("class", "kanbanstoryseverity kanbanstorypriority");
+		storyDivSeverity.setAttribute("class", "kanbanstorypriority");
 		storyDivSeverity.setAttribute("id", "storyseverity" + this.ID);
 		storyDivSeverity.setAttribute("priority", this.PriorityName);
 		storyDivSeverity.setAttribute("listid", "listid" + this.ListID);
@@ -311,9 +319,9 @@ KanbanStory.prototype = {
 		storyDivSeverity.addEventListener('dragleave', function(event) {
 			event.stopPropagation();
 		}, false);
-		storyContainerDiv.appendChild(storyDivSeverity);
+		storyDivSeverityContainer.appendChild(storyDivSeverity);
 
-		var storyDivTitle = document.createElement("div");
+		var storyDivTitle = document.createElement("span");
 		storyDivTitle.innerHTML = this.Summary;
 		storyDivTitle.setAttribute("class", "kanbanstorytitle");
 		storyDivTitle.setAttribute("id", "storytitle" + this.ID);
@@ -326,10 +334,20 @@ KanbanStory.prototype = {
 		}, false);
 		storyContainerDiv.appendChild(storyDivTitle);
 
+		var storyDivButtonContainer = document.createElement("div");
+		storyDivButtonContainer.setAttribute("class", "storyinfobutton");
+		storyDivButtonContainer.setAttribute("onclick", "EditStory('" + this.ID + "');");
+		storyDivButtonContainer.setAttribute("listid", "listid" + this.ListID);
+		storyDivButtonContainer.setAttribute("storyid", "storydiv" + this.ID);
+		storyDivButtonContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
+		storyDivButtonContainer.addEventListener('dragleave', function(event) {			
+			event.stopPropagation();
+		}, false);
+		storyContainerDiv.appendChild(storyDivButtonContainer);
+
 		var storyDivButton = document.createElement("img");
 		storyDivButton.setAttribute("src", "images/info.png");
 		storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
-		storyDivButton.setAttribute("class", "storyinfobutton");
 		storyDivButton.setAttribute("onclick", "EditStory('" + this.ID + "');");
 		storyDivButton.setAttribute("listid", "listid" + this.ListID);
 		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
@@ -338,7 +356,7 @@ KanbanStory.prototype = {
 		storyDivButton.addEventListener('dragleave', function(event) {
 			event.stopPropagation();
 		}, false);
-		storyContainerDiv.appendChild(storyDivButton);
+		storyDivButtonContainer.appendChild(storyDivButton);
 
 		return storyDiv;
 	}
