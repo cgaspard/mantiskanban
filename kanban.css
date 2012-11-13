@@ -371,7 +371,7 @@ html, body{
     table-layout: fixed;
     width: 100%;
 	/* border-radius: 2px 2px 2px 2px; */
-	padding: 5 5 5 5;
+	padding: 5 0 5 0;
 	cursor: move;
 	text-shadow:
 		0px -1px 0px rgba(000,000,000,0.4),
@@ -404,6 +404,7 @@ html, body{
 	display: table-cell;
 	vertical-align: middle;
 	width: 25px;
+	padding-left: 5px;
 }
 
 .kanbanstorypriority{
@@ -412,7 +413,7 @@ html, body{
 	background-color: #004080;
 	border-radius: 5px 5px 5px 5px;
 	border: solid 1px #000000;
-	
+
 	vertical-align: middle;
 }
 .kanbanstorypriority[priority="immediate"]{
@@ -433,14 +434,17 @@ html, body{
 }
 .storyinfobutton{
 	display: table-cell;
-	width: 30px;
+	width: 27px;
 	cursor: pointer;
 	vertical-align: middle;
+
 }
 .storyinfobutton img {
 	width: 20px;
 	height: 20px;	
 	vertical-align: middle;
+	float: right;
+	padding-right: 5px;
 }
 .kanbandropper.over{
 	display: block;
