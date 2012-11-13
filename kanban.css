@@ -262,7 +262,6 @@ html, body{
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	border: solid 10px transparent;
 }
 
 .kanbanlistdroparea{
@@ -312,6 +311,11 @@ html, body{
 	text-shadow:
 		0px -1px 0px rgba(000,000,000,0.4),
 		0px 1px 0px rgba(255,255,255,0.3);
+}
+
+.kanbanlistspacer {
+	display: table-cell;
+	width: 10px;
 }
 
 .kanbanstorycontainer { }

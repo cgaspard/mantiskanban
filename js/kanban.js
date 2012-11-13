@@ -138,6 +138,11 @@ var Kanban = {
 
 			///Add it all to the container div
 			Kanban.Container.appendChild(listDiv);
+
+			var spacingDiv = document.createElement("div");
+			spacingDiv.setAttribute("class", "kanbanlistspacer");
+			Kanban.Container.appendChild(spacingDiv);
+
 			Kanban.Container.addEventListener('dragenter', HandleDragEnter, false);
 		}
 	}
