@@ -390,7 +390,7 @@ function AddNotesToStoryEditForm(KanbanStory) {
 		}
 	} catch(e) {}
 
-	noteSaveButton.setAttribute("onclick", "SaveNewNote(" + KanbanStory.ID + ", document.getElementById('newnotetext').value);")
+	noteSaveButton.setAttribute("onclick", "SaveNewNote(" + KanbanStory.ID + ", document.getElementById('edit-newnotetext').value);")
 
 	if(KanbanStory.Notes === undefined) return;
 
@@ -530,7 +530,7 @@ function EditStory(storyID) {
 	$("#edit-description").val(thisStory.Description);
 	$("#edit-reproduce").val(thisStory.Reproduce);
 
-	$("#newnotetext").val("");
+	$("#edit-newnotetext").val("");
 	$("#accordion-desc").accordion({
 		active: 0
 	});
