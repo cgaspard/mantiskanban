@@ -361,7 +361,7 @@ KanbanStory.prototype = {
 		var storyDivButton = document.createElement("img");
 		storyDivButton.setAttribute("src", "images/info.png");
 		storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
-		storyDivButton.setAttribute("onclick", "OpenUserSelector('" this.ID "'');");
+		storyDivButton.setAttribute("onclick", "OpenUserSelector('" this.ID "');");
 		storyDivButton.setAttribute("listid", "listid" + this.ListID);
 		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
