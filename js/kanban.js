@@ -100,6 +100,22 @@ var Kanban = {
 		}
 	},
 
+	AddGlowToRelatedStories : function(id) {
+		var foundStory = Kanban.GetStoryByFieldValue("ID", id);
+		for(var rel = 0; rel < foundStory.RelatedStories.length; rel++) {
+			var foundRelation = Kanban.GetStoryByFieldValue("ID", foundStory.RelatedStories[rel]);
+			foundRelation.Element.children[1].classList.add("glow");
+		}
+	},
+
+	RemoveGlowToRelatedStories : function(id) {
+		var foundStory = Kanban.GetStoryByFieldValue("ID", id);
+		for(var rel = 0; rel < foundStory.RelatedStories.length; rel++) {
+			var foundRelation = Kanban.GetStoryByFieldValue("ID", foundStory.RelatedStories[rel]);
+			foundRelation.Element.children[1].classList.remove("glow");
+		}
+	},
+
 	BuildListGUI: function() {
 		for(var li = 0; li < Kanban.Lists.length; li++) {
 			var kanbanListItem = Kanban.Lists[li];
@@ -349,7 +365,7 @@ function SaveNewNote(storyID, noteText) {
 		Mantis.IssueNoteAdd(editStory.ID, newNote);
 		editStory = Kanban.UpdateUnderlyingStorySource(editStory);
 		AddNotesToStoryEditForm(editStory);
-		document.getElementById("newnotetext").value = "";
+		document.getElementById("edit-newnotetext").value = "";
 	} catch(e) {
 		console.log(e);
 		alert("Error Saving Note: " + e.message);
@@ -467,6 +483,33 @@ function OpenAddStory() {
 	selectAddCategories.selectedIndex = 0;
 
 	$('#story-form').dialog('open');
+
+}
+
+
+function OpenUserSelector(storyID) {
+
+	var forStory = Kanban.GetStoryByFieldValue("ID", storyID);
+
+	var userRadioDiv = document.getElementById("user-radio");
+	while(userRadioDiv.children.length > 0) { userRadioDiv.removeChild(0); }
+
+	for(var ui = 0; ui < Mantis.ProjectUsers.length; ui++) {
+		var thisMantisUser = Mantis.ProjectUsers[ui];
+		var userRadioInput = document.createElement("input");
+		userRadioInput.setAttribute("type", "radio");
+		userRadioInput.setAttribute("id", "radiooption" + thisMantisUser.id);
+		userRadioInput.setAttribute("name", "user-radio-option");
+		userRadioDiv.appendChild(userRadioInput);
+
+		var userRadioInputLabel = document.createElement("label");
+		userRadioInputLabel.setAttribute("for", "radiooption" + thisMantisUser.id);
+		userRadioInputLabel.innerHTML = thisMantisUser.real_name;
+		userRadioDiv.appendChild(userRadioInputLabel);	
+	}
+
+	$("#user-radio").buttonset();
+	$('#user-selector').dialog('open');
 
 }
 

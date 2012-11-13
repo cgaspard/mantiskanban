@@ -120,8 +120,19 @@ KanbanStory.prototype = {
 
 	get StatusID() {
 		return this.StorySource.status.id;
-	}, set StatusID(value) {
+	},
+	set StatusID(value) {
 		this.StorySource.status.id = value
+	},
+
+	get RelatedStories() {
+		var rels = new Array();
+		if(this.StorySource.relationships === undefined) return rels;
+		for(var ra = 0; ra < this.StorySource.relationships.length; ra++) {
+			var thisRel = this.StorySource.relationships[ra];
+			rels[rels.length] = thisRel.target_id;
+		}
+		return rels;
 	},
 
 	get StatusName() {
@@ -291,6 +302,8 @@ KanbanStory.prototype = {
 		storyContainerDiv.setAttribute("storyid", "storydiv" + this.ID);
 		storyContainerDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyContainerDiv.setAttribute("title", this.Summary.htmlencode());
+		storyContainerDiv.setAttribute("onmouseover", "Kanban.AddGlowToRelatedStories('" + this.ID + "');")
+		storyContainerDiv.setAttribute("onmouseout", "Kanban.RemoveGlowToRelatedStories('" + this.ID + "');")
 		if(this.HandlerName == Mantis.CurrentUser.UserName) {
 			storyContainerDiv.classList.add("mystory");
 		}
@@ -348,7 +361,7 @@ KanbanStory.prototype = {
 		var storyDivButton = document.createElement("img");
 		storyDivButton.setAttribute("src", "images/info.png");
 		storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
-		storyDivButton.setAttribute("onclick", "EditStory('" + this.ID + "');");
+		storyDivButton.setAttribute("onclick", "OpenUserSelector('" this.ID "'');");
 		storyDivButton.setAttribute("listid", "listid" + this.ListID);
 		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
