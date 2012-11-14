@@ -598,15 +598,17 @@ function OpenUserSelector(e, storyID) {
 	console.log("UserContextWidth: " + userContextMenu.clientWidth);
 	console.log("WindowHeight: " + winH);
 	console.log("WindowWidth: " + winW);
-	if(_y + userContextMenu.clientHeight > winH) {
+	console.log("X,Y", _x + ", " + _y)
+	if(_y + userContextMenu.clientHeight + 40 > winH) {
 		_y = winH - userContextMenu.clientHeight - 40;
 	}
-	if(_x + userContextMenu.clientWidth > winW) {
+	if(_x + 20 + userContextMenu.clientWidth + 40 >  winW) {
 		_x = winW - userContextMenu.clientWidth - 40;
 	}
 	console.log("Calculated Top: " + _y);
 	console.log("Calculated Left: " + _x);
-
+	console.log("X,Y", _x + ", " + _y)
+	
 	userContextMenu.style.top = _y - 20 + "px";
 	userContextMenu.style.left = _x - 20 + "px";
 	
