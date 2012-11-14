@@ -134,11 +134,13 @@
                     
                 </div>
                 <div id="tab-4">
-                    
+
                 </div>
             </div>
         </div>
-        <ul class="user-context-menu" name="user-context-menu" id="user-context-menu" onmouseout="HideUserSelector();"></ul>
+        <ul class="user-context-menu" name="user-context-menu" id="user-context-menu" onmouseout="HideUserSelector();">
+            <li id="user-context-title" style="border-bottom: solid 2px #000000;" onmouseout="event.stopPropagation();">Assign Handler:</li>
+        </ul>
         <input type="hidden" style="display:none;" id="seletedproject" name="selectedproject" />
     </body>
 </html>

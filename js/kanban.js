@@ -559,8 +559,19 @@ function OpenUserSelector(e, storyID) {
 		_y = event.clientY + document.body.scrollTop;
 	}
 
-	userContextMenu.style.top = _y - 10 + "px";
-	userContextMenu.style.left = _x - 10 + "px";
+	var selectorStory = Kanban.GetStoryByFieldValue("ID", storyID);
+
+	for(var ci = 0; ci < userContextMenu.children.length; ci++) {
+		try {
+			userContextMenu.children[ci].setAttribute("selected", "false");
+			if(userContextMenu.children[ci].getAttribute("userid") == selectorStory.HandlerID) {
+				userContextMenu.children[ci].setAttribute("selected", "true");
+			}
+		} catch(e) {}
+	}
+
+	userContextMenu.style.top = _y - 20 + "px";
+	userContextMenu.style.left = _x - 20 + "px";
 	
 	$("#user-context-menu").menu({
 		"select" : function(e, o) {

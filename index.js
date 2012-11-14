@@ -2,6 +2,8 @@
 window.onload = function() {
 
 	document.getElementById("password").focus();
+
+	$("#user-context-menu").hide();
 	
 	$(function() {
 		$( "#tabs" ).tabs({ heightStyle: "content" });
@@ -75,11 +77,11 @@ function Login() {
 
 function BuildUserSelector() {
 
-	$("#user-context-menu").hide();
+	
 
 	var userContextMenu = document.getElementById("user-context-menu");
 
-	while(userContextMenu.children.length > 0) { userContextMenu.removeChild(0); }
+	while(userContextMenu.children.length > 1) { userContextMenu.removeChild(1); }
 
 	for(var ui = 0; ui < Mantis.ProjectUsers.length; ui++) {
 		var thisMantisUser = Mantis.ProjectUsers[ui];

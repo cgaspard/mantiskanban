@@ -447,24 +447,34 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	display: table-cell;
 	overflow: hidden;
 	white-space: nowrap;
-	cursor: pointer;
+	cursor: pointer !important;
 	vertical-align: middle;
 	text-overflow:ellipsis;
 	-o-text-overflow: ellipsis;
 	-ms-text-overflow: ellipsis;
-}
-.storyinfobutton{
-	display: table-cell;
-	width: 27px;
-	cursor: pointer;
-	vertical-align: middle;
-	position: relative;
 }
 .user-context-menu {
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	z-index: 500;
+	cursor: pointer;
+	vertical-align: middle;
+	border: solid 15px transparent;
+	-webkit-box-shadow: 0px 0px 16px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 0px 16px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 16px rgba(50, 50, 50, 0.75);
+}
+li[selected="true"] {
+	font-weight:bold;
+	border:solid 1px #000000;
+	border-radius: 4 4 4 4;
+	background-color: #ABABAB;
+	color: #FFFFFF;
+}
+#user-context-title {
+	font-weight: bolder;
+	border-bottom: solid 2px #000000;	
 }
 .storyinfobutton img {
 	width: 20px;
