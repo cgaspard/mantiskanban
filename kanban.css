@@ -453,6 +453,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	-o-text-overflow: ellipsis;
 	-ms-text-overflow: ellipsis;
 }
+.storyinfobutton{
+	display: table-cell;
+	width: 27px;
+	cursor: pointer;
+	vertical-align: middle;
+	position: relative;
+}
+
+.storyinfobutton img {
+	width: 20px;
+	height: 20px;	
+	vertical-align: middle;
+	float: right;
+	padding-right: 5px;
+}
 .user-context-menu {
 	position: absolute;
 	top: 0px;
@@ -475,13 +490,6 @@ li[selected="true"] {
 #user-context-title {
 	font-weight: bolder;
 	border-bottom: solid 2px #000000;	
-}
-.storyinfobutton img {
-	width: 20px;
-	height: 20px;	
-	vertical-align: middle;
-	float: right;
-	padding-right: 5px;
 }
 .kanbandropper.over{
 	display: block;
