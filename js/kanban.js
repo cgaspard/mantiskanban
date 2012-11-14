@@ -544,7 +544,7 @@ function HideUserSelector() {
 
 function OpenUserSelector(e, storyID) {
 	if(Kanban.BlockUpdates) return;
-	event.stopPropagation();
+	e.stopPropagation();
 
 	var userContextMenu = document.getElementById("user-context-menu");
 	var isIE = document.all ? true : false;
