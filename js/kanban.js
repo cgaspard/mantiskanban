@@ -559,6 +559,22 @@ function OpenUserSelector(e, storyID) {
 		_y = event.clientY + document.body.scrollTop;
 	}
 
+	var winW = 630, winH = 460;
+	if (document.body && document.body.offsetWidth) {
+	 winW = document.body.offsetWidth;
+	 winH = document.body.offsetHeight;
+	}
+	if (document.compatMode=='CSS1Compat' &&
+	    document.documentElement &&
+	    document.documentElement.offsetWidth ) {
+	 winW = document.documentElement.offsetWidth;
+	 winH = document.documentElement.offsetHeight;
+	}
+	if (window.innerWidth && window.innerHeight) {
+	 winW = window.innerWidth;
+	 winH = window.innerHeight;
+	}
+
 	var selectorStory = Kanban.GetStoryByFieldValue("ID", storyID);
 
 	for(var ci = 0; ci < userContextMenu.children.length; ci++) {
@@ -570,16 +586,31 @@ function OpenUserSelector(e, storyID) {
 		} catch(e) {}
 	}
 
-	userContextMenu.style.top = _y - 20 + "px";
-	userContextMenu.style.left = _x - 20 + "px";
-	
 	$("#user-context-menu").menu({
 		"select" : function(e, o) {
 			UpdateStoryHandler(storyID, o.item.context.getAttribute("userid"));
 		} 
 	});
+
 	$("#user-context-menu").show();
 
+	console.log("UserContextHeight: " + userContextMenu.clientHeight);
+	console.log("UserContextWidth: " + userContextMenu.clientWidth);
+	console.log("WindowHeight: " + winH);
+	console.log("WindowWidth: " + winW);
+	if(_y + userContextMenu.clientHeight > winH) {
+		_y = winH - userContextMenu.clientHeight - 40;
+	}
+	if(_x + userContextMenu.clientWidth > winW) {
+		_x = winW - userContextMenu.clientWidth - 40;
+	}
+	console.log("Calculated Top: " + _y);
+	console.log("Calculated Left: " + _x);
+
+	userContextMenu.style.top = _y - 20 + "px";
+	userContextMenu.style.left = _x - 20 + "px";
+	
+	
 }
 
 /**

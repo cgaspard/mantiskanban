@@ -494,31 +494,6 @@ li[selected="true"] {
 .kanbandropper.over{
 	display: block;
 }
-.kanbanstory[listid="10"]{
-	background-color: yellow;
-}
-.kanbanstory[listid="20"]{
-	background-color: orange;
-}
-.kanbanstory[listid="30"]{
-	background-color: green;
-}
-.kanbanstory[listid="40"]{
-	background-color: purple;
-}
-.kanbanstory[listid="50"]{
-	background-color: black;
-}
-.kanbanstory[listid="60"]{
-	background-color: white;
-}
-.kanbanstory[listid="70"]{
-	background-color: lightblue;
-}
-.kanbanstory[listid="80"]{
-	background-color: navyblue;
-}
-
 [draggable]{
 	-moz-user-select: none;
 	-khtml-user-select: none;
