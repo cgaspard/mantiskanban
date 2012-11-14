@@ -295,7 +295,7 @@ function UpdateStoryFromFormData() {
 		thisStory.PriorityID = document.getElementById("edit-priority").value;
 		thisStory.StatusID = document.getElementById("edit-status").value;
 		thisStory.Reproduce = document.getElementById("edit-reproduce").value;
-		Mantis.IssueUpdate(thisStory.ID, thisStory.StorySource, UpdateKanbanStoryComplete)
+		Mantis.IssueUpdate(thisStory.ID, thisStory.StorySource, UpdateKanbanStoryComplete);
 
 		$("#edit-story-form").dialog("close");
 	} catch(e) {
@@ -486,30 +486,88 @@ function OpenAddStory() {
 
 }
 
+function UpdateStoryHandler(storyID, handlerID) {
 
-function OpenUserSelector(storyID) {
+	Kanban.BlockUpdates = true;
+	StartLoading();
 
-	var forStory = Kanban.GetStoryByFieldValue("ID", storyID);
+	try {
 
-	var userRadioDiv = document.getElementById("user-radio");
-	while(userRadioDiv.children.length > 0) { userRadioDiv.removeChild(0); }
+		var kanbanStory = Kanban.GetStoryByFieldValue("ID", storyID);
 
-	for(var ui = 0; ui < Mantis.ProjectUsers.length; ui++) {
-		var thisMantisUser = Mantis.ProjectUsers[ui];
-		var userRadioInput = document.createElement("input");
-		userRadioInput.setAttribute("type", "radio");
-		userRadioInput.setAttribute("id", "radiooption" + thisMantisUser.id);
-		userRadioInput.setAttribute("name", "user-radio-option");
-		userRadioDiv.appendChild(userRadioInput);
+		kanbanStory.HandlerID = handlerID;
+		Kanban.LastUpdateStoryID = kanbanStory.ID;
+		Mantis.IssueUpdate(kanbanStory.ID, kanbanStory.StorySource, UpdateStoryHandlerComplete)
+		$("#user-context-menu").hide();
 
-		var userRadioInputLabel = document.createElement("label");
-		userRadioInputLabel.setAttribute("for", "radiooption" + thisMantisUser.id);
-		userRadioInputLabel.innerHTML = thisMantisUser.real_name;
-		userRadioDiv.appendChild(userRadioInputLabel);	
+	} catch(e) {
+		alert(e);
+		Kanban.BlockUpdates = false;
+		StopLoading();
+	} finally {
 	}
 
-	$("#user-radio").buttonset();
-	$('#user-selector').dialog('open');
+}
+
+function UpdateStoryHandlerComplete(result) {
+	console.log("UpdateKanbanStoryComplete " + result);
+	Kanban.BlockUpdates = false;
+	StopLoading();
+	if(result != "true") {
+		alert("Error Updating: " + result);
+	} else {
+		try {
+			var foundStory = Kanban.GetStoryByFieldValue("ID", Kanban.LastUpdateStoryID);
+			if(foundStory !== null) {
+				///If its null, then we werent' editing the story, just dropping between the lists
+				Kanban.UpdateUnderlyingStorySource(foundStory);
+				//var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
+				foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
+				if(foundStory.HandlerName == Mantis.CurrentUser.UserName) {
+					document.getElementById("storycontainer" + foundStory.ID).classList.add("mystory");
+				} else {
+					document.getElementById("storycontainer" + foundStory.ID).classList.remove("mystory");
+				}
+			}
+		} catch(e) {
+			console.log(e);
+		}
+
+		Kanban.UndoInfo.ListDiv = null;
+		Kanban.UndoInfo.StoryDiv = null;
+	}
+}
+
+function HideUserSelector() {
+	$("#user-context-menu").hide();
+}
+
+function OpenUserSelector(e, storyID) {
+	if(Kanban.BlockUpdates) return;
+	event.stopPropagation();
+
+	var userContextMenu = document.getElementById("user-context-menu");
+	var isIE = document.all ? true : false;
+	var _x;
+	var _y;
+	if (!isIE) {
+		_x = e.pageX;
+		_y = e.pageY;
+	}
+	if (isIE) {
+		_x = event.clientX + document.body.scrollLeft;
+		_y = event.clientY + document.body.scrollTop;
+	}
+
+	userContextMenu.style.top = _y - 10 + "px";
+	userContextMenu.style.left = _x - 10 + "px";
+	
+	$("#user-context-menu").menu({
+		"select" : function(e, o) {
+			UpdateStoryHandler(storyID, o.item.context.getAttribute("userid"));
+		} 
+	});
+	$("#user-context-menu").show();
 
 }
 

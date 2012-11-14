@@ -71,6 +71,7 @@ function Login() {
 	Mantis.CurrentUser.Password = document.getElementById("password").value;
 	
 	BuildProjectsGUI();
+	BuildUserSelector();
 	
 	HideLoginArea();
 	ShowProjectArea();
@@ -78,6 +79,29 @@ function Login() {
 	SelectProject();
 
 	StopLoading();
+}
+
+function BuildUserSelector() {
+
+	$("#user-context-menu").hide();
+
+	var userContextMenu = document.getElementById("user-context-menu");
+
+	while(userContextMenu.children.length > 0) { userContextMenu.removeChild(0); }
+
+	for(var ui = 0; ui < Mantis.ProjectUsers.length; ui++) {
+		var thisMantisUser = Mantis.ProjectUsers[ui];
+		var storyDivMenuItem = document.createElement("li");
+		storyDivMenuItem.setAttribute("userid", thisMantisUser.id);
+		storyDivMenuItem.setAttribute("onmouseout", "event.stopPropagation();");
+		userContextMenu.appendChild(storyDivMenuItem);
+
+		var storyDivMenuItemLink = document.createElement("a");
+		storyDivMenuItemLink.setAttribute("href", "#");
+		storyDivMenuItemLink.setAttribute("userid", thisMantisUser.id);
+		storyDivMenuItemLink.innerHTML = thisMantisUser.real_name;
+		storyDivMenuItem.appendChild(storyDivMenuItemLink);
+	}	
 }
 
 function HideLoginArea() {

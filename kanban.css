@@ -458,7 +458,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	width: 27px;
 	cursor: pointer;
 	vertical-align: middle;
-
+	position: relative;
+}
+.user-context-menu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 500;
 }
 .storyinfobutton img {
 	width: 20px;
