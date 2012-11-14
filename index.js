@@ -14,14 +14,6 @@ window.onload = function() {
 	$(function() {
 		$("#accordion-desc").accordion();	
 	});
-
-	$( "#user-selector" ).dialog({
-		autoOpen: false,
-		height: 550,
-		width: 640,
-		modal: true,
-	});
-
 	
 	$( "#story-form" ).dialog({
 		autoOpen: false,
