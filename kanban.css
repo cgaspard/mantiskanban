@@ -525,3 +525,6 @@ li[selected="true"] {
 	-webkit-user-select: none;
 	user-select: none;
 }
+label {
+	display: inline-block;
+}
