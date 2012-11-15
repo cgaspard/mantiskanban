@@ -1,22 +1,25 @@
-
-
 var KanbanProject = function(RawObject) {
-		if(typeof(RawObject == "string")) {
-			this.ProjectSource = {
-				"name": RawObject,
-				"id": RawObject
-			};
-		} else {
-			this.ProjectSource = RawObject;
-		}
-		this._lists = [];
+	var self = this;
+	if(typeof(RawObject) == "string") {
+		self.ProjectSource = {
+			"name": RawObject,
+			"id": RawObject
+		};
+	} else {
+		self.ProjectSource = RawObject;
 	}
+	self._lists = [];
+}
 KanbanProject.prototype = {
 	get Lists() {
 		return this._lists;
-	}, get Name() {
+	},
+
+	get Name() {
 		return this.ProjectSource.name;
-	}, get ID() {
+	},
+
+	get ID() {
 		return this.ProjectSource.id;
 	}
 }

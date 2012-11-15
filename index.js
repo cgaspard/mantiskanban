@@ -68,6 +68,7 @@ function Login() {
 	Mantis.CurrentUser.UserName = document.getElementById("username").value;
 	Mantis.CurrentUser.Password = document.getElementById("password").value;
 	
+	LoadKanbanProjects();
 	BuildProjectsGUI();
 	BuildUserSelector();
 	
@@ -196,19 +197,25 @@ function SwapSelectedProject(newProjectID) {
 	}
 }
 
+function LoadKanbanProjects() {
+	for(var i = 0; i < Mantis.UserProjects.length; i++) {
+			Kanban.Projects[i] = new KanbanProject(Mantis.UserProjects[i]);
+	}
+}
+
 function BuildProjectsGUI() {
 	var projectDivContainer = document.getElementById("projectlist");
 	try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
-	for(var i = 0; i < Mantis.UserProjects.length; i++) {
+	for(var i = 0; i < Kanban.Projects.length; i++) {
 		var projectDiv = document.createElement("div");
 		projectDiv.setAttribute("class", "projectbutton");
-		projectDiv.setAttribute("id", "project" + Mantis.UserProjects[i].id );
-		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Mantis.UserProjects[i].id + "'; SelectProject(); SwapSelectedProject(this.id);");
+		projectDiv.setAttribute("id", "project" + Kanban.Projects[i].ID);
+		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Kanban.Projects[i].ID + "'; SelectProject(); SwapSelectedProject(this.id);");
 		projectDiv.setAttribute("selected", i == 0 ? "true" : "false");
-		projectDiv.innerHTML = Mantis.UserProjects[i].name;
+		projectDiv.innerHTML = Kanban.Projects[i].Name;
 		projectDivContainer.appendChild(projectDiv);
 	}
-	document.getElementById("seletedproject").value = Mantis.UserProjects[0].id;
+	document.getElementById("seletedproject").value = Kanban.Projects[0].ID;
 }
 
 function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {

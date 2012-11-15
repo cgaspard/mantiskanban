@@ -132,7 +132,8 @@ var Mantis = {
 		PageNumber : "page_number",
 		PerPage : "per_page",
 		ProjectID : "project_id",
-		UserName : "username"
+		Tags : "tags",
+		UserName : "username",
 	},
 	
 	Methods : {
@@ -277,6 +278,18 @@ var Mantis = {
 			}
 			
 		},
+
+		IssueSetTags : {
+			Name : "mc_issue_set_tags",
+			BuildParams : function(issueid, tagsDataArray) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.IssueID, issueid);
+				pl.add(Mantis.Params.Tags, tagsDataArray);
+				return pl;
+			}
+		},
 		
 		IssueUpdate : {
 			Name : "mc_issue_update",
@@ -409,6 +422,11 @@ var Mantis = {
 	IssueNoteAdd : function(IssueID, Note, callBack) {
 		hascallback = callBack == null ? false : true;
 		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueNoteAdd.Name, Mantis.Methods.IssueNoteAdd.BuildParams(IssueID, Note), hascallback, callBack);
+	},
+
+	IssueSetTags : function(IssueID, IssueTagsArray) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueSetTags.Name, Mantis.Methods.IssueSetTags.BuildParams(IssueID, IssueTagsArray), hascallback, callBack);
 	},
 	
 	IssueUpdate : function(IssueID, Issue, callBack) {
