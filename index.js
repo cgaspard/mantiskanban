@@ -3,6 +3,10 @@ window.onload = function() {
 
 	document.getElementById("password").focus();
 
+	$("#edit-assignedto").chosen();
+	$("#edit-status").chosen();
+	$("#edit-priority").chosen();
+
 	$("#user-context-menu").hide();
 	
 	$(function() {

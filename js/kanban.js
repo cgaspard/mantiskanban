@@ -648,6 +648,7 @@ function EditStory(storyID) {
 	selectAddPriority.options.length = 0;
 
 	///Add a blank option
+	
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To No One ---", "");
 	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
 		var user = Mantis.ProjectUsers[i];
@@ -656,15 +657,19 @@ function EditStory(storyID) {
 			selectAssignedUser.selectedIndex = i + 1;
 		}
 	}
+	$("#edit-assignedto").trigger("liszt:updated");
 
 	for(var i = 0; i < Mantis.Statuses.length; i++) {
 		var status = Mantis.Statuses[i];
 		selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name.capitalize(), status.id);
 		if(thisStory.StatusID == status.id) {
+			
 			selectAddStatus.selectedIndex = i;
 		}
 	}
+	$("#edit-status").trigger("liszt:updated");
 
+	
 	for(var i = 0; i < Mantis.Priorities.length; i++) {
 		var priority = Mantis.Priorities[i];
 		selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name.capitalize(), priority.id);
@@ -672,6 +677,7 @@ function EditStory(storyID) {
 			selectAddPriority.selectedIndex = i;
 		}
 	}
+	$("#edit-priority").trigger("liszt:updated");
 
 	AddNotesToStoryEditForm(thisStory);
 
