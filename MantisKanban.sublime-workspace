@@ -4,6 +4,66 @@
 		"selected_items":
 		[
 			[
+				"user-con",
+				"user-context-menu"
+			],
+			[
+				"sel",
+				"selectorStory"
+			],
+			[
+				"Kanban",
+				"kanbanStory"
+			],
+			[
+				"storyDivMen",
+				"storyDivMenuItemLink"
+			],
+			[
+				"storydivmenu",
+				"storyDivMenuItemLink"
+			],
+			[
+				"set",
+				"setAttribute"
+			],
+			[
+				"storydivmenui",
+				"storyDivMenuItemLink"
+			],
+			[
+				"storyDivbutt",
+				"storyDivButtonContainer"
+			],
+			[
+				"Get",
+				"GetStoryByFieldValue  (function)"
+			],
+			[
+				"userrad",
+				"userRadioInputLabel"
+			],
+			[
+				"userRadio",
+				"userRadioInput"
+			],
+			[
+				"proj",
+				"ProjectUsers  (variable)"
+			],
+			[
+				"remove",
+				"removeChild"
+			],
+			[
+				"table",
+				"table-layout:   (property)"
+			],
+			[
+				"storyDI",
+				"storyDivButtonContainer"
+			],
+			[
 				"Edi",
 				"EditStory"
 			],
@@ -22,14 +82,6 @@
 			[
 				"listto",
 				"listToDropIn"
-			],
-			[
-				"remove",
-				"removeChild"
-			],
-			[
-				"Kanban",
-				"KanbanStory"
 			],
 			[
 				"Add",
@@ -92,10 +144,6 @@
 				"getElementById()  (namespace)"
 			],
 			[
-				"Get",
-				"ProjectsGetUserAccessible  (function)"
-			],
-			[
 				"cur",
 				"CurrentProjectID  (variable)"
 			],
@@ -151,7 +199,7 @@
 	"build_system": "Packages/User/ViewInSafari.sublime-build",
 	"command_palette":
 	{
-		"height": 187.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -268,16 +316,22 @@
 	},
 	"file_history":
 	[
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/global.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/forms.css",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/jquery.combobox.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/kanban.css",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
+		"/Volumes/EFI/EFI/refind/refind.conf",
+		"/EFI/refind/refind.conf",
+		"/EFI/refind/refind",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/jquery.contextMenu.min.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/jquery.ui.position.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/global.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/date.js",
 		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/forms.css",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/mantiskanban.css",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantiskanban.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/soapclient.js",
@@ -329,6 +383,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"all files",
 			"<open files>",
 			"",
 			"InsertCommand"
@@ -339,6 +394,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"listDiv",
+			"LoadKanbanProjects",
+			"BuildProjectsGUI",
+			"edit-description",
+			"normal",
+			"UpdateKanbanStoryComplete",
+			"updatestoryhandler",
+			"newnotetext",
+			"edit-newnotetext",
+			"newnotetext",
+			"kanbanstoryseverity",
+			"newnotetext",
 			"91px",
 			"90px",
 			"kanbanstory",
@@ -400,6 +467,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"edit-newnotetext",
 			"callBack == null ? false : true;",
 			"",
 			"/tmp/publishall.tmp",

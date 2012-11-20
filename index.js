@@ -82,11 +82,9 @@ function Login() {
 
 function BuildUserSelector() {
 
-	
-
 	var userContextMenu = document.getElementById("user-context-menu");
 
-	while(userContextMenu.children.length > 1) { userContextMenu.removeChild(1); }
+	try { while(userContextMenu.children.length > 1) { userContextMenu.removeChild(1); } } catch(e) { }
 
 	for(var ui = 0; ui < Mantis.ProjectUsers.length; ui++) {
 		var thisMantisUser = Mantis.ProjectUsers[ui];
@@ -165,12 +163,12 @@ function BuildKanbanListFromMantisStatuses() {
 			var customfield = Mantis.ProjectCustomFields[cf]
 			if(customfield.field.name == Kanban._listIDField) {
 				hasCutomFieldForStatus = true;
-								Kanban.UsingCustomField = true;
+				Kanban.UsingCustomField = true;
 				var possiblevalues = customfield.possible_values.split("|");
 				for(var pv = 0; pv < possiblevalues.length; pv++ ) {
 					possiblevalue = possiblevalues[pv];
-										var newKanbanList = new KanbanList(possiblevalue);
-										newKanbanList.UsesCustomField = true;
+					var newKanbanList = new KanbanList(possiblevalue);
+					newKanbanList.UsesCustomField = true;
 					Kanban.AddListToArray(newKanbanList);
 				}
 			}
@@ -199,7 +197,7 @@ function SwapSelectedProject(newProjectID) {
 
 function LoadKanbanProjects() {
 	for(var i = 0; i < Mantis.UserProjects.length; i++) {
-			Kanban.Projects[i] = new KanbanProject(Mantis.UserProjects[i]);
+		Kanban.Projects[i] = new KanbanProject(Mantis.UserProjects[i]);
 	}
 }
 
