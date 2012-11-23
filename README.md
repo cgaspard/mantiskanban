@@ -23,3 +23,10 @@ Mantis Configuration:
 
     You need to setup a filter for project issues.   If you don't, then Mantis will deliver all issues.   When you
     have closed many issues, you will notice the speed greatly decreases.
+
+  Screenshots:
+
+    <img src="screenshots/image1.png">
+    <img src="screenshots/image2.png">
+    <img src="screenshots/image3.png">
+    <img src="screenshots/image4.png">
