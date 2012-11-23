@@ -26,7 +26,7 @@ Mantis Configuration:
 
   Screenshots:
 
-    ![Alt text](screenshots/screen1.png "Optional title")
-    ![Alt text](screenshots/screen2.png "Optional title")
-    ![Alt text](screenshots/screen3.png "Optional title")
-    ![Alt text](screenshots/screen4.png "Optional title")
+    ![Alt text](/screenshots/screen1.png "Optional title")
+    ![Alt text](/screenshots/screen2.png "Optional title")
+    ![Alt text](/screenshots/screen3.png "Optional title")
+    ![Alt text](/screenshots/screen4.png "Optional title")
