@@ -26,7 +26,7 @@ Mantis Configuration:
 
   Screenshots:
 
-    ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/screenshots/screen1.png "Optional title")
-    ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/screenshots/screen2.png"Optional title")
-    ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/screenshots/screen3.png "Optional title")
-    ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/screenshots/screen4.png "Optional title")
+![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/screenshots/screen1.png "Optional title")
+![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/screenshots/screen2.png"Optional title")
+![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/screenshots/screen3.png "Optional title")
+![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/screenshots/screen4.png "Optional title")
