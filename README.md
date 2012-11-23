@@ -3,6 +3,8 @@ mantiskanban
 
 Mantis Kanban that uses ajax and mantisconnect
 
+![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/images/mantis_logo.png "Logo")
+
 JS Configuration:
 
   Modify mantisConnectURL variable in js/mantis.js -  This should point to the mantisconnect.php page on your server
