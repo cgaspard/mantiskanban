@@ -1,7 +1,7 @@
 
 window.onload = function() {
 
-	document.getElementById("password").focus();
+	document.getElementById("username").focus();
 
 	$("#edit-assignedto").chosen();
 	$("#edit-status").chosen();
