@@ -374,14 +374,14 @@ var Mantis = {
 				return issue;
 			},
 			
-			NewIssue : function(summary, description, projectid, handlerid, statusid, priorityid, category) {
+			NewIssue : function(summary, description, projectid, handlerid, reporterid, statusid, priorityid, category) {
 				var newIssue = {
 					"id" : "",
 					"summary" : summary,
 					"description" : description,
 					"status" : { "id" : statusid },
 					"project" : { "id" : projectid },
-					"reporter" : { "id" : Mantis.CurrentUser.MantisUser.id },
+					"reporter" : { "id" : reporterid },
 					"category" : category
 				};
 				

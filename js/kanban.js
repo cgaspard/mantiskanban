@@ -66,13 +66,14 @@ var Kanban = {
 		var summary = $("#add-summary").val();
 		var description = $("#add-description").val();
 		var handlerid = document.getElementById("add-assignedto").value;
+		var reporterid = document.getElementById("add-reporter").value;
 		var statusid = document.getElementById("add-status").value;
 		var priorityid = document.getElementById("add-priority").value;
 		var category = document.getElementById("add-category").value
 		var customfieldvalue = null;
 		if(Kanban.UsingCustomField) customfieldvalue = document.getElementById("add-custom-field").value;
 
-		Kanban.AddStory(summary, description, handlerid, statusid, priorityid, category, customfieldvalue);
+		Kanban.AddStory(summary, description, reporterid, handlerid, statusid, priorityid, category, customfieldvalue);
 	},
 
 	AddStoryToArray: function(storyToAdd) {
@@ -292,6 +293,7 @@ function UpdateStoryFromFormData() {
 		} else {
 			thisStory.HandlerID = document.getElementById("edit-assignedto").value;
 		}
+		thisStory.ReporterID = document.getElementById("edit-reporter").value;
 		thisStory.PriorityID = document.getElementById("edit-priority").value;
 		thisStory.StatusID = document.getElementById("edit-status").value;
 		thisStory.Reproduce = document.getElementById("edit-reproduce").value;
@@ -429,6 +431,8 @@ function OpenAddStory() {
 	document.getElementById("add-summary").value = "";
 	document.getElementById("add-description").value = "";
 
+	var selectReportingUser = document.getElementById("add-reporter");
+	selectReportingUser.options.length = 0;
 	var selectAssignedUser = document.getElementById("add-assignedto");
 	selectAssignedUser.options.length = 0;
 	var selectAddStatus = document.getElementById("add-status");
@@ -439,6 +443,14 @@ function OpenAddStory() {
 	selectAddPriority.options.length = 0;
 	var selectAddCategories = document.getElementById("add-category");
 	selectAddCategories.options.length = 0;
+
+	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
+		var user = Mantis.ProjectUsers[i];
+		selectReportingUser.options[selectReportingUser.options.length] = new Option(user.real_name, user.id);
+		if(Mantis.CurrentUser.MantisUser.id == user.id) {
+			selectReportingUser.selectedIndex = i;
+		}
+	}
 
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("None", "");
 	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
@@ -637,9 +649,10 @@ function EditStory(storyID) {
 		active: 0
 	});
 	document.getElementById("edit-story-notes-container").scrollTop = 0;
-	document.getElementById("edit-reporter").innerHTML = thisStory.ReporterName;
 	document.getElementById("edit-datesubmitted").innerHTML = thisStory.DateSubmitted;
 
+	var selectReportingUser = document.getElementById("edit-reporter");
+	selectReportingUser.options.length = 0;
 	var selectAssignedUser = document.getElementById("edit-assignedto");
 	selectAssignedUser.options.length = 0;
 	var selectAddStatus = document.getElementById("edit-status");
@@ -647,8 +660,17 @@ function EditStory(storyID) {
 	var selectAddPriority = document.getElementById("edit-priority");
 	selectAddPriority.options.length = 0;
 
+
+	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
+		var user = Mantis.ProjectUsers[i];
+		selectReportingUser.options[selectReportingUser.options.length] = new Option(user.real_name, user.id);
+		if(thisStory.ReporterID !== undefined && user.id == thisStory.ReporterID) {
+			selectReportingUser.selectedIndex = i;
+		}
+	}
+	$("#edit-reporter").trigger("liszt:updated");
+
 	///Add a blank option
-	
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To No One ---", "");
 	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
 		var user = Mantis.ProjectUsers[i];
@@ -663,7 +685,6 @@ function EditStory(storyID) {
 		var status = Mantis.Statuses[i];
 		selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name.capitalize(), status.id);
 		if(thisStory.StatusID == status.id) {
-			
 			selectAddStatus.selectedIndex = i;
 		}
 	}

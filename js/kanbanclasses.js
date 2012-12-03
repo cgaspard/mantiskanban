@@ -379,8 +379,8 @@ KanbanStory.prototype = {
 	}
 }
 
-Kanban.AddStory = function(summary, description, handlerid, statusid, priorityid, category, customfield) {
-	var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, statusid, priorityid, category);
+Kanban.AddStory = function(summary, description, handlerid, reporterid, statusid, priorityid, category, customfield) {
+	var newIssueStruct = Mantis.UpdateStructureMethods.Issue.NewIssue(summary, description, Mantis.CurrentProjectID, handlerid, reporterid, statusid, priorityid, category);
 	if(customfield !== null) {
 		Mantis.UpdateStructureMethods.Issue.UpdateCustomField(newIssueStruct, Kanban._listIDField, customfield);
 	}

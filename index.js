@@ -3,6 +3,7 @@ window.onload = function() {
 
 	document.getElementById("username").focus();
 
+	$("#edit-reporter").chosen();
 	$("#edit-assignedto").chosen();
 	$("#edit-status").chosen();
 	$("#edit-priority").chosen();
