@@ -120,6 +120,7 @@ function HideProjectArea() {
 function Logout() {
 	Kanban.Lists = [];
 	Kanban.Stories = [];
+	Kanban.Projects = [];
 	Kanban.ClearListGUI();
 
 	Mantis.ClearForLogout();

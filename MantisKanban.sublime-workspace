@@ -195,6 +195,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/Volumes/EFI/EFI/arch/refind_linux.conf",
+			"settings":
+			{
+				"buffer_size": 85,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/User/ViewInSafari.sublime-build",
 	"command_palette":
@@ -317,15 +325,15 @@
 	"file_history":
 	[
 		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
 		"/Volumes/WINPE/REIMAGETOOLS/go.cmd",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/forms.css",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/README.md",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/jquery.combobox.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/kanban.css",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
 		"/Volumes/EFI/EFI/refind/refind.conf",
 		"/EFI/refind/refind.conf",
 		"/EFI/refind/refind",
@@ -396,6 +404,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"AddStory",
+			"addstory",
+			"AddStory",
+			"prototype",
+			"addstory:",
 			"listDiv",
 			"LoadKanbanProjects",
 			"BuildProjectsGUI",
@@ -494,8 +507,35 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/Volumes/EFI/EFI/arch/refind_linux.conf",
+					"settings":
+					{
+						"buffer_size": 85,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
