@@ -313,7 +313,17 @@ var Mantis = {
 				} catch (e) { }
 				//delete issue.due_date;
 				//delete issue.monitors;
-				
+				var removeNullCustomFields = new Array();
+				for(var fi =0 ; fi < issue.custom_fields.length; fi++) {
+					if(issue.custom_fields[fi].value === null) {
+						removeNullCustomFields.push(fi);
+					}
+				}
+
+				for(var removeIndex = 0; removeIndex < removeNullCustomFields.length; removeIndex++) {
+					issue.custom_fields.splice(removeNullCustomFields[removeIndex] - removeIndex, 1);
+				}
+
 				var pl = new SOAPClientParameters();
 				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
 				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
