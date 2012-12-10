@@ -57,7 +57,7 @@ KanbanList.prototype = {
 		this.ListSource.id = value;
 	},
 
-	AddNewStoryUI: function(Story) {		
+	AddNewStoryUI: function(Story) {
 		this.Element.insertBefore(Story.Element, this.Element.lastChild);
 	},
 
@@ -395,7 +395,7 @@ Kanban.AddStoryAsyncCallback = function(result) {
 	} else {
 		try {
 			var newStory = new KanbanStory(Mantis.IssueGet(result));
-			newStory.BuildKanbanStoryDivKanbanStoryDiv();
+			newStory.BuildKanbanStoryDiv();
 			newStory.List.AddNewStoryUI(newStory);
 			Kanban.CloseAddStoryDialog();
 		} catch(e) {
