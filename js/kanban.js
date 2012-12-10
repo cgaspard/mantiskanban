@@ -79,6 +79,9 @@ var Kanban = {
 	AddStoryToArray: function(storyToAdd) {
 		if(!Kanban.HasStory(storyToAdd.ID)) {
 			Kanban.Stories[Kanban.Stories.length] = storyToAdd;
+			storyToAdd.BuildKanbanStoryDiv();
+			storyToAdd.List.Element.insertBefore(storyToAdd.Element, storyToAdd.List.Element.lastChild);
+			//storyToAdd.List.Element.appendChild(storyToAdd.Element);
 		}
 	},
 
@@ -119,7 +122,11 @@ var Kanban = {
 
 	BuildListGUI: function() {
 		for(var li = 0; li < Kanban.Lists.length; li++) {
+
 			var kanbanListItem = Kanban.Lists[li];
+
+			var existingElement = document.getElementById("listid" + kanbanListItem.ID);
+			if(existingElement !== null) continue;
 
 			///The main container
 			var listDiv = document.createElement("div");
@@ -136,12 +143,6 @@ var Kanban = {
 			listDivTitle.setAttribute("class", "kanbanlisttitle");
 			listDivTitle.innerHTML = kanbanListItem.Name.capitalize();
 			listDiv.appendChild(listDivTitle);
-
-			for(var si = 0; si < kanbanListItem.Stories.length; si++) {
-				var thisStory = kanbanListItem.Stories[si];
-				var storyDiv = thisStory.BuildKanbanStoryDiv();
-				listDiv.appendChild(storyDiv);
-			}
 
 			var listDropArea = document.createElement("div");
 			listDropArea.setAttribute("class", "kanbanlistdroparea");

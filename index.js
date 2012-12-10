@@ -1,3 +1,5 @@
+var LoadingIssuesList = new Array();
+
 
 window.onload = function() {
 
@@ -146,12 +148,27 @@ function SelectProject() {
 	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
 	BuildKanbanListFromMantisStatuses();
-		
-	Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID, CreateKanbanStoriesFromMantisIssues);
-	//CreateKanbanStoriesFromMantisIssues(Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.DefaultFilterID));
-	//CreateKanbanStoriesFromMantisIssues(Mantis.FilterGetIssues(Mantis.CurrentProjectID, Mantis.ClosedIssuesFilterID));
 	
-	StopLoading();
+	Kanban.BuildListGUI();
+
+	window.setTimeout(LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, DoneLoadingIssuesCallback), 100);
+	if(Mantis.ClosedIssuesFilterID !== null) {
+		window.setTimeout(LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback), 100);
+	}
+}
+
+function LoadFilterAsync(FilterID, Page, Limit, Callback) {
+	var retObj = Mantis.FilterGetIssues(Mantis.CurrentProjectID, FilterID, Page, Limit);
+	Callback(FilterID, retObj);
+}
+
+function DoneLoadingIssuesCallback(filterID, retObj) {
+	CreateKanbanStoriesFromMantisIssues(retObj);
+	LoadingIssuesList.splice(LoadingIssuesList.indexOf(filterID) -1, 1);
+	if(LoadingIssuesList.length == 0) {
+		console.log("Done Loading " + filterID);
+		StopLoading();
+	}
 }
 
 function StartLoading() {
@@ -166,7 +183,7 @@ function StopLoading() {
 
 function BuildKanbanListFromMantisStatuses() {
 	var hasCutomFieldForStatus = false;
-		Kanban.UsingCustomField = false;
+	Kanban.UsingCustomField = false;
 	if(Mantis.ProjectCustomFields.length > 0) {
 		for(var cf = 0; cf < Mantis.ProjectCustomFields.length; cf++) {
 			var customfield = Mantis.ProjectCustomFields[cf]
@@ -182,13 +199,13 @@ function BuildKanbanListFromMantisStatuses() {
 				}
 			}
 		}
-	} else {
+	}
+	if(!Kanban.UsingCustomField) {
 		for(var si = 0; si < Mantis.Statuses.length; si++) {
 			var status = Mantis.Statuses[si]
 			Kanban.AddListToArray(new KanbanList(status));
 		}
 	}
-	
 }
 
 
@@ -229,10 +246,9 @@ function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {
 	Mantis.CurrentProjectID = obj[0].id;
 }
 
-
 function CreateKanbanStoriesFromMantisIssues(obj) {
 	for(var is = 0; is < obj.length; is++) {
 		Kanban.AddStoryToArray(new KanbanStory(obj[is]));
 	}
-		Kanban.BuildListGUI();
+	
 }

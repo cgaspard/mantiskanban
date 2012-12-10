@@ -1,0 +1,1 @@
+Kanban.NumberOfClosedMessagesToLoad = 15;

@@ -57,7 +57,7 @@ KanbanList.prototype = {
 		this.ListSource.id = value;
 	},
 
-	AddNewStoryUI: function(Story) {
+	AddNewStoryUI: function(Story) {		
 		this.Element.insertBefore(Story.Element, this.Element.lastChild);
 	},
 
@@ -92,7 +92,7 @@ var KanbanStory = function(RawObject) {
 		//alert(JSON.stringify(RawObject.notes))
 		this.UsesCustomField = false;
 		this.JoinList();
-		if(!Kanban.HasStory(this)) {
+		if(!Kanban.HasStory(this.ID)) {
 			Kanban.AddStoryToArray(this);
 		}
 }
@@ -395,7 +395,7 @@ Kanban.AddStoryAsyncCallback = function(result) {
 	} else {
 		try {
 			var newStory = new KanbanStory(Mantis.IssueGet(result));
-			newStory.BuildKanbanStoryDiv();
+			newStory.BuildKanbanStoryDivKanbanStoryDiv();
 			newStory.List.AddNewStoryUI(newStory);
 			Kanban.CloseAddStoryDialog();
 		} catch(e) {

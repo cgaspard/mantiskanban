@@ -12,7 +12,7 @@ var Mantis = {
 	_userprojects : [],
 	_defaultaccesslevelforuserenum : 10,
 	_defaultfilterid : "22",
-	_closedissuesfilterid : "23",
+	_closedissuesfilterid : null,
 	
 	ClearForLogout : function() {
 		Mantis._currentprojectid = 0;
@@ -408,9 +408,9 @@ var Mantis = {
 		}
 	},
 	
-	FilterGetIssues : function(ProjectID, FilterID, callBack) {
+	FilterGetIssues : function(ProjectID, FilterID, PageNumber, PerPage, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.FilterGetIssues.Name, Mantis.Methods.FilterGetIssues.BuildParams(ProjectID, FilterID, 0, 0), hascallback, callBack);
+		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.FilterGetIssues.Name, Mantis.Methods.FilterGetIssues.BuildParams(ProjectID, FilterID, PageNumber, PerPage), hascallback, callBack);
 	},
 
 	IssueAdd : function(Issue, callBack) {
