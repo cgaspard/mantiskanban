@@ -1,3 +1,6 @@
+/// Point to the location of your server
+Mantis.ConnectURL = "http://bugz.mygait.net/api/soap/mantisconnect.php";
+
 /// The default filter to use when loading a projects issues
 /// If you leave this null, mantis will load whatever the last filter you used when you logged into the php site.
 Mantis.DefaultFilterID = "22";

@@ -1,4 +1,4 @@
-var mantisConnectURL = "http://bugz.mygait.net/api/soap/mantisconnect.php";
+
 
 
 var Mantis = {
@@ -13,6 +13,8 @@ var Mantis = {
 	_defaultaccesslevelforuserenum : 10,
 	_defaultfilterid : null,
 	_closedissuesfilterid : null,
+
+	ConnectURL : "",
 	
 	ClearForLogout : function() {
 		Mantis._currentprojectid = 0;
@@ -417,27 +419,27 @@ var Mantis = {
 	
 	FilterGetIssues : function(ProjectID, FilterID, PageNumber, PerPage, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.FilterGetIssues.Name, Mantis.Methods.FilterGetIssues.BuildParams(ProjectID, FilterID, PageNumber, PerPage), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.FilterGetIssues.Name, Mantis.Methods.FilterGetIssues.BuildParams(ProjectID, FilterID, PageNumber, PerPage), hascallback, callBack);
 	},
 
 	IssueAdd : function(Issue, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueAdd.Name, Mantis.Methods.IssueAdd.BuildParams(Issue), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueAdd.Name, Mantis.Methods.IssueAdd.BuildParams(Issue), hascallback, callBack);
 	},
 	
 	IssueGet : function(IssueID, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueGet.Name, Mantis.Methods.IssueGet.BuildParams(IssueID), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueGet.Name, Mantis.Methods.IssueGet.BuildParams(IssueID), hascallback, callBack);
 	},
 	
 	IssueNoteAdd : function(IssueID, Note, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueNoteAdd.Name, Mantis.Methods.IssueNoteAdd.BuildParams(IssueID, Note), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueNoteAdd.Name, Mantis.Methods.IssueNoteAdd.BuildParams(IssueID, Note), hascallback, callBack);
 	},
 
 	IssueSetTags : function(IssueID, IssueTagsArray) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueSetTags.Name, Mantis.Methods.IssueSetTags.BuildParams(IssueID, IssueTagsArray), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueSetTags.Name, Mantis.Methods.IssueSetTags.BuildParams(IssueID, IssueTagsArray), hascallback, callBack);
 	},
 	
 	IssueUpdate : function(IssueID, Issue, callBack) {
@@ -445,17 +447,17 @@ var Mantis = {
 		//var updateIssue = jQuery.extend(true, {}, Issue);
 		//delete updateIssue.notes;
 		
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.IssueUpdate.Name, Mantis.Methods.IssueUpdate.BuildParams(IssueID, Issue), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueUpdate.Name, Mantis.Methods.IssueUpdate.BuildParams(IssueID, Issue), hascallback, callBack);
 	},
 	
 	ProjectGetCategories :  function(callBack){
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.ProjectGetCategories.Name, Mantis.Methods.ProjectGetCategories.BuildParams(Mantis.CurrentProjectID), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.ProjectGetCategories.Name, Mantis.Methods.ProjectGetCategories.BuildParams(Mantis.CurrentProjectID), hascallback, callBack);
 	},
 	
 	ProjectGetIssues : function(ProjectID, PageNumber, PerPage, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.ProjectGetIssues.Name, Mantis.Methods.ProjectGetIssues.BuildParams(ProjectID, PageNumber, PerPage), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.ProjectGetIssues.Name, Mantis.Methods.ProjectGetIssues.BuildParams(ProjectID, PageNumber, PerPage), hascallback, callBack);
 	},
 
 	/**
@@ -466,47 +468,47 @@ var Mantis = {
 	*/
 	ProjectGetUsers : function(Access, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL, Mantis.Methods.ProjectGetUsers.Name, Mantis.Methods.ProjectGetUsers.BuildParams(Access), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL, Mantis.Methods.ProjectGetUsers.Name, Mantis.Methods.ProjectGetUsers.BuildParams(Access), hascallback, callBack);
 	},
 	
 	ProjectsGetUserAccessible :  function(callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL, Mantis.Methods.ProjectsGetUserAccessible.Name, Mantis.Methods.ProjectsGetUserAccessible.BuildParams(), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL, Mantis.Methods.ProjectsGetUserAccessible.Name, Mantis.Methods.ProjectsGetUserAccessible.BuildParams(), hascallback, callBack);
 	},
 
 	ProjectGetCustomFields : function (ProjectID, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL, Mantis.Methods.ProjectGetCustomFields.Name, Mantis.Methods.ProjectGetCustomFields.BuildParams(ProjectID), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL, Mantis.Methods.ProjectGetCustomFields.Name, Mantis.Methods.ProjectGetCustomFields.BuildParams(ProjectID), hascallback, callBack);
 	},
 	
 	EnumGet : function(Enumeration, callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumGet.Name, Mantis.Methods.EnumGet.BuildParams(Enumeration), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumGet.Name, Mantis.Methods.EnumGet.BuildParams(Enumeration), hascallback, callBack);
 	},
 
 	EnumAccessLevels : function(callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumAccessLevels.Name, Mantis.Methods.EnumAccessLevels.BuildParams(), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumAccessLevels.Name, Mantis.Methods.EnumAccessLevels.BuildParams(), hascallback, callBack);
 	},
 	
 	EnumServerities : function(callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumServerities.Name, Mantis.Methods.EnumServerities.BuildParams(), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumServerities.Name, Mantis.Methods.EnumServerities.BuildParams(), hascallback, callBack);
 	},
 	
 	EnumPriority : function(callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumPriority.Name, Mantis.Methods.EnumPriority.BuildParams(), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumPriority.Name, Mantis.Methods.EnumPriority.BuildParams(), hascallback, callBack);
 	},
 	
 	EnumStatus : function(callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.EnumStatus.Name, Mantis.Methods.EnumStatus.BuildParams(), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumStatus.Name, Mantis.Methods.EnumStatus.BuildParams(), hascallback, callBack);
 	},
 	
 	Version : function(callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(mantisConnectURL,  Mantis.Methods.Version.Name, Mantis.Methods.Version.BuildParams(), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Version.Name, Mantis.Methods.Version.BuildParams(), hascallback, callBack);
 	}    
 }
 
