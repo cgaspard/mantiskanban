@@ -151,9 +151,15 @@ function SelectProject() {
 	
 	Kanban.BuildListGUI();
 
-	window.setTimeout(LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, DoneLoadingIssuesCallback), 100);
-	if(Mantis.ClosedIssuesFilterID !== null) {
-		window.setTimeout(LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback), 100);
+	if(Mantis.DefaultFilterID !== null) {
+		window.setTimeout(LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, DoneLoadingIssuesCallback), 100);
+		if(Mantis.ClosedIssuesFilterID !== null) {
+			window.setTimeout(LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback), 100);
+		}
+	} else {
+		var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
+		CreateKanbanStoriesFromMantisIssues(retObj);
+		StopLoading();
 	}
 }
 
