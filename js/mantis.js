@@ -386,7 +386,11 @@ var Mantis = {
 				};
 				
 				if(priorityid !== undefined && priorityid !== null) newIssue["priority"] = { "id" : priorityid };
-				if(handlerid !== undefined && handlerid !== null) newIssue["handler"] = { "id" : handlerid };
+				if(handlerid !== undefined && handlerid !== null) {
+					newIssue["handler"] = { "id" : handlerid };
+				} else {
+					newIssue["handler"] = { "id" : null };
+				}
 				return newIssue;   
 			}
 		},

@@ -73,7 +73,7 @@ var Kanban = {
 		var customfieldvalue = null;
 		if(Kanban.UsingCustomField) customfieldvalue = document.getElementById("add-custom-field").value;
 
-		Kanban.AddStory(summary, description, reporterid, handlerid, statusid, priorityid, category, customfieldvalue);
+		Kanban.AddStory(summary, description, handlerid, reporterid, statusid, priorityid, category, customfieldvalue);
 	},
 
 	AddStoryToArray: function(storyToAdd) {

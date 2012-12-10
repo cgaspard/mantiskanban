@@ -196,10 +196,37 @@
 	"buffers":
 	[
 		{
+			"contents": "",
 			"file": "/Volumes/EFI/EFI/arch/refind_linux.conf",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 85,
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/mantis.js",
+			"settings":
+			{
+				"buffer_size": 18405,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/kanbanclasses.js",
+			"settings":
+			{
+				"buffer_size": 12316,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 6095,
 				"line_ending": "Unix"
 			}
 		}
@@ -324,6 +351,8 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Downloads/ppsspp_win/README.md",
+		"/Users/cgaspard/Downloads/VMWare Fusion Key.txt",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
@@ -404,6 +433,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"selectproject",
+			"SelectProject",
 			"AddStory",
 			"addstory",
 			"AddStory",
@@ -507,7 +538,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -515,7 +546,7 @@
 					"file": "/Volumes/EFI/EFI/arch/refind_linux.conf",
 					"settings":
 					{
-						"buffer_size": 85,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -532,6 +563,87 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/mantis.js",
+					"settings":
+					{
+						"buffer_size": 18405,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11520,
+								11520
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6798.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/kanbanclasses.js",
+					"settings":
+					{
+						"buffer_size": 12316,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11444,
+								11455
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6155.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "index.js",
+					"settings":
+					{
+						"buffer_size": 6095,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2616,
+								2616
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1888.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
