@@ -14,7 +14,7 @@ var Mantis = {
 	_defaultfilterid : null,
 	_closedissuesfilterid : null,
 
-	ConnectURL : "",
+	ConnectURL : location.protocol + "//" + document.location.hostname + "/api/soap/mantisconnect.php";,
 	
 	ClearForLogout : function() {
 		Mantis._currentprojectid = 0;
