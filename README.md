@@ -7,10 +7,17 @@ Mantis Kanban that uses ajax and mantisconnect
 
 JS Configuration: config.js
 
-    Mantis.ConnectURL -  This should point to the mantisconnect.php page on your server. Example: http://example.com/api/soap/mantisconnect.php
-    Mantis.DefaultFilterID  - ID of the filter you want to load by default.  If null, then it will load the latest filter the user used on the php site.
-    Mantis.ClosedIssuesFilterID  - Combined with DefaultFilterID issues.  Both sets of issues get loaded into the Kanban.  Allows you to specify a portion of the closed issues to load.
-    Kanban.NumberOfClosedMessagesToLoad - Limit the number of issues loaded when the ClosedIssuesFilterID is specified
+    Mantis.ConnectURL -  This should point to the mantisconnect.php page on your server. 
+        Example: http://example.com/api/soap/mantisconnect.php
+        
+    Mantis.DefaultFilterID  - ID of the filter you want to load by default.  If null, 
+        then it will load the latest filter the user used on the php site.
+        
+    Mantis.ClosedIssuesFilterID  - Combined with DefaultFilterID issues.  Both sets of 
+        issues get loaded into the Kanban.  Allows you to specify a portion of the closed issues to load.
+        
+    Kanban.NumberOfClosedMessagesToLoad - Limit the number of issues loaded when the 
+        ClosedIssuesFilterID is specified
 
 Mantis Configuration:
 
