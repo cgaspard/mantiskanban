@@ -8,6 +8,13 @@ window.onload = function() {
 	$("#edit-status").chosen();
 	$("#edit-priority").chosen();
 
+	$("#add-reporter").chosen();
+	$("#add-assignedto").chosen();
+	$("#add-status").chosen();
+	$("#add-custom-field").chosen();
+	$("#add-priority").chosen();
+	$("#add-category").chosen();
+
 	$("#user-context-menu").hide();
 	
 	$(function() {
@@ -24,7 +31,7 @@ window.onload = function() {
 	
 	$( "#story-form" ).dialog({
 		autoOpen: false,
-		height: 550,
+		height: 625,
 		width: 640,
 		modal: true,
 		buttons: {

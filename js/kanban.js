@@ -451,6 +451,7 @@ function OpenAddStory() {
 			selectReportingUser.selectedIndex = i;
 		}
 	}
+	$("#add-reporter").trigger("liszt:updated");
 
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("None", "");
 	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
@@ -460,6 +461,7 @@ function OpenAddStory() {
 			selectAssignedUser.selectedIndex = i + 1;
 		}
 	}
+	$("#add-assignedto").trigger("liszt:updated");
 
 	if(Kanban.UsingCustomField) {
 		for(var i = 0; i < Mantis.ProjectCustomFields.length; i++) {
@@ -475,24 +477,28 @@ function OpenAddStory() {
 	} else {
 		document.getElementById("add-custom-field-container").style.display = "none";
 	}
+	$("#add-custom-field").trigger("liszt:updated");
 
 	for(var i = 0; i < Mantis.Statuses.length; i++) {
 		var status = Mantis.Statuses[i];
 		selectAddStatus.options[selectAddStatus.options.length] = new Option(status.name.capitalize(), status.id);
 	}
 	selectAddStatus.selectedIndex = 0;
+	$("#add-status").trigger("liszt:updated");
 
 	for(var i = 0; i < Mantis.Priorities.length; i++) {
 		var priority = Mantis.Priorities[i];
 		selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name.capitalize(), priority.id);
 	}
 	selectAddPriority.selectedIndex = 0;
+	$("#add-priority").trigger("liszt:updated");
 
 	for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
 		var category = Mantis.ProjectCategories[i];
 		selectAddCategories.options[selectAddCategories.options.length] = new Option(category.capitalize(), category);
 	}
 	selectAddCategories.selectedIndex = 0;
+	$("#add-category").trigger("liszt:updated");
 
 	$('#story-form').dialog('open');
 
