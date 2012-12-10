@@ -311,8 +311,8 @@ var Mantis = {
 					delete issue.monitors;
 					delete issue.sticky;
 				} catch (e) { }
-				//delete issue.due_date;
-				//delete issue.monitors;
+
+				/// Remove custom fields if they have no value.  This way mantis will leave them alone and keep them null.
 				var removeNullCustomFields = new Array();
 				for(var fi =0 ; fi < issue.custom_fields.length; fi++) {
 					if(issue.custom_fields[fi].value === null) {
