@@ -31,31 +31,34 @@
 		<div class="realcontentcontainer">
 			<div class="headerarea">
 				<div style="position:absolute; top:0px; left:0px; width:100%;">
-				<div class="loadingdiv" id="loadingdiv" style="float: right;">
-					<img id="loadingimage" src="images/loading.gif"  style="width: 40px; height: 40px; display: none;"/>
-					<img id="loadedimage" src="images/loaded.png"  style="width: 40px; height: 40px;"/>
-				</div>                        
-				<img src="images/mantis_logo.png" class="mantislogo" />
-				<div class="loginarea">
-					<input type="text" id="username" value="" onkeypress="if (event.keyCode == 13) { Login(); }" placeholder="Username:"  />
-					<input type="password" id="password" value="" onkeypress="if (event.keyCode == 13) { Login(); }" placeholder="Password: ">
-					<div class="loginbutton" onclick="Login();">Login</div>
-				</div>
-				<div class="projectarea">
-					<div id="projectlist" class="projectlist">
+					<div class="loadingdiv" id="loadingdiv" style="float: right;">
+						<img id="loadingimage" src="images/loading.gif"  style="width: 40px; height: 40px; display: none;"/>
+						<img id="loadedimage" src="images/loaded.png"  style="width: 40px; height: 40px;"/>
+					</div>                        
+					<img src="images/mantis_logo.png" class="mantislogo" />
+					<div id="loginarea" class="loginarea">
+						<input type="text" id="username" value="" onkeypress="if (event.keyCode == 13) { Login(); }" placeholder="Username:"  />
+						<input type="password" id="password" value="" onkeypress="if (event.keyCode == 13) { Login(); }" placeholder="Password: ">
+						<div class="loginbutton" onclick="Login();">Login</div>
 					</div>
-					<div class="kanbannewstory" onclick="OpenAddStory();">Add Story</div>
-					<div class="refreshprojectbutton" onclick="SelectProject();">Refresh</div>
-					<div class="logoutbutton" onclick="Logout();">Logout</div>
-				</div>
-			
+					<div id="projectarea" class="projectarea">
+						<div id="projectlist" class="projectlist"></div>
+						<div class="filterlistcontainer">
+								<select id="filterlist" onchange="UpdateFilter(this.value);">
+								</select>
+						</div>
+						<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
+							<div class="kanbannewstory" onclick="OpenAddStory();">Add Story</div>
+							<div class="refreshprojectbutton" onclick="SelectProject();">Refresh</div>
+							<div class="logoutbutton" onclick="Logout();">Logout</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="contentarea">
+			<div id="contentarea" class="contentarea">
 				<div id="kanbancontent"></div>
 			</div>
 		</div>
-		
 		
 		<div id="story-form" class="editform" title="Create New Story" style="display:none;">
 			<p class="validateTips">All form fields are required.</p>
@@ -149,5 +152,8 @@
 			<li id="user-context-title" style="border-bottom: solid 2px #000000;" onmouseout="event.stopPropagation();">Assign Handler:</li>
 		</ul>
 		<input type="hidden" style="display:none;" id="seletedproject" name="selectedproject" />
+		<ul class="project-selector" name="project-selector" id="project-selector" onmouseout="HideProjectSelector();">
+			<li id="project-selector-title" style="border-bototm: solid 2px #000000" onmouseout="event.stopPropogation();">Select Project</li>
+		</ul>
 	</body>
 </html>

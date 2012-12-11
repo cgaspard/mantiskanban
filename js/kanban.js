@@ -81,7 +81,6 @@ var Kanban = {
 			Kanban.Stories[Kanban.Stories.length] = storyToAdd;
 			storyToAdd.BuildKanbanStoryDiv();
 			storyToAdd.List.Element.insertBefore(storyToAdd.Element, storyToAdd.List.Element.lastChild);
-			//storyToAdd.List.Element.appendChild(storyToAdd.Element);
 		}
 	},
 
@@ -559,6 +558,72 @@ function UpdateStoryHandlerComplete(result) {
 
 function HideUserSelector() {
 	$("#user-context-menu").hide();
+}
+
+function HideProjectSelector() {
+	$("#project-selector").hide();
+}
+
+function OpenProjectSelector(e){
+	var projectSelector = document.getElementById("project-selector");
+	var isIE = document.all ? true : false;
+	var _x;
+	var _y;
+	if (!isIE) {
+		_x = e.pageX;
+		_y = e.pageY;
+	}
+	if (isIE) {
+		_x = event.clientX + document.body.scrollLeft;
+		_y = event.clientY + document.body.scrollTop;
+	}
+
+	var winW = 630, winH = 460;
+	if (document.body && document.body.offsetWidth) {
+	 winW = document.body.offsetWidth;
+	 winH = document.body.offsetHeight;
+	}
+	if (document.compatMode=='CSS1Compat' &&
+	    document.documentElement &&
+	    document.documentElement.offsetWidth ) {
+	 winW = document.documentElement.offsetWidth;
+	 winH = document.documentElement.offsetHeight;
+	}
+	if (window.innerWidth && window.innerHeight) {
+	 winW = window.innerWidth;
+	 winH = window.innerHeight;
+	}
+
+	$("#project-selector").menu({
+		"select" : function(e, o) {
+			//UpdateStoryHandler(storyID, o.item.context.getAttribute("userid"));
+			Mantis.CurrentProjectID = o.item.context.getAttribute("projectid");
+			///TODO: remove this.   Really uggly code.   Kanban should not be calling functions in index.js
+			SelectProject();
+			$("#project-selector").hide();
+		} 
+	});
+
+	$("#project-selector").show();
+
+	console.log("ProjectSelectorContextHeight: " + projectSelector.clientHeight);
+	console.log("ProjectSelectorContextWidth: " + projectSelector.clientWidth);
+	console.log("WindowHeight: " + winH);
+	console.log("WindowWidth: " + winW);
+	console.log("X,Y", _x + ", " + _y)
+	if(_y + projectSelector.clientHeight + 40 > winH) {
+		_y = winH - projectSelector.clientHeight - 40;
+	}
+	if(_x + 20 + projectSelector.clientWidth + 40 >  winW) {
+		_x = winW - projectSelector.clientWidth - 40;
+	}
+	console.log("Calculated Top: " + _y);
+	console.log("Calculated Left: " + _x);
+	console.log("X,Y", _x + ", " + _y)
+	
+	projectSelector.style.top = _y - 40 + "px";
+	projectSelector.style.left = _x - 30 + "px";
+
 }
 
 function OpenUserSelector(e, storyID) {

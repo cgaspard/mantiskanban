@@ -235,6 +235,18 @@ var Mantis = {
 				return pl;
 			}
 		},
+
+		FilterGet : {
+
+			Name: "mc_filter_get",
+			BuildParams : function(projectid) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.ProjectID, projectid);
+				return pl;
+			}
+		},
 		
 		ProjectGetCategories : {
 		  Name : "mc_project_get_categories",
@@ -435,6 +447,11 @@ var Mantis = {
 				};
 			}
 		}
+	},
+
+	FilterGet: function(ProjectID, callBack) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.FilterGet.Name, Mantis.Methods.FilterGet.BuildParams(ProjectID), hascallback, callBack);
 	},
 	
 	FilterGetIssues : function(ProjectID, FilterID, PageNumber, PerPage, callBack) {

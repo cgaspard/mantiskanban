@@ -3,6 +3,9 @@ var LoadingIssuesList = new Array();
 
 window.onload = function() {
 
+	$("#user-context-menu").hide();
+	$("#project-selector").hide();
+
 	document.getElementById("username").focus();
 
 	$("#edit-reporter").chosen();
@@ -17,8 +20,9 @@ window.onload = function() {
 	$("#add-priority").chosen();
 	$("#add-category").chosen();
 
-	$("#user-context-menu").hide();
-	
+	$("#filterlist").chosen();
+
+
 	$(function() {
 		$( "#tabs" ).tabs({ heightStyle: "content" });
 	});
@@ -80,6 +84,7 @@ function Login() {
 	
 	LoadKanbanProjects();
 	BuildProjectsGUI();
+	BuildProjectSelector();
 	BuildUserSelector();
 	
 	HideLoginArea();
@@ -88,6 +93,28 @@ function Login() {
 	SelectProject();
 
 	StopLoading();
+}
+
+function BuildProjectSelector() {
+
+	var projectSelector = document.getElementById("project-selector");
+
+	try { while(projectSelector.children.length > 1) { projectSelector.removeChild(1); } } catch(e) { }
+
+	for(var ui = 0; ui < Kanban.Projects.length; ui++) {
+		var thisProject = Kanban.Projects[ui];
+		var projectSelectorItem = document.createElement("li");
+		projectSelectorItem.setAttribute("projectid", thisProject.ID);
+		projectSelectorItem.setAttribute("onmouseout", "event.stopPropagation();");
+		projectSelector.appendChild(projectSelectorItem);
+
+		var projectSelectorItemLink = document.createElement("a");
+		projectSelectorItemLink.setAttribute("href", "#");
+		projectSelectorItemLink.setAttribute("projectid", thisProject.ID);
+		//projectSelectorItemLink.setAttribute("onclick", "Mantis.CurrentProjectID = " thisProject.ID)
+		projectSelectorItemLink.innerHTML = thisProject.Name;
+		projectSelectorItem.appendChild(projectSelectorItemLink);
+	}	
 }
 
 function BuildUserSelector() {
@@ -112,18 +139,21 @@ function BuildUserSelector() {
 }
 
 function HideLoginArea() {
-	$(".loginarea").hide();
+	document.getElementById("loginarea").style.display = "none";
 }
 function ShowLoginArea() {
-	$(".loginarea").show();
+	document.getElementById("loginarea").style.display = "inline-block";
 }
 
 function ShowProjectArea() {
-	$(".projectarea").show();
+	document.getElementById("projectarea").style.display = "inline-block";
+	document.getElementById("contentarea").style.display = "table-row";
+	
 }
 
 function HideProjectArea() {
-	$(".projectarea").hide();
+	document.getElementById("projectarea").style.display = "none";
+	document.getElementById("contentarea").style.display = "none";
 }
 
 function Logout() {
@@ -147,6 +177,8 @@ function SelectProject() {
 
 	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
+	window.setTimeout("UpdateFilterList()", 100);
+
 	BuildKanbanListFromMantisStatuses();
 	
 	Kanban.BuildListGUI();
@@ -161,6 +193,28 @@ function SelectProject() {
 		CreateKanbanStoriesFromMantisIssues(retObj);
 		StopLoading();
 	}
+}
+
+function UpdateFilter(filterID) {
+	Mantis.DefaultFilterID = filterID;
+	SelectProject();
+}
+
+function UpdateFilterList() {
+
+	var filterList = document.getElementById("filterlist");
+	filterList.options.length = 0;
+	///Add a blank option
+	
+	var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
+	for(var i = 0; i < filterListArray.length; i++) {
+		var filter = filterListArray[i];
+		filterList.options[filterList.options.length] = new Option(filter.name, filter.id);
+		if(filter.id == Mantis.DefaultFilterID) filterList.selectedIndex = i;
+	}
+	
+	$("#filterlist").trigger("liszt:updated");
+
 }
 
 function LoadFilterAsync(FilterID, Page, Limit, Callback) {
@@ -236,7 +290,7 @@ function LoadKanbanProjects() {
 function BuildProjectsGUI() {
 	var projectDivContainer = document.getElementById("projectlist");
 	try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
-	for(var i = 0; i < Kanban.Projects.length; i++) {
+	for(var i = 0; i < Kanban.Projects.length && i <= 3; i++) {
 		var projectDiv = document.createElement("div");
 		projectDiv.setAttribute("class", "projectbutton");
 		projectDiv.setAttribute("id", "project" + Kanban.Projects[i].ID);
@@ -245,6 +299,16 @@ function BuildProjectsGUI() {
 		projectDiv.innerHTML = Kanban.Projects[i].Name;
 		projectDivContainer.appendChild(projectDiv);
 	}
+	if(Kanban.Projects.length > 4) {
+		var projectDiv = document.createElement("div");
+		projectDiv.setAttribute("class", "projectbutton");
+		projectDiv.setAttribute("id", "projectshowmore");
+		projectDiv.setAttribute("onclick", "OpenProjectSelector(event);");
+		projectDiv.setAttribute("selected", i == 0 ? "true" : "false");
+		projectDiv.innerHTML = "More"
+		projectDivContainer.appendChild(projectDiv);
+	}
+
 	document.getElementById("seletedproject").value = Kanban.Projects[0].ID;
 }
 
