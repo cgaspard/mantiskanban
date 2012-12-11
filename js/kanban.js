@@ -597,7 +597,8 @@ function OpenProjectSelector(e){
 	$("#project-selector").menu({
 		"select" : function(e, o) {
 			//UpdateStoryHandler(storyID, o.item.context.getAttribute("userid"));
-			Mantis.CurrentProjectID = o.item.context.getAttribute("projectid");
+			SwapSelectedProject("project" + o.item.context.getAttribute("projectid"));
+			document.getElementById('seletedproject').value = o.item.context.getAttribute("projectid");
 			///TODO: remove this.   Really uggly code.   Kanban should not be calling functions in index.js
 			SelectProject();
 			$("#project-selector").hide();
