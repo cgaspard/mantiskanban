@@ -148,9 +148,11 @@
 				</div>
 			</div>
 		</div>
-		<ul class="user-context-menu" name="user-context-menu" id="user-context-menu" onmouseout="HideUserSelector();">
-			<li id="user-context-title" style="border-bottom: solid 2px #000000;" onmouseout="event.stopPropagation();">Assign Handler:</li>
-		</ul>
+		<div class="user-context-menu" name="user-context-menu" id="user-context-menu" onmouseout="HideUserSelector();">
+			<div id="user-context-title" style="border-bottom: solid 2px #000000;" onmouseout="event.stopPropagation();">Assign Handler:</div>
+			<ul id="user-context-menu-container" onmouseout="event.stopPropagation();">
+			</ul>
+		</div>
 		<input type="hidden" style="display:none;" id="seletedproject" name="selectedproject" />
 		<ul class="project-selector" name="project-selector" id="project-selector" onmouseout="HideProjectSelector();">
 			<li id="project-selector-title" style="border-bototm: solid 2px #000000" onmouseout="event.stopPropogation();">Select Project</li>

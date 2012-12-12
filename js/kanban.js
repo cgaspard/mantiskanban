@@ -632,6 +632,7 @@ function OpenUserSelector(e, storyID) {
 	e.stopPropagation();
 
 	var userContextMenu = document.getElementById("user-context-menu");
+	var userContextMenuConainer = document.getElementById("user-context-menu-container");
 	var isIE = document.all ? true : false;
 	var _x;
 	var _y;
@@ -662,16 +663,16 @@ function OpenUserSelector(e, storyID) {
 
 	var selectorStory = Kanban.GetStoryByFieldValue("ID", storyID);
 
-	for(var ci = 0; ci < userContextMenu.children.length; ci++) {
+	for(var ci = 0; ci < userContextMenuConainer.children.length; ci++) {
 		try {
-			userContextMenu.children[ci].setAttribute("selected", "false");
-			if(userContextMenu.children[ci].getAttribute("userid") == selectorStory.HandlerID) {
-				userContextMenu.children[ci].setAttribute("selected", "true");
+			userContextMenuConainer.children[ci].setAttribute("selected", "false");
+			if(userContextMenuConainer.children[ci].getAttribute("userid") == selectorStory.HandlerID) {
+				userContextMenuConainer.children[ci].setAttribute("selected", "true");
 			}
 		} catch(e) {}
 	}
 
-	$("#user-context-menu").menu({
+	$("#user-context-menu-container").menu({
 		"select" : function(e, o) {
 			UpdateStoryHandler(storyID, o.item.context.getAttribute("userid"));
 		} 

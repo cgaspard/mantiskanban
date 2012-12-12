@@ -119,9 +119,9 @@ function BuildProjectSelector() {
 
 function BuildUserSelector() {
 
-	var userContextMenu = document.getElementById("user-context-menu");
+	var userContextMenu = document.getElementById("user-context-menu-container");
 
-	try { while(userContextMenu.children.length > 1) { userContextMenu.removeChild(1); } } catch(e) { }
+	try { while(userContextMenu.children.length > 0) { userContextMenu.removeChild(0); } } catch(e) { }
 
 	for(var ui = 0; ui < Mantis.ProjectUsers.length; ui++) {
 		var thisMantisUser = Mantis.ProjectUsers[ui];
