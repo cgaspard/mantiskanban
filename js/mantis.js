@@ -146,7 +146,6 @@ var Mantis = {
 	},
 
 	RemoveNullCustomFieldsFromIssue : function(issue) {
-
 		if(issue.custom_fields === undefined) return;
 
 		/// Remove custom fields if they have no value.  This way mantis will leave them alone and keep them null.

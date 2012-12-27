@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"Curr",
+				"CurrentProjectID  (variable)"
+			],
+			[
+				"selected",
+				"selectedIndex"
+			],
+			[
+				"Sele",
+				"SelectProject"
+			],
+			[
+				"default",
+				"DefaultFilterID"
+			],
+			[
+				"remove",
+				"removeIndex"
+			],
+			[
+				"custom",
+				"custom_fields"
+			],
+			[
+				"cust",
+				"custom_fields"
+			],
+			[
+				"curr",
+				"CurrentProjectID  (variable)"
+			],
+			[
+				"_def",
+				"_defaultfilterid  (variable)"
+			],
+			[
+				"Build",
+				"BuildKanbanStoryDiv"
+			],
+			[
+				"Create",
+				"CreateKanbanStoriesFromMantisIssues"
+			],
+			[
+				"ex",
+				"existingElement"
+			],
+			[
 				"user-con",
 				"user-context-menu"
 			],
@@ -50,10 +98,6 @@
 			[
 				"proj",
 				"ProjectUsers  (variable)"
-			],
-			[
-				"remove",
-				"removeChild"
 			],
 			[
 				"table",
@@ -132,10 +176,6 @@
 				"ProjectCustomFields"
 			],
 			[
-				"custom",
-				"ProjectCustomFields  (variable)"
-			],
-			[
 				"projectsel",
 				"projectSelectBox"
 			],
@@ -172,10 +212,6 @@
 				"ProjectGetUsers  (namespace)"
 			],
 			[
-				"Curr",
-				"CurrentProjectID"
-			],
-			[
 				"this",
 				"thisStory"
 			],
@@ -196,29 +232,18 @@
 	"buffers":
 	[
 		{
-			"contents": "",
-			"file": "/Volumes/EFI/EFI/arch/refind_linux.conf",
-			"file_size": -1,
-			"file_write_time": -1,
+			"file": "kanban.css",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 14268,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "js/mantis.js",
+			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 18405,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/kanbanclasses.js",
-			"settings":
-			{
-				"buffer_size": 12316,
+				"buffer_size": 7631,
 				"line_ending": "Unix"
 			}
 		},
@@ -226,8 +251,41 @@
 			"file": "index.js",
 			"settings":
 			{
-				"buffer_size": 6095,
+				"buffer_size": 9328,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/kanban.js",
+			"settings":
+			{
+				"buffer_size": 26084,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/mantis.js",
+			"settings":
+			{
+				"buffer_size": 19916,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/soapclient.js",
+			"settings":
+			{
+				"buffer_size": 14040,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/Users/cgaspard/Desktop/RecurIDPostings.txt",
+			"settings":
+			{
+				"buffer_size": 3909,
+				"line_ending": "Unix",
+				"name": "Updating recurring id 2140 on order MGUS0004063"
 			}
 		}
 	],
@@ -351,18 +409,21 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/config.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/kanban.css",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/README.md",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/forms.css",
+		"/Volumes/EFI/EFI/arch/refind_linux.conf",
 		"/Users/cgaspard/Downloads/ppsspp_win/README.md",
 		"/Users/cgaspard/Downloads/VMWare Fusion Key.txt",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
 		"/Volumes/WINPE/REIMAGETOOLS/go.cmd",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/forms.css",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/README.md",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/jquery.combobox.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/kanban.css",
 		"/Volumes/EFI/EFI/refind/refind.conf",
 		"/EFI/refind/refind.conf",
 		"/EFI/refind/refind",
@@ -433,6 +494,38 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"object",
+			"OpenProjectSelector",
+			"OpenUserSelector",
+			".menu",
+			"buildprojectselector",
+			"OpenUserSelector",
+			"projectSelectoItem",
+			"storyDivMenuItem",
+			"thisMantisUser",
+			"userContextMenu",
+			"HideUserSelector",
+			"border",
+			"no-wrap",
+			"UsesCustomField",
+			"UpdateListForCanbanStory",
+			"AddStoryAsyncCallback",
+			"AddStory",
+			"REmoveNullCustomFields",
+			"UpdateCustomField",
+			"UpdateListForCanbanStory",
+			"mantisConnectURL",
+			"ProjectGetIssues",
+			"_listIDField",
+			"FilterGetIssues",
+			"status",
+			"closed",
+			"buildstory",
+			"BuildKanbanStoryDiv",
+			"CreateKanbanStoriesFromMantisIssues",
+			"HastStory",
+			"CreateKanbanStoriesFromMantisIssues",
+			"storyseverity",
 			"selectproject",
 			"SelectProject",
 			"AddStory",
@@ -513,6 +606,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Mantis.ConnectURL",
 			"edit-newnotetext",
 			"callBack == null ? false : true;",
 			"",
@@ -538,76 +632,77 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Volumes/EFI/EFI/arch/refind_linux.conf",
+					"file": "kanban.css",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 14268,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								13528,
+								13528
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 8372.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "js/mantis.js",
+					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 18405,
+						"buffer_size": 7631,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11520,
-								11520
+								1322,
+								1322
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6798.0,
+						"translation.y": 265.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "js/kanbanclasses.js",
+					"file": "index.js",
 					"settings":
 					{
-						"buffer_size": 12316,
+						"buffer_size": 9328,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11444,
-								11455
+								8813,
+								8832
 							]
 						],
 						"settings":
@@ -615,26 +710,26 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 6155.0,
+						"translation.x": 3.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "index.js",
+					"file": "js/kanban.js",
 					"settings":
 					{
-						"buffer_size": 6095,
+						"buffer_size": 26084,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2616,
-								2616
+								2942,
+								2942
 							]
 						],
 						"settings":
@@ -643,7 +738,87 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1888.0,
+						"translation.y": 1734.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/mantis.js",
+					"settings":
+					{
+						"buffer_size": 19916,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3396,
+								3396
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2177.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/soapclient.js",
+					"settings":
+					{
+						"buffer_size": 14040,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3749,
+								3755
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1294.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/cgaspard/Desktop/RecurIDPostings.txt",
+					"settings":
+					{
+						"buffer_size": 3909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3909,
+								3909
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Updating recurring id 2140 on order MGUS0004063",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 716.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
