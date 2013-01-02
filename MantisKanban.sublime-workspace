@@ -210,7 +210,7 @@
 			"file": "js/mantis.js",
 			"settings":
 			{
-				"buffer_size": 18405,
+				"buffer_size": 19917,
 				"line_ending": "Unix"
 			}
 		},
@@ -218,7 +218,7 @@
 			"file": "js/kanbanclasses.js",
 			"settings":
 			{
-				"buffer_size": 12316,
+				"buffer_size": 12319,
 				"line_ending": "Unix"
 			}
 		},
@@ -226,7 +226,7 @@
 			"file": "index.js",
 			"settings":
 			{
-				"buffer_size": 6095,
+				"buffer_size": 9328,
 				"line_ending": "Unix"
 			}
 		}
@@ -538,7 +538,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -572,15 +572,15 @@
 					"file": "js/mantis.js",
 					"settings":
 					{
-						"buffer_size": 18405,
+						"buffer_size": 19917,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11520,
-								11520
+								0,
+								0
 							]
 						],
 						"settings":
@@ -599,15 +599,15 @@
 					"file": "js/kanbanclasses.js",
 					"settings":
 					{
-						"buffer_size": 12316,
+						"buffer_size": 12319,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11444,
-								11455
+								0,
+								0
 							]
 						],
 						"settings":
@@ -626,15 +626,15 @@
 					"file": "index.js",
 					"settings":
 					{
-						"buffer_size": 6095,
+						"buffer_size": 9328,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2616,
-								2616
+								2999,
+								2999
 							]
 						],
 						"settings":
