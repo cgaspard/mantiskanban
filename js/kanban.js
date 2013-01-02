@@ -457,10 +457,8 @@ function OpenAddStory() {
 	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
 		var user = Mantis.ProjectUsers[i];
 		selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
-		if(Mantis.CurrentUser.MantisUser.id == user.id) {
-			selectAssignedUser.selectedIndex = i + 1;
-		}
 	}
+	selectAssignedUser.selectedIndex = 0
 	$("#add-assignedto").trigger("liszt:updated");
 
 	if(Kanban.UsingCustomField) {
