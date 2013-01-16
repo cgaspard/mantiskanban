@@ -220,6 +220,16 @@ var Mantis = {
 				return pl;
 			}
 		} ,
+
+		Login : {
+			Name: "mc_login",
+			BuildParams : function(username, password) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, username);
+				pl.add(Mantis.Params.Password, password);
+				return pl;
+			}
+		},
 		
 		FilterGetIssues : {
 			Name : "mc_filter_get_issues",
@@ -484,6 +494,10 @@ var Mantis = {
 		//delete updateIssue.notes;
 		
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueUpdate.Name, Mantis.Methods.IssueUpdate.BuildParams(IssueID, Issue), hascallback, callBack);
+	},
+
+	Login : function(UserName, Password) {
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Login.Name, Mantis.Methods.Login.BuildParams(UserName, Password), false, null);
 	},
 	
 	ProjectGetCategories :  function(callBack){

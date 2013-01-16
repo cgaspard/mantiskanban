@@ -75,12 +75,19 @@ window.onload = function() {
 
  
 function Login() {
-	
-	StartLoading();
-	
 	document.getElementById("username").focus();
 	Mantis.CurrentUser.UserName = document.getElementById("username").value;
 	Mantis.CurrentUser.Password = document.getElementById("password").value;
+	
+	try {
+		var retObj = Mantis.Login(Mantis.CurrentUser.UserName, Mantis.CurrentUser.Password);
+	} catch (e) {
+		alert("Error Login: \r\n\r\n" + e.message);
+		return;
+	}
+
+	StartLoading();
+	
 	
 	LoadKanbanProjects();
 	BuildProjectsGUI();
