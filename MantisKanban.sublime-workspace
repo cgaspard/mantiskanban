@@ -238,6 +238,55 @@
 				"buffer_size": 14272,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 19917,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 9328,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/kanban.js",
+			"settings":
+			{
+				"buffer_size": 26084,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/mantis.js",
+			"settings":
+			{
+				"buffer_size": 19916,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/soapclient.js",
+			"settings":
+			{
+				"buffer_size": 14040,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/Users/cgaspard/Desktop/RecurIDPostings.txt",
+			"settings":
+			{
+				"buffer_size": 3909,
+				"line_ending": "Unix",
+				"name": "Updating recurring id 2140 on order MGUS0004063"
+			}
 		}
 	],
 	"build_system": "Packages/User/ViewInSafari.sublime-build",
