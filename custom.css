@@ -1,0 +1,14 @@
+body {
+	font-family:Arial,Helvetica,sans-serif !important; 
+	font-size: 12px;
+}
+
+.kanbanstorytitle {
+	font-size: 12px !important;
+}
+
+.kanbanlistdroparea {
+	color:#000;
+	text-align: center;
+	cursor: pointer;
+}
