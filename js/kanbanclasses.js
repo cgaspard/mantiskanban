@@ -363,7 +363,7 @@ KanbanStory.prototype = {
 		storyContainerDiv.appendChild(storyDivButtonContainer);
 
 		var storyDivButton = document.createElement("img");
-		storyDivButton.setAttribute("src", "images/info.png");
+		storyDivButton.setAttribute("src", "images/info_20_by_20.png");
 		storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
 		storyDivButton.setAttribute("onclick", "OpenUserSelector(event, '" + this.ID + "');");
 		storyDivButton.setAttribute("listid", "listid" + this.ListID);
