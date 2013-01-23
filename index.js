@@ -3,6 +3,8 @@ var LoadingIssuesList = new Array();
 
 window.onload = function() {
 
+	checkLogin();
+
 	$("#user-context-menu").hide();
 	$("#project-selector").hide();
 
@@ -320,5 +322,10 @@ function CreateKanbanStoriesFromMantisIssues(obj) {
 	for(var is = 0; is < obj.length; is++) {
 		Kanban.AddStoryToArray(new KanbanStory(obj[is]));
 	}
+	
+}
+
+function checkLogin(){
+	//use this function to check to see if the user has local storage for username and password and if they do log in automatically
 	
 }
