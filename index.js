@@ -372,18 +372,25 @@ function checkLogin(){
 function checkLocalStorageLogin(){
 	//check for users settings and login information
 	//if the settings exist load them into the DefaultSettings
-	if(localStorage.mantiskanbanSettings != "" || localStorage.mantiskanbanSettings != null || localStorage.mantiskanbanSettings != "undefined")
+	if(localStorage.mantiskanbanSettings != "" && localStorage.mantiskanbanSettings != null && localStorage.mantiskanbanSettings != "undefined")
 	{
-		DefaultSettings = JSON.parse(localStorage.getItem("mantiskanbanSettings"));
+		DefaultSettings = JSON.parse(localStorage.mantiskanbanSettings);
 		log("loaded user saved settings into the DefaultSettings");
 		log(JSON.stringify(DefaultSettings));
+		//put the username in the field if the DefaultSettings.lastAccessTime is less than 30 days ago
+		var currentTime = Math.round(new Date().getTime() / 1000);
+		if(((currentTime - DefaultSettings.lastAccessTime) < 2592000) && DefaultSettings.stayLoggedIn == 1){
+			log("user logged in less than 30 days ago put their name in the box");
+			document.getElementById("username").value = DefaultSettings.username;
+			document.getElementById("password").value = "";
+		}
 	}
 	//otherwise load the DefaultSettings
 	else
 	{
 		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
 		log("loaded DefaultSettings in to user saved settings.");
-		log(localStorage.getItem("mantiskanbanSettings"));
+		log(localStorage.mantiskanbanSettings);
 	}
 }
 
