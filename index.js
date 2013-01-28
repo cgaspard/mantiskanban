@@ -1,4 +1,21 @@
 var LoadingIssuesList = new Array();
+var debugOn = 1;
+
+// usage: log('inside coolFunc',this,arguments);
+// http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
+// added this logging function from paul irish to debug if needed.
+window.log = function(){
+	if(debugOn == 1){
+		log.history = log.history || [];   // store logs to an array for reference
+  		log.history.push(arguments);
+  		if(this.console){
+    		console.log( Array.prototype.slice.call(arguments) );
+  		}
+	}
+	else{
+
+	}
+};
 
 
 window.onload = function() {
@@ -90,6 +107,14 @@ function Login() {
 	document.getElementById("username").focus();
 	Mantis.CurrentUser.UserName = document.getElementById("username").value;
 	Mantis.CurrentUser.Password = document.getElementById("password").value;
+
+	//put the user-entered data into the DefaultSettings array.
+	DefaultSettings.username = document.getElementById("username").value;
+	DefaultSettings.stayLoggedIn = 1;
+	DefaultSettings.lastAccessTime = Math.round(new Date().getTime() / 1000);
+
+	//and then save them
+	saveCurrentSettings();
 	
 	LoadKanbanProjects();
 	BuildProjectsGUI();
@@ -334,5 +359,52 @@ function CreateKanbanStoriesFromMantisIssues(obj) {
 
 function checkLogin(){
 	//use this function to check to see if the user has local storage for username and password and if they do log in automatically
+	if (Modernizr.localstorage) {
+  		log("window.localStorage is available!");
+  		checkLocalStorageLogin();
+	}
+	else {
+  		log("no native support for HTML5 storage :( maybe try dojox.storage or a third-party solution");
+  		checkCookieLogin();
+	}
+}
+
+function checkLocalStorageLogin(){
+	//check for users settings and login information
+	//if the settings exist load them into the DefaultSettings
+	if(localStorage.mantiskanbanSettings != "" || localStorage.mantiskanbanSettings != null || localStorage.mantiskanbanSettings != "undefined")
+	{
+		DefaultSettings = JSON.parse(localStorage.getItem("mantiskanbanSettings"));
+		log("loaded user saved settings into the DefaultSettings");
+		log(JSON.stringify(DefaultSettings));
+	}
+	//otherwise load the DefaultSettings
+	else
+	{
+		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
+		log("loaded DefaultSettings in to user saved settings.");
+		log(localStorage.getItem("mantiskanbanSettings"));
+	}
+}
+
+function checkCookieLogin(){
 	
 }
+
+function saveCurrentSettings(){
+	if (Modernizr.localstorage) {
+  		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
+  		log(localStorage.getItem("mantiskanbanSettings"));
+	}
+	else {
+  		//put the cookie version of the saveCurrentSettings() here.
+
+	}
+	
+}
+
+
+
+
+
+
