@@ -38,7 +38,7 @@
 					</div>                        
 					<img src="images/mantis_logo.png" class="mantislogo" />
 					<div id="loginarea" class="loginarea">
-						<form onsubmit="Login(); return false;">
+						<form id="userLoginForm" class="userLoginForm" runat="server" method="post">
 						<input type="text" id="username" value="Username" onclick="if(this.value == 'Username'){this.value='';}"/>
 						<input type="password" id="password" value="Password" onclick="if(this.value == 'Password'){this.value='';}" onfocus="if(this.value == 'Password'){this.value='';}">
 						<input type="submit" style="position: absolute; left: -9999px"/> 

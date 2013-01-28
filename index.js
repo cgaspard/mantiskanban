@@ -5,6 +5,13 @@ window.onload = function() {
 
 	checkLogin();
 
+	//make sure that the username and password form doesnt actually submit. 
+	//need this here as a fail safe because jQuery is included.
+	$('#userLoginForm').submit(function() {
+  		Login();
+  		return false;
+	});
+
 	$("#user-context-menu").hide();
 	$("#project-selector").hide();
 
