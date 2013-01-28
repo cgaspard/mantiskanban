@@ -112,9 +112,6 @@ function Login() {
 	DefaultSettings.username = document.getElementById("username").value;
 	DefaultSettings.stayLoggedIn = 1;
 	DefaultSettings.lastAccessTime = Math.round(new Date().getTime() / 1000);
-
-	//and then save them
-	saveCurrentSettings();
 	
 	LoadKanbanProjects();
 	BuildProjectsGUI();
@@ -227,6 +224,10 @@ function SelectProject() {
 		CreateKanbanStoriesFromMantisIssues(retObj);
 		StopLoading();
 	}
+
+	//put selected project into localstorage so that next time the user logs in it loads their current project.
+	DefaultSettings.currentProject = Mantis.CurrentProjectID;
+	saveCurrentSettings();
 }
 
 function UpdateFilter(filterID) {
@@ -375,22 +376,27 @@ function checkLocalStorageLogin(){
 	if(localStorage.mantiskanbanSettings != "" && localStorage.mantiskanbanSettings != null && localStorage.mantiskanbanSettings != "undefined")
 	{
 		DefaultSettings = JSON.parse(localStorage.mantiskanbanSettings);
-		log("loaded user saved settings into the DefaultSettings");
-		log(JSON.stringify(DefaultSettings));
+		//log("loaded user saved settings into the DefaultSettings");
+		//log(JSON.stringify(DefaultSettings));
 		//put the username in the field if the DefaultSettings.lastAccessTime is less than 30 days ago
 		var currentTime = Math.round(new Date().getTime() / 1000);
 		if(((currentTime - DefaultSettings.lastAccessTime) < 2592000) && DefaultSettings.stayLoggedIn == 1){
-			log("user logged in less than 30 days ago put their name in the box");
+			//log("user logged in less than 30 days ago put their name in the box");
 			document.getElementById("username").value = DefaultSettings.username;
 			document.getElementById("password").value = "";
+		}
+		//if the current project in the settings is not the same as the project default then load it.
+		if(DefaultSettings.currentProject != Mantis.CurrentProjectID){
+			//log("setting user saved filter to the default project: " + DefaultSettings.currentProject);
+			Mantis.CurrentProjectID = DefaultSettings.currentProject;
 		}
 	}
 	//otherwise load the DefaultSettings
 	else
 	{
 		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
-		log("loaded DefaultSettings in to user saved settings.");
-		log(localStorage.mantiskanbanSettings);
+		//log("loaded DefaultSettings in to user saved settings.");
+		//log(localStorage.mantiskanbanSettings);
 	}
 }
 
@@ -399,9 +405,11 @@ function checkCookieLogin(){
 }
 
 function saveCurrentSettings(){
+	log("saveCurrentSettings() called.");
 	if (Modernizr.localstorage) {
   		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
-  		log(localStorage.getItem("mantiskanbanSettings"));
+  		log("local stored settings: " + localStorage.getItem("mantiskanbanSettings"));
+  		log("defaultSettings: " + JSON.stringify(DefaultSettings));
 	}
 	else {
   		//put the cookie version of the saveCurrentSettings() here.
