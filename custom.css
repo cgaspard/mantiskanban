@@ -43,14 +43,14 @@ body {
 }
 
 .kanbanlist:hover {
-	width: 400px !important;
-	max-width: 400px !important;
+	/*width: 400px !important;
+	max-width: 400px !important;*/
 	background: #3ea5f8;
 }
 
-.kanbanlist:hover .kanbanlisttitle {
+/*.kanbanlist:hover .kanbanlisttitle {
 	font-size: 20px;
-} 
+} */
 
 .kanbanlisttitle{
 	text-align: center;
