@@ -10,6 +10,7 @@ window.log = function(){
   		log.history.push(arguments);
   		if(this.console){
     		console.log( Array.prototype.slice.call(arguments) );
+    		console.log(Mantis.CurrentProjectID);
   		}
 	}
 	else{
@@ -101,6 +102,7 @@ window.onload = function() {
 
  
 function Login() {
+	log("Login() called.");
 	
 	StartLoading();
 	
@@ -112,6 +114,8 @@ function Login() {
 	DefaultSettings.username = document.getElementById("username").value;
 	DefaultSettings.stayLoggedIn = 1;
 	DefaultSettings.lastAccessTime = Math.round(new Date().getTime() / 1000);
+
+	//saveCurrentSettings();
 	
 	LoadKanbanProjects();
 	BuildProjectsGUI();
@@ -127,6 +131,7 @@ function Login() {
 }
 
 function BuildProjectSelector() {
+	log("BuildProjectSelector() called.");
 
 	var projectSelector = document.getElementById("project-selector");
 
@@ -149,6 +154,7 @@ function BuildProjectSelector() {
 }
 
 function BuildUserSelector() {
+	log("BuildUserSelector() called.");
 
 	var userContextMenu = document.getElementById("user-context-menu-container");
 
@@ -200,13 +206,19 @@ function Logout() {
 }
 
 function SelectProject() {
+	log("SelectProject() called.");
+	log("seleted:"+document.getElementById("seletedproject").value);
+	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
+
+	//put selected project into localstorage so that next time the user logs in it loads their current project.
+	DefaultSettings.currentProject = Mantis.CurrentProjectID;
+	saveCurrentSettings();
+
 	StartLoading();
 
 	Kanban.Lists = [];
 	Kanban.Stories = [];
 	Kanban.ClearListGUI();
-
-	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
 	window.setTimeout("UpdateFilterList()", 100);
 
@@ -224,10 +236,6 @@ function SelectProject() {
 		CreateKanbanStoriesFromMantisIssues(retObj);
 		StopLoading();
 	}
-
-	//put selected project into localstorage so that next time the user logs in it loads their current project.
-	DefaultSettings.currentProject = Mantis.CurrentProjectID;
-	saveCurrentSettings();
 }
 
 function UpdateFilter(filterID) {
@@ -236,6 +244,7 @@ function UpdateFilter(filterID) {
 }
 
 function UpdateFilterList() {
+	log("UpdateFilterList() called.");
 
 	var filterList = document.getElementById("filterlist");
 	filterList.options.length = 0;
@@ -376,27 +385,29 @@ function checkLocalStorageLogin(){
 	if(localStorage.mantiskanbanSettings != "" && localStorage.mantiskanbanSettings != null && localStorage.mantiskanbanSettings != "undefined")
 	{
 		DefaultSettings = JSON.parse(localStorage.mantiskanbanSettings);
-		//log("loaded user saved settings into the DefaultSettings");
-		//log(JSON.stringify(DefaultSettings));
+		log("loaded user saved settings into the DefaultSettings");
+		log(JSON.stringify(DefaultSettings));
 		//put the username in the field if the DefaultSettings.lastAccessTime is less than 30 days ago
 		var currentTime = Math.round(new Date().getTime() / 1000);
 		if(((currentTime - DefaultSettings.lastAccessTime) < 2592000) && DefaultSettings.stayLoggedIn == 1){
-			//log("user logged in less than 30 days ago put their name in the box");
+			log("user logged in less than 30 days ago put their name in the box");
 			document.getElementById("username").value = DefaultSettings.username;
 			document.getElementById("password").value = "";
 		}
 		//if the current project in the settings is not the same as the project default then load it.
 		if(DefaultSettings.currentProject != Mantis.CurrentProjectID){
-			//log("setting user saved filter to the default project: " + DefaultSettings.currentProject);
+			log("setting user-saved filter as default project: " + DefaultSettings.currentProject);
 			Mantis.CurrentProjectID = DefaultSettings.currentProject;
+			document.getElementById("seletedproject").value = Mantis.CurrentProjectID;
+			log("CurrentProjectID set to " + Mantis.CurrentProjectID);
 		}
 	}
 	//otherwise load the DefaultSettings
 	else
 	{
 		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
-		//log("loaded DefaultSettings in to user saved settings.");
-		//log(localStorage.mantiskanbanSettings);
+		log("loaded DefaultSettings in to user saved settings.");
+		log(localStorage.mantiskanbanSettings);
 	}
 }
 
