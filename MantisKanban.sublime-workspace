@@ -235,7 +235,7 @@
 			"file": "kanban.css",
 			"settings":
 			{
-				"buffer_size": 14272,
+				"buffer_size": 14268,
 				"line_ending": "Unix"
 			}
 		},
@@ -243,7 +243,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 19917,
+				"buffer_size": 7631,
 				"line_ending": "Unix"
 			}
 		},
@@ -409,22 +409,14 @@
 	},
 	"file_history":
 	[
-		"/Users/cgaspard/.ssh/known_hosts",
-		"/Volumes/C/updatenewsfeed.vbs",
-		"/Users/cgaspard/Downloads/dailybilling.log",
-		"/Users/cgaspard/Desktop/PaymentPlanProcessing12.24.12",
-		"/Users/cgaspard/Desktop/dbupdate.sql",
-		"/Users/cgaspard/Desktop/Redeliver before.txt",
-		"/Users/cgaspard/Desktop/RecurIDPostings.txt",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/soapclient.js",
+		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/config.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/index.html",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/kanban.css",
-		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
-		"/Users/cgaspard/Projects/Fun/MantisKanban/config.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanbanclasses.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/index.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/kanban.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/README.md",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/forms.css",
 		"/Volumes/EFI/EFI/arch/refind_linux.conf",
@@ -442,6 +434,7 @@
 		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/mantiskanban.css",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantiskanban.js",
+		"/Users/cgaspard/Projects/Fun/MantisKanban/js/soapclient.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/ViewInSafari.sublime-build",
 		"/Users/cgaspard/Library/Application Support/Sublime Text 2/Packages/User/ViewInSafari.sublime-build",
 		"/Volumes/C/Projects/MyGait/MyGaitFramework/trunk/MyGaitFramework/Mygait.csproj",
@@ -501,10 +494,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"Error in processing",
-			"MGUS0004457",
-			"# ",
-			"Lists",
 			"object",
 			"OpenProjectSelector",
 			"OpenUserSelector",
@@ -617,7 +606,6 @@
 		"regex": false,
 		"replace_history":
 		[
-			"",
 			"Mantis.ConnectURL",
 			"edit-newnotetext",
 			"callBack == null ? false : true;",
@@ -644,7 +632,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -652,15 +640,15 @@
 					"file": "kanban.css",
 					"settings":
 					{
-						"buffer_size": 14272,
+						"buffer_size": 14268,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								158,
-								158
+								13528,
+								13528
 							]
 						],
 						"settings":
@@ -669,7 +657,168 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
+						"translation.y": 8372.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 7631,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1322,
+								1322
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 265.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "index.js",
+					"settings":
+					{
+						"buffer_size": 9328,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8813,
+								8832
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 3.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/kanban.js",
+					"settings":
+					{
+						"buffer_size": 26084,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2942,
+								2942
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1734.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/mantis.js",
+					"settings":
+					{
+						"buffer_size": 19916,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3396,
+								3396
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2177.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/soapclient.js",
+					"settings":
+					{
+						"buffer_size": 14040,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3749,
+								3755
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1294.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/cgaspard/Desktop/RecurIDPostings.txt",
+					"settings":
+					{
+						"buffer_size": 3909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3909,
+								3909
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Updating recurring id 2140 on order MGUS0004063",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 716.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
