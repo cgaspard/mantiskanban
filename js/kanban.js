@@ -140,6 +140,7 @@ var Kanban = {
 			///The title container
 			var listDivTitle = document.createElement("div");
 			listDivTitle.setAttribute("class", "kanbanlisttitle");
+			listDivTitle.setAttribute("id","kanbanlisttitle"+li)
 			listDivTitle.innerHTML = kanbanListItem.Name.capitalize();
 			listDiv.appendChild(listDivTitle);
 

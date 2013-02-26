@@ -10,7 +10,6 @@ window.log = function(){
   		log.history.push(arguments);
   		if(this.console){
     		console.log( Array.prototype.slice.call(arguments) );
-    		console.log(Mantis.CurrentProjectID);
   		}
 	}
 	else{
@@ -207,7 +206,6 @@ function Logout() {
 
 function SelectProject() {
 	log("SelectProject() called.");
-	log("seleted:"+document.getElementById("seletedproject").value);
 	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
 	//put selected project into localstorage so that next time the user logs in it loads their current project.
@@ -258,6 +256,9 @@ function UpdateFilterList() {
 	}
 	
 	$("#filterlist").trigger("liszt:updated");
+
+	//add the listeners to the gui items here
+	addGuiListeners();
 
 }
 
@@ -432,6 +433,33 @@ function saveSettingsToStorageMechanism(){
 
 	}
 	
+}
+
+function addGuiListeners(){
+	//use this function to add listeners to the gui after they are loaded from ajax
+	$('.kanbanlisttitle').click(function() {
+  		selectColumnForWidening(this);
+	});
+}
+
+function selectColumnForWidening(column){
+	log("selectColumnForWidening called.")
+	//use this column to temporarily add a click event to widen a column by clicking the header
+
+	//get parent of clicked object
+	var parentToChange = $("#" + column.id).parent().attr('id');
+
+	//see if its 400px wide first and if it is then set it back to auto
+	if($("#" + parentToChange).css("width") == "400px"){
+		//change all of them back to normal first
+		$('.kanbanlist').css('width','auto');
+		$("#" + parentToChange).css('width', 'auto');
+	}
+	else{
+		//change all of them back to normal first
+		$('.kanbanlist').css('width','auto');
+		$("#" + parentToChange).css('width', '400px');
+	}
 }
 
 
