@@ -32,14 +32,6 @@ var Mantis = {
 	CurrentUser : {
 		UserName : "",
 		Password : "",
-		get MantisUser() {
-			for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
-				if(Mantis.ProjectUsers[i].name == Mantis.CurrentUser.UserName) {
-					return Mantis.ProjectUsers[i];
-				}
-			}
-			return null;
-		}
 	},
 	
 	set DefaultFilterID(value) {
@@ -547,6 +539,17 @@ var Mantis = {
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Version.Name, Mantis.Methods.Version.BuildParams(), hascallback, callBack);
 	}    
 }
+
+Object.defineProperty(Mantis.CurrentUser, "MantisUser", {
+	get: function() {
+		for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
+			if(Mantis.ProjectUsers[i].name == Mantis.CurrentUser.UserName) {
+				return Mantis.ProjectUsers[i];
+			}
+		}
+		return null;
+	}
+});	
 
 
 /*
