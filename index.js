@@ -1,15 +1,15 @@
 var LoadingIssuesList = new Array();
-var debugOn = 1;
-
+var DebugOn = false;
 // usage: log('inside coolFunc',this,arguments);
 // http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
 // added this logging function from paul irish to debug if needed.
 window.log = function(){
-	if(debugOn == 1){
+	if(DebugOn == 1){
 		log.history = log.history || [];   // store logs to an array for reference
   		log.history.push(arguments);
   		if(this.console){
     		console.log( Array.prototype.slice.call(arguments) );
+    		console.log(Mantis.CurrentProjectID);
   		}
 	}
 	else{
@@ -17,10 +17,8 @@ window.log = function(){
 	}
 };
 
-
 window.onload = function() {
 
-	checkLogin();
 
 	//make sure that the username and password form doesnt actually submit. 
 	//need this here as a fail safe because jQuery is included.
@@ -97,6 +95,9 @@ window.onload = function() {
 			}
 		}
 	});
+
+	AutoLogin();
+
 }
 
  
@@ -108,6 +109,13 @@ function Login() {
 	document.getElementById("username").focus();
 	Mantis.CurrentUser.UserName = document.getElementById("username").value;
 	Mantis.CurrentUser.Password = document.getElementById("password").value;
+	
+	try {
+		var retObj = Mantis.Login(Mantis.CurrentUser.UserName, Mantis.CurrentUser.Password);
+	} catch (e) {
+		alert("Error Login: \r\n\r\n" + e.message);
+		return;
+	}
 
 	//put the user-entered data into the DefaultSettings array.
 	DefaultSettings.username = document.getElementById("username").value;
@@ -217,6 +225,8 @@ function SelectProject() {
 	Kanban.Lists = [];
 	Kanban.Stories = [];
 	Kanban.ClearListGUI();
+
+	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
 	window.setTimeout("UpdateFilterList()", 100);
 
@@ -370,100 +380,3 @@ function CreateKanbanStoriesFromMantisIssues(obj) {
 	}
 	
 }
-
-function checkLogin(){
-	//use this function to check to see if the user has local storage for username and password and if they do log in automatically
-	if (Modernizr.localstorage) {
-  		log("window.localStorage is available!");
-  		loadSettingsFromLocalStorage();
-	}
-	else {
-  		log("no native support for HTML5 storage :( maybe try dojox.storage or a third-party solution");
-  		loadSettingsFromCookieStorage();
-	}
-}
-
-function loadSettingsFromLocalStorage(){
-	//check for users settings and login information
-	//if the settings exist load them into the DefaultSettings
-	if(localStorage.mantiskanbanSettings != "" && localStorage.mantiskanbanSettings != null && localStorage.mantiskanbanSettings != "undefined")
-	{
-		log("Local story exists!!!");
-		DefaultSettings = JSON.parse(localStorage.mantiskanbanSettings);
-		log("loaded user saved settings into the DefaultSettings");
-		log(JSON.stringify(DefaultSettings));
-		//put the username in the field if the DefaultSettings.lastAccessTime is less than 30 days ago
-		var currentTime = Math.round(new Date().getTime() / 1000);
-		if(((currentTime - DefaultSettings.lastAccessTime) < 2592000) && DefaultSettings.stayLoggedIn == 1){
-			log("user logged in less than 30 days ago put their name in the box");
-			document.getElementById("username").value = DefaultSettings.username;
-			document.getElementById("password").value = "";
-		}
-		//if the current project in the settings is not the same as the project default then load it.
-		if(DefaultSettings.currentProject != Mantis.CurrentProjectID){
-			log("setting user-saved filter as default project: " + DefaultSettings.currentProject);
-			Mantis.CurrentProjectID = DefaultSettings.currentProject;
-			document.getElementById("seletedproject").value = Mantis.CurrentProjectID;
-			log("CurrentProjectID set to " + Mantis.CurrentProjectID);
-		}
-	}
-	//otherwise load the DefaultSettings
-	else
-	{
-		log("Local storage don't exist!!");
-		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
-		log("loaded DefaultSettings in to user saved settings.");
-		log(localStorage.mantiskanbanSettings);
-	}
-}
-
-function loadSettingsFromCookieStorage(){
-	
-}
-
-function saveSettingsToStorageMechanism(){
-	log("saveCurrentSettings() called.");
-	if (Modernizr.localstorage) {
-  		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
-  		log("local stored settings: " + localStorage.getItem("mantiskanbanSettings"));
-  		log("defaultSettings: " + JSON.stringify(DefaultSettings));
-	}
-	else {
-  		//put the cookie version of the saveCurrentSettings() here.
-
-	}
-	
-}
-
-function addGuiListeners(){
-	//use this function to add listeners to the gui after they are loaded from ajax
-	$('.kanbanlisttitle').click(function() {
-  		selectColumnForWidening(this);
-	});
-}
-
-function selectColumnForWidening(column){
-	log("selectColumnForWidening called.")
-	//use this column to temporarily add a click event to widen a column by clicking the header
-
-	//get parent of clicked object
-	var parentToChange = $("#" + column.id).parent().attr('id');
-
-	//see if its 400px wide first and if it is then set it back to auto
-	if($("#" + parentToChange).css("width") == "400px"){
-		//change all of them back to normal first
-		$('.kanbanlist').css('width','auto');
-		$("#" + parentToChange).css('width', 'auto');
-	}
-	else{
-		//change all of them back to normal first
-		$('.kanbanlist').css('width','auto');
-		$("#" + parentToChange).css('width', '400px');
-	}
-}
-
-
-
-
-
-
