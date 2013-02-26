@@ -268,7 +268,7 @@ function UpdateFilterList() {
 	$("#filterlist").trigger("liszt:updated");
 
 	//add the listeners to the gui items here
-	addGuiListeners();
+	//addGuiListeners();
 
 }
 
@@ -379,4 +379,68 @@ function CreateKanbanStoriesFromMantisIssues(obj) {
 		Kanban.AddStoryToArray(new KanbanStory(obj[is]));
 	}
 	
+}
+
+function AutoLogin(){
+	//use this function to check to see if the user has local storage for username and password and if they do log in automatically
+	if (Modernizr.localstorage) {
+  		log("window.localStorage is available!");
+  		LoadSettingsFromLocalStorage();
+	}
+	else {
+  		log("no native support for HTML5 storage :( maybe try dojox.storage or a third-party solution");
+  		LoadSettingsFromCookieStorage();
+	}
+}
+
+function LoadSettingsFromLocalStorage(){
+	//check for users settings and login information
+	//if the settings exist load them into the DefaultSettings
+	if(localStorage.mantiskanbanSettings != "" && localStorage.mantiskanbanSettings != null && localStorage.mantiskanbanSettings != "undefined")
+	{
+		log("Local story exists!!!");
+		DefaultSettings = JSON.parse(localStorage.mantiskanbanSettings);
+		log("loaded user saved settings into the DefaultSettings");
+		log(JSON.stringify(DefaultSettings));
+		//put the username in the field if the DefaultSettings.lastAccessTime is less than 30 days ago
+		var currentTime = Math.round(new Date().getTime() / 1000);
+		if(((currentTime - DefaultSettings.lastAccessTime) < 2592000) && DefaultSettings.stayLoggedIn == 1){
+			log("user logged in less than 30 days ago put their name in the box");
+			document.getElementById("username").value = DefaultSettings.username;
+			document.getElementById("password").value = "";
+		}
+		//if the current project in the settings is not the same as the project default then load it.
+		if(DefaultSettings.currentProject != Mantis.CurrentProjectID){
+			log("setting user-saved filter as default project: " + DefaultSettings.currentProject);
+			Mantis.CurrentProjectID = DefaultSettings.currentProject;
+			document.getElementById("seletedproject").value = Mantis.CurrentProjectID;
+			log("CurrentProjectID set to " + Mantis.CurrentProjectID);
+		}
+	}
+	//otherwise load the DefaultSettings
+	else
+	{
+		log("Local storage don't exist!!");
+		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
+		log("loaded DefaultSettings in to user saved settings.");
+		log(localStorage.mantiskanbanSettings);
+	}
+}
+
+function LoadSettingsFromCookieStorage(){
+
+}
+
+function saveSettingsToStorageMechanism(){
+	log("saveCurrentSettings() called.");
+	if (Modernizr.localstorage) {
+  		localStorage.setItem("mantiskanbanSettings", JSON.stringify(DefaultSettings));
+  		log("local stored settings: " + localStorage.getItem("mantiskanbanSettings"));
+  		log("defaultSettings: " + JSON.stringify(DefaultSettings));
+	}
+	else {
+  		//put the cookie version of the saveCurrentSettings() here.
+
+	}
+
 }
