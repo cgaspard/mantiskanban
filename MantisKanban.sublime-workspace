@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"curr",
+				"CurrentUser  (namespace)"
+			],
+			[
 				"Curr",
 				"CurrentProjectID  (variable)"
 			],
@@ -30,10 +34,6 @@
 			[
 				"cust",
 				"custom_fields"
-			],
-			[
-				"curr",
-				"CurrentProjectID  (variable)"
 			],
 			[
 				"_def",
@@ -229,7 +229,7 @@
 			]
 		]
 	},
-	"build_system": "Packages/User/ViewInSafari.sublime-build",
+	"build_system": "Packages/User/Chromium.sublime-build",
 	"command_palette":
 	{
 		"height": 392.0,
@@ -349,6 +349,7 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-project",
 		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/config.js",
@@ -434,6 +435,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Login",
+			";",
+			"=",
+			"Mantis",
+			",",
+			":",
+			"Mantis",
+			",",
+			":",
 			"object",
 			"OpenProjectSelector",
 			"OpenUserSelector",

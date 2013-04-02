@@ -346,24 +346,24 @@ function BuildProjectsGUI() {
 	var projectDivContainer = document.getElementById("projectlist");
 	var preSelectedProjectID = document.getElementById("seletedproject").value == "" ? Kanban.Projects[0].ID : document.getElementById("seletedproject").value;
 	try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
-	for(var i = 0; i < Kanban.Projects.length && i <= 3; i++) {
-		var projectDiv = document.createElement("div");
-		projectDiv.setAttribute("class", "projectbutton");
-		projectDiv.setAttribute("id", "project" + Kanban.Projects[i].ID);
-		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Kanban.Projects[i].ID + "'; SelectProject(); SwapSelectedProject(this.id);");
-		projectDiv.setAttribute("selected", Kanban.Projects[i].ID == preSelectedProjectID ? "true" : "false");
-		projectDiv.innerHTML = Kanban.Projects[i].Name;
-		projectDivContainer.appendChild(projectDiv);
-	}
-	if(Kanban.Projects.length > 4) {
-		var projectDiv = document.createElement("div");
-		projectDiv.setAttribute("class", "projectbutton");
-		projectDiv.setAttribute("id", "projectshowmore");
-		projectDiv.setAttribute("onclick", "OpenProjectSelector(event);");
-		projectDiv.setAttribute("selected", Kanban.Projects[i].id == preSelectedProjectID ? "true" : "false");
-		projectDiv.innerHTML = "More"
-		projectDivContainer.appendChild(projectDiv);
-	}
+	//for(var i = 0; i < Kanban.Projects.length && i <= 3; i++) {
+	// 	var projectDiv = document.createElement("div");
+	// 	projectDiv.setAttribute("class", "projectbutton");
+	// 	projectDiv.setAttribute("id", "project" + Kanban.Projects[i].ID);
+	// 	projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Kanban.Projects[i].ID + "'; SelectProject(); SwapSelectedProject(this.id);");
+	// 	projectDiv.setAttribute("selected", Kanban.Projects[i].ID == preSelectedProjectID ? "true" : "false");
+	// 	projectDiv.innerHTML = Kanban.Projects[i].Name;
+	// 	projectDivContainer.appendChild(projectDiv);
+	// }
+	// if(Kanban.Projects.length > 4) {
+	//}
+	var projectDiv = document.createElement("div");
+	projectDiv.setAttribute("class", "projectbutton");
+	projectDiv.setAttribute("id", "projectshowmore");
+	projectDiv.setAttribute("onclick", "OpenProjectSelector(event);");
+	//projectDiv.setAttribute("selected", Kanban.Projects[i].id == preSelectedProjectID ? "true" : "false");
+	projectDiv.innerHTML = "Projects"
+	projectDivContainer.appendChild(projectDiv);
 
 	if(document.getElementById("seletedproject").value == "") {
 		document.getElementById("seletedproject").value = Kanban.Projects[0].ID;
