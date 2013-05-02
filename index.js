@@ -259,6 +259,8 @@ function UpdateFilterList() {
 	var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
 	//filterList.options.length = 0;
 
+	try { while(filterList.children.length > 0) { filterList.removeChild(0); } } catch(e) { }
+
 	//	if(filter.id == Mantis.DefaultFilterID) filterList.selectedIndex = i;
 
 	for(var i = 0; i < filterListArray.length; i++) {
