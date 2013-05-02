@@ -44,7 +44,7 @@ window.onload = function() {
 	$("#add-priority").chosen();
 	$("#add-category").chosen();
 
-	$("#filterlist").chosen();
+	//$("#filterlist").chosen();
 
 
 	$(function() {
@@ -252,20 +252,42 @@ function UpdateFilter(filterID) {
 }
 
 function UpdateFilterList() {
+
 	log("UpdateFilterList() called.");
 
 	var filterList = document.getElementById("filterlist");
-	filterList.options.length = 0;
+	var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
+	//filterList.options.length = 0;
+
+	//	if(filter.id == Mantis.DefaultFilterID) filterList.selectedIndex = i;
+
+	for(var i = 0; i < filterListArray.length; i++) {
+	
+		var filter = filterListArray[i];
+
+		var filterItem = document.createElement("li");
+		filterItem.setAttribute("filterid", filter.id);
+
+		var filterItemLink = document.createElement("a");
+		filterItemLink.setAttribute("href", "#");
+		filterItemLink.setAttribute("filterid", filter.id);
+		filterItemLink.setAttribute("onclick", "UpdateFilter(" + filter.id + ")");
+		filterItemLink.innerHTML = filter.name;
+		filterList.appendChild(filterItemLink);
+
+		filterList.appendChild(filterItem);
+
+	}
 	///Add a blank option
 	
-	var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
-	for(var i = 0; i < filterListArray.length; i++) {
-		var filter = filterListArray[i];
-		filterList.options[filterList.options.length] = new Option(filter.name, filter.id);
-		if(filter.id == Mantis.DefaultFilterID) filterList.selectedIndex = i;
-	}
+	//var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
+	//for(var i = 0; i < filterListArray.length; i++) {
+	//	var filter = filterListArray[i];
+	//	filterList.options[filterList.options.length] = new Option(filter.name, filter.id);
+	//	if(filter.id == Mantis.DefaultFilterID) filterList.selectedIndex = i;
+	//}
 	
-	$("#filterlist").trigger("liszt:updated");
+	//$("#filterlist").trigger("liszt:updated");
 
 	//add the listeners to the gui items here
 	//addGuiListeners();
@@ -346,24 +368,30 @@ function BuildProjectsGUI() {
 	var projectDivContainer = document.getElementById("projectlist");
 	var preSelectedProjectID = document.getElementById("seletedproject").value == "" ? Kanban.Projects[0].ID : document.getElementById("seletedproject").value;
 	try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
-	//for(var i = 0; i < Kanban.Projects.length && i <= 3; i++) {
-	// 	var projectDiv = document.createElement("div");
-	// 	projectDiv.setAttribute("class", "projectbutton");
-	// 	projectDiv.setAttribute("id", "project" + Kanban.Projects[i].ID);
-	// 	projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Kanban.Projects[i].ID + "'; SelectProject(); SwapSelectedProject(this.id);");
-	// 	projectDiv.setAttribute("selected", Kanban.Projects[i].ID == preSelectedProjectID ? "true" : "false");
-	// 	projectDiv.innerHTML = Kanban.Projects[i].Name;
-	// 	projectDivContainer.appendChild(projectDiv);
-	// }
+	for(var i = 0; i < Kanban.Projects.length; i++) {
+
+		var projectLI = document.createElement("li");
+
+		var projectDiv = document.createElement("a");
+		projectDiv.setAttribute("id", "project" + Kanban.Projects[i].ID);
+		projectDiv.setAttribute("href", "");
+		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Kanban.Projects[i].ID + "'; SelectProject(); SwapSelectedProject(this.id); return false;");
+		projectDiv.setAttribute("selected", Kanban.Projects[i].ID == preSelectedProjectID ? "true" : "false");
+		projectDiv.innerHTML = Kanban.Projects[i].Name;
+		projectLI.appendChild(projectDiv);
+
+
+		projectDivContainer.appendChild(projectLI);
+	}
 	// if(Kanban.Projects.length > 4) {
 	//}
-	var projectDiv = document.createElement("div");
-	projectDiv.setAttribute("class", "projectbutton");
-	projectDiv.setAttribute("id", "projectshowmore");
-	projectDiv.setAttribute("onclick", "OpenProjectSelector(event);");
+	//var projectDiv = document.createElement("li");
+	//projectDiv.setAttribute("class", "projectbutton");
+	//projectDiv.setAttribute("id", "projectshowmore");
+	//projectDiv.setAttribute("onclick", "OpenProjectSelector(event);");
 	//projectDiv.setAttribute("selected", Kanban.Projects[i].id == preSelectedProjectID ? "true" : "false");
-	projectDiv.innerHTML = "Projects"
-	projectDivContainer.appendChild(projectDiv);
+	//projectDiv.innerHTML = "Projects"
+	//projectDivContainer.appendChild(projectDiv);
 
 	if(document.getElementById("seletedproject").value == "") {
 		document.getElementById("seletedproject").value = Kanban.Projects[0].ID;

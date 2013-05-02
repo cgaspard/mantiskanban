@@ -349,6 +349,10 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-project",
 		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
@@ -421,7 +425,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"all files",
@@ -435,6 +439,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"OpenProjectSelector",
+			"projectbutton",
 			"Login",
 			";",
 			"=",

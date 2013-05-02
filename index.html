@@ -7,8 +7,10 @@
 
 		<script language="javascript" type="text/javascript" src="js/iso8601.min.js"></script>
 		
-		<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-		<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+		<link rel="Stylesheet" href="bootstrap/css/bootstrap.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>		
 		<script src="js/chosen/chosen.jquery.js" type="text/javascript"></script>
 		<script src="js/modernizr-latest.js" type="text/javascript"></script>
 
@@ -25,6 +27,8 @@
 		<script language="javascript" type="text/javascript" src="js/kanbanclasses.js"></script>
 		<script language="javascript" type="text/javascript" src="config.js"></script>
 		<script language="javascript" type="text/javascript" src="index.js"></script>
+
+
 		
 		<title>Mantis Kanban</title>
 
@@ -44,19 +48,39 @@
 						<input type="text" id="username" placeholder="Username" value="Username" onclick="if(this.value == 'Username'){this.value='';}"/>
 						<input type="password" id="password" placeholder="Password" value="Password" onclick="if(this.value == 'Password'){this.value='';}" onfocus="if(this.value == 'Password'){this.value='';}">
 						<input type="submit" style="position: absolute; left: -9999px"/> 
-						<div class="loginbutton" onclick="Login();">Login</div>
+						<div class="btn btn-success" onclick="Login();">Login</div>
 					</form>
 					</div>
 					<div id="projectarea" class="projectarea">
-						<div id="projectlist" class="projectlist"></div>
-						<div class="filterlistcontainer">
+						<div class="btn-group">
+						  <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
+						    Select Project
+						    <span class="caret"></span>
+						  </a>
+						  <ul id="projectlist" class="dropdown-menu">
+						    <!-- dropdown menu links -->
+						  </ul>
+						</div>
+
+						<div class="btn-group">
+						  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#">
+						    Select Filter
+						    <span class="caret"></span>
+						  </a>
+						  <ul id="filterlist" class="dropdown-menu">
+						    <!-- dropdown menu links -->
+						  </ul>
+						</div>
+						<!--<div id="projectlist" class="projectlist"></div>-->
+						<!--<div class="filterlistcontainer">
 								<select id="filterlist" onchange="UpdateFilter(this.value);">
 								</select>
 						</div>
+						-->
 						<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
-							<div class="kanbannewstory" onclick="OpenAddStory();">Add Story</div>
-							<div class="refreshprojectbutton" onclick="SelectProject();">Refresh</div>
-							<div class="logoutbutton" onclick="Logout();">Logout</div>
+							<div class="btn btn-danger" onclick="OpenAddStory();">Add Story</div>
+							<div class="btn btn-success" onclick="SelectProject();">Refresh</div>
+							<div class="btn btn-inverse" onclick="Logout();">Logout</div>
 						</div>
 					</div>
 				</div>
