@@ -259,7 +259,12 @@ function UpdateFilterList() {
 	var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
 	//filterList.options.length = 0;
 
-	try { while(filterList.children.length > 0) { filterList.removeChild(0); } } catch(e) { }
+	//try {
+	while(filterList.children.length > 0) { 
+	 	filterList.removeChild(filterList.children[0]);
+	 	//delete filterList.children[0];
+	} 
+	 //} catch(e) { }
 
 	//	if(filter.id == Mantis.DefaultFilterID) filterList.selectedIndex = i;
 
@@ -275,7 +280,7 @@ function UpdateFilterList() {
 		filterItemLink.setAttribute("filterid", filter.id);
 		filterItemLink.setAttribute("onclick", "UpdateFilter(" + filter.id + ");");
 		filterItemLink.innerHTML = filter.name;
-		filterList.appendChild(filterItemLink);
+		filterItem.appendChild(filterItemLink);
 
 		filterList.appendChild(filterItem);
 
