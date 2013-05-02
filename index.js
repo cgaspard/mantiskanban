@@ -271,7 +271,7 @@ function UpdateFilterList() {
 		filterItem.setAttribute("filterid", filter.id);
 
 		var filterItemLink = document.createElement("a");
-		filterItemLink.setAttribute("href", "#");
+		filterItemLink.setAttribute("href", "");
 		filterItemLink.setAttribute("filterid", filter.id);
 		filterItemLink.setAttribute("onclick", "UpdateFilter(" + filter.id + ")");
 		filterItemLink.innerHTML = filter.name;
