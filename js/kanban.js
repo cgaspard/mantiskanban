@@ -44,7 +44,7 @@ var Kanban = {
 	},
 
 	CloseAddStoryDialog: function() {
-		$("#story-form").dialog("close");
+		$('#add-story-form').modal('hide'); 
 	},
 
 	GetStoryByFieldValue: function(field, value) {
@@ -428,9 +428,12 @@ function AddNotesToStoryEditForm(KanbanStory) {
 
 
 function OpenAddStory() {
+	log("OpenAddStory Called");
 
-	document.getElementById("add-summary").value = "";
-	document.getElementById("add-description").value = "";
+	$("#add-summary").val("");
+	$("#add-description").val("");
+	//document.getElementById("add-summary").value = "";
+	//document.getElementById("add-description").value = "";
 
 	var selectReportingUser = document.getElementById("add-reporter");
 	selectReportingUser.options.length = 0;
@@ -497,9 +500,8 @@ function OpenAddStory() {
 		selectAddCategories.options[selectAddCategories.options.length] = new Option(category.capitalize(), category);
 	}
 	selectAddCategories.selectedIndex = 0;
-	$("#add-category").trigger("liszt:updated");
 
-	$('#story-form').dialog('open');
+	$('#add-story-form').modal();
 
 }
 

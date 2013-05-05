@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"projet",
+				"projectLI"
+			],
+			[
 				"curr",
 				"CurrentUser  (namespace)"
 			],
@@ -229,6 +233,52 @@
 			]
 		]
 	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 9403,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 14999,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/kanban.js",
+			"settings":
+			{
+				"buffer_size": 26187,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "body {\n	font-family:Arial,Helvetica,sans-serif !important; \n	font-size: 12px;\n}\n\n.kanbanstorytitle {\n	font-size: 12px !important;\n}\n\n.kanbanlistdroparea {\n	color:#000;\n	text-align: center;\n	cursor: pointer;\n}\n\n.kanbanlistdroparea:hover {\n	color:#000;\n	background: #e6f0a3; /* Old browsers */\n	background: -moz-linear-gradient(top,  #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%); /* FF3.6+ */\n	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e6f0a3), color-stop(50%,#d2e638), color-stop(51%,#c3d825), color-stop(100%,#dbf043)); /* Chrome,Safari4+ */\n	background: -webkit-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Chrome10+,Safari5.1+ */\n	background: -o-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Opera 11.10+ */\n	background: -ms-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* IE10+ */\n	background: linear-gradient(to bottom,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* W3C */\n	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6f0a3', endColorstr='#dbf043',GradientType=0 ); /* IE6-9 */\n}\n.kanbanlistdroparea:focus {\n	color:#000;\n	background: #e6f0a3; /* Old browsers */\n	background: -moz-linear-gradient(top,  #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%); /* FF3.6+ */\n	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e6f0a3), color-stop(50%,#d2e638), color-stop(51%,#c3d825), color-stop(100%,#dbf043)); /* Chrome,Safari4+ */\n	background: -webkit-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Chrome10+,Safari5.1+ */\n	background: -o-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Opera 11.10+ */\n	background: -ms-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* IE10+ */\n	background: linear-gradient(to bottom,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* W3C */\n	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6f0a3', endColorstr='#dbf043',GradientType=0 ); /* IE6-9 */\n}\n\n.kanbanlist {\n	background: #aed8f9;\n	min-width: 100px;\n	max-width: 200px;\n}\n\n.kanbanlist:hover {\n	/*width: 400px !important;\n	max-width: 400px !important;*/\n	background: #3ea5f8;\n}\n\n/*.kanbanlist:hover .kanbanlisttitle {\n	font-size: 20px;\n} */\n\n.kanbanlisttitle{\n	text-align: center;\n	cursor: pointer;\n}\n",
+			"file": "custom.css",
+			"file_size": 2381,
+			"file_write_time": 1361892422000000,
+			"settings":
+			{
+				"buffer_size": 2381,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "kanban.css",
+			"settings":
+			{
+				"buffer_size": 14107,
+				"line_ending": "Unix"
+			}
+		}
+	],
 	"build_system": "Packages/User/Chromium.sublime-build",
 	"command_palette":
 	{
@@ -350,9 +400,10 @@
 	"file_history":
 	[
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-project",
 		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
@@ -425,7 +476,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"all files",
@@ -439,6 +490,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"CloseAddStoryDialog",
+			"AddStory",
+			"add-summary",
+			" div",
+			"						<input type=\"hidden\" id=\"add-story-id\" name=\"add-story-id\" />\n						<input type=\"hidden\" id=\"add-story-id\" name=\"add-story-id\" />\n",
+			"add-summary",
+			"filterlist",
+			"projectlist",
+			"projectlistn",
+			"projectlist",
 			"OpenProjectSelector",
 			"projectbutton",
 			"Login",
@@ -585,6 +646,150 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 9403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4717,
+								4717
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 945.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.js",
+					"settings":
+					{
+						"buffer_size": 14999,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6116.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/kanban.js",
+					"settings":
+					{
+						"buffer_size": 26187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7253,
+								7253
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2666.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "custom.css",
+					"settings":
+					{
+						"buffer_size": 2381,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "kanban.css",
+					"settings":
+					{
+						"buffer_size": 14107,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								155,
+								155
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
 	"incremental_find":
 	{
 		"height": 34.0
