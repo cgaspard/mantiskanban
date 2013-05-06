@@ -18,6 +18,7 @@
 		<!--<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>-->
 
 		<link rel="stylesheet" href="kanban.css" />
+		<link rel="stylesheet" href="forms.css" />
 		
 		<script language="javascript" type="text/javascript" src="js/global.js"></script>
 		<script language="javascript" type="text/javascript" src="js/soapclient.js"></script>
@@ -101,7 +102,7 @@
 							<input type="text" name="add-summary" id="add-summary" placeholder="Summary" />
 						</div>
 					</div>
-					<div class="contol-group" id="add-custom-field-container" name="add-custom-field-container" style="display:none;">
+					<div class="contol-group" id="add-custom-field-container" name="add-custom-field-container">
 						<label class="control-label" for="add-custom-field">Bucket:</label>
 						<div class="controls">
 							<select name="add-custom-field" id="add-custom-field" ></select>
@@ -124,7 +125,7 @@
 						<div class="controls">
 							<select name="add-category" id="add-category"></select>
 						</div>
-					</div>
+					</div>texte
 					<div class="control-group">
 						<label class="control-label" for="add-reporter">Reporter</label>
 						<div class="controls">
@@ -138,7 +139,6 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<div id="add-reporter"></div>
 						<label class="control-label" for="add-description">Description</labal>
 						<div class="controls">
 							<textarea name="add-description" id="add-description" ></textarea>
@@ -148,61 +148,96 @@
 
 			</div>
 			<div class="modal-footer">
-			<a href="javascript: $('#add-story-form').modal('hide'); return false" class="btn">Close</a>
-			<a href="javascript: Kanban.AddStoryFromFormData();" class="btn btn-primary">Save changes</a>
+				<a href="javascript: $('#add-story-form').modal('hide'); return false" class="btn">Close</a>
+				<a href="javascript: Kanban.AddStoryFromFormData();" class="btn btn-primary">Save changes</a>
 			</div>
 		</div>
 
 
-		<div id="edit-story-form" class="editform" title="Edit Story" style="display:none;">
-			<div id="tabs" class="edit-tabs">
-				<ul>
-					<li><a href="#tabs-1">General</a></li>
-					<li><a href="#tabs-2">Notes</a></li>
-					<li><a href="#tabs-3">Attachments</a></li>
-					<li><a href="#tabs-4">History</a></li>
-				</ul>
-				<div id="tabs-1">
-					<input type="hidden" id="edit-story-id" name="edit-story-id" />
-					<label for="edit-summary">Summary:</label>
-					<input type="text" name="edit-summary" id="edit-summary" class="text ui-widget-content ui-corner-all" />
-					<br>
-					<label for="edit-status">Status:</label>
-					<select name="edit-status" id="edit-status" class="text ui-widget-content ui-corner-all">
-					</select>
-					<br>
-					<label for="edit-priority">Priority:</label>
-					<select name="edit-priority" id="edit-priority" class="text ui-widget-content ui-corner-all">
-					</select>
-					<br>
-					<label for="edit-reporter">Reporter:</label>
-					<select name="edit-reporter" id="edit-reporter" class="text ui-widget-content ui-corner-all">
-					</select>
-					<br>
-					<label for="edit-assignedto">Assigned To:</label>
-					<select name="edit-assignedto" id="edit-assignedto" class="text ui-widget-content ui-corner-all">
-					</select>
-					<br>
-					<label for="edit-assignedto">Date Submitted:</label>
-					<div style="display:inline-block;" id="edit-datesubmitted"></div>
-					<div id="accordion-desc">
-						<h3>Description: </h3>
-						<textarea name="edit-description" id="edit-description" style="width: 100%;" class="text ui-widget-content ui-corner-all"></textarea>
-						<h3>Steps To Reproduce: </h3>
-						<textarea name="edit-reproduce" id="edit-reproduce" style="width: 100%;" class="text ui-widget-content ui-corner-all"></textarea>
+		<div id="edit-story-form" class="modal hide fade" title="Edit Story">
+			<div class="modal-header btn-inverse">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 id="edit-story-title">Edit Story</h3>
+			</div>
+			<div class="modal-body">
+				<div>
+					<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+						<li class="active" ><a href="#tabs-1" data-toggle="tab">General</a></li>
+						<li><a href="#tabs-2" data-toggle="tab">Notes</a></li>
+						<li><a href="#tabs-3" data-toggle="tab">Attachments</a></li>
+						<li><a href="#tabs-4" data-toggle="tab">History</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tabs-1">
+							<form class="form-horizontal">
+								<input type="hidden" id="edit-story-id" name="edit-story-id" />
+								<div class="control-group">
+									<label class="control-label" for="edit-summary">Summary:</label>
+									<div class="controls">
+										<input type="text" name="edit-summary" id="edit-summary" class="" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="edit-status">Status:</label>
+									<div class="controls">
+										<select name="edit-status" id="edit-status" class=""></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="edit-priority">Priority:</label>
+									<div class="controls">
+										<select name="edit-priority" id="edit-priority" class=""></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="edit-reporter">Reporter:</label>
+									<div class="controls">
+										<select name="edit-reporter" id="edit-reporter" class=""></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="edit-assignedto">Assigned To:</label>
+									<div class="controls">
+										<select name="edit-assignedto" id="edit-assignedto" class=""></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="edit-datesubmitted">Date Submitted:</label>
+									<div class="controls">
+										<div style="display:inline-block;" id="edit-datesubmitted"></div>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="edit-assignedto">Description:</label>
+									<div class="controls">
+										<textarea name="edit-description" id="edit-description" style="width: 100%;" class=""></textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="edit-assignedto">Steps To Reproduce:</label>
+									<div class="controls">
+										<textarea name="edit-reproduce" id="edit-reproduce" style="width: 100%;" class=""></textarea>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="tab-pane" id="tabs-2">
+							<textarea class="edit-newnotetext" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
+							<div class="btn btn-success" id="edit-story-new-note-save-button" name="">Add Note</div>
+							<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
+						</div>
+						<div class="tab-pane" id="tabs-3">
+							
+						</div>
+						<div class="tab-pane" id="tab-4">
+
+						</div>
 					</div>
 				</div>
-				<div id="tabs-2">
-					<textarea class="edit-newnotetext" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
-					<div class="newnotesavebutton" id="edit-story-new-note-save-button" name="edit-story-new-note-save-button">Add Note</div>
-					<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
-				</div>
-				<div id="tabs-3">
-					
-				</div>
-				<div id="tab-4">
-
-				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="javascript: $('#edit-story-form').modal('hide'); return false" class="btn">Close</a>
+				<a href="javascript: UpdateStoryFromFormData(); return false;" class="btn btn-primary">Save changes</a>
 			</div>
 		</div>
 		<div class="user-context-menu" name="user-context-menu" id="user-context-menu" onmouseout="HideUserSelector();">

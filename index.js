@@ -32,6 +32,10 @@ window.onload = function() {
 
 	document.getElementById("username").focus();
 
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+
 	//$("#edit-reporter").chosen();
 	// $("#edit-assignedto").chosen();
 	// $("#edit-status").chosen();

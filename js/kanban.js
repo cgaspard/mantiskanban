@@ -300,7 +300,8 @@ function UpdateStoryFromFormData() {
 		thisStory.Reproduce = document.getElementById("edit-reproduce").value;
 		Mantis.IssueUpdate(thisStory.ID, thisStory.StorySource, UpdateKanbanStoryComplete);
 
-		$("#edit-story-form").dialog("close");
+		$('#edit-story-form').modal('hide');
+		//$("#edit-story-form").dialog("close");
 	} catch(e) {
 		console.log(e);
 		alert("Error:" + e.message);
@@ -708,21 +709,22 @@ function OpenUserSelector(e, storyID) {
  */
 function EditStory(storyID) {
 
-	$("#tabs").tabs({
-		active: 0
-	});
+	$('#myTab a:first').tab('show');
+
+	// $("#tabs").tabs({
+	// 	active: 0
+	// });
 
 	var thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
-	$("#edit-story-form").dialog({ title: "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary) });
+	document.getElementById("edit-story-title").innerHTML = "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
+	//$("#edit-story-form").dialog({ title: "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary) });
 	$("#edit-story-id").val(thisStory.ID);
 	$("#edit-summary").val(thisStory.Summary);
 	$("#edit-description").val(thisStory.Description);
 	$("#edit-reproduce").val(thisStory.Reproduce);
 
 	$("#edit-newnotetext").val("");
-	$("#accordion-desc").accordion({
-		active: 0
-	});
+
 	document.getElementById("edit-story-notes-container").scrollTop = 0;
 	document.getElementById("edit-datesubmitted").innerHTML = thisStory.DateSubmitted;
 
@@ -743,7 +745,7 @@ function EditStory(storyID) {
 			selectReportingUser.selectedIndex = i;
 		}
 	}
-	$("#edit-reporter").trigger("liszt:updated");
+	//$("#edit-reporter").trigger("liszt:updated");
 
 	///Add a blank option
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To No One ---", "");
@@ -754,7 +756,7 @@ function EditStory(storyID) {
 			selectAssignedUser.selectedIndex = i + 1;
 		}
 	}
-	$("#edit-assignedto").trigger("liszt:updated");
+	//$("#edit-assignedto").trigger("liszt:updated");
 
 	for(var i = 0; i < Mantis.Statuses.length; i++) {
 		var status = Mantis.Statuses[i];
@@ -763,7 +765,7 @@ function EditStory(storyID) {
 			selectAddStatus.selectedIndex = i;
 		}
 	}
-	$("#edit-status").trigger("liszt:updated");
+	//$("#edit-status").trigger("liszt:updated");
 
 	
 	for(var i = 0; i < Mantis.Priorities.length; i++) {
@@ -773,10 +775,12 @@ function EditStory(storyID) {
 			selectAddPriority.selectedIndex = i;
 		}
 	}
-	$("#edit-priority").trigger("liszt:updated");
+	//$("#edit-priority").trigger("liszt:updated");
 
 	AddNotesToStoryEditForm(thisStory);
 
 	// $("#edit-story-notes-container").accordion();    
-	$("#edit-story-form").dialog("open");
+	//$("#edit-story-form").dialog("open");
+	$('#edit-story-form').modal();
+
 }

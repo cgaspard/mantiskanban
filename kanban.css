@@ -10,9 +10,16 @@ html, body{
 	height: 500px !important;
 }
 
+#edit-story-form {
+	width: 750px !important;
+	margin-left: -400px !important;
+	/*height: 600px !important;*/
+}
+
 #add-custom-field-container{
 	display: none;
 }
+
 .realcontentcontainer{
 	z-index:50;
 	/*position: absolute;*/
