@@ -236,46 +236,12 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"contents": " 03/22/2013   	COMPASS BK ATM1299 112714 03/22/ATM WITHDRAWAL 	   	 $280.00   	    	  $3,326.72 	\n\n  03/11/2013   	COMPASS BK ATM1299 175546 03/09/ATM WITHDRAWAL 	   	 $100.00   	    	  $5,593.52 	",
 			"settings":
 			{
-				"buffer_size": 9403,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.js",
-			"settings":
-			{
-				"buffer_size": 14999,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/kanban.js",
-			"settings":
-			{
-				"buffer_size": 26187,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "body {\n	font-family:Arial,Helvetica,sans-serif !important; \n	font-size: 12px;\n}\n\n.kanbanstorytitle {\n	font-size: 12px !important;\n}\n\n.kanbanlistdroparea {\n	color:#000;\n	text-align: center;\n	cursor: pointer;\n}\n\n.kanbanlistdroparea:hover {\n	color:#000;\n	background: #e6f0a3; /* Old browsers */\n	background: -moz-linear-gradient(top,  #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%); /* FF3.6+ */\n	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e6f0a3), color-stop(50%,#d2e638), color-stop(51%,#c3d825), color-stop(100%,#dbf043)); /* Chrome,Safari4+ */\n	background: -webkit-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Chrome10+,Safari5.1+ */\n	background: -o-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Opera 11.10+ */\n	background: -ms-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* IE10+ */\n	background: linear-gradient(to bottom,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* W3C */\n	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6f0a3', endColorstr='#dbf043',GradientType=0 ); /* IE6-9 */\n}\n.kanbanlistdroparea:focus {\n	color:#000;\n	background: #e6f0a3; /* Old browsers */\n	background: -moz-linear-gradient(top,  #e6f0a3 0%, #d2e638 50%, #c3d825 51%, #dbf043 100%); /* FF3.6+ */\n	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e6f0a3), color-stop(50%,#d2e638), color-stop(51%,#c3d825), color-stop(100%,#dbf043)); /* Chrome,Safari4+ */\n	background: -webkit-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Chrome10+,Safari5.1+ */\n	background: -o-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* Opera 11.10+ */\n	background: -ms-linear-gradient(top,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* IE10+ */\n	background: linear-gradient(to bottom,  #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%); /* W3C */\n	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6f0a3', endColorstr='#dbf043',GradientType=0 ); /* IE6-9 */\n}\n\n.kanbanlist {\n	background: #aed8f9;\n	min-width: 100px;\n	max-width: 200px;\n}\n\n.kanbanlist:hover {\n	/*width: 400px !important;\n	max-width: 400px !important;*/\n	background: #3ea5f8;\n}\n\n/*.kanbanlist:hover .kanbanlisttitle {\n	font-size: 20px;\n} */\n\n.kanbanlisttitle{\n	text-align: center;\n	cursor: pointer;\n}\n",
-			"file": "custom.css",
-			"file_size": 2381,
-			"file_write_time": 1361892422000000,
-			"settings":
-			{
-				"buffer_size": 2381,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "kanban.css",
-			"settings":
-			{
-				"buffer_size": 14107,
-				"line_ending": "Unix"
+				"buffer_size": 197,
+				"line_ending": "Unix",
+				"name": "03/22/2013   	COMPASS BK ATM1299 112714 03/22/ATM"
 			}
 		}
 	],
@@ -399,11 +365,13 @@
 	},
 	"file_history":
 	[
+		"/tmp/CEFSource0mhixX.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-project",
 		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
@@ -654,132 +622,23 @@
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 9403,
+						"buffer_size": 197,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4717,
-								4717
+								197,
+								197
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 945.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "index.js",
-					"settings":
-					{
-						"buffer_size": 14999,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6116.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "js/kanban.js",
-					"settings":
-					{
-						"buffer_size": 26187,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7253,
-								7253
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2666.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "custom.css",
-					"settings":
-					{
-						"buffer_size": 2381,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								79,
-								79
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "kanban.css",
-					"settings":
-					{
-						"buffer_size": 14107,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								155,
-								155
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "03/22/2013   	COMPASS BK ATM1299 112714 03/22/ATM",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
