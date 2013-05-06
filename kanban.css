@@ -75,8 +75,11 @@ html, body{
 #selected-project-name {
 	color: #FFFFFF !important;
 
-	margin-top: 0px !important;
-	margin-bottom: 2px !important;
+	margin-top: 14px !important;
+	margin-bottom: 10px !important;
+
+	font-size: 1.75em;
+	font-weight: bold;
 }
 
 .projectbutton{

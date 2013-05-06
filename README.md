@@ -5,6 +5,8 @@ Mantis Kanban that uses ajax and mantisconnect
 
 ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/images/mantis_logo.png "Logo")
 
+Requires Mantis vs 1.2.12 or greater.
+
 JS Configuration: config.js
 
     Mantis.ConnectURL -  This should point to the mantisconnect.php page on your server. 
