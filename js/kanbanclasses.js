@@ -305,9 +305,13 @@ KanbanStory.prototype = {
 		storyContainerDiv.setAttribute("listid", "listid" + this.ListID);
 		storyContainerDiv.setAttribute("storyid", "storydiv" + this.ID);
 		storyContainerDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
-		storyContainerDiv.setAttribute("title", this.Summary.htmlencode());
-		storyContainerDiv.setAttribute("onmouseover", "Kanban.AddGlowToRelatedStories('" + this.ID + "');")
-		storyContainerDiv.setAttribute("onmouseout", "Kanban.RemoveGlowToRelatedStories('" + this.ID + "');")
+		storyContainerDiv.setAttribute("title", "Issue #" + this.ID + ": " + this.Summary.htmlencode());
+		storyContainerDiv.setAttribute("onmouseover", "Kanban.AddGlowToRelatedStories('" + this.ID + "'); this.tooltip('show');");
+		storyContainerDiv.setAttribute("onmouseout", "Kanban.RemoveGlowToRelatedStories('" + this.ID + "'); this.tooltip('hide');");
+		storyContainerDiv.setAttribute("container", "dropdiv" + this.ID);
+		//storyContainerDiv.setAttribute("rel", "popover");
+		//storyContainerDiv.setAttribute("data-content", this.Summary.htmlencode());
+		//storyContainerDiv.setAttribute("data-original-title", "Issue #" + this.ID + ": " + this.Summary.htmlencode());
 		if(this.HandlerName == Mantis.CurrentUser.UserName) {
 			storyContainerDiv.classList.add("mystory");
 		}
@@ -374,6 +378,8 @@ KanbanStory.prototype = {
 			event.stopPropagation();
 		}, false);
 		storyDivButtonContainer.appendChild(storyDivButton);
+
+		$("#storycontainer" + this.ID).popover();
 
 		return storyDiv;
 	}
