@@ -784,3 +784,8 @@ function EditStory(storyID) {
 	$('#edit-story-form').modal();
 
 }
+
+function CloseEditStory() {
+
+	
+}
