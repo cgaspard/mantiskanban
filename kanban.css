@@ -16,10 +16,6 @@ html, body{
 	/*height: 600px !important;*/
 }
 
-#add-custom-field-container{
-	display: none;
-}
-
 .realcontentcontainer{
 	z-index:50;
 	/*position: absolute;*/
