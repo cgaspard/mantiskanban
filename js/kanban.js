@@ -420,7 +420,7 @@ function AddNotesToStoryEditForm(KanbanStory) {
 
 		var noteTextDiv = document.createElement("div");
 		noteTextDiv.setAttribute("class", "notetext");
-		noteTextDiv.innerHTML = thisNote.text;
+		noteTextDiv.innerHTML = "<pre>" + thisNote.text + "</pre>";
 		noteDiv.appendChild(noteTextDiv);
 
 		notesContainer.appendChild(noteDiv);
@@ -786,6 +786,5 @@ function EditStory(storyID) {
 }
 
 function CloseEditStory() {
-
-	
+	$('#edit-story-form').modal('hide');
 }
