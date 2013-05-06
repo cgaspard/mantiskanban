@@ -35,71 +35,7 @@ window.onload = function() {
     jQuery(document).ready(function ($) {
         $('#tabs').tab();
     });
-
-	//$("#edit-reporter").chosen();
-	// $("#edit-assignedto").chosen();
-	// $("#edit-status").chosen();
-	// $("#edit-priority").chosen();
-
-	// $("#add-reporter").chosen();
-	// $("#add-assignedto").chosen();
-	// $("#add-status").chosen();
-	// $("#add-custom-field").chosen();
-	// $("#add-priority").chosen();
-	// $("#add-category").chosen();
-
-	//$("#filterlist").chosen();
-
-
-	$(function() {
-		//$( "#tabs" ).tabs({ heightStyle: "content" });
-	});
-		
-	$(function() {
-		$( document ).tooltip();
-	});
-		
-	$(function() {
-		//$("#accordion-desc").accordion();	
-	});
-	
-	// $( "#story-form" ).dialog({
-	// 	autoOpen: false,
-	// 	height: 650,
-	// 	width: 640,
-	// 	modal: true,
-	// 	buttons: {
-	// 		"Create a story": function() {
-	// 			Kanban.AddStoryFromFormData();
-	// 		},
-	// 		Cancel: function() {
-	// 			$( this ).dialog( "close" );
-	// 		}
-	// 	},
-	// 	close: function() {
-			
-	// 	}
-	// });
-
-	// $("#edit-story-form").dialog({
-	// 	autoOpen: false,
-	// 	modal: true,
-	// 	height: 630,
-	// 	width: 780,
-	// 	close: function() {
-			
-	// 	},
-	// 	buttons: {
-	// 		"Save": function() {
-	// 			UpdateStoryFromFormData();
-	// 		 ///Code here to add a story to a list 
-	// 		},
-	// 		Cancel: function() {
-	// 			$( this ).dialog( "close" );
-	// 		}
-	// 	}
-	// });
-
+    
 	AutoLogin();
 
 }
@@ -237,6 +173,8 @@ function SelectProject() {
 	BuildKanbanListFromMantisStatuses();
 	
 	Kanban.BuildListGUI();
+
+	document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.Name;
 
 	if(Mantis.DefaultFilterID !== null) {
 		window.setTimeout("LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, DoneLoadingIssuesCallback)", 100);

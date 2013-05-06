@@ -63,7 +63,7 @@ html, body{
 }
 .projectarea{
 	vertical-align: top;
-	padding-top: 40px;
+	padding-top: 0px;
 	padding-left: 10px;
 	display:none;
 	/*color: #FFFFFF;*/
@@ -71,6 +71,14 @@ html, body{
 	text-wrap: none;
 	min-width: 600px;
 }
+
+#selected-project-name {
+	color: #FFFFFF !important;
+
+	margin-top: 0px !important;
+	margin-bottom: 2px !important;
+}
+
 .projectbutton{
 	display: inline-block;
 	text-overflow: ellipsis;

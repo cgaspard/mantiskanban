@@ -306,8 +306,8 @@ KanbanStory.prototype = {
 		storyContainerDiv.setAttribute("storyid", "storydiv" + this.ID);
 		storyContainerDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyContainerDiv.setAttribute("title", "Issue #" + this.ID + ": " + this.Summary.htmlencode());
-		storyContainerDiv.setAttribute("onmouseover", "Kanban.AddGlowToRelatedStories('" + this.ID + "'); this.tooltip('show');");
-		storyContainerDiv.setAttribute("onmouseout", "Kanban.RemoveGlowToRelatedStories('" + this.ID + "'); this.tooltip('hide');");
+		storyContainerDiv.setAttribute("onmouseover", "Kanban.AddGlowToRelatedStories('" + this.ID + "');");
+		storyContainerDiv.setAttribute("onmouseout", "Kanban.RemoveGlowToRelatedStories('" + this.ID + "');");
 		storyContainerDiv.setAttribute("container", "dropdiv" + this.ID);
 		//storyContainerDiv.setAttribute("rel", "popover");
 		//storyContainerDiv.setAttribute("data-content", this.Summary.htmlencode());

@@ -18,6 +18,7 @@ var Mantis = {
 	
 	ClearForLogout : function() {
 		Mantis._currentprojectid = 0;
+		Mantis._currentprojectname = "";
 		Mantis._projectcategories = [];
 		Mantis._statues = null;
 		Mantis._severities = null;
@@ -120,6 +121,10 @@ var Mantis = {
 		}
 
 		Mantis._currentprojectid = value;
+	},
+
+	get CurrentProjectName() {
+		return Mantis._currentprojectname;
 	},
 
 	Params : {

@@ -1,6 +1,13 @@
 var Kanban = {
 
-	CurrentProject: null,
+	get CurrentProject() {
+		for(var i = 0; i < Kanban.Projects.length; i++) {
+			if(document.getElementById("seletedproject").value == Kanban.Projects[i].ID) {
+				return Kanban.Projects[i];
+			}
+		}
+		return new KanbanProject({ "name": "No Name", "id": 0 });
+	},
 	BlockUpdates: false,
 	Dragging: false,
 	UsingCustomField: false,
