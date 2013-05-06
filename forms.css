@@ -36,3 +36,13 @@
 	vertical-align: top;
 }
 
+.controls > input {
+	width: 90%;
+}
+.controls > select {
+	width: 90%;
+}
+
+.controls > textarea {
+	width: 90%;
+}
