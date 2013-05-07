@@ -144,20 +144,12 @@ var Kanban = {
 			listDiv.addEventListener("drop", Drop, false);
 			listDiv.List = kanbanListItem;
 
-
 			///The title container
 			var listDivTitle = document.createElement("div");
 			listDivTitle.setAttribute("class", "kanbanlisttitle");
-			listDivTitle.setAttribute("id","kanbanlisttitle" + li)
+			listDivTitle.setAttribute("id","kanbanlisttitle"+li)
 			listDivTitle.innerHTML = kanbanListItem.Name.capitalize();
 			listDiv.appendChild(listDivTitle);
-
-			var listDivHideButton = document.createElement("div");
-			listDivHideButton.setAttribute("class", "kanbanlisthidebtn btn btn-primary btn-small");
-			listDivHideButton.setAttribute("id", "listhideid" + kanbanListItem.ID);
-			listDivHideButton.setAttribute("onclick", "listid" + kanbanListItem.ID + ".style.display='none';");
-			listDivHideButton.innerHTML = "Hide";
-			listDivTitle.appendChild(listDivHideButton);
 
 			var listDropArea = document.createElement("div");
 			listDropArea.setAttribute("class", "kanbanlistdroparea");
