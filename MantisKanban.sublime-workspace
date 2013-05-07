@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"mart",
+				"margin-bottom"
+			],
+			[
+				"_curr",
+				"_currentprojectname"
+			],
+			[
+				"storyCon",
+				"storyContainerDiv"
+			],
+			[
 				"projet",
 				"projectLI"
 			],
@@ -235,15 +247,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": " 03/22/2013   	COMPASS BK ATM1299 112714 03/22/ATM WITHDRAWAL 	   	 $280.00   	    	  $3,326.72 	\n\n  03/11/2013   	COMPASS BK ATM1299 175546 03/09/ATM WITHDRAWAL 	   	 $100.00   	    	  $5,593.52 	",
-			"settings":
-			{
-				"buffer_size": 197,
-				"line_ending": "Unix",
-				"name": "03/22/2013   	COMPASS BK ATM1299 112714 03/22/ATM"
-			}
-		}
 	],
 	"build_system": "Packages/User/Chromium.sublime-build",
 	"command_palette":
@@ -365,13 +368,17 @@
 	},
 	"file_history":
 	[
-		"/tmp/CEFSource0mhixX.txt",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/README.md",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js.orig",
+		"/tmp/CEFSource0mhixX.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-project",
 		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
@@ -440,13 +447,14 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"",
 			"all files",
 			"<open files>",
 			"",
@@ -458,6 +466,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tooltip",
+			"selectProject",
+			"Kanban.Projects",
+			"Projects.push",
+			"Projects.add",
+			"Projects",
+			"CurrentProject",
+			"selectproject",
+			"AddGlowToRelatedStories",
+			"add-custom-field-container",
+			"add-description",
+			"edit-newnotetext",
+			"projectarea",
+			"UpdateStoryFromFormData",
+			"textarea",
+			"add-description",
+			"notesarea",
+			"Open",
 			"CloseAddStoryDialog",
 			"AddStory",
 			"add-summary",
@@ -567,23 +593,7 @@
 			"OfflineAppAllowedForURI",
 			"mozApps",
 			"/otoolscalc/",
-			"$TEMPFILE",
-			"while [$currentcount -ge $publishcount]; do",
-			"while [[$currentcount -ge $publishcount]]; do",
-			"while [[$($currentcount==$publishcount)]]; do",
-			"while [[$($currentcount=$publishcount)]]; do",
-			"while [[$currentcount=$publishcount]]; do",
-			"while [[ currentcount = publishcount ]]; do",
-			"<",
-			"pause",
-			"(bootloader) ",
-			"<<<< Identifier Token Start >>>>\n(bootloader) B82264D75C482719B4C321F77E296CD2\n(bootloader) DCAF075CCB74B0B080152E081115A100\n(bootloader) 8EC044922C77E2B9DEB1881C194DD7B6\n(bootloader) 645753107854447A8C8265B0D35F2F28\n(bootloader) 982A49F888554575981A1B0B17105AB2\n(bootloader) 5336597337F4691C71D5C383F3E4AA6E\n(bootloader) 5D85B74D4268BA5C06A15DAC690FC58C\n(bootloader) C187ED7794DE9BA74A679B02770D1248\n(bootloader) 8BEA19628AA719FCE1BE0F0CC35EB219\n(bootloader) E915402D8B9F10CC8EB9CCE6D2DC0245\n(bootloader) 1F35BC2805F935AA367D6ED419A2E127\n(bootloader) 986A1344B148EFB12CD215652E9A3207\n(bootloader) 17AD736BEF515BD72DB5CF6BE4CF64DB\n(bootloader) 9A4AC3CDCA1DB003451074F5F1C5BE70\n(bootloader) F1E3C5F61FE7AB50C00AAF6EF8C05155\n(bootloader) 73F3D6F8E0EB6074CD749E023D48C25B\n(bootloader) ",
-			"in2lsync",
-			",.*",
-			"26833",
-			",.*",
-			"http",
-			".*40404,"
+			"$TEMPFILE"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -617,35 +627,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"settings":
-					{
-						"buffer_size": 197,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								197,
-								197
-							]
-						],
-						"settings":
-						{
-							"auto_name": "03/22/2013   	COMPASS BK ATM1299 112714 03/22/ATM",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
