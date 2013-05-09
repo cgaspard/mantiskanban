@@ -21,6 +21,15 @@ JS Configuration: config.js
     Kanban.NumberOfClosedMessagesToLoad - Limit the number of issues loaded when the 
         ClosedIssuesFilterID is specified
 
+
+    Default Settings - System will use local storage to save the following items.  Will auto select project based on last project you were logged in under.
+    var DefaultSettings = {
+        username:"",
+        stayLoggedIn:1,
+        lastAccessTime:0,
+        currentProject:0
+    };
+
 Mantis Configuration:
 
   Scrum Buckets:
