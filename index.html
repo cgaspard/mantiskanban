@@ -164,9 +164,11 @@
 				<div>
 					<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 						<li class="active" ><a href="#tabs-1" data-toggle="tab">General</a></li>
-						<li><a href="#tabs-2" data-toggle="tab">Notes</a></li>
-						<li><a href="#tabs-3" data-toggle="tab">Attachments</a></li>
-						<li><a href="#tabs-4" data-toggle="tab">History</a></li>
+						<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
+						<li><a href="#tabs-3" data-toggle="tab">Steps</a></li>
+						<li><a href="#tabs-4" data-toggle="tab">Notes</a></li>
+						<li><a href="#tabs-5" data-toggle="tab">Attachments</a></li>
+						<li><a href="#tabs-6" data-toggle="tab">History</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="tabs-1">
@@ -208,29 +210,24 @@
 										<div style="display:inline-block;" id="edit-datesubmitted"></div>
 									</div>
 								</div>
-								<div class="control-group">
-									<label class="control-label" for="edit-assignedto">Description:</label>
-									<div class="controls">
-										<textarea name="edit-description" id="edit-description" class="input-large"></textarea>
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="edit-assignedto">Steps To Reproduce:</label>
-									<div class="controls">
-										<textarea name="edit-reproduce" id="edit-reproduce" class="input-large"></textarea>
-									</div>
-								</div>
+
 							</form>
 						</div>
 						<div class="tab-pane" id="tabs-2">
+							<textarea name="edit-description" id="edit-description" class="input-large"></textarea>
+						</div>
+						<div class="tab-pane" id="tabs-3">
+							<textarea name="edit-reproduce" id="edit-reproduce" class="input-large"></textarea>
+						</div>
+						<div class="tab-pane" id="tabs-4">
 							<textarea class="edit-newnotetext" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
 							<div class="btn btn-success" id="edit-story-new-note-save-button" name="">Add Note</div>
 							<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
 						</div>
-						<div class="tab-pane" id="tabs-3">
+						<div class="tab-pane" id="tabs-5">
 							
 						</div>
-						<div class="tab-pane" id="tab-4">
+						<div class="tab-pane" id="tab-6">
 
 						</div>
 					</div>

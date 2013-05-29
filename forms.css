@@ -1,22 +1,25 @@
 
 .notecontainer {
+	/*
 	padding: 8 8 0 8;
+	*/
 	margin: 5 5 5 5;
+	
 	background-color: #ffff66;
 	font-size: 10pt;
 	border-radius: 5px 5px 5px 5px;
 	border: solid 1px #b3b3b3;
 	vertical-align: top;
-	width: 94%;
+	width: 100%;
 	-webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.47);
 	-moz-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.47);
 	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.47);
 }
 
 .notesarea{
-	width: 90%;
+	width: 100%;
 	overflow: auto;
-	max-height: 200px;
+	max-height: 180px;
 	border: solid 1px #cccccc;
 	padding: 5px 5px 5px 15px;
 	margin-top: 10px;
@@ -27,7 +30,7 @@
 }
 
 #edit-newnotetext {
-	width: 90%;
+	width: 100%;
 	text-align: left;
 }
 

@@ -16,6 +16,15 @@ html, body{
 	/*height: 600px !important;*/
 }
 
+#edit-description, #edit-reproduce {
+	width: 100%;
+	height: 200px;
+}
+
+#edit-newnotetext {
+	height: 100px;
+}
+
 .realcontentcontainer{
 	z-index:50;
 	/*position: absolute;*/
