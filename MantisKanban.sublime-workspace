@@ -255,7 +255,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 10777,
+				"buffer_size": 10793,
 				"line_ending": "Unix"
 			}
 		},
@@ -268,10 +268,13 @@
 			}
 		},
 		{
+			"contents": "",
 			"file": "/home/cgaspard/Downloads/JobDescription.txt",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 187,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -291,6 +294,22 @@
 				"line_ending": "Unix",
 				"name": "Find Results",
 				"scratch": true
+			}
+		},
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 13915,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config.js",
+			"settings":
+			{
+				"buffer_size": 846,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -527,6 +546,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"LoadKanbanProjects",
+			"SelectProject",
+			"AutoLogin",
 			"edit-newnotetext",
 			"#edit-newnotetext",
 			"edit-newnotetext",
@@ -651,10 +673,7 @@
 			"ProjectTypeGuids",
 			"Type",
 			"ProjectTypeGuids",
-			"[\\r\\n]",
-			"terms of",
-			"RISK OF",
-			"Application"
+			"[\\r\\n]"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -689,7 +708,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -697,15 +716,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 10777,
+						"buffer_size": 10793,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9346,
-								9346
+								1122,
+								1122
 							]
 						],
 						"settings":
@@ -714,7 +733,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2813.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -751,7 +770,7 @@
 					"file": "/home/cgaspard/Downloads/JobDescription.txt",
 					"settings":
 					{
-						"buffer_size": 187,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -851,6 +870,59 @@
 							"result_line_regex": "^ +([0-9]+):",
 							"scroll_past_end": true,
 							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "index.js",
+					"settings":
+					{
+						"buffer_size": 13915,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9388,
+								9388
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 40.0,
+						"translation.y": 4621.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "config.js",
+					"settings":
+					{
+						"buffer_size": 846,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								811,
+								811
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
