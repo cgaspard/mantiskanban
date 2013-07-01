@@ -392,6 +392,7 @@ html, body{
 	background-color: #FFFFFF;
 }
 .kanbanstorytitle{
+	height: 40px;
 	display: table-cell;
 	overflow: hidden;
 	white-space: nowrap;
