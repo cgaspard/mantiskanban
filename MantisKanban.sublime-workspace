@@ -252,14 +252,6 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 10793,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "forms.css",
 			"settings":
 			{
@@ -268,47 +260,10 @@
 			}
 		},
 		{
-			"contents": "",
-			"file": "/home/cgaspard/Downloads/JobDescription.txt",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "kanban.css",
 			"settings":
 			{
-				"buffer_size": 13726,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 35 files for \"edit-description\"\n\n/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-workspace:\n  579  			\"LoadKanbanProjects\",\n  580  			\"BuildProjectsGUI\",\n  581: 			\"edit-description\",\n  582  			\"normal\",\n  583  			\"UpdateKanbanStoryComplete\",\n\n/home/cgaspard/Projects/cgaspard/mantiskanban/index.html:\n  218  								<label class=\"control-label\" for=\"edit-assignedto\">Description:</label>\n  219  								<div class=\"controls\">\n  220: 									<textarea name=\"edit-description\" id=\"edit-description\" class=\"input-large\"></textarea>\n  221  								</div>\n  222  							</div>						</div>\n\n/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js:\n  296  		var thisStory = Kanban.GetStoryByFieldValue(\"ID\", document.getElementById(\"edit-story-id\").value);\n  297  		thisStory.Summary = $(\"#edit-summary\").val();\n  298: 		thisStory.Description = $(\"#edit-description\").val();\n  299  		if(document.getElementById(\"edit-assignedto\").value == \"\") {\n  300  			thisStory.HandlerID = null;\n  ...\n  722  	$(\"#edit-story-id\").val(thisStory.ID);\n  723  	$(\"#edit-summary\").val(thisStory.Summary);\n  724: 	$(\"#edit-description\").val(thisStory.Description);\n  725  	$(\"#edit-reproduce\").val(thisStory.Reproduce);\n  726  \n\n5 matches across 3 files\n",
-			"settings":
-			{
-				"buffer_size": 1262,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "index.js",
-			"settings":
-			{
-				"buffer_size": 13915,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config.js",
-			"settings":
-			{
-				"buffer_size": 846,
+				"buffer_size": 13794,
 				"line_ending": "Unix"
 			}
 		}
@@ -433,6 +388,12 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
+		"/home/cgaspard/Downloads/JobDescription.txt",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/README.md",
 		"/home/cgaspard/Insync/corey.gaspard@mygait.net/Reports/chris_usage_report.sql",
 		"/home/cgaspard/Desktop/Priority Of Estimates.txt",
@@ -440,21 +401,16 @@
 		"/home/cgaspard/Desktop/New Users.txt",
 		"/mnt/Data/VMWare/Windows 7 Dev/Windows 7 Dev.vmx",
 		"/run/media/cgaspard/Backup/Downloads/VMWare/key.txt",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/home/cgaspard/Downloads/Eken/Script.sh",
 		"/home/cgaspard/vmware/Windows 7 Dev/Windows 7 Dev.vmx",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Scripts/getdvdid",
 		"/home/cgaspard/.cache/.fr-BXJWTj/INSTRUCTIONS.txt",
 		"/home/cgaspard/.wine/drive_c/users/cgaspard/Application Data/My Battle for Middle-earth Files/Options.ini",
 		"/home/cgaspard/.cache/.fr-Cb8Wtw/INSTRUCTIONS.txt",
 		"/home/cgaspard/Insync/cgaspard@gmail.com/vmwarenotes.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js.orig",
@@ -708,38 +664,11 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
-					"settings":
-					{
-						"buffer_size": 10793,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1122,
-								1122
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "forms.css",
 					"settings":
 					{
@@ -750,8 +679,8 @@
 						"selection":
 						[
 							[
-								44,
-								44
+								0,
+								0
 							]
 						],
 						"settings":
@@ -766,45 +695,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/home/cgaspard/Downloads/JobDescription.txt",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "kanban.css",
 					"settings":
 					{
-						"buffer_size": 13726,
+						"buffer_size": 13794,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								358,
-								358
+								6231,
+								6231
 							]
 						],
 						"settings":
@@ -813,119 +716,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"settings":
-					{
-						"buffer_size": 1262,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										194,
-										210
-									],
-									[
-										488,
-										504
-									],
-									[
-										510,
-										526
-									],
-									[
-										876,
-										892
-									],
-									[
-										1126,
-										1142
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "index.js",
-					"settings":
-					{
-						"buffer_size": 13915,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9388,
-								9388
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 40.0,
-						"translation.y": 4621.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "config.js",
-					"settings":
-					{
-						"buffer_size": 846,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								811,
-								811
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3105.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
