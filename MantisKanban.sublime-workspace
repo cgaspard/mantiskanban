@@ -251,22 +251,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "forms.css",
-			"settings":
-			{
-				"buffer_size": 758,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "kanban.css",
-			"settings":
-			{
-				"buffer_size": 13794,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/User/Chromium.sublime-build",
 	"command_palette":
@@ -388,10 +372,13 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Desktop/NotesFromMeetingWithIN2L.txt",
+		"/home/cgaspard/Desktop/AndyNotesAboutPasswordChange.txt",
+		"/home/cgaspard/Desktop/TODO.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
-		"/home/cgaspard/Downloads/JobDescription.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Downloads/JobDescription.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/README.md",
@@ -502,6 +489,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\\},\\{",
+			"},{",
 			"LoadKanbanProjects",
 			"SelectProject",
 			"AutoLogin",
@@ -627,16 +616,15 @@
 			"projectusers",
 			"rotate",
 			"ProjectTypeGuids",
-			"Type",
-			"ProjectTypeGuids",
-			"[\\r\\n]"
+			"Type"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"},\\n{",
 			"adb",
 			"Mantis.ConnectURL",
 			"edit-newnotetext",
@@ -664,63 +652,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "forms.css",
-					"settings":
-					{
-						"buffer_size": 758,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "kanban.css",
-					"settings":
-					{
-						"buffer_size": 13794,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6231,
-								6231
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3105.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
