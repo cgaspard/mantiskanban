@@ -1,4 +1,11 @@
 
+.tab-pane {
+	min-height: 300px;
+}
+.nav-tabs {
+	background-color: #F5F5F5;
+
+
 .notecontainer {
 	/*
 	padding: 8 8 0 8;
@@ -18,13 +25,13 @@
 }
 
 .notesarea{
-	width: 690px;
+	width: 680px;
 	overflow: auto;
-	max-height: 180px;
+	max-height: 140px;
 	border: solid 1px #cccccc;
 	padding: 5px 5px 5px 15px;
 	margin-top: 10px;
-	min-height: 180px;
+	min-height: 140px;
 }
 
 #add-description {
@@ -32,7 +39,7 @@
 }
 
 #edit-newnotetext {
-	width: 675px;
+	width: 655px;
 	text-align: left;
 }
 
@@ -40,6 +47,8 @@
 .notetext {
 	font-size: 8pt;
 	vertical-align: top;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .controls > input {
