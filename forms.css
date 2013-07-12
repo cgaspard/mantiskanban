@@ -24,6 +24,7 @@
 	border: solid 1px #cccccc;
 	padding: 5px 5px 5px 15px;
 	margin-top: 10px;
+	min-height: 180px;
 }
 
 #add-description {
