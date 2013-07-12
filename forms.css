@@ -10,14 +10,15 @@
 	border-radius: 5px 5px 5px 5px;
 	border: solid 1px #b3b3b3;
 	vertical-align: top;
-	width: 100%;
+	width: 675px;
 	-webkit-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.47);
 	-moz-box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.47);
 	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.47);
+	margin-top: 10px;
 }
 
 .notesarea{
-	width: 100%;
+	width: 690px;
 	overflow: auto;
 	max-height: 180px;
 	border: solid 1px #cccccc;
@@ -30,7 +31,7 @@
 }
 
 #edit-newnotetext {
-	width: 100%;
+	width: 675px;
 	text-align: left;
 }
 
