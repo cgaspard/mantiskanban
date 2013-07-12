@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"back",
+				"background-repeat"
+			],
+			[
 				"listDiv",
 				"listDivTitleLink"
 			],
@@ -372,12 +376,12 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Desktop/NotesFromMeetingWithIN2L.txt",
 		"/home/cgaspard/Desktop/AndyNotesAboutPasswordChange.txt",
 		"/home/cgaspard/Desktop/TODO.txt",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Downloads/JobDescription.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
@@ -489,6 +493,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"notecontainer",
+			"66px",
+			"65px",
 			"\\},\\{",
 			"},{",
 			"LoadKanbanProjects",
@@ -613,10 +620,7 @@
 			"edit-assignedto",
 			"callBack == null ? true : false;",
 			"EnumStatus",
-			"projectusers",
-			"rotate",
-			"ProjectTypeGuids",
-			"Type"
+			"projectusers"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -624,6 +628,8 @@
 		"regex": true,
 		"replace_history":
 		[
+			"62px",
+			"60px",
 			"},\\n{",
 			"adb",
 			"Mantis.ConnectURL",
