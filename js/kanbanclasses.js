@@ -148,6 +148,11 @@ KanbanStory.prototype = {
 		return this.StorySource.notes;
 	},
 
+	get Attachments() {
+		return this.StorySource.attachments;
+	},
+	
+
 	get Description() {
 		return this.StorySource.description;
 	}, set Description(value) {

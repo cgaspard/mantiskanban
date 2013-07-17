@@ -255,6 +255,25 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "\n                <tr>\n                  <td width=\"100%\" style=\"cursor:pointer\">\n                    <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                      <tr><td valign=\"bottom\" align=\"left\" id=\"tda163526631\" name=\"tda163526631\" onclick=\"additemToRead('message163526631'); message163526631.src= '/images/icons/000066/000066_email_read_off.gif'; if(requestdoc != null){ requestdoc.abort();} window.setTimeout(window.location = document.getElementById('alnk163526631').href, 200);\" onmouseover=\"fnhighlighttd(tda163526631);\" onmouseout=\"fnunhighlighttd(tda163526631);\" class=\"emaillink\" >\n                            <a id=\"alnk163526631\" href=\"readmessage.aspx?id=163526631&folder=inbox\" style=\"display:none;\">link</a>\n                          <table width=\"100%\" align=\"left\" cellpadding=\"3\" cellspacing=\"0\" class=\"emailitem\">\n                            <tr>\n                              <td width=\"80px\" height=\"35px\" valign=\"middle\" align=\"center\">\n                                \n                                <img class=\"icon\" id=\"message163526631\" style=\"CURSOR: hand\" src=\"/images/icons/000066/000066_email_read_off.gif\" border=\"0\">\n                                \n                              </td>\n                              <td width=\"20px\" class=\"emailparts\">\n                                \n                                <img src=\"/images/icons/clip.gif\" />\n                                \n                              </td>\n                              <td width=\"100px\" class=\"emailparts\">\n                                1/26/2013\n                              </td>\n                              <td width=\"325px\" class=\"emailparts\">\n                                Bill Quiles\n                                \n                              </td>\n                              <td height=\"35px\" class=\"emailparts\">\n                                Fw: Please respond when opened\n                              </td>\n...",
+			"file": "/home/cgaspard/.cache/.fr-On1hVf/eternicode-bootstrap-datepicker-6bd7520/css/datepicker.css",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1971,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/run/media/cgaspard/Backup/Downloads/VMWare/key.txt",
+			"settings":
+			{
+				"buffer_size": 195,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/User/Chromium.sublime-build",
 	"command_palette":
@@ -376,6 +395,8 @@
 	},
 	"file_history":
 	[
+		"/etc/X11/xorg.conf.d/50-synaptics.conf.pacsave",
+		"/home/cgaspard/Desktop/synclientsettings.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
@@ -493,6 +514,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\\n",
+			"= ",
 			"notecontainer",
 			"66px",
 			"65px",
@@ -618,9 +641,7 @@
 			"SelectFirstMantisProjectUserAccessAccessTo",
 			"kanbannewstory",
 			"edit-assignedto",
-			"callBack == null ? true : false;",
-			"EnumStatus",
-			"projectusers"
+			"callBack == null ? true : false;"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -628,6 +649,8 @@
 		"regex": true,
 		"replace_history":
 		[
+			"\"\\n",
+			"\"",
 			"62px",
 			"60px",
 			"},\\n{",
@@ -658,8 +681,63 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/cgaspard/.cache/.fr-On1hVf/eternicode-bootstrap-datepicker-6bd7520/css/datepicker.css",
+					"settings":
+					{
+						"buffer_size": 1971,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1971,
+								1971
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/run/media/cgaspard/Backup/Downloads/VMWare/key.txt",
+					"settings":
+					{
+						"buffer_size": 195,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								155,
+								155
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

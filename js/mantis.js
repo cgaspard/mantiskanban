@@ -132,6 +132,7 @@ var Mantis = {
 		Enumeration: "enumeration",
 		FilterID : "filter_id",
 		IssueID : "issue_id",
+		IssueID_Caps : "issueId",
 		Issue : "issue",
 		Note : "note",
 		Password : "password",
@@ -345,6 +346,7 @@ var Mantis = {
 					delete issue.pl;
 					delete issue.monitors;
 					delete issue.sticky;
+
 				} catch (e) { }
 
 				Mantis.RemoveNullCustomFieldsFromIssue(issue);
@@ -352,7 +354,7 @@ var Mantis = {
 				var pl = new SOAPClientParameters();
 				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
 				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
-				pl.add(Mantis.Params.IssueID, issueid);
+				pl.add(Mantis.Params.IssueID_Caps, issueid);
 				pl.add(Mantis.Params.Issue, issue);
 				return pl;
 			}

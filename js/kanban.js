@@ -386,6 +386,56 @@ function SaveNewNote(storyID, noteText) {
 	}
 }
 
+
+function AddAttachmentToStoryEditForm(KanbanStory) {
+	var attachmentsContainer = document.getElementById("edit-story-attachment-container");
+
+	try {
+		while(attachmentsContainer.childNodes.length > 0) {
+			attachmentsContainer.removeChild(attachmentsContainer.firstChild);
+		}
+	} catch(e) {}
+
+	/// This is what an attachment looks like
+	//  <xsd:element name="id" type="xsd:integer" minOccurs="0"/>
+	// <xsd:element name="filename" type="xsd:string" minOccurs="0"/>
+	// <xsd:element name="size" type="xsd:integer" minOccurs="0"/>
+	// <xsd:element name="content_type" type="xsd:string" minOccurs="0"/>
+	// <xsd:element name="date_submitted" type="xsd:dateTime" minOccurs="0"/>
+	// <xsd:element name="download_url" type="xsd:anyURI" minOccurs="0"/>
+	// <xsd:element name="user_id" type="xsd:integer" minOccurs="0"/>
+
+	if(KanbanStory.Attachments === undefined) return;
+
+	for(var i = 0; i < KanbanStory.Attachments.length; i++) {
+		var thisAttachment = KanbanStory.Attachments[i];
+
+		var attachmentDiv = document.createElement("div");
+		attachmentDiv.setAttribute("class", "attachmentcontainer");
+		attachmentDiv.setAttribute("storyid", KanbanStory.ID);
+
+		var attachmentFileName = document.createElement("div");
+		attachmentFileName.setAttribute("class", "attachmentname");
+		attachmentFileName.innerHTML = thisAttachment.filename;
+		attachmentDiv.appendChild(attachmentFileName);
+
+		// var attachmentDateSubbmitedDiv = document.createElement("div");
+		// attachmentDateSubbmitedDiv.setAttribute("class", "attachmentdatesubmitted");
+		// var testDate = new Date(Date.parse(thisAttachment.date_submitted));
+
+		// //attachmentDateSubbmitedDiv.innerHTML = thisAttachment.date_submitted;
+		// attachmentDateSubbmitedDiv.innerHTML = testDate;
+		// attachmentDiv.appendChild(attachmentDateSubbmitedDiv);
+
+		// var attachmentTextDiv = document.createElement("div");
+		// attachmentTextDiv.setAttribute("class", "attachmenttext");
+		// attachmentTextDiv.innerHTML = "<pre>" + thisAttachment.text + "</pre>";
+		// attachmentDiv.appendChild(attachmentTextDiv);
+
+		attachmentsContainer.appendChild(attachmentDiv);
+	}
+}
+
 /*
 * @name AddNotesToStoryEditForm
 * @param {KanbanStory} KanbanStory The story to display the notes for
@@ -779,6 +829,8 @@ function EditStory(storyID) {
 	//$("#edit-priority").trigger("liszt:updated");
 
 	AddNotesToStoryEditForm(thisStory);
+
+	AddAttachmentToStoryEditForm(thisStory);
 
 	// $("#edit-story-notes-container").accordion();    
 	//$("#edit-story-form").dialog("open");
