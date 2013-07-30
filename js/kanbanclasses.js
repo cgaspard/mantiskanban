@@ -121,6 +121,21 @@ KanbanStory.prototype = {
 		return this.StorySource.status.id
 	},
 
+	get ProjectID() {
+		return this.StorySource.project.id;
+	},
+	set ProjectID(value) {
+		this.StorySource.project.id = value
+	},
+
+	get ProjectName() {
+		return this.StorySource.project.name;
+	}, 
+	set ProjectName(value) {
+		this.StorySource.project.name = value
+	},
+
+
 	get StatusID() {
 		return this.StorySource.status.id;
 	},
@@ -238,6 +253,7 @@ KanbanStory.prototype = {
 	JoinList: function() {
 		for(var li = 0; li < Kanban.Lists.length; li++) {
 			var thisList = Kanban.Lists[li];
+			var foundListToDropIn = false;
 			if(thisList.UsesCustomField) {
 				for(var ci = 0; ci < this.StorySource.custom_fields.length; ci++) {
 					if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
@@ -245,9 +261,16 @@ KanbanStory.prototype = {
 							this._list = thisList;
 							this._list.AddStory(this);
 							this.UsesCustomField = true;
+							foundListToDropIn = true;
 							return;
 						}
 					}
+				}
+				if(!foundListToDropIn) {
+					/// Hack to drop issues without a value assigned in their custom field into the first bucket.
+					this._list = Kanban.Lists[0];
+					Kanban.Lists[0].AddStory(this);
+					this.UsesCustomField = true;
 				}
 			} else {
 				if(Kanban.Lists[li].ID == this.StorySource.status.id) {

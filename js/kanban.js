@@ -301,6 +301,7 @@ function UpdateStoryFromFormData() {
 		} else {
 			thisStory.HandlerID = document.getElementById("edit-assignedto").value;
 		}
+		thisStory.ProjectID = document.getElementById("edit-project").value;
 		thisStory.ReporterID = document.getElementById("edit-reporter").value;
 		thisStory.PriorityID = document.getElementById("edit-priority").value;
 		thisStory.StatusID = document.getElementById("edit-status").value;
@@ -594,6 +595,7 @@ function UpdateStoryHandlerComplete(result) {
 				Kanban.UpdateUnderlyingStorySource(foundStory);
 				//var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
 				foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
+				
 				if(foundStory.HandlerName == Mantis.CurrentUser.UserName) {
 					document.getElementById("storycontainer" + foundStory.ID).classList.add("mystory");
 				} else {
@@ -787,7 +789,17 @@ function EditStory(storyID) {
 	selectAddStatus.options.length = 0;
 	var selectAddPriority = document.getElementById("edit-priority");
 	selectAddPriority.options.length = 0;
+	var selectStoryProject = document.getElementById("edit-project");
+	selectStoryProject.options.length = 0;
 
+
+	for(var i = 0; i < Kanban.Projects.length; i++) {
+		var project = Kanban.Projects[i];
+		selectStoryProject.options[selectStoryProject.options.length] = new Option(project.Name, project.ID);
+		if(thisStory.ProjectID !== undefined && project.ID == thisStory.ProjectID) {
+			selectStoryProject.selectedIndex = i;
+		}
+	}
 
 	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
 		var user = Mantis.ProjectUsers[i];
@@ -796,7 +808,6 @@ function EditStory(storyID) {
 			selectReportingUser.selectedIndex = i;
 		}
 	}
-	//$("#edit-reporter").trigger("liszt:updated");
 
 	///Add a blank option
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To No One ---", "");
@@ -807,7 +818,6 @@ function EditStory(storyID) {
 			selectAssignedUser.selectedIndex = i + 1;
 		}
 	}
-	//$("#edit-assignedto").trigger("liszt:updated");
 
 	for(var i = 0; i < Mantis.Statuses.length; i++) {
 		var status = Mantis.Statuses[i];
@@ -816,8 +826,6 @@ function EditStory(storyID) {
 			selectAddStatus.selectedIndex = i;
 		}
 	}
-	//$("#edit-status").trigger("liszt:updated");
-
 	
 	for(var i = 0; i < Mantis.Priorities.length; i++) {
 		var priority = Mantis.Priorities[i];
@@ -826,7 +834,6 @@ function EditStory(storyID) {
 			selectAddPriority.selectedIndex = i;
 		}
 	}
-	//$("#edit-priority").trigger("liszt:updated");
 
 	AddNotesToStoryEditForm(thisStory);
 
