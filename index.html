@@ -2,17 +2,15 @@
 <html>
 	<head>
 
-		
-		<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />-->
-		<!--<link href="css/black-tie/jquery-ui-1.9.1.custom.css" rel="stylesheet">-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<script language="javascript" type="text/javascript" src="js/iso8601.min.js"></script>
-		
-		<link rel="Stylesheet" href="bootstrap/css/bootstrap.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="Stylesheet" href="bootstrap/css/bootstrap.css" />
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>		
-		
+	
 		<script src="js/modernizr-latest.js" type="text/javascript"></script>
 		
 		<!--<script src="js/chosen/chosen.jquery.js" type="text/javascript"></script>-->
@@ -35,8 +33,7 @@
 
 	</head>
 	<body>
-
-		<div class="realcontentcontainer container fill">
+		<div class="realcontentcontainer">
 			<div class="headerarea">
 				<div style="position:absolute; top:0px; left:0px; width:100%;">
 					<div class="loadingdiv" id="loadingdiv" style="float: right;">
@@ -49,23 +46,22 @@
 						<input type="text" id="username" placeholder="Username" value="Username" onclick="if(this.value == 'Username'){this.value='';}"/>
 						<input type="password" id="password" placeholder="Password" value="Password" onclick="if(this.value == 'Password'){this.value='';}" onfocus="if(this.value == 'Password'){this.value='';}">
 						<input type="submit" style="position: absolute; left: -9999px"/> 
-						<div class="btn btn-success" onclick="Login();">Login</div>
+						<div class="btn btn-success btn-small" onclick="Login();">Login</div>
 					</form>
 					</div>
 					<div id="projectarea" class="projectarea">
 						<div id="selected-project-name">Project</div>
 						<div class="btn-group">
-						  <a class="btn dropdown-toggle btn-primary btn-medium" data-toggle="dropdown" href="#">
-						    Select Project
-						    <span class="caret"></span>
-						  </a>
+						  <button class="btn btn-primary btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+						    Select Project <span class="caret"></span>
+						  </button>						
 						  <ul id="projectlist" class="dropdown-menu">
 						    <!-- dropdown menu links -->
 						  </ul>
 						</div>
 
 						<div class="btn-group">
-						  <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#">
+						  <a class="btn dropdown-toggle btn-warning btn-small" data-toggle="dropdown" href="#">
 						    Select Filter
 						    <span class="caret"></span>
 						  </a>
@@ -80,9 +76,9 @@
 						</div>
 						-->
 						<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
-							<div class="btn btn-danger" onclick="OpenAddStory(); ">Add Story</div>
-							<div class="btn btn-success" onclick="SelectProject();">Refresh</div>
-							<div class="btn btn-inverse" onclick="Logout();">Logout</div>
+							<div class="btn btn-danger btn-small" onclick="OpenAddStory(); ">Add Story</div>
+							<div class="btn btn-success btn-small" onclick="SelectProject();">Refresh</div>
+							<div class="btn btn-default btn-small" onclick="Logout();">Logout</div>
 						</div>
 					</div>
 				</div>
@@ -92,158 +88,165 @@
 			</div>
 		</div>
 		
-		<div id="add-story-form" class="modal hide fade">
-			<div class="modal-header btn-inverse">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3>Add a New Story</h3>
-			</div>
-			<div class="modal-body">
-				<form class="form-horizontal">
-					<div class="control-group">
-						<label class="control-label" for="add-summary">Summary</label>
-						<div class="controls">
-							<input type="text" name="add-summary" id="add-summary" placeholder="Summary" />
-						</div>
+		<div id="add-story-form" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h3>Add a New Story</h3>
 					</div>
-					<div class="contol-group" id="add-custom-field-container" name="add-custom-field-container">
-						<label class="control-label" for="add-custom-field">Bucket:</label>
-						<div class="controls">
-							<select name="add-custom-field" id="add-custom-field" ></select>
-						</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="control-group">
+								<label class="control-label" for="add-summary">Summary</label>
+								<div class="controls">
+									<input type="text" name="add-summary" id="add-summary" placeholder="Summary" />
+								</div>
+							</div>
+							<div class="contol-group" id="add-custom-field-container" name="add-custom-field-container">
+								<label class="control-label" for="add-custom-field">Bucket:</label>
+								<div class="controls">
+									<select name="add-custom-field" id="add-custom-field" ></select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="add-status">Status</label>
+								<div class="controls">
+									<select name="add-status" id="add-status" placeholder="Status"></select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="add-priority">Priority</label>
+								<div class="controls">
+									<select name="add-priority" id="add-priority"></select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="add-cateogry">Category</label>
+								<div class="controls">
+									<select name="add-category" id="add-category"></select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="add-reporter">Reporter</label>
+								<div class="controls">
+									<select name="add-reporter" id="add-reporter"></select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="add-assignedto">Handler</label>
+								<div class="controls">
+									<select name="add-assignedto" id="add-assignedto" class=""></select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="add-description">Description</label>
+								<div class="controls">
+									<textarea name="add-description" id="add-description" class="input-large"></textarea>
+								</div>
+							</div>
+						</form>
 					</div>
-					<div class="control-group">
-						<label class="control-label" for="add-status">Status</label>
-						<div class="controls">
-							<select name="add-status" id="add-status" placeholder="Status"></select>
-						</div>
+					<div class="modal-footer">
+						<div onclick="$('#add-story-form').modal('hide');" class="btn">Close</div>
+						<div onclick="Kanban.AddStoryFromFormData();" class="btn btn-primary">Save changes</div>
 					</div>
-					<div class="control-group">
-						<label class="control-label" for="add-priority">Priority</label>
-						<div class="controls">
-							<select name="add-priority" id="add-priority"></select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="add-cateogry">Category</label>
-						<div class="controls">
-							<select name="add-category" id="add-category"></select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="add-reporter">Reporter</label>
-						<div class="controls">
-							<select name="add-reporter" id="add-reporter"></select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="add-assignedto">Handler</label>
-						<div class="controls">
-							<select name="add-assignedto" id="add-assignedto" class=""></select>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="add-description">Description</label>
-						<div class="controls">
-							<textarea name="add-description" id="add-description" class="input-large"></textarea>
-						</div>
-					</div>
-				</form>
-
-			</div>
-			<div class="modal-footer">
-				<div onclick="$('#add-story-form').modal('hide');" class="btn">Close</div>
-				<div onclick="Kanban.AddStoryFromFormData();" class="btn btn-primary">Save changes</div>
+				</div>
 			</div>
 		</div>
 
 
-		<div id="edit-story-form" class="modal hide fade" title="Edit Story">
-			<div class="modal-header btn-inverse">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3 id="edit-story-title">Edit Story</h3>
-			</div>
-			<div class="modal-body">
-				<div>
-					<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-						<li class="active" ><a href="#tabs-1" data-toggle="tab">General</a></li>
-						<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
-						<li><a href="#tabs-3" data-toggle="tab">Steps</a></li>
-						<li><a href="#tabs-4" data-toggle="tab">Notes</a></li>
-						<li><a href="#tabs-5" data-toggle="tab">Attachments</a></li>
-						<li><a href="#tabs-6" data-toggle="tab">History</a></li>
-					</ul>
-					<div class="tab-content">
-						<div class="tab-pane active" id="tabs-1">
-							<form class="form-horizontal">
-								<input type="hidden" id="edit-story-id" name="edit-story-id" />
-								<div class="control-group">
-									<label class="control-label" for="edit-summary">Summary:</label>
-									<div class="controls">
-										<input type="text" name="edit-summary" id="edit-summary" class="" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="edit-project">Project:</label>
-									<div class="controls">
-										<select name="edit-project" id="edit-project" class=""></select>
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="edit-status">Status:</label>
-									<div class="controls">
-										<select name="edit-status" id="edit-status" class=""></select>
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="edit-priority">Priority:</label>
-									<div class="controls">
-										<select name="edit-priority" id="edit-priority" class=""></select>
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="edit-reporter">Reporter:</label>
-									<div class="controls">
-										<select name="edit-reporter" id="edit-reporter" class=""></select>
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="edit-assignedto">Assigned To:</label>
-									<div class="controls">
-										<select name="edit-assignedto" id="edit-assignedto" class=""></select>
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="edit-datesubmitted">Date Submitted:</label>
-									<div class="controls">
-										<div style="display:inline-block;" id="edit-datesubmitted"></div>
-									</div>
-								</div>
+		<div id="edit-story-form" class="modal fade" title="Edit Story">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h3 id="edit-story-title">Edit Story</h3>
+					</div>
+					<div class="modal-body">
+						<div>
+							<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+								<li class="active" ><a href="#tabs-1" data-toggle="tab">General</a></li>
+								<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
+								<li><a href="#tabs-3" data-toggle="tab">Steps</a></li>
+								<li><a href="#tabs-4" data-toggle="tab">Notes</a></li>
+								<li><a href="#tabs-5" data-toggle="tab">Attachments</a></li>
+								<li><a href="#tabs-6" data-toggle="tab">History</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="tabs-1">
+									<form class="form-horizontal">
+										<input type="hidden" id="edit-story-id" name="edit-story-id" />
+										<div class="control-group">
+											<label class="control-label" for="edit-summary">Summary:</label>
+											<div class="controls">
+												<input type="text" name="edit-summary" id="edit-summary" class="" />
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="edit-project">Project:</label>
+											<div class="controls">
+												<select name="edit-project" id="edit-project" class=""></select>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="edit-status">Status:</label>
+											<div class="controls">
+												<select name="edit-status" id="edit-status" class=""></select>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="edit-priority">Priority:</label>
+											<div class="controls">
+												<select name="edit-priority" id="edit-priority" class=""></select>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="edit-reporter">Reporter:</label>
+											<div class="controls">
+												<select name="edit-reporter" id="edit-reporter" class=""></select>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="edit-assignedto">Assigned To:</label>
+											<div class="controls">
+												<select name="edit-assignedto" id="edit-assignedto" class=""></select>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="edit-datesubmitted">Date Submitted:</label>
+											<div class="controls">
+												<div style="display:inline-block;" id="edit-datesubmitted"></div>
+											</div>
+										</div>
 
-							</form>
-						</div>
-						<div class="tab-pane" id="tabs-2">
-							<textarea name="edit-description" id="edit-description" class="input-large"></textarea>
-						</div>
-						<div class="tab-pane" id="tabs-3">
-							<textarea name="edit-reproduce" id="edit-reproduce" class="input-large"></textarea>
-						</div>
-						<div class="tab-pane" id="tabs-4">
-							<textarea class="edit-newnotetext" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
-							<div class="btn btn-success" id="edit-story-new-note-save-button" name="">Add Note</div>
-							<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
-						</div>
-						<div class="tab-pane" id="tabs-5">
-							<div id="edit-story-attachment-container" name="edit-story-attachment-container" class="attachmentsarea"></div>
-						</div>
-						<div class="tab-pane" id="tab-6">
+									</form>
+								</div>
+								<div class="tab-pane" id="tabs-2">
+									<textarea name="edit-description" id="edit-description" class="input-large"></textarea>
+								</div>
+								<div class="tab-pane" id="tabs-3">
+									<textarea name="edit-reproduce" id="edit-reproduce" class="input-large"></textarea>
+								</div>
+								<div class="tab-pane" id="tabs-4">
+									<textarea class="edit-newnotetext" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
+									<div class="btn btn-success" id="edit-story-new-note-save-button" name="">Add Note</div>
+									<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
+								</div>
+								<div class="tab-pane" id="tabs-5">
+									<div id="edit-story-attachment-container" name="edit-story-attachment-container" class="attachmentsarea"></div>
+								</div>
+								<div class="tab-pane" id="tab-6">
 
+								</div>
+							</div>
 						</div>
 					</div>
+					<div class="modal-footer">
+						<div onclick="$('#edit-story-form').modal('hide');" class="btn">Close</div>
+						<div onclick="UpdateStoryFromFormData(); $('#edit-story-form').modal('hide');" class="btn btn-primary">Save changes</div>
+					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<div onclick="$('#edit-story-form').modal('hide');" class="btn">Close</div>
-				<div onclick="UpdateStoryFromFormData(); $('#edit-story-form').modal('hide');" class="btn btn-primary">Save changes</div>
 			</div>
 		</div>
 		<div class="user-context-menu" name="user-context-menu" id="user-context-menu" onmouseout="HideUserSelector();">

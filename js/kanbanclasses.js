@@ -356,6 +356,7 @@ KanbanStory.prototype = {
 		storyDivSeverityContainer.addEventListener('dragleave', function(event) {
 			event.stopPropagation();
 		}, false);
+
 		storyContainerDiv.appendChild(storyDivSeverityContainer);
 
 		var storyDivSeverity = document.createElement("div");
@@ -365,6 +366,7 @@ KanbanStory.prototype = {
 		storyDivSeverity.setAttribute("listid", "listid" + this.ListID);
 		storyDivSeverity.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivSeverity.setAttribute("dropdivid", "dropdiv" + this.ID);
+		storyDivSeverity.innerHTML = this.ID;
 		storyDivSeverity.addEventListener('dragleave', function(event) {
 			event.stopPropagation();
 		}, false);
@@ -383,31 +385,31 @@ KanbanStory.prototype = {
 		}, false);
 		storyContainerDiv.appendChild(storyDivTitle);
 
-		var storyDivButtonContainer = document.createElement("div");
-		storyDivButtonContainer.setAttribute("class", "storyinfobutton");
-		storyDivButtonContainer.setAttribute("onclick", "EditStory('" + this.ID + "');");
-		storyDivButtonContainer.setAttribute("listid", "listid" + this.ListID);
-		storyDivButtonContainer.setAttribute("storyid", "storydiv" + this.ID);
-		storyDivButtonContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
-		storyDivButtonContainer.addEventListener('dragleave', function(event) {			
-			event.stopPropagation();
-		}, false);
-		storyContainerDiv.appendChild(storyDivButtonContainer);
+		// var storyDivButtonContainer = document.createElement("div");
+		// storyDivButtonContainer.setAttribute("class", "storyinfobutton");
+		// storyDivButtonContainer.setAttribute("onclick", "EditStory('" + this.ID + "');");
+		// storyDivButtonContainer.setAttribute("listid", "listid" + this.ListID);
+		// storyDivButtonContainer.setAttribute("storyid", "storydiv" + this.ID);
+		// storyDivButtonContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
+		// storyDivButtonContainer.addEventListener('dragleave', function(event) {			
+		// 	event.stopPropagation();
+		// }, false);
+		// storyContainerDiv.appendChild(storyDivButtonContainer);
 
-		var storyDivButton = document.createElement("img");
-		storyDivButton.setAttribute("src", "images/info_20_by_20.png");
-		storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
-		storyDivButton.setAttribute("onclick", "OpenUserSelector(event, '" + this.ID + "');");
-		storyDivButton.setAttribute("listid", "listid" + this.ListID);
-		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
-		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
-		//storyDivButton.setAttribute("draggable", false);
-		storyDivButton.addEventListener('dragleave', function(event) {
-			event.stopPropagation();
-		}, false);
-		storyDivButtonContainer.appendChild(storyDivButton);
+		// var storyDivButton = document.createElement("img");
+		// storyDivButton.setAttribute("src", "images/info_20_by_20.png");
+		// storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
+		// storyDivButton.setAttribute("onclick", "OpenUserSelector(event, '" + this.ID + "');");
+		// storyDivButton.setAttribute("listid", "listid" + this.ListID);
+		// storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
+		// storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
+		// //storyDivButton.setAttribute("draggable", false);
+		// storyDivButton.addEventListener('dragleave', function(event) {
+		// 	event.stopPropagation();
+		// }, false);
+		// storyDivButtonContainer.appendChild(storyDivButton);
 
-		$("#storycontainer" + this.ID).popover();
+		// $("#storycontainer" + this.ID).popover();
 
 		return storyDiv;
 	}
