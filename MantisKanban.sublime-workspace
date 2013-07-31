@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"text-align"
+			],
+			[
 				"back",
 				"background-repeat"
 			],
@@ -256,53 +260,10 @@
 	"buffers":
 	[
 		{
-			"contents": "",
-			"file": "/home/cgaspard/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 2377,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config-sample.js",
-			"settings":
-			{
-				"buffer_size": 1037,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config.js",
-			"settings":
-			{
-				"buffer_size": 846,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "custom.css",
-			"settings":
-			{
-				"buffer_size": 2381,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 11213,
+				"buffer_size": 11588,
 				"line_ending": "Unix"
 			}
 		}
@@ -430,8 +391,15 @@
 	},
 	"file_history":
 	[
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
+		"/home/cgaspard/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/README.md",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
@@ -441,23 +409,18 @@
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/.settings.xml",
 		"/mnt/Data/VMWare/Windows 7 Dev/Windows 7 Dev.vmx",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-project",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/README.md",
 		"/home/cgaspard/.cache/.fr-On1hVf/eternicode-bootstrap-datepicker-6bd7520/css/datepicker.css",
 		"/run/media/cgaspard/Backup/Downloads/VMWare/key.txt",
 		"/etc/X11/xorg.conf.d/50-synaptics.conf.pacsave",
 		"/home/cgaspard/Desktop/synclientsettings.txt",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Desktop/NotesFromMeetingWithIN2L.txt",
 		"/home/cgaspard/Desktop/AndyNotesAboutPasswordChange.txt",
 		"/home/cgaspard/Desktop/TODO.txt",
 		"/home/cgaspard/Downloads/JobDescription.txt",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Insync/corey.gaspard@mygait.net/Reports/chris_usage_report.sql",
 		"/home/cgaspard/Desktop/Priority Of Estimates.txt",
 		"/home/cgaspard/Desktop/Delete sites - 40839, 40863",
 		"/home/cgaspard/Desktop/New Users.txt",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/home/cgaspard/Downloads/Eken/Script.sh",
 		"/home/cgaspard/vmware/Windows 7 Dev/Windows 7 Dev.vmx",
 		"/home/cgaspard/Scripts/getdvdid",
@@ -465,7 +428,6 @@
 		"/home/cgaspard/.wine/drive_c/users/cgaspard/Application Data/My Battle for Middle-earth Files/Options.ini",
 		"/home/cgaspard/.cache/.fr-Cb8Wtw/INSTRUCTIONS.txt",
 		"/home/cgaspard/Insync/cgaspard@gmail.com/vmwarenotes.txt",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js.orig",
 		"/tmp/CEFSource0mhixX.txt",
 		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
@@ -554,6 +516,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"note",
+			"area",
 			"Mantis.",
 			"ProjectGetCustomFields",
 			"custom_fields",
@@ -679,8 +643,6 @@
 			"updatestoryhandler",
 			"newnotetext",
 			"edit-newnotetext",
-			"newnotetext",
-			"kanbanstoryseverity",
 			"newnotetext"
 		],
 		"highlight": true,
@@ -724,171 +686,34 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/cgaspard/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "README.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2377,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "config-sample.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1037,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "config.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 846,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "custom.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2381,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11213,
+						"buffer_size": 11588,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1517,
-								1517
+								6525,
+								6525
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"translate_tabs_to_spaces": false,
+							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2065.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

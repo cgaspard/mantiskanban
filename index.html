@@ -34,51 +34,52 @@
 	</head>
 	<body>
 		<div class="realcontentcontainer">
-			<div class="headerarea">
-				<div style="position:absolute; top:0px; left:0px; width:100%;">
+			<div class="headerarea" style="width:100%;">
+				<div>
 					<div class="loadingdiv" id="loadingdiv" style="float: right;">
 						<img id="loadingimage" src="images/loading.gif"  style="display: none;"/>
-						<img id="loadedimage" src="images/loaded.png"  style="height: 40px;"/>
+						<img id="loadedimage" src="images/loaded.png"  style="display:none; height: 40px;"/>
 					</div>                        
-					<img src="images/mantis_logo.png" class="mantislogo" />
-					<div id="loginarea" class="loginarea">
-						<form id="userLoginForm" class="userLoginForm" runat="server" method="post">
-						<input type="text" id="username" placeholder="Username" value="Username" onclick="if(this.value == 'Username'){this.value='';}"/>
-						<input type="password" id="password" placeholder="Password" value="Password" onclick="if(this.value == 'Password'){this.value='';}" onfocus="if(this.value == 'Password'){this.value='';}">
-						<input type="submit" style="position: absolute; left: -9999px"/> 
-						<div class="btn btn-success btn-small" onclick="Login();">Login</div>
+					<div id="loginarea" class="loginarea" style="width:100%; padding-top:200px; text-align:center;">
+						<div>
+							<img src="images/mantis_logo.png" class="mantislogo" />
+						</div>
+						<div>
+							<form id="userLoginForm" class="userLoginForm" runat="server" method="post">
+								<input type="text" id="username" placeholder="Username" value="Username" onclick="if(this.value == 'Username'){this.value='';}"/>
+								<input type="password" id="password" placeholder="Password" value="Password" onclick="if(this.value == 'Password'){this.value='';}" onfocus="if(this.value == 'Password'){this.value='';}">
+								<input type="submit" style="position: absolute; left: -9999px"/> 
+								<div class="btn btn-success btn-small" onclick="Login();">Login</div>
+							</form>
+						</div>
 					</form>
 					</div>
 					<div id="projectarea" class="projectarea">
-						<div id="selected-project-name">Project</div>
-						<div class="btn-group">
-						  <button class="btn btn-primary btn-small dropdown-toggle" type="button" data-toggle="dropdown">
-						    Select Project <span class="caret"></span>
-						  </button>						
-						  <ul id="projectlist" class="dropdown-menu">
-						    <!-- dropdown menu links -->
-						  </ul>
-						</div>
-
-						<div class="btn-group">
-						  <a class="btn dropdown-toggle btn-warning btn-small" data-toggle="dropdown" href="#">
-						    Select Filter
-						    <span class="caret"></span>
-						  </a>
-						  <ul id="filterlist" class="dropdown-menu">
-						    <!-- dropdown menu links -->
-						  </ul>
-						</div>
-						<!--<div id="projectlist" class="projectlist"></div>-->
-						<!--<div class="filterlistcontainer">
-								<select id="filterlist" onchange="UpdateFilter(this.value);">
-								</select>
-						</div>
-						-->
-						<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
-							<div class="btn btn-danger btn-small" onclick="OpenAddStory(); ">Add Story</div>
-							<div class="btn btn-success btn-small" onclick="SelectProject();">Refresh</div>
-							<div class="btn btn-default btn-small" onclick="Logout();">Logout</div>
+						<img src="images/mantis_logo.png" class="mantislogo loggedin" />
+						<div style="display:inline-block">
+							<div id="selected-project-name">Project</div>
+							<div class="btn-group">
+							  <button class="btn btn-primary btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+							    Select Project <span class="caret"></span>
+							  </button>						
+							  <ul id="projectlist" class="dropdown-menu">
+							    <!-- dropdown menu links -->
+							  </ul>
+							</div>
+							<div class="btn-group">
+							  <a class="btn dropdown-toggle btn-warning btn-small" data-toggle="dropdown" href="#">
+							    Select Filter
+							    <span class="caret"></span>
+							  </a>
+							  <ul id="filterlist" class="dropdown-menu">
+							    <!-- dropdown menu links -->
+							  </ul>
+							</div>
+							<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
+								<div class="btn btn-danger btn-small" onclick="OpenAddStory(); ">Add Story</div>
+								<div class="btn btn-success btn-small" onclick="SelectProject();">Refresh</div>
+								<div class="btn btn-default btn-small" onclick="Logout();">Logout</div>
+							</div>
 						</div>
 					</div>
 				</div>
