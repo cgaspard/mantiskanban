@@ -264,10 +264,10 @@
 	"buffers":
 	[
 		{
-			"file": "kanban.css",
+			"contents": "",
 			"settings":
 			{
-				"buffer_size": 14726,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -275,7 +275,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 12473,
+				"buffer_size": 12592,
 				"line_ending": "Unix"
 			}
 		}
@@ -403,10 +403,13 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/ISO/autorun.inf",
+		"/home/cgaspard/Downloads/Office 2007/key.txt",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/.htaccess",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
@@ -698,33 +701,32 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "kanban.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14726,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12755,
-								12755
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 5879.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -735,25 +737,24 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12473,
+						"buffer_size": 12592,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3640,
-								3640
+								924,
+								924
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false,
-							"word_wrap": false
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 720.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
