@@ -319,21 +319,7 @@ html, body{
 
 .kanbanstory{
 	background: rgb(238,238,238);
-	/* Old browsers */
-	background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%);
-	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1)));
-	/* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-	/* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-	/* IE10+ */
-	background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-	/* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
-	/* IE6-9 */
+
 	display: table;
     table-layout: fixed;
     width: 100%;
@@ -351,22 +337,12 @@ html, body{
 
 
 .kanbanstory.mystory{
-	background: #fceabb;
-	/* Old browsers */
-	background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);
-	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fceabb), color-stop(50%,#fccd4d), color-stop(51%,#f8b500), color-stop(100%,#fbdf93));
-	/* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
-	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
-	/* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
-	/* IE10+ */
-	background: linear-gradient(to bottom, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
-	/* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 );
-	/* IE6-9 */
+	background: rbg(206,206,206);
+	background-color: #CECECE;
+}
+
+.kanbanstory.mystory > .kanbanstorytitle {
+	font-style: italic;
 }
 
 .kanbanstory.glow { 
@@ -386,13 +362,16 @@ html, body{
 	display: table-cell;
 	vertical-align: middle;
 	width: 35px;
+
 	color:#FFFFFF;
 	text-align:center;
 }
 
 .handlercontainer {
-	border: solid 1px #777777;
-	font-size: 14px;
+	border-left: solid 1px #777777;
+	font-size: 16px;
+	height: 40px;
+	padding-top: 7px;
 }
 
 .kanbanstoryprioritycontainer {
@@ -406,9 +385,11 @@ html, body{
 
 .kanbanstorypriority{
 	width: 35px;
+	height: 40px;
 	background-color: #334477;
-	border: solid 1px #777777;
+	border-right: solid 1px #777777;
 	font-size: 14px;
+	padding-top: 7px;
 	vertical-align: middle;
 }
 
@@ -447,7 +428,7 @@ html, body{
 	cursor: pointer !important;
 	padding-left: 18px;
 	padding-right: 6px;
-	font-size: 16px;
+	font-size: 12px;
 	vertical-align: middle;
 	text-overflow:ellipsis;
 	-o-text-overflow: ellipsis;

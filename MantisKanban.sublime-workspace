@@ -474,7 +474,7 @@
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 64.0
 	},
 	"find_in_files":
 	{
@@ -493,6 +493,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"storyinfobutton",
 			"attachmentSubmitterDiv",
 			"Note",
 			"note",
@@ -619,8 +620,7 @@
 			"kanbanListItem",
 			"storyID",
 			"editStory",
-			"Mantis",
-			"undefined"
+			"Mantis"
 		],
 		"highlight": true,
 		"in_selection": false,
