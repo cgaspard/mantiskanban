@@ -4,14 +4,6 @@
 		"selected_items":
 		[
 			[
-				"inline",
-				"inline-block"
-			],
-			[
-				"text",
-				"text-align"
-			],
-			[
 				"back",
 				"background-repeat"
 			],
@@ -261,34 +253,15 @@
 			]
 		]
 	},
-	"buffers":
-	[
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 12592,
-				"line_ending": "Unix"
-			}
-		}
-	],
 	"build_system": "Packages/User/Chromium.sublime-build",
 	"command_palette":
 	{
-		"height": 92.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
 				"package",
-				"Preferences: Package Control Settings – User"
+				"Package Control: Install Package"
 			],
 			[
 				"packag",
@@ -383,14 +356,11 @@
 				"Set Syntax: R Console"
 			]
 		],
-		"width": 449.0
+		"width": 602.0
 	},
 	"console":
 	{
-		"height": 139.0,
-		"history":
-		[
-		]
+		"height": 139.0
 	},
 	"distraction_free":
 	{
@@ -403,39 +373,29 @@
 	},
 	"file_history":
 	[
-		"/home/cgaspard/ISO/autorun.inf",
-		"/home/cgaspard/Downloads/Office 2007/key.txt",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/.htaccess",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
-		"/home/cgaspard/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/README.md",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
-		"/home/cgaspard/.bashrc",
-		"/home/cgaspard/.config/terminator/config",
-		"/home/cgaspard/Scripts/wine.py",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/.settings.xml",
-		"/mnt/Data/VMWare/Windows 7 Dev/Windows 7 Dev.vmx",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-project",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/README.md",
 		"/home/cgaspard/.cache/.fr-On1hVf/eternicode-bootstrap-datepicker-6bd7520/css/datepicker.css",
 		"/run/media/cgaspard/Backup/Downloads/VMWare/key.txt",
 		"/etc/X11/xorg.conf.d/50-synaptics.conf.pacsave",
 		"/home/cgaspard/Desktop/synclientsettings.txt",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Desktop/NotesFromMeetingWithIN2L.txt",
 		"/home/cgaspard/Desktop/AndyNotesAboutPasswordChange.txt",
 		"/home/cgaspard/Desktop/TODO.txt",
 		"/home/cgaspard/Downloads/JobDescription.txt",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Insync/corey.gaspard@mygait.net/Reports/chris_usage_report.sql",
 		"/home/cgaspard/Desktop/Priority Of Estimates.txt",
 		"/home/cgaspard/Desktop/Delete sites - 40839, 40863",
 		"/home/cgaspard/Desktop/New Users.txt",
+		"/mnt/Data/VMWare/Windows 7 Dev/Windows 7 Dev.vmx",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/home/cgaspard/Downloads/Eken/Script.sh",
 		"/home/cgaspard/vmware/Windows 7 Dev/Windows 7 Dev.vmx",
 		"/home/cgaspard/Scripts/getdvdid",
@@ -443,8 +403,10 @@
 		"/home/cgaspard/.wine/drive_c/users/cgaspard/Application Data/My Battle for Middle-earth Files/Options.ini",
 		"/home/cgaspard/.cache/.fr-Cb8Wtw/INSTRUCTIONS.txt",
 		"/home/cgaspard/Insync/cgaspard@gmail.com/vmwarenotes.txt",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js.orig",
 		"/tmp/CEFSource0mhixX.txt",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/MantisKanban.sublime-project",
 		"/Users/cgaspard/Desktop/MailBoderCoupon.txt",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/js/mantis.js",
 		"/Users/cgaspard/Projects/Fun/MantisKanban/config.js",
@@ -512,11 +474,11 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -531,16 +493,6 @@
 		"case_sensitive": true,
 		"find_history":
 		[
-			"note",
-			"area",
-			"Mantis.",
-			"ProjectGetCustomFields",
-			"custom_fields",
-			"UsesCustomField",
-			"_listIDField",
-			"UpdateKanbanStoryComplete",
-			"IssueUpdate",
-			"openedit",
 			"attachmentSubmitterDiv",
 			"Note",
 			"note",
@@ -658,7 +610,17 @@
 			"updatestoryhandler",
 			"newnotetext",
 			"edit-newnotetext",
-			"newnotetext"
+			"newnotetext",
+			"kanbanstoryseverity",
+			"newnotetext",
+			"91px",
+			"90px",
+			"kanbanstory",
+			"kanbanListItem",
+			"storyID",
+			"editStory",
+			"Mantis",
+			"undefined"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -698,70 +660,6 @@
 		"whole_word": false,
 		"wrap": true
 	},
-	"groups":
-	[
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12592,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								924,
-								924
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		}
-	],
 	"incremental_find":
 	{
 		"height": 34.0
@@ -801,7 +699,6 @@
 	{
 		"height": 112.0
 	},
-	"project": "MantisKanban.sublime-project",
 	"replace":
 	{
 		"height": 64.0
@@ -871,24 +768,10 @@
 		],
 		"width": 380.0
 	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"settings":
-	{
-	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 369.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"side_bar_width": 303.0,
+	"status_bar_visible": true
 }

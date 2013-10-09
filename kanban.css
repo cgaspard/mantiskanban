@@ -291,7 +291,7 @@ html, body{
 	display:none;
 	border: solid 1px black;
 	color: #222222;
-	height: 20px;
+	height: 30px;
 	text-align: center;
 	padding-top: 5px;
 	padding-bottom: 3px;
@@ -338,7 +338,7 @@ html, body{
     table-layout: fixed;
     width: 100%;
 	/* border-radius: 2px 2px 2px 2px; */
-	padding: 5 0 5 0;
+	
 	cursor: move;
 	text-shadow:
 		0px -1px 0px rgba(000,000,000,0.4),
@@ -382,6 +382,21 @@ html, body{
 
 }
 
+.kabanhandlercontainer {
+	display: table-cell;
+	vertical-align: middle;
+	width: 40px;
+	heigth:100%;
+	color:#FFFFFF;
+	text-align:center;
+}
+
+.handlercontainer {
+	
+	
+	border: solid 1px #777777;
+	font-size: 18px;
+}
 
 .kanbanstoryprioritycontainer {
 	display: table-cell;
@@ -389,16 +404,14 @@ html, body{
 	width: 30px;
 	color:#FFFFFF;
 	text-align:center;
+	padding-right: 4px;
 }
 
 .kanbanstorypriority{
-	width: 30px;
-	height: 20px;
-	margin: 0px 4px 0px 4px;
+	width: 40px;
 	background-color: #334477;
-	border-radius: 5px 5px 5px 5px;
-	border: solid 1px #000000;
-
+	border: solid 1px #777777;
+	font-size: 18px;
 	vertical-align: middle;
 }
 
@@ -435,7 +448,9 @@ html, body{
 	overflow: hidden;
 	white-space: nowrap;
 	cursor: pointer !important;
-	padding-left:6px;
+	padding-left: 18px;
+	padding-right: 6px;
+	font-size: 16px;
 	vertical-align: middle;
 	text-overflow:ellipsis;
 	-o-text-overflow: ellipsis;
