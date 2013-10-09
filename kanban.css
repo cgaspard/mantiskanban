@@ -385,33 +385,30 @@ html, body{
 .kabanhandlercontainer {
 	display: table-cell;
 	vertical-align: middle;
-	width: 40px;
-	heigth:100%;
+	width: 35px;
 	color:#FFFFFF;
 	text-align:center;
 }
 
 .handlercontainer {
-	
-	
 	border: solid 1px #777777;
-	font-size: 18px;
+	font-size: 14px;
 }
 
 .kanbanstoryprioritycontainer {
 	display: table-cell;
 	vertical-align: middle;
-	width: 30px;
+	width: 25px;
 	color:#FFFFFF;
 	text-align:center;
 	padding-right: 4px;
 }
 
 .kanbanstorypriority{
-	width: 40px;
+	width: 35px;
 	background-color: #334477;
 	border: solid 1px #777777;
-	font-size: 18px;
+	font-size: 14px;
 	vertical-align: middle;
 }
 
