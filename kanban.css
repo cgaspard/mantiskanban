@@ -370,8 +370,9 @@ html, body{
 .handlercontainer {
 	border-left: solid 1px #777777;
 	font-size: 16px;
+	font-weight: bolder;
 	height: 40px;
-	padding-top: 7px;
+	padding-top: 10px;
 }
 
 .kanbanstoryprioritycontainer {
@@ -388,8 +389,10 @@ html, body{
 	height: 40px;
 	background-color: #334477;
 	border-right: solid 1px #777777;
-	font-size: 14px;
-	padding-top: 7px;
+	font-size: 15px;
+	padding-top: 10px;
+	font-family: Fixed, monospace;
+	font-weight: normal;
 	vertical-align: middle;
 }
 
