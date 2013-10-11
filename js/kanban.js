@@ -112,6 +112,7 @@ var Kanban = {
 
 	AddGlowToRelatedStories : function(id) {
 		var foundStory = Kanban.GetStoryByFieldValue("ID", id);
+		if(foundStory.RelatedStories.length > 0) foundStory.Element.children[1].classList.add("glow");
 		for(var rel = 0; rel < foundStory.RelatedStories.length; rel++) {
 			var foundRelation = Kanban.GetStoryByFieldValue("ID", foundStory.RelatedStories[rel]);
 			foundRelation.Element.children[1].classList.add("glow");
@@ -120,6 +121,7 @@ var Kanban = {
 
 	RemoveGlowToRelatedStories : function(id) {
 		var foundStory = Kanban.GetStoryByFieldValue("ID", id);
+		if(foundStory.RelatedStories.length > 0) foundStory.Element.children[1].classList.remove("glow");
 		for(var rel = 0; rel < foundStory.RelatedStories.length; rel++) {
 			var foundRelation = Kanban.GetStoryByFieldValue("ID", foundStory.RelatedStories[rel]);
 			foundRelation.Element.children[1].classList.remove("glow");
@@ -376,6 +378,7 @@ function SaveNewNote(storyID, noteText) {
 		var newNote = Mantis.UpdateStructureMethods.Note.NewNote(noteText);
 		Mantis.IssueNoteAdd(editStory.ID, newNote);
 		editStory = Kanban.UpdateUnderlyingStorySource(editStory);
+		document.editStory.
 		AddNotesToStoryEditForm(editStory);
 		document.getElementById("edit-newnotetext").value = "";
 	} catch(e) {
