@@ -287,19 +287,13 @@ KanbanStory.prototype = {
 		this.StorySource.status.id = this.List.ID;
 	},
 
-	Refresh: function() {
-
-	},
 
 	BuildKanbanStoryDiv: function() {
 
-		if(this.Element != null) {
-			return this.Element;
-		}
 
 		var storyDiv = document.createElement("div");
 		storyDiv.Story = this;
-		this.Element = storyDiv;
+
 
 		storyDiv.setAttribute("id", "storydiv" + this.ID);
 		storyDiv.setAttribute("listid", "listid" + this.ListID);
@@ -415,6 +409,12 @@ KanbanStory.prototype = {
 
 		$("#storycontainer" + this.ID).popover();
 
+
+		if(this.Element != null) {
+			var replacedNode = this.Element.parentNode.replaceChild(storyDiv, this.Element);
+		}
+
+		this.Element = storyDiv;
 		return storyDiv;
 	}
 }
@@ -447,6 +447,14 @@ Kanban.AddStoryAsyncCallback = function(result) {
 Kanban.UpdateUnderlyingStorySource = function(originalStory) {
 	var mantisIssue = Mantis.IssueGet(originalStory.ID);
 	originalStory.StorySource = mantisIssue;
-	return originalStory;
+
+	if(originalStory.ProjectID != Kanban.CurrentProject.ID) {
+		originalStory.Element.parentNode.removeChild(originalStory.Element);
+		return null;
+	} else {
+		originalStory.BuildKanbanStoryDiv();
+		return originalStory;
+	}
+
 };
 

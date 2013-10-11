@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"b",
+				"bolder"
+			],
+			[
 				"back",
 				"background-repeat"
 			],
