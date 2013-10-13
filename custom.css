@@ -38,8 +38,6 @@ body {
 
 .kanbanlist {
 	background: #aed8f9;
-	min-width: 100px;
-	max-width: 200px;
 }
 
 .kanbanlist:hover {

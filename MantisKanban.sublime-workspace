@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"class",
+				"classList"
+			],
+			[
+				"origin",
+				"originStory"
+			],
+			[
+				"origina",
+				"originalStory"
+			],
+			[
 				"text",
 				"text-decoration"
 			],
@@ -482,7 +494,7 @@
 	],
 	"find":
 	{
-		"height": 64.0
+		"height": 75.0
 	},
 	"find_in_files":
 	{
@@ -501,6 +513,16 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"400px",
+			"min-width",
+			"glow",
+			"AddGlowToRelatedStories",
+			"BuildKanbanStoryDiv",
+			"UpdateUnderlyingStorySource",
+			"UpdateStoryFromFormData",
+			"update",
+			"refresh",
+			"upate",
 			"storyinfobutton",
 			"attachmentSubmitterDiv",
 			"Note",
@@ -618,17 +640,7 @@
 			"UpdateKanbanStoryComplete",
 			"updatestoryhandler",
 			"newnotetext",
-			"edit-newnotetext",
-			"newnotetext",
-			"kanbanstoryseverity",
-			"newnotetext",
-			"91px",
-			"90px",
-			"kanbanstory",
-			"kanbanListItem",
-			"storyID",
-			"editStory",
-			"Mantis"
+			"edit-newnotetext"
 		],
 		"highlight": true,
 		"in_selection": false,

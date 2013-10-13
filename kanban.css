@@ -33,8 +33,10 @@ html, body{
 
 .realcontentcontainer{
 	z-index:50;
-	/*position: absolute;*/
+	position: absolute;
 	top: 0px;
+	width: 100%;
+	height: 100%;
 }
 .loadingdiv{
 	position: relative;
@@ -129,13 +131,6 @@ html, body{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666c70', endColorstr='#dbdbdb',GradientType=0 );
 
 }
-.contentarea{
-	height: 100%;
-	width: 100%;
-	text-align: center;
-	
-	display:none;
-}
 
 .newnotesavebutton, .kanbannewstory{
 	cursor: pointer;
@@ -178,31 +173,36 @@ html, body{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
 }
 
-#kanbancontent{
-	text-align: left;
-	overflow: auto;
-	display: table;
-	table-layout: fixed;
-	width: 95%;
-	height: 95%;
-	min-width: 800px;
-	min-height: 450px;
-	margin-left: 2%;
-	background-color: #f4f4f4;
-	border-radius: 5px 5px 5px 5px !important;
-	-moz-box-shadow: 8px 6px 10px 1px #444;
-	-webkit-box-shadow: 8px 6px 10px 1px #444;
-	box-shadow: 8px 6px 10px 1px #444;
-	border: solid 10px transparent;
-	white-space: nowrap;
+.contentarea{
+	text-align: center;
+	position: relative;
+	top: 0px;
+	display:none;
+	width: 100%; 
+	height: calc(100% - 85px); 
 }
 
+
+#kanbancontent{
+	top:0px;
+	height: 100%;
+	width: 100%;
+	background-color: #f4f4f4; 
+	padding-top: 5px;
+	text-align: center;
+	overflow: auto;
+	display: block;
+	background-color: #f4f4f4;
+	padding: 10px 10px 10px 10px;
+	white-space: nowrap;
+}
+ 	
 .kanbanlist{
 	border-radius: 10px 10px 2px 2px;
 	vertical-align: top;
-	display: table-cell;
-	min-width: 100px;
-	max-width: 200px;
+	display: inline-block;
+	min-width: 250px;
+	max-width: 250px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -216,6 +216,8 @@ html, body{
 }
 
 .kanbanlistdroparea{
+	min-width: 250px;
+	max-width: 500px;
 	background: #d2ff52;
 	/* Old browsers */
 	background: -moz-linear-gradient(top, #d2ff52 0%, #91e842 100%);
@@ -270,7 +272,7 @@ html, body{
 }
 
 .kanbanlistspacer {
-	display: table-cell;;
+	display: inline-block;
 	width: 10px;
 }
 
@@ -427,10 +429,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 	overflow: hidden;
 	white-space: nowrap;
 	cursor: pointer !important;
-	padding-left: 18px;
-	padding-right: 6px;
+	padding-left: 15px;
 	font-size: 12px;
 	vertical-align: middle;
+	text-align: left;
 	text-overflow:ellipsis;
 	-o-text-overflow: ellipsis;
 	-ms-text-overflow: ellipsis;
