@@ -335,6 +335,18 @@ var Mantis = {
 				return pl;
 			}
 		},
+
+		IssueDelete : {
+			Name : "mc_issue_delete",
+			BuildParams : function(issueid) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.IssueID, issueid);
+				return pl;
+			}
+
+		},
 		
 		IssueUpdate : {
 			Name : "mc_issue_update",
@@ -485,6 +497,11 @@ var Mantis = {
 	IssueSetTags : function(IssueID, IssueTagsArray) {
 		hascallback = callBack == null ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueSetTags.Name, Mantis.Methods.IssueSetTags.BuildParams(IssueID, IssueTagsArray), hascallback, callBack);
+	},
+
+	IssueDelete : function(IssueID, callBack) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueDelete.Name, Mantis.Methods.IssueDelete.BuildParams(IssueID), hascallback, callBack);
 	},
 	
 	IssueUpdate : function(IssueID, Issue, callBack) {

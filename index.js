@@ -77,6 +77,28 @@ function Login() {
 	StopLoading();
 }
 
+function DeleteIssue(kanbanIssue) {
+	try {
+		if(confirm("Are you sure you want to delete this issues?")) {
+			StartLoading();
+			var storyID = $("#edit-story-id").val();
+			var kanbanStory = Kanban.GetStoryByFieldValue("ID", storyID);
+
+			Mantis.IssueDelete(kanbanStory.ID, function() {
+				try {
+					StopLoading();
+					kanbanStory.Delete();
+				} catch(ex) {
+					StopLoading();
+				}
+			});
+		}
+	} catch(e) {
+		StopLoading()
+	}
+
+}
+
 function BuildProjectSelector() {
 	log("BuildProjectSelector() called.");
 

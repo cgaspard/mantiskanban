@@ -287,6 +287,9 @@ KanbanStory.prototype = {
 		this.StorySource.status.id = this.List.ID;
 	},
 
+	Delete: function() {
+		this.Element.parentNode.removeChild(this.Element);
+	},
 
 	BuildKanbanStoryDiv: function() {
 
