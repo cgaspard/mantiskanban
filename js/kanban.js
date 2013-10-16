@@ -767,9 +767,9 @@ function EditStory(storyID) {
 
 	$('#myTab a:first').tab('show');
 
-	// $("#tabs").tabs({
-	// 	active: 0
-	// });
+	//$("#tabs").tabs({
+	 	//active: 0
+	//});
 
 	var thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
 	document.getElementById("edit-story-title").innerHTML = "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
@@ -842,8 +842,6 @@ function EditStory(storyID) {
 
 	AddAttachmentToStoryEditForm(thisStory);
 
-	// $("#edit-story-notes-container").accordion();    
-	//$("#edit-story-form").dialog("open");
 	$('#edit-story-form').modal();
 
 }

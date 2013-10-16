@@ -221,16 +221,10 @@ function UpdateFilterList() {
 
 	var filterList = document.getElementById("filterlist");
 	var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
-	//filterList.options.length = 0;
 
-	//try {
 	while(filterList.children.length > 0) { 
 	 	filterList.removeChild(filterList.children[0]);
-	 	//delete filterList.children[0];
 	} 
-	 //} catch(e) { }
-
-	//	if(filter.id == Mantis.DefaultFilterID) filterList.selectedIndex = i;
 
 	for(var i = 0; i < filterListArray.length; i++) {
 	
@@ -249,20 +243,6 @@ function UpdateFilterList() {
 		filterList.appendChild(filterItem);
 
 	}
-	///Add a blank option
-	
-	//var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
-	//for(var i = 0; i < filterListArray.length; i++) {
-	//	var filter = filterListArray[i];
-	//	filterList.options[filterList.options.length] = new Option(filter.name, filter.id);
-	//	if(filter.id == Mantis.DefaultFilterID) filterList.selectedIndex = i;
-	//}
-	
-	//$("#filterlist").trigger("liszt:updated");
-
-	//add the listeners to the gui items here
-	//addGuiListeners();
-
 }
 
 function LoadFilterAsync(FilterID, Page, Limit, Callback) {
@@ -354,15 +334,6 @@ function BuildProjectsGUI() {
 
 		projectDivContainer.appendChild(projectLI);
 	}
-	// if(Kanban.Projects.length > 4) {
-	//}
-	//var projectDiv = document.createElement("li");
-	//projectDiv.setAttribute("class", "projectbutton");
-	//projectDiv.setAttribute("id", "projectshowmore");
-	//projectDiv.setAttribute("onclick", "OpenProjectSelector(event);");
-	//projectDiv.setAttribute("selected", Kanban.Projects[i].id == preSelectedProjectID ? "true" : "false");
-	//projectDiv.innerHTML = "Projects"
-	//projectDivContainer.appendChild(projectDiv);
 
 	if(document.getElementById("seletedproject").value == "") {
 		document.getElementById("seletedproject").value = Kanban.Projects[0].ID;

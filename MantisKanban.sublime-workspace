@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Iss",
+				"IssueID"
+			],
+			[
 				"class",
 				"classList"
 			],
@@ -513,6 +517,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Delete",
+			"update",
+			"EditStory",
+			"delete",
+			".removeChild",
+			"IssueUpdate",
 			"400px",
 			"min-width",
 			"glow",
@@ -634,13 +644,7 @@
 			"addstory:",
 			"listDiv",
 			"LoadKanbanProjects",
-			"BuildProjectsGUI",
-			"edit-description",
-			"normal",
-			"UpdateKanbanStoryComplete",
-			"updatestoryhandler",
-			"newnotetext",
-			"edit-newnotetext"
+			"BuildProjectsGUI"
 		],
 		"highlight": true,
 		"in_selection": false,

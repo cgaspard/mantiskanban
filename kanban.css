@@ -94,6 +94,17 @@ html, body{
 	
 }
 
+.modal-header {
+	background-color: #454545;
+	color:#FFFFFF;
+
+}
+
+.modal-footer {
+	background-color:#CDCDCD;
+
+}
+
 .mantislogo.loggedin {
 	width: 210px;
 	margin-left: 30px;

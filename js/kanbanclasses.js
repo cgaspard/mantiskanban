@@ -370,7 +370,7 @@ KanbanStory.prototype = {
 		storyDivSeverityContainer.appendChild(storyDivSeverity);
 
 		var storyDivTitle = document.createElement("span");
-		storyDivTitle.innerHTML = this.Summary;
+		
 		storyDivTitle.setAttribute("class", "kanbanstorytitle");
 		storyDivTitle.setAttribute("id", "storytitle" + this.ID);
 		storyDivTitle.setAttribute("onclick", "EditStory('" + this.ID + "');");
@@ -380,6 +380,11 @@ KanbanStory.prototype = {
 		storyDivTitle.addEventListener('dragleave', function(event) {
 			event.stopPropagation();
 		}, false);
+		if(this.Attachments.length > 0) {
+			storyDivTitle.innerHTML = "<span class=\"glyphicon glyphicon-file\"></span> " + this.Summary;
+		} else {
+			storyDivTitle.innerHTML = this.Summary;
+		}
 		storyContainerDiv.appendChild(storyDivTitle);
 
 		var storyDivButtonContainer = document.createElement("div");
