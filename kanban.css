@@ -348,6 +348,34 @@ html, body{
     
 }
 
+#attachmentdisplay {
+	display:none;
+	position:absolute;
+	z-index:9999;
+	background: rgba(0,0,0,0.85);
+	height: 100%;
+	width: 100%;
+}
+
+.attachmentcontainer {
+	display: table;
+	width: 100%;
+	padding-top: 10px;
+	text-align: center;
+
+}
+
+.attachmentsarea {
+	text-align: center;
+}
+
+.kanbanimageattachment {
+	display: block;
+	max-width: 400px;
+	max-height: 400px;
+	border: 2px solid orange;
+	cursor: hand;
+}
 
 .kanbanstory.mystory{
 	background: rbg(206,206,206);

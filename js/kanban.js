@@ -414,29 +414,47 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 	for(var i = 0; i < KanbanStory.Attachments.length; i++) {
 		var thisAttachment = KanbanStory.Attachments[i];
 
-		var attachmentDiv = document.createElement("div");
-		attachmentDiv.setAttribute("class", "attachmentcontainer");
-		attachmentDiv.setAttribute("storyid", KanbanStory.ID);
+		if(thisAttachment.content_type.match("image")) {
 
-		var attachmentFileName = document.createElement("div");
-		attachmentFileName.setAttribute("class", "attachmentname");
-		attachmentFileName.innerHTML = thisAttachment.filename;
-		attachmentDiv.appendChild(attachmentFileName);
+			/*
+			var attachmentLink = document.createElement("a");
+			attachmentLink.setAttribute("data-toggle", "lightbox");
+			attachmentLink.setAttribute("data-target", "#attachmentlightboxdiv" + thisAttachment.id);
+			attachmentLink.setAttribute("href", "#attachmentlightboxdiv" + thisAttachment.id);
+			attachmentsContainer.appendChild(attachmentLink);
+			*/
+			var attachmentDiv = document.createElement("div");
+			attachmentDiv.setAttribute("class", "attachmentcontainer");
+			attachmentDiv.setAttribute("storyid", KanbanStory.ID);
 
-		// var attachmentDateSubbmitedDiv = document.createElement("div");
-		// attachmentDateSubbmitedDiv.setAttribute("class", "attachmentdatesubmitted");
-		// var testDate = new Date(Date.parse(thisAttachment.date_submitted));
+			var attachmentImage = document.createElement("img");
+			attachmentImage.setAttribute("id", "attachment" + thisAttachment.id);
+			attachmentImage.setAttribute("src", "images/loading.gif");
+			attachmentImage.setAttribute("class", "kanbanimageattachment");
+			attachmentImage.setAttribute("onclick", "$('#edit-story-form').modal('hide'); OpenLightBox('#attachment" + thisAttachment.id + "');");
+			Mantis.IssueAttachmentGet(thisAttachment.id, thisAttachment.content_type, function(result, attachmentID, attachementContentType){
+				var foundAttachmentImage = document.getElementById("attachment" + attachmentID);
+				foundAttachmentImage.setAttribute("src", "data:" + attachementContentType + ";base64," + result);
+			});
 
-		// //attachmentDateSubbmitedDiv.innerHTML = thisAttachment.date_submitted;
-		// attachmentDateSubbmitedDiv.innerHTML = testDate;
-		// attachmentDiv.appendChild(attachmentDateSubbmitedDiv);
+			attachmentDiv.appendChild(attachmentImage);
+			//attachmentLink.appendChild(attachmentImage);
+			attachmentsContainer.appendChild(attachmentDiv);
 
-		// var attachmentTextDiv = document.createElement("div");
-		// attachmentTextDiv.setAttribute("class", "attachmenttext");
-		// attachmentTextDiv.innerHTML = "<pre>" + thisAttachment.text + "</pre>";
-		// attachmentDiv.appendChild(attachmentTextDiv);
+		} else {
+			var attachmentDiv = document.createElement("div");
+			attachmentDiv.setAttribute("class", "attachmentcontainer");
+			attachmentDiv.setAttribute("storyid", KanbanStory.ID);
 
-		attachmentsContainer.appendChild(attachmentDiv);
+			var attachmentFileName = document.createElement("div");
+			attachmentFileName.setAttribute("class", "attachmentname");
+			attachmentFileName.innerHTML = thisAttachment.filename;
+			attachmentDiv.appendChild(attachmentFileName);
+
+			attachmentsContainer.appendChild(attachmentDiv);	
+		}
+
+		
 	}
 }
 

@@ -14,9 +14,6 @@
 	
 		<script src="js/modernizr-latest.js" type="text/javascript"></script>
 		
-		<!--<script src="js/chosen/chosen.jquery.js" type="text/javascript"></script>-->
-		<!--<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>-->
-
 		<link rel="stylesheet" href="kanban.css" />
 		<link rel="stylesheet" href="forms.css" />
 		<link rel="stylesheet" href="custom.css" />
@@ -276,5 +273,14 @@
 		<ul class="project-selector" name="project-selector" id="project-selector" onmouseout="HideProjectSelector();">
 			<li id="project-selector-title" style="border-bototm: solid 2px #000000" onmouseout="event.stopPropogation();">Select Project</li>
 		</ul>
+		<div id="attachmentdisplay" class="" style="">
+				<a href="#" class="btn btn-primary pull-right" style="margin-right: 20px; margin-top: 20px;" onclick="CloseLightBox();$('#edit-story-form').modal();"><i class="glyphicons glyphicons-white glyphicons-close"></i>Close</a>
+				<br>
+				<center>
+					<div class="" style="padding-left: 40px; height: 100%; verticle-align: middle;">
+						<img id="lightboximage" src="" style="border-radius: 4px 4px 4px 4px;">
+					</div>
+				</center>
+		</div>
 	</body>
 </html>

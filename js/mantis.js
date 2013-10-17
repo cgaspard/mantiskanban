@@ -141,6 +141,7 @@ var Mantis = {
 		ProjectID : "project_id",
 		Tags : "tags",
 		UserName : "username",
+		IssueAttachmentID : "issue_attachment_id",
 	},
 
 	RemoveNullCustomFieldsFromIssue : function(issue) {
@@ -384,6 +385,19 @@ var Mantis = {
 			}
 		},
 		
+		IssueAttachmentGet : {
+			Name : "mc_issue_attachment_get",
+			BuildParams : function(issueattachmentid) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.IssueAttachmentID, issueattachmentid);
+				return pl;
+			}
+
+		},
+
+
 		IssueGet : {
 			Name : "mc_issue_get",
 			BuildParams : function(issueid) {
@@ -488,7 +502,10 @@ var Mantis = {
 		hascallback = callBack == null ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueGet.Name, Mantis.Methods.IssueGet.BuildParams(IssueID), hascallback, callBack);
 	},
-	
+	IssueAttachmentGet : function(IssueAttachmentID, ContentType, callBack) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueAttachmentGet.Name, Mantis.Methods.IssueAttachmentGet.BuildParams(IssueAttachmentID), hascallback, function(returnData) { callBack(returnData, IssueAttachmentID, ContentType); });
+	},
 	IssueNoteAdd : function(IssueID, Note, callBack) {
 		hascallback = callBack == null ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueNoteAdd.Name, Mantis.Methods.IssueNoteAdd.BuildParams(IssueID, Note), hascallback, callBack);

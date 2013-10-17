@@ -363,6 +363,15 @@ function AutoLogin(){
 	}
 }
 
+function OpenLightBox(itemid) {
+	document.getElementById("lightboximage").setAttribute("src", $(itemid)[0].src);
+	document.getElementById("attachmentdisplay").style.display = "block";
+}
+
+function CloseLightBox(itemid) {
+	document.getElementById("attachmentdisplay").style.display = "none";
+}
+
 function LoadSettingsFromLocalStorage(){
 	//check for users settings and login information
 	//if the settings exist load them into the DefaultSettings
