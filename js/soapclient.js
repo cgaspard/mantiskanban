@@ -265,7 +265,11 @@ SOAPClient._node2object = function(node, wsdlTypes)
 		for(var i = 0; i < node.childNodes.length; i++)
 		{
 			var p = SOAPClient._node2object(node.childNodes[i], wsdlTypes);
-			obj[node.childNodes[i].nodeName] = p;
+			if(obj.hasOwnProperty(node.childNodes[i].nodeName) && typeof(p) == "string") {
+				obj[node.childNodes[i].nodeName] += p;
+			} else {
+				obj[node.childNodes[i].nodeName] = p;
+			}
 		}
 		return obj;
 	}
