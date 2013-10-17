@@ -434,7 +434,10 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 			attachmentImage.setAttribute("onclick", "$('#edit-story-form').modal('hide'); OpenLightBox('#attachment" + thisAttachment.id + "');");
 			Mantis.IssueAttachmentGet(thisAttachment.id, thisAttachment.content_type, function(result, attachmentID, attachementContentType){
 				var foundAttachmentImage = document.getElementById("attachment" + attachmentID);
-				foundAttachmentImage.setAttribute("src", "data:" + attachementContentType + ";base64," + result);
+				var resultText = "";
+				resultText = result["#text"];
+				if(resultText == undefined) resultText = result;
+				foundAttachmentImage.setAttribute("src", "data:" + attachementContentType + ";base64," + resultText);
 			});
 
 			attachmentDiv.appendChild(attachmentImage);
