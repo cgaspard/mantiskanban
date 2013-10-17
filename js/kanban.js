@@ -451,9 +451,20 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 			attachmentDiv.setAttribute("storyid", KanbanStory.ID);
 
 			var attachmentFileName = document.createElement("div");
+			attachmentFileName.setAttribute("id", "attachment" + thisAttachment.id);
 			attachmentFileName.setAttribute("class", "attachmentname");
 			attachmentFileName.innerHTML = thisAttachment.filename;
+			Mantis.IssueAttachmentGet(thisAttachment.id, thisAttachment.content_type, function(result, attachmentID, attachementContentType){
+				var foundAttachmentDiv = document.getElementById("attachment" + attachmentID);
+				var resultText = "";
+				resultText = result["#text"];
+				if(resultText == undefined) resultText = result;
+				console.log("ATTACHMENT ID " + attachmentID + ": " + resultText);
+				foundAttachmentDiv.setAttribute("onclick", "window.open('data:application/octet-stream;base64,"+ resultText + "');");
+			});			
 			attachmentDiv.appendChild(attachmentFileName);
+
+			//window.open("data:application/octet-stream;base64," + base64);
 
 			attachmentsContainer.appendChild(attachmentDiv);	
 		}
