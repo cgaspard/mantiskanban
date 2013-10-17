@@ -437,6 +437,7 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 				var resultText = "";
 				resultText = result["#text"];
 				if(resultText == undefined) resultText = result;
+				console.log("ATTACHMENT ID " + attachmentID + ": " + resultText);
 				foundAttachmentImage.setAttribute("src", "data:" + attachementContentType + ";base64," + resultText);
 			});
 
