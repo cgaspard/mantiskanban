@@ -378,7 +378,6 @@ function SaveNewNote(storyID, noteText) {
 		var newNote = Mantis.UpdateStructureMethods.Note.NewNote(noteText);
 		Mantis.IssueNoteAdd(editStory.ID, newNote);
 		editStory = Kanban.UpdateUnderlyingStorySource(editStory);
-		document.editStory.
 		AddNotesToStoryEditForm(editStory);
 		document.getElementById("edit-newnotetext").value = "";
 	} catch(e) {
@@ -437,7 +436,7 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 				var resultText = "";
 				resultText = result["#text"];
 				if(resultText == undefined) resultText = result;
-				console.log("ATTACHMENT ID " + attachmentID + ": " + resultText);
+				//console.log("ATTACHMENT ID " + attachmentID + ": " + resultText);
 				foundAttachmentImage.setAttribute("src", "data:" + attachementContentType + ";base64," + resultText);
 			});
 
@@ -459,7 +458,7 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 				var resultText = "";
 				resultText = result["#text"];
 				if(resultText == undefined) resultText = result;
-				console.log("ATTACHMENT ID " + attachmentID + ": " + resultText);
+				//console.log("ATTACHMENT ID " + attachmentID + ": " + resultText);
 				foundAttachmentDiv.setAttribute("onclick", "window.open('data:application/octet-stream;base64,"+ resultText + "');");
 			});			
 			attachmentDiv.appendChild(attachmentFileName);

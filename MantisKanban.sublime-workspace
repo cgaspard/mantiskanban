@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"att",
+				"attachmentID"
+			],
+			[
+				"result",
+				"resultText"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"atta",
+				"attachmentLightBoxDiv"
+			],
+			[
+				"attachem",
+				"attachmentImage"
+			],
+			[
 				"Iss",
 				"IssueID"
 			],
@@ -397,6 +417,10 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/lightbox/bootstrap-lightbox.js",
+		"/home/cgaspard/Downloads/bootstrap-glyphicons-master/README.md",
+		"/home/cgaspard/.cache/.fr-HvNxKi/glyphicons_free/_changelog.txt",
+		"/home/cgaspard/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/home/cgaspard/Downloads/corey.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
@@ -503,7 +527,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 108.0,
 		"where_history":
 		[
 			"",
@@ -518,6 +542,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"addattachment",
+			"EditStory",
+			"attachmentdisplay",
+			"attachmentcontainer",
+			"attachmentsarea",
+			"area",
+			"attachmentsare",
+			"edit-story-attachment-container",
+			"AddAttachmentToStoryEditForm",
+			"		storyDiv.addEventListener('drop', Drop, false);\n		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
+			"		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
+			"OpenStory",
+			"op",
+			"OpenStory",
+			"EditStory",
+			"Editstory",
+			"OPenedit",
+			"attachments",
+			"attac",
 			"priority",
 			"prioritylegend",
 			"priority",
@@ -626,26 +669,7 @@
 			"AddStory",
 			"REmoveNullCustomFields",
 			"UpdateCustomField",
-			"UpdateListForCanbanStory",
-			"mantisConnectURL",
-			"ProjectGetIssues",
-			"_listIDField",
-			"FilterGetIssues",
-			"status",
-			"closed",
-			"buildstory",
-			"BuildKanbanStoryDiv",
-			"CreateKanbanStoriesFromMantisIssues",
-			"HastStory",
-			"CreateKanbanStoriesFromMantisIssues",
-			"storyseverity",
-			"selectproject",
-			"SelectProject",
-			"AddStory",
-			"addstory",
-			"AddStory",
-			"prototype",
-			"addstory:"
+			"UpdateListForCanbanStory"
 		],
 		"highlight": true,
 		"in_selection": false,
