@@ -58,7 +58,7 @@ KanbanList.prototype = {
 	},
 
 	AddNewStoryUI: function(Story) {
-		this.Element.insertBefore(Story.Element, this.Element.lastChild);
+		this.Container.appendChild(Story.Element);
 	},
 
 	/*
@@ -87,15 +87,16 @@ KanbanList.prototype = {
 }
 
 var KanbanStory = function(RawObject) {
-		this._list = null;
-		this.StorySource = RawObject;
-		//alert(JSON.stringify(RawObject.notes))
-		this.UsesCustomField = false;
-		this.JoinList();
-		if(!Kanban.HasStory(this.ID)) {
-			Kanban.AddStoryToArray(this);
-		}
+	this._list = null;
+	this.StorySource = RawObject;
+	//alert(JSON.stringify(RawObject.notes))
+	this.UsesCustomField = false;
+	this.JoinList();
+	if(!Kanban.HasStory(this.ID)) {
+		Kanban.AddStoryToArray(this);
+	}
 }
+
 KanbanStory.prototype = {
 
 	get List() {
@@ -293,10 +294,8 @@ KanbanStory.prototype = {
 
 	BuildKanbanStoryDiv: function() {
 
-
 		var storyDiv = document.createElement("div");
 		storyDiv.Story = this;
-
 
 		storyDiv.setAttribute("id", "storydiv" + this.ID);
 		storyDiv.setAttribute("listid", "listid" + this.ListID);
@@ -408,15 +407,11 @@ KanbanStory.prototype = {
 		if(this.HandlerName != "") {
 			storyDivButton.setAttribute("style", " color: " + colorCodes[this.HandlerName.substring(0, 1).toUpperCase()].foreground + ";  background-color:" + colorCodes[this.HandlerName.substring(0, 1).toUpperCase()].background + ";");
 		}
-		//storyDivButton.setAttribute("draggable", false);
 		storyDivButton.addEventListener('dragleave', function(event) {
 			event.stopPropagation();
 		}, false);
 		storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
 		storyDivButtonContainer.appendChild(storyDivButton);
-
-		//$("#storycontainer" + this.ID).popover();
-
 
 		if(this.Element != null) {
 			var replacedNode = this.Element.parentNode.replaceChild(storyDiv, this.Element);

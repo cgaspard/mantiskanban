@@ -87,7 +87,7 @@ var Kanban = {
 		if(!Kanban.HasStory(storyToAdd.ID)) {
 			Kanban.Stories[Kanban.Stories.length] = storyToAdd;
 			storyToAdd.BuildKanbanStoryDiv();
-			storyToAdd.List.Element.insertBefore(storyToAdd.Element, storyToAdd.List.Element.lastChild);
+			storyToAdd.List.Container.appendChild(storyToAdd.Element);
 		}
 	},
 
@@ -152,6 +152,13 @@ var Kanban = {
 			listDivTitle.setAttribute("id","kanbanlisttitle"+li)
 			listDivTitle.innerHTML = kanbanListItem.Name.capitalize();
 			listDiv.appendChild(listDivTitle);
+			
+			var listStoryContainer = document.createElement("div");
+			listStoryContainer.setAttribute("class", "kanbanliststorycontainer");
+			listStoryContainer.setAttribute("id", "kanbanliststorycontainer" + kanbanListItem.ID);
+			listDiv.appendChild(listStoryContainer);
+			listDiv.Container = listStoryContainer;
+			kanbanListItem.Container = listStoryContainer;
 
 			var listDropArea = document.createElement("div");
 			listDropArea.setAttribute("class", "kanbanlistdroparea");
@@ -219,16 +226,16 @@ function Drop(event) {
 		if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
 			listToDropIn = event.target;
 			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
-			listToDropIn.insertBefore(sourceElement, listToDropIn.lastChild);
+			listToDropIn.Container.insertBefore(sourceElement, listToDropIn.lastChild);
 		} else if(event.target.getAttribute("class") == "kanbanlistdroparea") {
 			listToDropIn = document.getElementById(event.target.getAttribute("listid"));
 			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
-			listToDropIn.insertBefore(sourceElement, listToDropIn.lastChild);
+			listToDropIn.Container.insertBefore(sourceElement, listToDropIn.lastChild);
 		} else {
 			listToDropIn = document.getElementById(event.target.getAttribute("listid"));
 			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
 			sourceElementDropDiv.classList.remove("over");
-			listToDropIn.insertBefore(sourceElement, targetStoryDiv);
+			listToDropIn.Container.insertBefore(sourceElement, targetStoryDiv);
 		}
 
 		sourceElement.setAttribute("listid", listToDropIn.getAttribute("id"));
