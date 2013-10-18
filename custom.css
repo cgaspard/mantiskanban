@@ -37,13 +37,13 @@ body {
 }
 
 .kanbanlist {
-	background: #aed8f9;
+	/*background: #aed8f9;*/
 }
 
 .kanbanlist:hover {
 	/*width: 400px !important;
 	max-width: 400px !important;*/
-	background: #3ea5f8;
+	/*background: #3ea5f8*/
 }
 
 /*.kanbanlist:hover .kanbanlisttitle {

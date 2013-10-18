@@ -209,11 +209,16 @@ html, body{
 }
  	
 .kanbanlist{
-	border-radius: 10px 10px 2px 2px;
+	/*border-radius: 10px 10px 2px 2px;*/
+	position: relative;
+	max-height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
 	vertical-align: top;
 	display: inline-block;
 	min-width: 250px;
 	max-width: 250px;
+	padding-top: 30px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -266,6 +271,10 @@ html, body{
 }
 
 .kanbanlisttitle{
+	z-index: 9999;
+	position: fixed;
+    top: 95px;
+    width: 250px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: bold;

@@ -417,6 +417,7 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/lightbox/bootstrap-lightbox.js",
 		"/home/cgaspard/Downloads/bootstrap-glyphicons-master/README.md",
 		"/home/cgaspard/.cache/.fr-HvNxKi/glyphicons_free/_changelog.txt",
@@ -424,7 +425,6 @@
 		"/home/cgaspard/Downloads/corey.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
@@ -527,7 +527,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 108.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -542,6 +542,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"kanbanlist",
 			"addattachment",
 			"EditStory",
 			"attachmentdisplay",
@@ -668,8 +669,7 @@
 			"AddStoryAsyncCallback",
 			"AddStory",
 			"REmoveNullCustomFields",
-			"UpdateCustomField",
-			"UpdateListForCanbanStory"
+			"UpdateCustomField"
 		],
 		"highlight": true,
 		"in_selection": false,
