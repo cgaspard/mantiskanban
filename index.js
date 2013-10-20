@@ -178,40 +178,44 @@ function modifyStyleRule(selectorText, style, value) {
 }
 
 function getStyleRule(selectorText, style, value) {
-	var sheets = document.styleSheets;
-	var sheet, rules, rule;
-	var i, j, k, l;
+	try { 
+		var sheets = document.styleSheets;
+		var sheet, rules, rule;
+		var i, j, k, l;
 
-	for (i=0, iLen=sheets.length; i<iLen; i++) {
-		sheet = sheets[i];
+		for (i=0, iLen=sheets.length; i<iLen; i++) {
+			sheet = sheets[i];
 
-		// W3C model
-		if (sheet.cssRules) {
-			rules = sheet.cssRules;
+			// W3C model
+			if (sheet.cssRules) {
+				rules = sheet.cssRules;
 
-			for (j=0, jLen=rules.length; j<jLen; j++) {
-				rule = rules[j];
+				for (j=0, jLen=rules.length; j<jLen; j++) {
+					rule = rules[j];
 
-				if (rule.selectorText == selectorText) {
-					return rule.style[style];
+					if (rule.selectorText == selectorText) {
+						return rule.style[style];
+					}
 				}
-			}
-		} else if (sheet.rules) {
-			rules = sheet.rules;
+			} else if (sheet.rules) {
+				rules = sheet.rules;
 
-			for (k=0, kLen=rules.length; k<kLen; k++) {
-				rule = rules[k];
+				for (k=0, kLen=rules.length; k<kLen; k++) {
+					rule = rules[k];
 
-				// An alternative is to just modify rule.style.cssText,
-				// but this way keeps it consistent with W3C model
-		        if (rule.selectorText == selectorText) {
-		        	return rule.style[style];
+					// An alternative is to just modify rule.style.cssText,
+					// but this way keeps it consistent with W3C model
+			        if (rule.selectorText == selectorText) {
+			        	return rule.style[style];
 
-					// Alternative
-					// rule.style.cssText = value;
-		        }
-			}
-		}		
+						// Alternative
+						// rule.style.cssText = value;
+			        }
+				}
+			}		
+		}
+	} catch (e) {
+		
 	}
 }
 
