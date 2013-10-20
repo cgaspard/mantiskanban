@@ -4,7 +4,7 @@ html, body{
 	border: 0;
 	background-repeat: no-repeat;
 	background: #d3d3d3;
-	overflow: hidden;
+	overflow:hidden;
 	/*
 	background: #666c70;
 	background: -moz-linear-gradient(top, #666c70 1%, #555b60 98px, #d3d3d3 99px, #dbdbdb 100%);
@@ -18,18 +18,46 @@ html, body{
 }
 
 #add-story-form  {
+	overflow: auto;
+	height:100%;
+	width: 29%;
+	/*background-color: #dfdfdf;*/
+	padding: 15px 15px 15px 15px;
+	border-left: solid 2px #000000;f
 }
 
 #edit-story-form {
+	overflow: auto;
+	height:100%;
+	width: 29%;
+	/*background-color: #dfdfdf;*/
+	padding: 15px 15px 15px 15px;
+	border-left: solid 2px #000000;
 }
 
-#edit-description, #edit-reproduce {
+.tab-content {
+	padding-top: 10px;
+}
+
+#edit-story-title {
+	text-overflow:ellipsis;
+	-o-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+}
+
+#add-description {
 	width: 100%;
 	height: 200px;
 }
 
+#edit-description, #edit-reproduce{
+	width: 100%;
+	height: 300px;
+}
+
 #edit-newnotetext {
 	height: 100px;
+	height: 150px;
 }
 
 .realcontentcontainer{
@@ -95,13 +123,25 @@ html, body{
 	
 }
 
-.modal-header {
-	background-color: #454545;
-	color:#FFFFFF;
+.editing-content {
 
 }
 
-.modal-footer {
+.editing-header {
+	background-color: #454545;
+	color:#FFFFFF;
+	border-radius: 10px 10px 10px 10px;
+	padding: 20px 10px 20px 10px;
+	text-align: center;
+}
+
+.editing-buttons {
+	padding: 15px 0px 15px 0px;
+	width: 100%;
+	display: table;
+}
+
+.editing-footer {
 	background-color:#CDCDCD;
 
 }
@@ -133,14 +173,9 @@ html, body{
 	/*background: #666c70;*/
 	height: 85px;
 	width:100%;
-	/*background: #666c70;*/
-	background: -moz-linear-gradient(top, #666c70 1px, #555b60 60px, #d3d3d3 62px);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(1px,#666c70), color-stop(60px,#555b60), color-stop(62px,#d3d3d3));
-	background: -webkit-linear-gradient(top, #666c70 1%,#555b60 60px, #d3d3d3 62px);
-	background: -o-linear-gradient(top, #666c70 1px,#555b60 60px, #d3d3d3 62px);
-	background: -ms-linear-gradient(top, #666c70 1px,#555b60 60px, #d3d3d3 62px);
-	background: linear-gradient(to bottom, #666c70 1px,#555b60 60px, #d3d3d3 62px);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666c70', endColorstr='#dbdbdb',GradientType=0 );
+	background: #666c70
+	/*background: linear-gradient(to bottom, #666c70 1px,#555b60 80px, #d3d3d3 82px);*/
+
 
 }
 
@@ -186,27 +221,67 @@ html, body{
 }
 
 .contentarea{
-	text-align: center;
+	text-align: left;
 	position: relative;
 	top: 0px;
 	display:none;
 	width: 100%; 
 	height: calc(100% - 85px); 
+	border-top: 2px solid #000000;
+	border-bottom: 2px solid #000000;
+	background-color: #f6f6f6;
+	white-space: nowrap;
+	transition: height .5s;	
 }
 
+.contentarea[showingpriority="true"] {
+	height: calc(100% - 125px); 
+}
+
+#priorities-displayer {
+	display: none;
+	position:absolute;
+	bottom: 0px;
+	left: 20px;
+	z-index: 9999;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	padding: 4px 8px 4px 8px;
+	background: #003366;
+	background-color: #003355;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+#prioritylegend{
+	display: table;
+	width: 100%;
+	padding-left: 10%;
+	padding-right: 10%;
+	vertical-align:middle;
+}
+
+#prioritylegend > div {
+	display: table-cell;
+	padding: 5px 10px 5px 10px;
+
+}
 
 #kanbancontent{
 	top:0px;
 	height: 100%;
 	width: 100%;
-	background-color: #f4f4f4; 
 	padding-top: 5px;
-	text-align: center;
 	overflow: auto;
-	display: block;
-	background-color: #f4f4f4;
+	display: inline-block;
+	background-color: #f6f6f6;
 	padding: 10px 10px 10px 10px;
 	white-space: nowrap;
+	transition: width .5s;
+}
+
+#kanbancontent[editing="true"] {
+	width: 70%;
 }
  	
 .kanbanlist{
@@ -438,7 +513,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 	width: 35px;
 	height: 40px;
 	background-color: #334477;
-	border-right: solid 1px #777777;
+	border-right: solid 1px #444444;
 	font-size: 15px;
 	padding-top: 10px;
 	font-family: Fixed, monospace;
@@ -446,33 +521,60 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 	vertical-align: middle;
 }
 
-.kanbanstorypriority[priority="none"]{
-	background-color: black;
+#prioritylegend {
+	margin-top: 5px;
+}
+
+#prioritylegend>div[priority] {
+	font-weight: normal;
+	border-top: 1px solid #444444;
+	border-left: 1px solid #444444;
+	border-bottom: 1px solid #444444;
+	width: 16%;
+}
+
+#prioritylegend>div[priority="none"] {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;	
+}
+
+div[priority="none"]{
+	background-color: #000000;
 	color:#ffffff;
 }
 
-
-
-.kanbanstorypriority[priority="low"]{
+div[priority="low"]{
 	background-color: green;
 	color:#FFFFFF;
 }
 
-.kanbanstorypriority[priority="high"]{
+div[priority="normal"] {
+	background-color: #334477;
+	color:#FFFFFF;
+}
+
+
+div[priority="high"]{
 	background-color: yellow;
 	color:#000000;
 }
 
-.kanbanstorypriority[priority="immediate"]{
-	background-color: red;
+div[priority="urgent"]{
+	background-color: #f00;
+	color:#ffffff;
+}
+
+#prioritylegend>div[priority="immediate"] {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+
+}
+
+div[priority="immediate"]{
+	background-color: #ffffff;
 	color:#000000;
 }
 
-
-.kanbanstorypriority[priority="urgent"]{
-	background-color: #FFFFFF;
-	color:#000000;
-}
 .kanbanstorytitle{
 	height: 40px;
 	display: table-cell;
@@ -552,7 +654,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 
 .ui-combobox {
     position: relative;
-    display: inline-block;
+    display: inline-block;repeat
 }
 .ui-combobox-toggle {
     position: absolute;

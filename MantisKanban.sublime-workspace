@@ -417,6 +417,8 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/lightbox/bootstrap-lightbox.js",
 		"/home/cgaspard/Downloads/bootstrap-glyphicons-master/README.md",
@@ -427,8 +429,6 @@
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/README.md",
 		"/home/cgaspard/.cache/.fr-On1hVf/eternicode-bootstrap-datepicker-6bd7520/css/datepicker.css",
@@ -542,6 +542,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"BuildKanbanStoryDiv",
+			"appendchild",
+			"insertchild",
+			"in",
+			"insertchild",
+			"AddStory",
+			"addstory",
+			"append",
+			"AddStory",
+			": fixed",
 			"kanbanlist",
 			"addattachment",
 			"EditStory",
@@ -659,17 +669,7 @@
 			"OpenUserSelector",
 			"projectSelectoItem",
 			"storyDivMenuItem",
-			"thisMantisUser",
-			"userContextMenu",
-			"HideUserSelector",
-			"border",
-			"no-wrap",
-			"UsesCustomField",
-			"UpdateListForCanbanStory",
-			"AddStoryAsyncCallback",
-			"AddStory",
-			"REmoveNullCustomFields",
-			"UpdateCustomField"
+			"thisMantisUser"
 		],
 		"highlight": true,
 		"in_selection": false,

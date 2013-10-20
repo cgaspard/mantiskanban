@@ -450,7 +450,7 @@ Kanban.AddStoryAsyncCallback = function(result) {
 Kanban.UpdateUnderlyingStorySource = function(originalStory) {
 	var mantisIssue = Mantis.IssueGet(originalStory.ID);
 	originalStory.StorySource = mantisIssue;
-
+AddStory
 	if(originalStory.ProjectID != Kanban.CurrentProject.ID) {
 		originalStory.Element.parentNode.removeChild(originalStory.Element);
 		return null;

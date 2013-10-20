@@ -51,7 +51,7 @@ var Kanban = {
 	},
 
 	CloseAddStoryDialog: function() {
-		$('#add-story-form').modal('hide'); 
+		CloseAddStory();
 	},
 
 	GetStoryByFieldValue: function(field, value) {
@@ -317,8 +317,7 @@ function UpdateStoryFromFormData() {
 		thisStory.Reproduce = document.getElementById("edit-reproduce").value;
 		Mantis.IssueUpdate(thisStory.ID, thisStory.StorySource, UpdateKanbanStoryComplete);
 
-		$('#edit-story-form').modal('hide');
-		//$("#edit-story-form").dialog("close");
+		CloseEditStory();
 	} catch(e) {
 		console.log(e);
 		alert("Error:" + e.message);
@@ -437,7 +436,7 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 			attachmentImage.setAttribute("id", "attachment" + thisAttachment.id);
 			attachmentImage.setAttribute("src", "images/loading.gif");
 			attachmentImage.setAttribute("class", "kanbanimageattachment");
-			attachmentImage.setAttribute("onclick", "$('#edit-story-form').modal('hide'); OpenLightBox('#attachment" + thisAttachment.id + "');");
+			attachmentImage.setAttribute("onclick", "OpenLightBox('#attachment" + thisAttachment.id + "');");
 			Mantis.IssueAttachmentGet(thisAttachment.id, thisAttachment.content_type, function(result, attachmentID, attachementContentType){
 				var foundAttachmentImage = document.getElementById("attachment" + attachmentID);
 				var resultText = "";
@@ -597,7 +596,7 @@ function OpenAddStory() {
 	}
 	selectAddCategories.selectedIndex = 0;
 
-	$('#add-story-form').modal();
+	ShowAddStory();
 }
 
 function UpdateStoryHandler(storyID, handlerID) {
@@ -651,10 +650,6 @@ function UpdateStoryHandlerComplete(result) {
 		Kanban.UndoInfo.ListDiv = null;
 		Kanban.UndoInfo.StoryDiv = null;
 	}
-}
-
-function HideUserSelector() {
-	$("#user-context-menu").hide();
 }
 
 function HideProjectSelector() {
@@ -722,80 +717,6 @@ function OpenProjectSelector(e){
 	projectSelector.style.top = _y - 40 + "px";
 	projectSelector.style.left = _x - 30 + "px";
 
-}
-
-function OpenUserSelector(e, storyID) {
-	if(Kanban.BlockUpdates) return;
-	e.stopPropagation();
-
-	var userContextMenu = document.getElementById("user-context-menu");
-	var userContextMenuConainer = document.getElementById("user-context-menu-container");
-	var isIE = document.all ? true : false;
-	var _x;
-	var _y;
-	if (!isIE) {
-		_x = e.pageX;
-		_y = e.pageY;
-	}
-	if (isIE) {
-		_x = event.clientX + document.body.scrollLeft;
-		_y = event.clientY + document.body.scrollTop;
-	}
-
-	var winW = 630, winH = 460;
-	if (document.body && document.body.offsetWidth) {
-	 winW = document.body.offsetWidth;
-	 winH = document.body.offsetHeight;
-	}
-	if (document.compatMode=='CSS1Compat' &&
-	    document.documentElement &&
-	    document.documentElement.offsetWidth ) {
-	 winW = document.documentElement.offsetWidth;
-	 winH = document.documentElement.offsetHeight;
-	}
-	if (window.innerWidth && window.innerHeight) {
-	 winW = window.innerWidth;
-	 winH = window.innerHeight;
-	}
-
-	var selectorStory = Kanban.GetStoryByFieldValue("ID", storyID);
-
-	for(var ci = 0; ci < userContextMenuConainer.children.length; ci++) {
-		try {
-			userContextMenuConainer.children[ci].setAttribute("selected", "false");
-			if(userContextMenuConainer.children[ci].getAttribute("userid") == selectorStory.HandlerID) {
-				userContextMenuConainer.children[ci].setAttribute("selected", "true");
-			}
-		} catch(e) {}
-	}
-
-	$("#user-context-menu-container").menu({
-		"select" : function(e, o) {
-			UpdateStoryHandler(storyID, o.item.context.getAttribute("userid"));
-		} 
-	});
-
-	$("#user-context-menu").show();
-
-	console.log("UserContextHeight: " + userContextMenu.clientHeight);
-	console.log("UserContextWidth: " + userContextMenu.clientWidth);
-	console.log("WindowHeight: " + winH);
-	console.log("WindowWidth: " + winW);
-	console.log("X,Y", _x + ", " + _y)
-	if(_y + userContextMenu.clientHeight + 40 > winH) {
-		_y = winH - userContextMenu.clientHeight - 40;
-	}
-	if(_x + 20 + userContextMenu.clientWidth + 40 >  winW) {
-		_x = winW - userContextMenu.clientWidth - 40;
-	}
-	console.log("Calculated Top: " + _y);
-	console.log("Calculated Left: " + _x);
-	console.log("X,Y", _x + ", " + _y)
-	
-	userContextMenu.style.top = _y - 20 + "px";
-	userContextMenu.style.left = _x - 20 + "px";
-	
-	
 }
 
 /**
@@ -881,10 +802,38 @@ function EditStory(storyID) {
 
 	AddAttachmentToStoryEditForm(thisStory);
 
-	$('#edit-story-form').modal();
+	//$('#edit-story-form').modal();
+	ShowEditStory();
 
 }
 
+function ShowPriorityLegend() {
+	document.getElementById("contentarea").setAttribute("showingpriority", "true");	
+}
+
+function HidePriorityLegend() {
+	document.getElementById("contentarea").setAttribute("showingpriority", "false");	
+}
+
+function ShowEditStory() {
+	CloseAddStory();
+	document.getElementById("edit-story-form").style.display = "inline-block";
+	document.getElementById("kanbancontent").setAttribute("editing", "true");	
+}
+
+function ShowAddStory() {
+	CloseEditStory();
+	document.getElementById("add-story-form").style.display = "inline-block";
+	document.getElementById("kanbancontent").setAttribute("editing", "true");		
+}
+
 function CloseEditStory() {
-	$('#edit-story-form').modal('hide');
+	document.getElementById('kanbancontent').setAttribute('editing', 'false');
+	document.getElementById("edit-story-form").style.display = "none";
+}
+
+function CloseAddStory() {
+	document.getElementById('kanbancontent').setAttribute('editing', 'false');
+	document.getElementById("add-story-form").style.display = "none";
+
 }

@@ -57,33 +57,19 @@
 							<div id="selected-project-name">Project</div>
 							<div class="btn-group">
 							  <button class="btn btn-primary btn-small dropdown-toggle" type="button" data-toggle="dropdown">
-							    Select Project <span class="caret"></span>
+								Select Project <span class="caret"></span>
 							  </button>						
 							  <ul id="projectlist" class="dropdown-menu">
-							    <!-- dropdown menu links -->
+								<!-- dropdown menu links -->
 							  </ul>
 							</div>
 							<div class="btn-group">
 							  <a class="btn dropdown-toggle btn-warning btn-small" data-toggle="dropdown" href="#">
-							    Select Filter
-							    <span class="caret"></span>
+								Select Filter
+								<span class="caret"></span>
 							  </a>
 							  <ul id="filterlist" class="dropdown-menu">
-							    <!-- dropdown menu links -->
-							  </ul>
-							</div>
-							<div class="btn-group">
-							  <a class="btn dropdown-toggle btn-info btn-small" data-toggle="dropdown" href="#">
-							    Priority Legend
-							    <span class="caret"></span>
-							  </a>
-							  <ul id="filterlist" class="dropdown-menu">
-							    <li><div style="background-color:red; color:#FFFFFF; padding-left: 10px;">Immediate Priority</div></li>
-							    <li><div style="background-color:#FFFFFF; color:#000000; padding-left: 10px;">Urgent Priority</div></li>
-							    <li><div style="background-color:yellow; color:#000000; padding-left: 10px;">High Priority</div></li>
-							    <li><div style="background-color:#003366; color:#FFFFFF; padding-left: 10px;">Normal Priority</div></li>
-							    <li><div style="background-color:green; color:#FFFFFF; padding-left: 10px;">Low Priority</div></li>
-							    <li><div style="background-color:black; color:#FFFFFF; padding-left: 10px;">No Priority</div></li>
+								<!-- dropdown menu links -->
 							  </ul>
 							</div>
 							<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
@@ -96,185 +82,180 @@
 				</div>
 			</div>
 			<div id="contentarea" class="contentarea">
-				<div id="kanbancontent"></div>
-			</div>
-			<div id="prioritylegend">
-			</div>
-		</div>
-		
-		<div id="add-story-form" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h3>Add a New Story</h3>
-					</div>
-					<div class="modal-body">
-						<form class="form-horizontal">
-							<div class="control-group">
-								<label class="control-label" for="add-summary">Summary</label>
-								<div class="controls">
-									<input type="text" name="add-summary" id="add-summary" placeholder="Summary" />
-								</div>
-							</div>
-							<div class="contol-group" id="add-custom-field-container" name="add-custom-field-container">
-								<label class="control-label" for="add-custom-field">Bucket:</label>
-								<div class="controls">
-									<select name="add-custom-field" id="add-custom-field" ></select>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="add-status">Status</label>
-								<div class="controls">
-									<select name="add-status" id="add-status" placeholder="Status"></select>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="add-priority">Priority</label>
-								<div class="controls">
-									<select name="add-priority" id="add-priority"></select>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="add-cateogry">Category</label>
-								<div class="controls">
-									<select name="add-category" id="add-category"></select>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="add-reporter">Reporter</label>
-								<div class="controls">
-									<select name="add-reporter" id="add-reporter"></select>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="add-assignedto">Handler</label>
-								<div class="controls">
-									<select name="add-assignedto" id="add-assignedto" class=""></select>
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="add-description">Description</label>
-								<div class="controls">
-									<textarea name="add-description" id="add-description" class="input-large"></textarea>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<div onclick="$('#add-story-form').modal('hide');" class="btn btn-warning">Close</div>
-						<div onclick="Kanban.AddStoryFromFormData();" class="btn btn-primary">Save changes</div>
-					</div>
-				</div>
-			</div>
-		</div>
+				<div style="display:inline-block;width: 100%; height: 100%;">
+					<div id="kanbancontent"></div>
+					<div id="edit-story-form" class="" style="display:none;" title="Edit Story">
+						<div class="editing-header">
+							<h4 id="edit-story-title">Edit Story</h4>
+						</div>
+						<div class="btn-group editing-buttons" style="">
+							<div onclick="DeleteIssue();CloseEditStory();" class="btn btn-danger pull-left">Delete</div>
+							<div onclick="CloseEditStory();" class="btn btn-warning">Close</div>
+							<div onclick="UpdateStoryFromFormData(); CloseEditStory();" class="btn btn-primary">Save changes</div>
+						</div>			
+						<div class="editing-content">
+							<div>
+								<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+									<li class="active" ><a href="#tabs-1" data-toggle="tab">General</a></li>
+									<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
+									<li><a href="#tabs-3" data-toggle="tab">Steps</a></li>
+									<li><a href="#tabs-4" data-toggle="tab">Notes</a></li>
+									<li><a href="#tabs-5" data-toggle="tab">Attachments</a></li>
+									<li><a href="#tabs-6" data-toggle="tab">History</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="tabs-1">
+										<form class="form-horizontal">
+											<input type="hidden" id="edit-story-id" name="edit-story-id" />
+											<div class="control-group">
+												<label class="control-label" for="edit-summary">Summary:</label>
+												<div class="controls">
+													<input type="text" name="edit-summary" id="edit-summary" class="" />
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="edit-project">Project:</label>
+												<div class="controls">
+													<select name="edit-project" id="edit-project" class=""></select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="edit-status">Status:</label>
+												<div class="controls">
+													<select name="edit-status" id="edit-status" class=""></select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="edit-priority">Priority:</label>
+												<div class="controls">
+													<select name="edit-priority" id="edit-priority" class=""></select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="edit-reporter">Reporter:</label>
+												<div class="controls">
+													<select name="edit-reporter" id="edit-reporter" class=""></select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="edit-assignedto">Assigned To:</label>
+												<div class="controls">
+													<select name="edit-assignedto" id="edit-assignedto" class=""></select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label" for="edit-datesubmitted">Date Submitted:</label>
+												<div class="controls">
+													<div style="display:inline-block;" id="edit-datesubmitted"></div>
+												</div>
+											</div>
 
+										</form>
+									</div>
+									<div class="tab-pane" id="tabs-2">
+										<textarea name="edit-description" id="edit-description" class="input-large"></textarea>
+									</div>
+									<div class="tab-pane" id="tabs-3">
+										<textarea name="edit-reproduce" id="edit-reproduce" class="input-large"></textarea>
+									</div>
+									<div class="tab-pane" id="tabs-4">
+										<textarea class="edit-newnotetext input-large" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
+										<div class="btn btn-success" id="edit-story-new-note-save-button" name="">Add Note</div>
+										<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
+									</div>
+									<div class="tab-pane" id="tabs-5">
+										<div id="edit-story-attachment-container" name="edit-story-attachment-container" class="attachmentsarea"></div>
+									</div>
+									<div class="tab-pane" id="tab-6">
 
-		<div id="edit-story-form" class="modal fade" title="Edit Story">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h3 id="edit-story-title">Edit Story</h3>
-					</div>
-					<div class="modal-body">
-						<div>
-							<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-								<li class="active" ><a href="#tabs-1" data-toggle="tab">General</a></li>
-								<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
-								<li><a href="#tabs-3" data-toggle="tab">Steps</a></li>
-								<li><a href="#tabs-4" data-toggle="tab">Notes</a></li>
-								<li><a href="#tabs-5" data-toggle="tab">Attachments</a></li>
-								<li><a href="#tabs-6" data-toggle="tab">History</a></li>
-							</ul>
-							<div class="tab-content">
-								<div class="tab-pane active" id="tabs-1">
-									<form class="form-horizontal">
-										<input type="hidden" id="edit-story-id" name="edit-story-id" />
-										<div class="control-group">
-											<label class="control-label" for="edit-summary">Summary:</label>
-											<div class="controls">
-												<input type="text" name="edit-summary" id="edit-summary" class="" />
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label" for="edit-project">Project:</label>
-											<div class="controls">
-												<select name="edit-project" id="edit-project" class=""></select>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label" for="edit-status">Status:</label>
-											<div class="controls">
-												<select name="edit-status" id="edit-status" class=""></select>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label" for="edit-priority">Priority:</label>
-											<div class="controls">
-												<select name="edit-priority" id="edit-priority" class=""></select>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label" for="edit-reporter">Reporter:</label>
-											<div class="controls">
-												<select name="edit-reporter" id="edit-reporter" class=""></select>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label" for="edit-assignedto">Assigned To:</label>
-											<div class="controls">
-												<select name="edit-assignedto" id="edit-assignedto" class=""></select>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label" for="edit-datesubmitted">Date Submitted:</label>
-											<div class="controls">
-												<div style="display:inline-block;" id="edit-datesubmitted"></div>
-											</div>
-										</div>
-
-									</form>
-								</div>
-								<div class="tab-pane" id="tabs-2">
-									<textarea name="edit-description" id="edit-description" class="input-large"></textarea>
-								</div>
-								<div class="tab-pane" id="tabs-3">
-									<textarea name="edit-reproduce" id="edit-reproduce" class="input-large"></textarea>
-								</div>
-								<div class="tab-pane" id="tabs-4">
-									<textarea class="edit-newnotetext" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
-									<div class="btn btn-success" id="edit-story-new-note-save-button" name="">Add Note</div>
-									<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
-								</div>
-								<div class="tab-pane" id="tabs-5">
-									<div id="edit-story-attachment-container" name="edit-story-attachment-container" class="attachmentsarea"></div>
-								</div>
-								<div class="tab-pane" id="tab-6">
-
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<div onclick="DeleteIssue();$('#edit-story-form').modal('hide');" class="btn btn-danger pull-left">Delete</div>
-						<div onclick="$('#edit-story-form').modal('hide');" class="btn btn-warning">Close</div>
-						<div onclick="UpdateStoryFromFormData(); $('#edit-story-form').modal('hide');" class="btn btn-primary">Save changes</div>
-					</div>
+					<div id="add-story-form" class="" style="display:none;">
+						<div class="editing-header">
+							<h4>Add a New Story</h4>
+						</div>
+						<div class="btn-group editing-buttons">
+							<div onclick="CloseAddStory();" class="btn btn-warning">Close</div>
+							<div onclick="Kanban.AddStoryFromFormData();" class="btn btn-primary">Save New Story</div>
+						</div>
+						<div class="editing-content">
+							<form class="form-horizontal">
+								<div class="control-group">
+									<label class="control-label" for="add-summary">Summary</label>
+									<div class="controls">
+										<input type="text" name="add-summary" id="add-summary" placeholder="Summary" />
+									</div>
+								</div>
+								<div class="contol-group" id="add-custom-field-container" name="add-custom-field-container">
+									<label class="control-label" for="add-custom-field">Bucket:</label>
+									<div class="controls">
+										<select name="add-custom-field" id="add-custom-field" ></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="add-status">Status</label>
+									<div class="controls">
+										<select name="add-status" id="add-status" placeholder="Status"></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="add-priority">Priority</label>
+									<div class="controls">
+										<select name="add-priority" id="add-priority"></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="add-cateogry">Category</label>
+									<div class="controls">
+										<select name="add-category" id="add-category"></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="add-reporter">Reporter</label>
+									<div class="controls">
+										<select name="add-reporter" id="add-reporter"></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="add-assignedto">Handler</label>
+									<div class="controls">
+										<select name="add-assignedto" id="add-assignedto" class=""></select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="add-description">Description</label>
+									<div class="controls">
+										<textarea name="add-description" id="add-description" class="input-large"></textarea>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>							
 				</div>
+				<div id="prioritylegend">
+					<div priority="immediate">Immediate Priority</div>
+					<div priority="urgent">Urgent Priority</div>
+					<div priority="high">High Priority</div>
+					<div priority="normal">Normal Priority</div>
+					<div priority="low">Low Priority</div>
+					<div priority="none">No Priority</div>
+				</div>				
 			</div>
+
 		</div>
-		<div class="user-context-menu" name="user-context-menu" id="user-context-menu" onmouseout="HideUserSelector();">
-			<div id="user-context-title" style="border-bottom: solid 2px #000000;" onmouseout="event.stopPropagation();">Assign Handler:</div>
-			<ul id="user-context-menu-container" onmouseout="event.stopPropagation();">
-			</ul>
+
+		<div id="priorities-displayer" onmouseover="ShowPriorityLegend();" onmouseout="HidePriorityLegend();">
+			Piorities &gt;
 		</div>
 		<input type="hidden" style="display:none;" id="seletedproject" name="selectedproject" />
 		<ul class="project-selector" name="project-selector" id="project-selector" onmouseout="HideProjectSelector();">
 			<li id="project-selector-title" style="border-bototm: solid 2px #000000" onmouseout="event.stopPropogation();">Select Project</li>
 		</ul>
-		<div id="attachmentdisplay" class="" style="" onclick="CloseLightBox();$('#edit-story-form').modal();">
-				<a href="#" class="btn btn-primary pull-right" style="margin-right: 20px; margin-top: 20px;" onclick="CloseLightBox();$('#edit-story-form').modal();"><i class="glyphicons glyphicons-white glyphicons-close"></i>Close</a>
+		<div id="attachmentdisplay" class="" style="" onclick="CloseLightBox();">
+				<a href="#" class="btn btn-primary pull-right" style="margin-right: 20px; margin-top: 20px;" onclick="CloseLightBox();"><i class="glyphicons glyphicons-white glyphicons-close"></i>Close</a>
 				<br>
 				<center>
 					<div class="" style="padding-left: 40px; height: 100%; verticle-align: middle;">
