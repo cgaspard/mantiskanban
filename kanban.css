@@ -17,22 +17,21 @@ html, body{
 	*/
 }
 
-#add-story-form  {
+
+.editform {
 	overflow: auto;
 	height:100%;
 	width: 29%;
 	/*background-color: #dfdfdf;*/
 	padding: 15px 15px 15px 15px;
 	border-left: solid 2px #000000;f
+}	
+
+#add-story-form  {
 }
 
+
 #edit-story-form {
-	overflow: auto;
-	height:100%;
-	width: 29%;
-	/*background-color: #dfdfdf;*/
-	padding: 15px 15px 15px 15px;
-	border-left: solid 2px #000000;
 }
 
 .tab-content {
@@ -127,6 +126,7 @@ html, body{
 
 }
 
+
 .editing-header {
 	background-color: #454545;
 	color:#FFFFFF;
@@ -211,7 +211,7 @@ html, body{
 
 .kanbannewstory:hover{
 	background: #f85032; /* Old browsers */
-	background: -moz-linear-gradient(top,  #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%); /* FF3.6+ */
+	background: -moz-linear-gradient(top,  #f85032 0%, #f16f5ceditform 50%, #f6290c 51%, #f02f17 71%, #e73827 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f85032), color-stop(50%,#f16f5c), color-stop(51%,#f6290c), color-stop(71%,#f02f17), color-stop(100%,#e73827)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* Opera 11.10+ */
@@ -290,14 +290,14 @@ html, body{
 	vertical-align: top;
 	display: inline-block;
 	max-height: 100%;
-	min-width: 250px;
-	max-width: 250px;
+	width: 250px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	transition: width .5s;
 }
 
 .kanbanliststorycontainer {
@@ -313,8 +313,6 @@ html, body{
 }
 
 .kanbanlistdroparea{
-	min-width: 250px;
-	max-width: 500px;
 	background: #d2ff52;
 	/* Old browsers */
 	background: -moz-linear-gradient(top, #d2ff52 0%, #91e842 100%);
@@ -354,7 +352,6 @@ html, body{
 .kanbanlisttitle{
 	position: relative;
     top: 0px;
-    width: 250px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: bold;
@@ -619,11 +616,7 @@ div[priority="immediate"]{
 	-moz-box-shadow:    0px 0px 16px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 0px 16px rgba(50, 50, 50, 0.75);
 }
-#user-context-menu-container {
-	max-height: 250px;
-	overflow: auto;
-	z-index: 500;
-}
+
 .project-selector {
 	position: absolute;
 	top: 0px;

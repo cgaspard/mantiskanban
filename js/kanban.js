@@ -815,14 +815,50 @@ function HidePriorityLegend() {
 	document.getElementById("contentarea").setAttribute("showingpriority", "false");	
 }
 
+Kanban.SaveSettings = function() {
+	//modifyStyleRule(selectorText, value)
+	DefaultSettings.kanbanListWidth = document.getElementById("settings-list-width").value;
+	saveSettingsToStorageMechanism();
+	Kanban.ApplySettings();
+}
+
+Kanban.ApplySettingsAtLogin = function() {
+	modifyStyleRule(".kanbanlist", "width", DefaultSettings.kanbanListWidth);
+}
+
+Kanban.ApplySettings = function() {
+	var listWidthValue = document.getElementById("settings-list-width").value;
+	modifyStyleRule(".kanbanlist", "width", listWidthValue);
+
+}
+
+Kanban.LoadRuntimeSettings = function() {
+	document.getElementById("settings-list-width").value = getStyleRule(".kanbanlist", "width");	
+}
+
+function ShowSettings() {
+	CloseAddStory();
+	CloseEditStory();
+	Kanban.LoadRuntimeSettings();
+	document.getElementById("edit-settings-form").style.display = "inline-block";
+	document.getElementById("kanbancontent").setAttribute("editing", "true");	
+}
+
+function CloseSettings() {
+	document.getElementById("kanbancontent").setAttribute("editing", "false");	
+	document.getElementById("edit-settings-form").style.display = "none";
+}
+
 function ShowEditStory() {
 	CloseAddStory();
+	CloseSettings();
 	document.getElementById("edit-story-form").style.display = "inline-block";
 	document.getElementById("kanbancontent").setAttribute("editing", "true");	
 }
 
 function ShowAddStory() {
 	CloseEditStory();
+	CloseSettings();
 	document.getElementById("add-story-form").style.display = "inline-block";
 	document.getElementById("kanbancontent").setAttribute("editing", "true");		
 }

@@ -75,11 +75,18 @@ function Login() {
 	DefaultSettings.stayLoggedIn = 1;
 	DefaultSettings.lastAccessTime = Math.round(new Date().getTime() / 1000);
 
+	LoadSettingsFromLocalStorage();
+	if(DefaultSettings.kanbanListWidth == undefined) {
+		DefaultSettings.kanbanListWidth = getStyleRule(".kanbanlist", "width");
+	}
+
+	Kanban.ApplySettingsAtLogin();
+
 	//saveCurrentSettings();
 	
 	LoadKanbanProjects();
 	BuildProjectsGUI();
-	BuildProjectSelector();
+//	BuildProjectSelector();
 	
 	HideLoginArea();
 	ShowProjectArea();
@@ -111,28 +118,6 @@ function DeleteIssue(kanbanIssue) {
 
 }
 
-function BuildProjectSelector() {
-	log("BuildProjectSelector() called.");
-
-	var projectSelector = document.getElementById("project-selector");
-
-	try { while(projectSelector.children.length > 1) { projectSelector.removeChild(1); } } catch(e) { }
-
-	for(var ui = 0; ui < Kanban.Projects.length; ui++) {
-		var thisProject = Kanban.Projects[ui];
-		var projectSelectorItem = document.createElement("li");
-		projectSelectorItem.setAttribute("projectid", thisProject.ID);
-		projectSelectorItem.setAttribute("onmouseout", "event.stopPropagation();");
-		projectSelector.appendChild(projectSelectorItem);
-
-		var projectSelectorItemLink = document.createElement("a");
-		projectSelectorItemLink.setAttribute("href", "#");
-		projectSelectorItemLink.setAttribute("projectid", thisProject.ID);
-		//projectSelectorItemLink.setAttribute("onclick", "Mantis.CurrentProjectID = " thisProject.ID)
-		projectSelectorItemLink.innerHTML = thisProject.Name;
-		projectSelectorItem.appendChild(projectSelectorItemLink);
-	}	
-}
 
 function HideLoginArea() {
 	document.getElementById("loginarea").style.display = "none";
@@ -154,6 +139,110 @@ function HideProjectArea() {
 	document.getElementById("priorities-displayer").style.display = "none";
 }
 
+function modifyStyleRule(selectorText, style, value) {
+	var sheets = document.styleSheets;
+	var sheet, rules, rule;
+	var i, j, k, l;
+
+	for (i=0, iLen=sheets.length; i<iLen; i++) {
+		sheet = sheets[i];
+
+		// W3C model
+		if (sheet.cssRules) {
+			rules = sheet.cssRules;
+
+			for (j=0, jLen=rules.length; j<jLen; j++) {
+				rule = rules[j];
+
+				if (rule.selectorText == selectorText) {
+					rule.style[style] = value;
+				}
+			}
+		} else if (sheet.rules) {
+			rules = sheet.rules;
+
+			for (k=0, kLen=rules.length; k<kLen; k++) {
+				rule = rules[k];
+
+				// An alternative is to just modify rule.style.cssText,
+				// but this way keeps it consistent with W3C model
+		        if (rule.selectorText == selectorText) {
+		        	rule.style[style] = value;
+
+					// Alternative
+					// rule.style.cssText = value;
+		        }
+			}
+		}		
+	}
+}
+
+function getStyleRule(selectorText, style, value) {
+	var sheets = document.styleSheets;
+	var sheet, rules, rule;
+	var i, j, k, l;
+
+	for (i=0, iLen=sheets.length; i<iLen; i++) {
+		sheet = sheets[i];
+
+		// W3C model
+		if (sheet.cssRules) {
+			rules = sheet.cssRules;
+
+			for (j=0, jLen=rules.length; j<jLen; j++) {
+				rule = rules[j];
+
+				if (rule.selectorText == selectorText) {
+					return rule.style[style];
+				}
+			}
+		} else if (sheet.rules) {
+			rules = sheet.rules;
+
+			for (k=0, kLen=rules.length; k<kLen; k++) {
+				rule = rules[k];
+
+				// An alternative is to just modify rule.style.cssText,
+				// but this way keeps it consistent with W3C model
+		        if (rule.selectorText == selectorText) {
+		        	return rule.style[style];
+
+					// Alternative
+					// rule.style.cssText = value;
+		        }
+			}
+		}		
+	}
+}
+
+/* Remove rule from supplied sheet
+*/
+function removeRule(sheet, rule) {
+
+  // W3C model
+  if (typeof sheet.deleteRule == 'function') {
+    sheet.deleteRule(rule);
+
+  // IE model
+  } else if (sheet.removeRule) {
+    sheet.removeRule(rule);
+  }
+}
+
+/* Add rule from supplied sheet
+** Rule is added as last rule in sheet
+*/
+function addRule(sheet, selectorText, value) {
+
+  // W3C model
+  if (typeof sheet.insertRule == 'function') {
+    sheet.insertRule(selectorText + ' {' + value + '}', sheet.cssRules.length);
+
+  // IE model
+  } else if (sheet.addRule) {
+    sheet.addRule(selectorText, value, sheet.rules.length);
+  }
+}
 function Logout() {
 	Kanban.Lists = [];
 	Kanban.Stories = [];
