@@ -43,9 +43,13 @@
 						</div>
 						<div>
 							<form id="userLoginForm" class="userLoginForm" runat="server" method="post">
-								<input type="text" id="username" placeholder="Username" value="Username" onclick="if(this.value == 'Username'){this.value='';}"/>
-								<input type="password" id="password" placeholder="Password" value="Password" onclick="if(this.value == 'Password'){this.value='';}" onfocus="if(this.value == 'Password'){this.value='';}">
+								<br>
+								<input type="text" id="username" placeholder="Username" style="width: 160px;" value="Username" onclick="if(this.value == 'Username'){this.value='';}"/>
+								<input type="password" id="password" placeholder="Password" value="Password" onclick="if(this.value == 'Password'){this.value='';}" style="width: 160px;" onfocus="if(this.value == 'Password'){this.value='';}">
+								<br><br>
+								<input type="text" id="mantisURL" placeholder="Mantis URL" style="width: 325px;" value="" onclick=""><br>
 								<input type="submit" style="position: absolute; left: -9999px"/> 
+								<br>
 								<div class="btn btn-success btn-small" onclick="Login();">Login</div>
 							</form>
 						</div>
@@ -251,6 +255,12 @@
 									<label class="control-label" for="settings-list-width">List Width</label>
 									<div class="controls">
 										<input type="text" name="settings-list-width" id="settings-list-width" placeholder="List Width" />
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="settings-list-width">Mantis Connect URL</label>
+									<div class="controls">
+										<input type="text" name="settings-connectURL" id="settings-connectURL" placeholder="Mantis Connect URL" />
 									</div>
 								</div>
 							</form>

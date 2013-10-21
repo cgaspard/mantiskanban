@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"border",
+				"border-top-right-radius"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"priority",
+				"prioritylegend"
+			],
+			[
+				"pri",
+				"prioritylegend"
+			],
+			[
+				"border-rad",
+				"border-top-left-radius"
+			],
+			[
 				"att",
 				"attachmentID"
 			],
@@ -178,10 +198,6 @@
 			[
 				"Edi",
 				"EditStory"
-			],
-			[
-				"get",
-				"getAttribute"
 			],
 			[
 				"source",
@@ -523,11 +539,11 @@
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 69.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 108.0,
 		"where_history":
 		[
 			"",
@@ -542,6 +558,66 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"189",
+			"glyph",
+			"settings",
+			"Login",
+			"LoadSettings",
+			"defaultsettings.kanba",
+			"DefaultSettings",
+			"defaultsettings",
+			"DefaultSettings",
+			"settings",
+			"kanbanlist",
+			"250px",
+			"CloseSettings",
+			"buildproj",
+			"ShowProjectArea",
+			"login",
+			"assign handler",
+			"assign",
+			"assign handler",
+			"assignhandler",
+			"builduser",
+			"OpenUserSelector",
+			"user-context-menu",
+			"attachment",
+			"CloseLightBox",
+			"edit-story-form",
+			"ShowPriorityLegend",
+			"transform",
+			"CloseAddStoryDialog",
+			"AddStory",
+			"add-story-form",
+			"edit-story-form",
+			"$('#edit-story-form').modal('hide')",
+			"$('#add-story-form').modal('hide')",
+			"CloseAddStoryDialog",
+			"AddStory",
+			"AddStoryFromFormData",
+			"selectproject",
+			"btn-gr",
+			"modal-header",
+			"AddStoryFromFormData",
+			"openaddstory",
+			"note",
+			"notes",
+			"notesarea",
+			"border-bottom",
+			"edit-story-ti",
+			"priority",
+			"#prioritylegend",
+			"priority",
+			"priority		",
+			"users",
+			"priorityleg",
+			" kanbanstorypriority",
+			"priority",
+			"priorit",
+			"priority",
+			"Login",
+			"login",
+			"priority",
 			"BuildKanbanStoryDiv",
 			"appendchild",
 			"insertchild",
@@ -609,67 +685,7 @@
 			"notecontainer",
 			"66px",
 			"65px",
-			"\\},\\{",
-			"},{",
-			"LoadKanbanProjects",
-			"SelectProject",
-			"AutoLogin",
-			"edit-newnotetext",
-			"#edit-newnotetext",
-			"edit-newnotetext",
-			"edit-description",
-			"mks",
-			"./adb",
-			"4d",
-			"selected-project-name",
-			"tooltip",
-			"selectProject",
-			"Kanban.Projects",
-			"Projects.push",
-			"Projects.add",
-			"Projects",
-			"CurrentProject",
-			"selectproject",
-			"AddGlowToRelatedStories",
-			"add-custom-field-container",
-			"add-description",
-			"edit-newnotetext",
-			"projectarea",
-			"UpdateStoryFromFormData",
-			"textarea",
-			"add-description",
-			"notesarea",
-			"Open",
-			"CloseAddStoryDialog",
-			"AddStory",
-			"add-summary",
-			" div",
-			"						<input type=\"hidden\" id=\"add-story-id\" name=\"add-story-id\" />\n						<input type=\"hidden\" id=\"add-story-id\" name=\"add-story-id\" />\n",
-			"add-summary",
-			"filterlist",
-			"projectlist",
-			"projectlistn",
-			"projectlist",
-			"OpenProjectSelector",
-			"projectbutton",
-			"Login",
-			";",
-			"=",
-			"Mantis",
-			",",
-			":",
-			"Mantis",
-			",",
-			":",
-			"object",
-			"OpenProjectSelector",
-			"OpenUserSelector",
-			".menu",
-			"buildprojectselector",
-			"OpenUserSelector",
-			"projectSelectoItem",
-			"storyDivMenuItem",
-			"thisMantisUser"
+			"\\},\\{"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -759,6 +775,10 @@
 		"selected_items":
 		[
 			[
+				"kanban.js",
+				"js/kanban.js"
+			],
+			[
 				"css",
 				"kanban.css"
 			],
@@ -793,10 +813,6 @@
 			[
 				"kanban.css",
 				"kanban.css"
-			],
-			[
-				"kanban.js",
-				"js/kanban.js"
 			],
 			[
 				"kan",

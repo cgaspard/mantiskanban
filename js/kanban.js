@@ -38,6 +38,13 @@ var Kanban = {
 		return false;
 	},
 
+	HasProject: function(id) {
+		for(var i = 0; i < Kanban.Projects.length; i++) {
+			if(Kanban.Projects[i].ID == id) return true;
+		}
+		return false;
+	},
+
 	/*
 	 * @name HasList
 	 * @returns {boolean} Returns true if the list is already loaded into the "Mantis.Lists" array.
@@ -818,6 +825,7 @@ function HidePriorityLegend() {
 Kanban.SaveSettings = function() {
 	//modifyStyleRule(selectorText, value)
 	DefaultSettings.kanbanListWidth = document.getElementById("settings-list-width").value;
+	DefaultSettings.connectURL = document.getElementById("settings-connectURL").value;
 	saveSettingsToStorageMechanism();
 	Kanban.ApplySettings();
 }
@@ -829,11 +837,12 @@ Kanban.ApplySettingsAtLogin = function() {
 Kanban.ApplySettings = function() {
 	var listWidthValue = document.getElementById("settings-list-width").value;
 	modifyStyleRule(".kanbanlist", "width", listWidthValue);
-
+	document.getElementById("mantisURL").value = DefaultSettings.connectURL;
 }
 
 Kanban.LoadRuntimeSettings = function() {
 	document.getElementById("settings-list-width").value = getStyleRule(".kanbanlist", "width");	
+	document.getElementById("settings-connectURL").value = DefaultSettings.connectURL;
 }
 
 function ShowSettings() {
@@ -841,7 +850,8 @@ function ShowSettings() {
 	CloseEditStory();
 	Kanban.LoadRuntimeSettings();
 	document.getElementById("edit-settings-form").style.display = "inline-block";
-	document.getElementById("kanbancontent").setAttribute("editing", "true");	
+	document.getElementById("settings-connectURL").value = DefaultSettings.connectURL;
+	document.getElementById("kanbancontent").setAttribute("editing", "true");
 }
 
 function CloseSettings() {

@@ -500,14 +500,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 .kanbanstoryprioritycontainer {
 	display: table-cell;
 	vertical-align: middle;
-	width: 25px;
+	width: 55px;
 	color:#FFFFFF;
 	text-align:center;
 	padding-right: 4px;
 }
 
 .kanbanstorypriority{
-	width: 35px;
 	height: 40px;
 	background-color: #334477;
 	border-right: solid 1px #444444;
@@ -578,7 +577,7 @@ div[priority="immediate"]{
 	overflow: hidden;
 	white-space: nowrap;
 	cursor: pointer !important;
-	padding-left: 15px;
+	padding-left: 5px;
 	font-size: 12px;
 	vertical-align: middle;
 	text-align: left;

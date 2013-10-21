@@ -17,8 +17,19 @@ window.log = function(){
 	}
 };
 
-window.onload = function() {
+window.addEventListener("load", window_load);
 
+function window_load() {
+
+	var preConfiguredMantisURL = DefaultSettings.connectURL;
+
+	LoadSettingsFromLocalStorage();
+
+	if(DefaultSettings.connectURL != undefined && DefaultSettings.connectURL != "") {
+		document.getElementById("mantisURL").value = DefaultSettings.connectURL;
+	} else if (DefaultSettings.connectURL != undefined && DefaultSettings.connectURL != "") {
+		document.getElementById("mantisURL").value = preConfiguredMantisURL;
+	}
 
 	//make sure that the username and password form doesnt actually submit. 
 	//need this here as a fail safe because jQuery is included.
@@ -55,11 +66,10 @@ function get_gravatar(email, size) {
 function Login() {
 	log("Login() called.");
 	
-	
-	
 	document.getElementById("username").focus();
 	Mantis.CurrentUser.UserName = document.getElementById("username").value;
 	Mantis.CurrentUser.Password = document.getElementById("password").value;
+	Mantis.ConnectURL = document.getElementById("mantisURL").value;
 	
 	try {
 		var retObj = Mantis.Login(Mantis.CurrentUser.UserName, Mantis.CurrentUser.Password);
@@ -67,6 +77,9 @@ function Login() {
 		alert("Error Login: \r\n\r\n" + e.message);
 		return;
 	}
+
+	DefaultSettings.connectURL = Mantis.ConnectURL;
+	saveSettingsToStorageMechanism();
 
 	StartLoading();
 	
@@ -288,9 +301,9 @@ function SelectProject() {
 	document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.Name;
 
 	if(Mantis.DefaultFilterID !== null) {
-		window.setTimeout("LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, DoneLoadingIssuesCallback)", 100);
+		window.setTimeout("LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, DoneLoadingIssuesCallback)", 0);
 		if(Mantis.ClosedIssuesFilterID !== null) {
-			window.setTimeout("LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback)", 100);
+			window.setTimeout("LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback)", 0);
 		}
 	} else {
 		var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
@@ -335,17 +348,31 @@ function UpdateFilterList() {
 }
 
 function LoadFilterAsync(FilterID, Page, Limit, Callback) {
-	var retObj = Mantis.FilterGetIssues(Mantis.CurrentProjectID, FilterID, Page, Limit);
-	Callback(FilterID, retObj);
+	try {
+		var retObj = Mantis.FilterGetIssues(Mantis.CurrentProjectID, FilterID, Page, Limit);
+		Callback(FilterID, retObj);
+	}catch (e) {
+		try {
+			var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
+			CreateKanbanStoriesFromMantisIssues(retObj);
+		} catch (e) {
+
+		}
+
+	} finally {
+		StopLoading();
+	}
 }
 
 function DoneLoadingIssuesCallback(filterID, retObj) {
-	CreateKanbanStoriesFromMantisIssues(retObj);
-	LoadingIssuesList.splice(LoadingIssuesList.indexOf(filterID) -1, 1);
-	if(LoadingIssuesList.length == 0) {
-		console.log("Done Loading " + filterID);
-		StopLoading();
-	}
+	
+		CreateKanbanStoriesFromMantisIssues(retObj);
+		LoadingIssuesList.splice(LoadingIssuesList.indexOf(filterID) -1, 1);
+		if(LoadingIssuesList.length == 0) {
+			console.log("Done Loading " + filterID);
+			StopLoading();
+		}
+
 }
 
 function StartLoading() {
@@ -424,7 +451,7 @@ function BuildProjectsGUI() {
 		projectDivContainer.appendChild(projectLI);
 	}
 
-	if(document.getElementById("seletedproject").value == "") {
+	if(document.getElementById("seletedproject").value == "" || !Kanban.HasProject(document.getElementById("seletedproject").value)) {
 		document.getElementById("seletedproject").value = Kanban.Projects[0].ID;
 	}
 }
@@ -439,7 +466,6 @@ function CreateKanbanStoriesFromMantisIssues(obj) {
 	}
 	
 }
-
 function AutoLogin(){
 	//use this function to check to see if the user has local storage for username and password and if they do log in automatically
 	if (Modernizr.localstorage) {
