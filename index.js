@@ -27,7 +27,7 @@ function window_load() {
 
 	if(DefaultSettings.connectURL != undefined && DefaultSettings.connectURL != "") {
 		document.getElementById("mantisURL").value = DefaultSettings.connectURL;
-	} else if (DefaultSettings.connectURL != undefined && DefaultSettings.connectURL != "") {
+	} else if (preConfiguredMantisURL != undefined && preConfiguredMantisURL != "") {
 		document.getElementById("mantisURL").value = preConfiguredMantisURL;
 	}
 
