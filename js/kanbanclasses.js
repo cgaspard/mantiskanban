@@ -21,6 +21,10 @@ KanbanProject.prototype = {
 
 	get ID() {
 		return this.ProjectSource.id;
+	},
+
+	HasFilterID : function() {
+		
 	}
 }
 

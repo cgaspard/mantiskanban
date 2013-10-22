@@ -157,6 +157,7 @@ var Kanban = {
 			var listDivTitle = document.createElement("div");
 			listDivTitle.setAttribute("class", "kanbanlisttitle");
 			listDivTitle.setAttribute("id","kanbanlisttitle"+li)
+			listDivTitle.setAttribute("listid", "listid" + kanbanListItem.ID);
 			listDivTitle.innerHTML = kanbanListItem.Name.capitalize();
 			listDiv.appendChild(listDivTitle);
 			
@@ -233,16 +234,20 @@ function Drop(event) {
 		if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
 			listToDropIn = event.target;
 			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
-			listToDropIn.Container.insertBefore(sourceElement, listToDropIn.lastChild);
+			listToDropIn.Container.insertBefore(sourceElement, listToDropIn.Container.lastChild);
 		} else if(event.target.getAttribute("class") == "kanbanlistdroparea") {
 			listToDropIn = document.getElementById(event.target.getAttribute("listid"));
 			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
-			listToDropIn.Container.insertBefore(sourceElement, listToDropIn.lastChild);
+			listToDropIn.Container.appendChild(sourceElement);
 		} else {
 			listToDropIn = document.getElementById(event.target.getAttribute("listid"));
 			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
 			sourceElementDropDiv.classList.remove("over");
-			listToDropIn.Container.insertBefore(sourceElement, targetStoryDiv);
+			if(targetStoryDiv !== undefined && targetStoryDiv != null) {
+				listToDropIn.Container.insertBefore(sourceElement, targetStoryDiv);
+			} else {
+				listToDropIn.Container.appendChild(sourceElement);
+			}
 		}
 
 		sourceElement.setAttribute("listid", listToDropIn.getAttribute("id"));

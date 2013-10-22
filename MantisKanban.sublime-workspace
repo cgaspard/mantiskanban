@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"prec",
+				"preConfiguredMantisURL"
+			],
+			[
+				"manti",
+				"mantisURL"
+			],
+			[
 				"border",
 				"border-top-right-radius"
 			],
@@ -558,6 +566,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"priority",
+			"DoneLoadingIssuesCallback",
+			"LoadFilterAsync",
+			"Project",
+			"LoadKanbanProjects",
+			"applysettings",
+			"Login",
+			"Login()",
 			"189",
 			"glyph",
 			"settings",
@@ -677,15 +693,7 @@
 			"KanbanStory =",
 			"attachmentsContainer",
 			"AddNotesToStoryEditForm",
-			"><",
-			"UpdateKanbanStoryComplete",
-			"UpdateStoryFromFormData",
-			"\\n",
-			"= ",
-			"notecontainer",
-			"66px",
-			"65px",
-			"\\},\\{"
+			"><"
 		],
 		"highlight": true,
 		"in_selection": false,
