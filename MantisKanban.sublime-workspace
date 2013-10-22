@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"Use",
+				"UserName"
+			],
+			[
+				"curr",
+				"CurrentProject"
+			],
+			[
+				"target",
+				"targetStoryDiv"
+			],
+			[
+				"app",
+				"appendChild"
+			],
+			[
 				"prec",
 				"preConfiguredMantisURL"
 			],
@@ -98,10 +114,6 @@
 			[
 				"projet",
 				"projectLI"
-			],
-			[
-				"curr",
-				"CurrentUser  (namespace)"
 			],
 			[
 				"Curr",
@@ -547,7 +559,7 @@
 	],
 	"find":
 	{
-		"height": 69.0
+		"height": 41.0
 	},
 	"find_in_files":
 	{
@@ -566,6 +578,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"kanbanlist",
+			"kanbanlist {",
+			"Mantis.CurrentUser",
+			"ProjectsGetUserAccessible",
+			"Login",
+			"Login : ",
+			"currentuser",
+			"currentuser]",
+			"currentuser",
+			"CurrentUser",
+			"f",
+			"ProjectUsers",
+			"EditStory",
+			"OpenEdit",
+			"openEdit",
+			"EditSotry",
+			"OpenEdit",
+			"DragOver",
+			"Drop()",
 			"priority",
 			"DoneLoadingIssuesCallback",
 			"LoadFilterAsync",
@@ -674,26 +705,7 @@
 			".removeChild",
 			"IssueUpdate",
 			"400px",
-			"min-width",
-			"glow",
-			"AddGlowToRelatedStories",
-			"BuildKanbanStoryDiv",
-			"UpdateUnderlyingStorySource",
-			"UpdateStoryFromFormData",
-			"update",
-			"refresh",
-			"upate",
-			"storyinfobutton",
-			"attachmentSubmitterDiv",
-			"Note",
-			"note",
-			"Notes",
-			"note",
-			"Note",
-			"KanbanStory =",
-			"attachmentsContainer",
-			"AddNotesToStoryEditForm",
-			"><"
+			"min-width"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -701,6 +713,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"Kanban.CurrentUser",
 			"attachment",
 			"Attachment",
 			">\\n<",
