@@ -8,10 +8,25 @@ var Kanban = {
 		}
 		return new KanbanProject({ "name": "No Name", "id": 0 });
 	},
+
+	get CurrentUser() {
+		return Kanban._currentUser;
+	}, set CurrentUser(value) {
+		Kanban._currentUser = value;
+	},
+
 	BlockUpdates: false,
 	Dragging: false,
 	UsingCustomField: false,
 	_listIDField: "ScrumBucket",
+	_currentUser : null,
+
+	GetUserByID : function(userid) {
+		for(var ui = 0; ui < Kanban.CurrentProject.Users.lenth; ui++) {
+			if(Kanban.CurrentProject.Users[ui].ID == userid) return Kanban.CurrentProject.Users[ui];
+		}
+		return null;
+	},
 
 	UndoInfo: {
 		StoryDiv: null,
@@ -283,7 +298,7 @@ function UpdateKanbanStoryComplete(result) {
 				Kanban.UpdateUnderlyingStorySource(foundStory);
 				//var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
 				foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
-				if(foundStory.HandlerName == Mantis.CurrentUser.UserName) {
+				if(foundStory.HandlerName == Kanban.CurrentUser.UserName) {
 					document.getElementById("storycontainer" + foundStory.ID).classList.add("mystory");
 				} else {
 					document.getElementById("storycontainer" + foundStory.ID).classList.remove("mystory");
@@ -560,18 +575,18 @@ function OpenAddStory() {
 	var selectAddCategories = document.getElementById("add-category");
 	selectAddCategories.options.length = 0;
 
-	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
-		var user = Mantis.ProjectUsers[i];
-		selectReportingUser.options[selectReportingUser.options.length] = new Option(user.real_name, user.id);
-		if(Mantis.CurrentUser.MantisUser.id == user.id) {
+	for(var i = 0; i < Kanban.CurrentProject.Users.length; i++) {
+		var user = Kanban.CurrentProject.Users[i];
+		selectReportingUser.options[selectReportingUser.options.length] = new Option(user.Name, user.ID);
+		if(Kanban.CurrentUser.ID == user.ID) {
 			selectReportingUser.selectedIndex = i;
 		}
 	}
 
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("None", "");
-	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
-		var user = Mantis.ProjectUsers[i];
-		selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
+	for(var i = 0; i < Kanban.CurrentProject.Users.length; i++) {
+		var user = Kanban.CurrentProject.Users[i];
+		selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.Name, user.ID);
 	}
 	selectAssignedUser.selectedIndex = 0
 
@@ -649,7 +664,7 @@ function UpdateStoryHandlerComplete(result) {
 				//var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
 				foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
 				
-				if(foundStory.HandlerName == Mantis.CurrentUser.UserName) {
+				if(foundStory.HandlerName == Kanban.CurrentUser.UserName) {
 					document.getElementById("storycontainer" + foundStory.ID).classList.add("mystory");
 				} else {
 					document.getElementById("storycontainer" + foundStory.ID).classList.remove("mystory");
@@ -662,73 +677,6 @@ function UpdateStoryHandlerComplete(result) {
 		Kanban.UndoInfo.ListDiv = null;
 		Kanban.UndoInfo.StoryDiv = null;
 	}
-}
-
-function HideProjectSelector() {
-	$("#project-selector").hide();
-}
-
-function OpenProjectSelector(e){
-	var projectSelector = document.getElementById("project-selector");
-	var isIE = document.all ? true : false;
-	var _x;
-	var _y;
-	if (!isIE) {
-		_x = e.pageX;
-		_y = e.pageY;
-	}
-	if (isIE) {
-		_x = event.clientX + document.body.scrollLeft;
-		_y = event.clientY + document.body.scrollTop;
-	}
-
-	var winW = 630, winH = 460;
-	if (document.body && document.body.offsetWidth) {
-	 winW = document.body.offsetWidth;
-	 winH = document.body.offsetHeight;
-	}
-	if (document.compatMode=='CSS1Compat' &&
-	    document.documentElement &&
-	    document.documentElement.offsetWidth ) {
-	 winW = document.documentElement.offsetWidth;
-	 winH = document.documentElement.offsetHeight;
-	}
-	if (window.innerWidth && window.innerHeight) {
-	 winW = window.innerWidth;
-	 winH = window.innerHeight;
-	}
-
-	$("#project-selector").menu({
-		"select" : function(e, o) {
-			//UpdateStoryHandler(storyID, o.item.context.getAttribute("userid"));
-			SwapSelectedProject("project" + o.item.context.getAttribute("projectid"));
-			document.getElementById('seletedproject').value = o.item.context.getAttribute("projectid");
-			///TODO: remove this.   Really uggly code.   Kanban should not be calling functions in index.js
-			SelectProject();
-			$("#project-selector").hide();
-		} 
-	});
-
-	$("#project-selector").show();
-
-	console.log("ProjectSelectorContextHeight: " + projectSelector.clientHeight);
-	console.log("ProjectSelectorContextWidth: " + projectSelector.clientWidth);
-	console.log("WindowHeight: " + winH);
-	console.log("WindowWidth: " + winW);
-	console.log("X,Y", _x + ", " + _y)
-	if(_y + projectSelector.clientHeight + 40 > winH) {
-		_y = winH - projectSelector.clientHeight - 40;
-	}
-	if(_x + 20 + projectSelector.clientWidth + 40 >  winW) {
-		_x = winW - projectSelector.clientWidth - 40;
-	}
-	console.log("Calculated Top: " + _y);
-	console.log("Calculated Left: " + _x);
-	console.log("X,Y", _x + ", " + _y)
-	
-	projectSelector.style.top = _y - 40 + "px";
-	projectSelector.style.left = _x - 30 + "px";
-
 }
 
 /**
@@ -776,20 +724,20 @@ function EditStory(storyID) {
 		}
 	}
 
-	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
-		var user = Mantis.ProjectUsers[i];
-		selectReportingUser.options[selectReportingUser.options.length] = new Option(user.real_name, user.id);
-		if(thisStory.ReporterID !== undefined && user.id == thisStory.ReporterID) {
+	for(var i = 0; i < Kanban.CurrentProject.Users.length; i++) {
+		var user = Kanban.CurrentProject.Users[i];
+		selectReportingUser.options[selectReportingUser.options.length] = new Option(user.Name, user.ID);
+		if(thisStory.ReporterID !== undefined && user.ID == thisStory.ReporterID) {
 			selectReportingUser.selectedIndex = i;
 		}
 	}
 
 	///Add a blank option
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("--- Assign To No One ---", "");
-	for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
-		var user = Mantis.ProjectUsers[i];
-		selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.real_name, user.id);
-		if(thisStory.HandlerID !== undefined && user.id == thisStory.HandlerID) {
+	for(var i = 0; i < Kanban.CurrentProject.Users.length; i++) {
+		var user = Kanban.CurrentProject.Users[i];
+		selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.Name, user.ID);
+		if(thisStory.HandlerID !== undefined && user.ID == thisStory.HandlerID) {
 			selectAssignedUser.selectedIndex = i + 1;
 		}
 	}

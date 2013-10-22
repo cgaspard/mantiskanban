@@ -30,11 +30,6 @@ var Mantis = {
 		Mantis._defaultaccesslevelforuserenum = 10;
 	},
 	
-	CurrentUser : {
-		UserName : "",
-		Password : "",
-	},
-	
 	set DefaultFilterID(value) {
 		Mantis._defaultfilterid = value;
 	},
@@ -102,7 +97,7 @@ var Mantis = {
 
 	get  Serverities() {
 		if(Mantis._severities == null) {
-			Mantis._severities = Mantis.EnumServerities(Mantis.CurrentUser.UserName, Mantis.CurrentUser.Password, null);
+			Mantis._severities = Mantis.EnumServerities(Kanban.CurrentUser.UserName, Kanban.CurrentUser.Password, null);
 		}
 		return Mantis._severities;
 	},
@@ -173,8 +168,8 @@ var Mantis = {
 			Name: "mc_enum_status",
 			BuildParams : function() {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				return pl;
 			},
 		},
@@ -183,8 +178,8 @@ var Mantis = {
 			Name : "mc_enum_priorities",
 			BuildParams : function() {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				return pl;
 			}
 		},
@@ -193,8 +188,8 @@ var Mantis = {
 			Name : "mc_enum_severities",
 			BuildParams : function() {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				return pl;
 			}
 		},
@@ -203,8 +198,8 @@ var Mantis = {
 			Name : "mc_enum_get",
 			BuildParams : function(enumeration) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.Enumeration, enumeration);
 				return pl;
 			}
@@ -214,8 +209,8 @@ var Mantis = {
 			Name : "mc_enum_access_levels",
 			BuildParams : function() {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				return pl;
 			}
 		} ,
@@ -234,8 +229,8 @@ var Mantis = {
 			Name : "mc_filter_get_issues",
 			BuildParams : function(projectid, filterid, pagenumber, perpage) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.ProjectID, projectid);
 				pl.add(Mantis.Params.FilterID, filterid);
 				pl.add(Mantis.Params.PageNumber, pagenumber);
@@ -249,8 +244,8 @@ var Mantis = {
 			Name: "mc_filter_get",
 			BuildParams : function(projectid) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.ProjectID, projectid);
 				return pl;
 			}
@@ -260,8 +255,8 @@ var Mantis = {
 		  Name : "mc_project_get_categories",
 		  BuildParams : function(projectid) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.ProjectID, projectid);
 				return pl;
 		  }
@@ -271,8 +266,8 @@ var Mantis = {
 			Name : "mc_project_get_users",
 			BuildParams : function(access) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.ProjectID, Mantis.CurrentProjectID);
 				pl.add(Mantis.Params.Access, access);
 				return pl;
@@ -283,8 +278,8 @@ var Mantis = {
 			Name: "mc_projects_get_user_accessible",
 			BuildParams : function() {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				return pl;
 			}
 		},
@@ -293,8 +288,8 @@ var Mantis = {
 			Name : "mc_project_get_issues",
 			BuildParams : function(projectid, pagenumber, perpage) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.ProjectID, projectid);
 				pl.add(Mantis.Params.PageNumber, pagenumber);
 				pl.add(Mantis.Params.PerPage, perpage);
@@ -306,8 +301,8 @@ var Mantis = {
 			Name : "mc_project_get_custom_fields",
 			BuildParams : function(projectid) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.ProjectID, projectid);
 				return pl;
 			}
@@ -317,8 +312,8 @@ var Mantis = {
 			Name : "mc_issue_add",
 			BuildParams : function(issue) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.Issue, issue);
 				return pl;
 			}
@@ -329,8 +324,8 @@ var Mantis = {
 			Name : "mc_issue_set_tags",
 			BuildParams : function(issueid, tagsDataArray) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.IssueID, issueid);
 				pl.add(Mantis.Params.Tags, tagsDataArray);
 				return pl;
@@ -341,8 +336,8 @@ var Mantis = {
 			Name : "mc_issue_delete",
 			BuildParams : function(issueid) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.IssueID, issueid);
 				return pl;
 			}
@@ -365,8 +360,8 @@ var Mantis = {
 				Mantis.RemoveNullCustomFieldsFromIssue(issue);
 
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.IssueID_Caps, issueid);
 				pl.add(Mantis.Params.Issue, issue);
 				return pl;
@@ -377,8 +372,8 @@ var Mantis = {
 			Name : "mc_issue_note_add",
 			BuildParams : function (issueid, noteobject) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.IssueID, issueid);
 				pl.add(Mantis.Params.Note, noteobject);
 				return pl;
@@ -389,8 +384,8 @@ var Mantis = {
 			Name : "mc_issue_attachment_get",
 			BuildParams : function(issueattachmentid) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.IssueAttachmentID, issueattachmentid);
 				return pl;
 			}
@@ -402,8 +397,8 @@ var Mantis = {
 			Name : "mc_issue_get",
 			BuildParams : function(issueid) {
 				var pl = new SOAPClientParameters();
-				pl.add(Mantis.Params.UserName, Mantis.CurrentUser.UserName);
-				pl.add(Mantis.Params.Password, Mantis.CurrentUser.Password);
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.IssueID, issueid);
 				return pl;
 			}
@@ -473,8 +468,8 @@ var Mantis = {
 			NewNote : function(notetext) {
 				return {
 					"reporter" : {
-						"id" : Mantis.CurrentUser.MantisUser.id,
-						"name" : Mantis.CurrentUser.MantisUser.name
+						"id" : Kanban.CurrentUser.MantisUser.id,
+						"name" : Kanban.CurrentUser.MantisUser.name
 					},
 					"date_submitted" : new Date(),
 					"text" : notetext
@@ -594,19 +589,6 @@ var Mantis = {
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Version.Name, Mantis.Methods.Version.BuildParams(), hascallback, callBack);
 	}    
 }
-
-Object.defineProperty(Mantis.CurrentUser, "MantisUser", {
-	get: function() {
-		for(var i = 0; i < Mantis.ProjectUsers.length; i++) {
-			if(Mantis.ProjectUsers[i].name == Mantis.CurrentUser.UserName) {
-				return Mantis.ProjectUsers[i];
-			}
-		}
-		return null;
-	}
-});	
-
-
 /*
  *<xsd:element name="id" type="xsd:integer" minOccurs="0"/>
  *<xsd:element name="view_state" type="tns:ObjectRef" minOccurs="0"/>

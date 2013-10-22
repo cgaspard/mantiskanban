@@ -67,12 +67,12 @@ function Login() {
 	log("Login() called.");
 	
 	document.getElementById("username").focus();
-	Mantis.CurrentUser.UserName = document.getElementById("username").value;
-	Mantis.CurrentUser.Password = document.getElementById("password").value;
 	Mantis.ConnectURL = document.getElementById("mantisURL").value;
 	
 	try {
-		var retObj = Mantis.Login(Mantis.CurrentUser.UserName, Mantis.CurrentUser.Password);
+		var retObj = Mantis.Login(document.getElementById("username").value, document.getElementById("password").value);
+		Kanban.CurrentUser = new KanbanUser(retObj.account_data);
+		Kanban.CurrentUser.Password = document.getElementById("password").value;
 	} catch (e) {
 		alert("Error Login: \r\n\r\n" + e.message);
 		return;
@@ -207,6 +207,7 @@ function getStyleRule(selectorText, style, value) {
 					rule = rules[j];
 
 					if (rule.selectorText == selectorText) {
+						if(rule.style[style] == undefined) return "";
 						return rule.style[style];
 					}
 				}
@@ -219,6 +220,7 @@ function getStyleRule(selectorText, style, value) {
 					// An alternative is to just modify rule.style.cssText,
 					// but this way keeps it consistent with W3C model
 			        if (rule.selectorText == selectorText) {
+			        	if(rule.style[style] == undefined) return "";
 			        	return rule.style[style];
 
 						// Alternative
@@ -227,8 +229,10 @@ function getStyleRule(selectorText, style, value) {
 				}
 			}		
 		}
+		/// We didn't find the value so return nothing
+		return "";
 	} catch (e) {
-		
+		return "";
 	}
 }
 

@@ -1,3 +1,36 @@
+var KanbanUser = function(RawObject) {
+	var self = this;
+	if(typeof(RawObject) == "string") {
+		self.UserSource = JSON.parse(RawObject);
+	} else {
+		self.UserSource = RawObject;
+	}
+}
+
+KanbanUser.prototype = {
+
+	get UserName() {
+		return this.UserSource.name;
+	}, set UserName(value) {
+		this.UserSource.name = value;
+	},
+
+	get Password() {
+		return this.UserSource.password;
+	}, set Password(value) {
+		this.UserSource.password = value;
+	},
+
+	get Name() {
+		return this.UserSource.real_name;
+	}, set Name(value) {
+		this.UserSource.real_name = value;
+	},
+
+	get ID () {
+		return this.UserSource.id;
+	}
+}
 var KanbanProject = function(RawObject) {
 	var self = this;
 	if(typeof(RawObject) == "string") {
@@ -25,6 +58,15 @@ KanbanProject.prototype = {
 
 	HasFilterID : function() {
 		
+	},
+
+	get Users() {
+		var mantisUsers = Mantis.ProjectUsers
+		var userList = new Array();
+		for(var ul = 0; ul < mantisUsers.length; ul++) {
+			userList.push(new KanbanUser(mantisUsers[ul]));
+		}
+		return userList;
 	}
 }
 
@@ -340,7 +382,7 @@ KanbanStory.prototype = {
 		//storyContainerDiv.setAttribute("rel", "popover");
 		//storyContainerDiv.setAttribute("data-content", this.Summary.htmlencode());
 		//storyContainerDiv.setAttribute("data-original-title", "Issue #" + this.ID + ": " + this.Summary.htmlencode());
-		if(this.HandlerName == Mantis.CurrentUser.UserName) {
+		if(this.HandlerName == Kanban.CurrentUser.UserName) {
 			storyContainerDiv.classList.add("mystory");
 		}
 		storyContainerDiv.addEventListener('dragleave', function(event) {
