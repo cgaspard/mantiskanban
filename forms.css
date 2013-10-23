@@ -27,7 +27,7 @@
 .notesarea{
 	width: 100%;
 	overflow: auto;
-	max-height: 440px;
+	max-height: 340px;
 	border: solid 1px #cccccc;
 	padding: 15px 15px 15px 15px;
 	margin-top: 10px;

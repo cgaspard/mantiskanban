@@ -563,7 +563,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 108.0,
+		"height": 111.0,
 		"where_history":
 		[
 			"",
@@ -578,6 +578,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"edit-newnotetext",
 			"kanbanlist",
 			"kanbanlist {",
 			"Mantis.CurrentUser",
@@ -704,8 +705,7 @@
 			"delete",
 			".removeChild",
 			"IssueUpdate",
-			"400px",
-			"min-width"
+			"400px"
 		],
 		"highlight": true,
 		"in_selection": false,
