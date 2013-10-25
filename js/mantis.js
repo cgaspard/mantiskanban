@@ -468,8 +468,8 @@ var Mantis = {
 			NewNote : function(notetext) {
 				return {
 					"reporter" : {
-						"id" : Kanban.CurrentUser.MantisUser.id,
-						"name" : Kanban.CurrentUser.MantisUser.name
+						"id" : Kanban.CurrentUser.ID,
+						"name" : Kanban.CurrentUser.Name
 					},
 					"date_submitted" : new Date(),
 					"text" : notetext
