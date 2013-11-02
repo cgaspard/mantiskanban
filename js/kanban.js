@@ -355,9 +355,16 @@ function UpdateStoryFromFormData() {
 	}
 }
 
+function UpdateStoryStatusWhenCustomFieldUpdated(UpatedStory, CustomFieldName, CustomFieldValue) {
+	if(Kanban.AutoStatusOnCustomField[CustomFieldName][CustomFieldValue] != undefined) {
+		Mantis.UpdateStructureMethods.Issue.UpdateStatus(UpatedStory.StorySource, Kanban.AutoStatusOnCustomField[CustomFieldName][CustomFieldValue], "");
+	}
+}
+
 function UpdateListForCanbanStory(KanbanStoryToUpdate, KanbanListToMoveTo, UpdateKanbanStoryCallback) {
 	var updateIssue = null;
 	if(KanbanStoryToUpdate.UsesCustomField) {
+		UpdateStoryStatusWhenCustomFieldUpdated(KanbanStoryToUpdate, Kanban._listIDField, KanbanListToMoveTo.ID);
 		updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateCustomField(KanbanStoryToUpdate.StorySource, Kanban._listIDField, KanbanListToMoveTo.ID);
 	} else {
 		updateIssue = Mantis.UpdateStructureMethods.Issue.UpdateStatus(KanbanStoryToUpdate.StorySource, KanbanListToMoveTo.ID, KanbanListToMoveTo.Name);
