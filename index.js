@@ -74,7 +74,8 @@ function Login() {
 		Kanban.CurrentUser = new KanbanUser(retObj.account_data);
 		Kanban.CurrentUser.Password = document.getElementById("password").value;
 	} catch (e) {
-		alert("Error Login: \r\n\r\n" + e.message);
+		var form = document.getElementById("loginButton");
+		$(form).before('<center><div class="alert alert-danger text-center" style="width:320px !important"><b>Error:</b> ' + e.message + '<button type="button" class="close" data-dismiss="alert">&times;</button></div><center>');
 		return;
 	}
 
