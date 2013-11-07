@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<script language="javascript" type="text/javascript" src="js/iso8601.min.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link crossorigin rel="Stylesheet" href="bootstrap/css/bootstrap.css" />
 		<link crossorigin href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
@@ -42,10 +41,10 @@
 							<img src="images/mantis_logo.png" class="mantislogo" />
 						</div>
 						<div>
-							<form id="userLoginForm" class="userLoginForm" runat="server" method="post">
+							<form id="userLoginForm" class="userLoginForm" method="post">
 								<br>
-								<input type="text" id="username" placeholder="Username" style="width: 160px;" value="Username" onclick="if(this.value == 'Username'){this.value='';}"/>
-								<input type="password" id="password" placeholder="Password" value="Password" onclick="if(this.value == 'Password'){this.value='';}" style="width: 160px;" onfocus="if(this.value == 'Password'){this.value='';}">
+								<input type="text" id="username" placeholder="Username" style="width: 160px;" value="" />
+								<input type="password" id="password" placeholder="Password" value="" style="width: 160px;" />
 								<br><br>
 								<input type="text" id="mantisURL" placeholder="Mantis URL" style="width: 325px;" value="" onclick=""><br>
 								<input type="submit" style="position: absolute; left: -9999px"/> 
@@ -246,34 +245,51 @@
 							<h4>Settings</h4>
 						</div>
 						<div class="btn-group editing-buttons">
-							<div onclick="CloseSettings();" class="btn btn-warning">Close</div>
+							<div onclick="CloseSettings();" class="btn btn-warning">Close</div>							
 							<div onclick="Kanban.SaveSettings(); CloseSettings();" class="btn btn-primary">Save Settings</div>
 						</div>
 						<div class="editing-content">
 							<form class="form-horizontal" onsubmit="Kanban.SaveSettings(); CloseSettings();">
 								<div class="control-group">
-									<label class="control-label" for="settings-list-width">List Width</label>
-									<div class="controls">
-										<input type="text" name="settings-list-width" id="settings-list-width" placeholder="List Width" />
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="settings-list-width">Mantis Connect URL</label>
-									<div class="controls">
-										<input type="text" name="settings-connectURL" id="settings-connectURL" placeholder="Mantis Connect URL" />
-									</div>
+									<table class="table">
+										<tr>
+											<td colspan="2"><label class="control-label" for="settings-list-width">List Width</label></td>
+										</tr>
+										<tr>
+											<td>												
+												<div class="controls">
+													<input type="text" name="settings-list-width" id="settings-list-width" placeholder="List Width" />
+												</div>
+											</td>
+											<td>
+												<span onclick="FitColsToScreen(); Kanban.SaveSettings(); CloseSettings();" class="btn btn-success" style="padding-top:0px !important; padding-bottom:0px !important;">Auto-Fit&nbsp;<span class="glyphicon glyphicon-resize-horizontal"></span></span>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<label class="control-label" for="settings-list-width">Mantis Connect URL</label>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">												
+												<div class="controls">
+													<input type="text" name="settings-connectURL" id="settings-connectURL" placeholder="Mantis Connect URL" />
+												</div>
+											</td>
+										</tr>
+									</table>								
 								</div>
 							</form>
 						</div>
 					</div>	
 				</div>
 				<div id="prioritylegend">
-					<div priority="immediate">Immediate Priority</div>
-					<div priority="urgent">Urgent Priority</div>
-					<div priority="high">High Priority</div>
-					<div priority="normal">Normal Priority</div>
-					<div priority="low">Low Priority</div>
-					<div priority="none">No Priority</div>
+					<div priority="immediate">Immediate</div>
+					<div priority="urgent">Urgent</div>
+					<div priority="high">High</div>
+					<div priority="normal">Normal</div>
+					<div priority="low">Low</div>
+					<div priority="none">No</div>
 				</div>				
 			</div>
 

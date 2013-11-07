@@ -542,3 +542,8 @@ function saveSettingsToStorageMechanism(){
 	}
 
 }
+
+function FitColsToScreen(){
+	var newColumnWidth = Math.floor((window.innerWidth - 80) / 7); //-80 for padding compensation
+	document.getElementById("settings-list-width").value = newColumnWidth + "px";
+}

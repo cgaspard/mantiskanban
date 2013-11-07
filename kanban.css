@@ -535,29 +535,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 }
 
 div[priority="none"]{
-	background-color: #000000;
-	color:#ffffff;
+	background-color: #104E8B;
+	color:#FFFFFF;
 }
 
 div[priority="low"]{
-	background-color: green;
-	color:#FFFFFF;
+	background-color: #74BBFB;
+	color:#000000;
 }
 
 div[priority="normal"] {
-	background-color: #334477;
-	color:#FFFFFF;
+	background-color: #ffffff;
+	color:#000000;
 }
 
 
 div[priority="high"]{
-	background-color: yellow;
+	background-color: #ffff67;
 	color:#000000;
 }
 
 div[priority="urgent"]{
-	background-color: #f00;
-	color:#ffffff;
+	background-color: #FF6600;
+	color:#000000;
 }
 
 #prioritylegend>div[priority="immediate"] {
@@ -566,8 +566,14 @@ div[priority="urgent"]{
 
 }
 
+#prioritylegend>div{
+	text-align: center;
+	font-weight: bold !important;
+	font-size: 14px;
+}
+
 div[priority="immediate"]{
-	background-color: #ffffff;
+	background-color: #fe0000;
 	color:#000000;
 }
 
