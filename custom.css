@@ -54,3 +54,9 @@ body {
 	text-align: center;
 	cursor: pointer;
 }
+
+.tempLoadingDiv {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #000;
+}
