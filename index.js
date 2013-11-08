@@ -278,7 +278,7 @@ function Logout() {
 }
 
 function SelectProject() {
-	log("SelectProject() called.");
+	console.log("SelectProject() called.");
 
 	CloseEditStory();
 	CloseAddStory();
@@ -305,7 +305,7 @@ function SelectProject() {
 
 	document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.Name;
 
-	if(Mantis.DefaultFilterID !== null) {
+	if(Mantis.DefaultFilterID !== null && Mantis.DefaultFilterID != 0) {
 		window.setTimeout("LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, DoneLoadingIssuesCallback)", 0);
 		if(Mantis.ClosedIssuesFilterID !== null) {
 			window.setTimeout("LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback)", 0);
@@ -313,6 +313,7 @@ function SelectProject() {
 	} else {
 		var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
 		CreateKanbanStoriesFromMantisIssues(retObj);
+		$(".tempLoadingDiv").hide();//hide the loading gifs
 		StopLoading();
 	}
 }
@@ -370,14 +371,13 @@ function LoadFilterAsync(FilterID, Page, Limit, Callback) {
 }
 
 function DoneLoadingIssuesCallback(filterID, retObj) {
-	
 		CreateKanbanStoriesFromMantisIssues(retObj);
 		LoadingIssuesList.splice(LoadingIssuesList.indexOf(filterID) -1, 1);
 		if(LoadingIssuesList.length == 0) {
 			console.log("Done Loading " + filterID);
 			StopLoading();
 		}
-
+		$(".tempLoadingDiv").hide();//hide the loading gifs
 }
 
 function StartLoading() {

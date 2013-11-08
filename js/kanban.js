@@ -183,6 +183,11 @@ var Kanban = {
 			listDiv.Container = listStoryContainer;
 			kanbanListItem.Container = listStoryContainer;
 
+			var listTempLoadingGif = document.createElement("div");
+			listTempLoadingGif.innerHTML = '<center><div class="tempLoadingDiv"><img src="images/columnLoadingGif.gif"></div></center>';
+			listDiv.appendChild(listTempLoadingGif);
+
+
 			var listDropArea = document.createElement("div");
 			listDropArea.setAttribute("class", "kanbanlistdroparea");
 			listDropArea.setAttribute("id", "droplistid" + kanbanListItem.ID);
