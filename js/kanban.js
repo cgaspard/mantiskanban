@@ -110,6 +110,8 @@ var Kanban = {
 			Kanban.Stories[Kanban.Stories.length] = storyToAdd;
 			storyToAdd.BuildKanbanStoryDiv();
 			storyToAdd.List.Container.appendChild(storyToAdd.Element);
+			storyToAdd.Element.classList.add("fadein");
+			//Story.Element.style.display = 'block';
 		}
 	},
 
@@ -233,7 +235,10 @@ function DragEnd(event) {
 }
 
 function Drop(event) {
+
+
 	event.preventDefault();
+	if(event.target.id == "kanbancontent") return;
 	if(Kanban.BlockUpdates) return;
 
 	var data = event.dataTransfer.getData("Text");
@@ -259,6 +264,10 @@ function Drop(event) {
 			listToDropIn = document.getElementById(event.target.getAttribute("listid"));
 			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
 			listToDropIn.Container.appendChild(sourceElement);
+		} else if (event.target.getAttribute("class") == "kanbanlisttitle") {
+			listToDropIn = document.getElementById(event.target.getAttribute("listid"));
+			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
+			listToDropIn.Container.insertBefore(sourceElement, listToDropIn.Container.firstChild);
 		} else {
 			listToDropIn = document.getElementById(event.target.getAttribute("listid"));
 			UpdateListForCanbanStory(sourceElement.Story, listToDropIn.List, UpdateKanbanStoryComplete)
@@ -392,24 +401,42 @@ function ClearAllDragHoverAreas() {
 	}
 }
 
+var previousDragOverItem = null;
+
 function HandleDragOver(e) {
 	if(e.preventDefault) {
 		e.preventDefault(); // Necessary. Allows us to drop.
 	}
+
+	if(e.target.getAttribute("id") == "kanbancontent") {
+		ClearAllDragHoverAreas();
+		return false;
+	}
+
 	e.dataTransfer.dropEffect = 'move';
+	var storyID = e.target.getAttribute("storyid");
+	if(storyID != e.target.getAttribute("id")) {
+		var dropDiv = document.getElementById(e.target.getAttribute("dropdivid"));
+		if(storyID == previousDragOverItem) return false;
+
+		previousDragOverItem = storyID;
+		ClearAllDragHoverAreas();
+		if(dropDiv != null) dropDiv.classList.add("over");
+	}	
 	return false;
 }
 
 function HandleDragEnter(e) {
-	ClearAllDragHoverAreas();
-	console.log("HandleDragEnter: StoryID: " + e.target.getAttribute("storyid") + "  ID: " + e.target.id);
-	if(e.target.getAttribute("storyid") != e.target.getAttribute("id")) {
-		var dropDiv = document.getElementById(e.target.getAttribute("dropdivid"));
-		if(dropDiv != null) dropDiv.classList.add("over");
-	}
+	//ClearAllDragHoverAreas();
+	//console.log("HandleDragEnter: StoryID: " + e.target.getAttribute("storyid") + "  ID: " + e.target.id);
 }
 
 function HandleDragLeave(e) {
+	var storyID = e.target.getAttribute("storyid");
+	if(storyID != previousDragOverItem) return false;
+
+	if(!e.target.classList.contains("kanbanstorycontainer")) return false;
+	
 	var dropDiv = document.getElementById(e.target.getAttribute("dropdivid"));
 	if(dropDiv != null) dropDiv.classList.remove("over");
 }

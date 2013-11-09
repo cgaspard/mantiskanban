@@ -1,4 +1,4 @@
-html, body{
+fhtml, body{
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -371,6 +371,8 @@ html, body{
 }
 
 .kanbanstorycontainer { 
+	opacity: 0;
+	/*display:none;*/
 	overflow:hidden; 
 	border: solid 1px #000000;
 	background: #f0f9ff; /* Old browsers */
@@ -383,35 +385,30 @@ html, body{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ) !important; /* IE6-9 */
 }
 
-.kanbandropper{
-	display:none;
-	border: solid 1px black;
-	color: #222222;
-	height: 30px;
-	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 3px;
-	background: #7d7e7d;
-	/* Old browsers */
-	background: -moz-linear-gradient(top, #7d7e7d 0%, #0e0e0e 100%);
-	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e));
-	/* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%);
-	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%);
-	/* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%);
-	/* IE10+ */
-	background: linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%);
-	/* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 );
-	/* IE6-9 */
-}
-.kanbanstory.over>.kanbandropper{
-	display: block;
+.fadein {
+	-webkit-animation: fade 1.2s;
+    animation: fade 1.2s;
+    opacity: 1;
+ }
+
+/* -fail- */
+@-webkit-keyframes fade {
+    from {opacity: 0}
+    to {opacity: 1}
+}@keyframes fade {
+    from {opacity: 0}
+    to {opacity: 1}
 }
 
+.kanbandropper{
+	height: 0px;
+	text-align: center;
+	background-color: rgb(217, 83, 79);
+	transition: height .3s ease;
+}
+.kanbandropper.over{
+	height: 40px;
+}
 
 .kanbanstory{
 	background: rgb(238,238,238);
@@ -425,11 +422,8 @@ html, body{
 	text-shadow:
 		0px -1px 0px rgba(000,000,000,0.4),
 		0px 1px 0px rgba(255,255,255,0.3);
- 	/*max-width: 100%;*/
-    /*background-color: blue;*/
-    /*white-space: nowrap;*/
-    
 }
+
 
 #attachmentdisplay {
 	display:none;
@@ -639,9 +633,7 @@ div[priority="immediate"]{
 	border-bottom: solid 2px #000000;
 	color: #FFFFFF;	
 }
-.kanbandropper.over{
-	display: block;
-}
+
 [draggable]{
 	-moz-user-select: none;
 	-khtml-user-select: none;

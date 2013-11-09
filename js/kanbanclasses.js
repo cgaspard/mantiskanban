@@ -105,6 +105,8 @@ KanbanList.prototype = {
 
 	AddNewStoryUI: function(Story) {
 		this.Container.appendChild(Story.Element);
+		Story.Element.classList.add("fadein");
+		//Story.Element.style.display = 'block';
 	},
 
 	/*
@@ -385,9 +387,6 @@ KanbanStory.prototype = {
 		if(this.HandlerName == Kanban.CurrentUser.UserName) {
 			storyContainerDiv.classList.add("mystory");
 		}
-		storyContainerDiv.addEventListener('dragleave', function(event) {
-			event.stopPropagation();
-		}, false);
 		storyDiv.appendChild(storyContainerDiv);
 
 		var storyDivSeverityContainer = document.createElement("div");
@@ -395,10 +394,6 @@ KanbanStory.prototype = {
 		storyDivSeverityContainer.setAttribute("listid", "listid" + this.ListID);
 		storyDivSeverityContainer.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivSeverityContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
-		storyDivSeverityContainer.addEventListener('dragleave', function(event) {
-			event.stopPropagation();
-		}, false);
-
 		storyContainerDiv.appendChild(storyDivSeverityContainer);
 
 		var storyDivSeverity = document.createElement("div");
@@ -409,9 +404,6 @@ KanbanStory.prototype = {
 		storyDivSeverity.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivSeverity.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyDivSeverity.innerHTML = this.ID;
-		storyDivSeverity.addEventListener('dragleave', function(event) {
-			event.stopPropagation();
-		}, false);
 		storyDivSeverityContainer.appendChild(storyDivSeverity);
 
 		var storyDivTitle = document.createElement("span");
@@ -422,9 +414,6 @@ KanbanStory.prototype = {
 		storyDivTitle.setAttribute("listid", "listid" + this.ListID);
 		storyDivTitle.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivTitle.setAttribute("dropdivid", "dropdiv" + this.ID);
-		storyDivTitle.addEventListener('dragleave', function(event) {
-			event.stopPropagation();
-		}, false);
 		if(this.Attachments.length > 0) {
 			storyDivTitle.innerHTML = "<span class=\"glyphicon glyphicon-file\"></span> " + this.Summary;
 		} else {
@@ -438,9 +427,6 @@ KanbanStory.prototype = {
 		storyDivButtonContainer.setAttribute("listid", "listid" + this.ListID);
 		storyDivButtonContainer.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivButtonContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
-		storyDivButtonContainer.addEventListener('dragleave', function(event) {			
-		event.stopPropagation();
-		}, false);
 		storyContainerDiv.appendChild(storyDivButtonContainer);
 
 		var storyDivButton = document.createElement("div");
@@ -452,9 +438,6 @@ KanbanStory.prototype = {
 		if(this.HandlerName != "") {
 			storyDivButton.setAttribute("style", " color: " + colorCodes[this.HandlerName.substring(0, 1).toUpperCase()].foreground + ";  background-color:" + colorCodes[this.HandlerName.substring(0, 1).toUpperCase()].background + ";");
 		}
-		storyDivButton.addEventListener('dragleave', function(event) {
-			event.stopPropagation();
-		}, false);
 		storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
 		storyDivButtonContainer.appendChild(storyDivButton);
 
