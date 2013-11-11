@@ -1,4 +1,4 @@
-fhtml, body{
+html, body{
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -285,7 +285,7 @@ fhtml, body{
 }
  	
 .kanbanlist{
-	/*border-radius: 10px 10px 2px 2px;*/
+	border: 1px solid #404040;
 	position: relative;
 	vertical-align: top;
 	display: inline-block;
