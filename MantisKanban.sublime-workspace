@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"List",
+				"ListID"
+			],
+			[
+				"Clear",
+				"ClearAllDragHoverAreas"
+			],
+			[
 				"UpdateStr",
 				"UpdateStructureMethods"
 			],
@@ -280,10 +288,6 @@
 				"StoryID"
 			],
 			[
-				"List",
-				"ListID  (variable)"
-			],
-			[
 				"project",
 				"ProjectCustomFields"
 			],
@@ -461,9 +465,10 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/bootstrap/css/bootstrap.icon-large.min.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/date.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
@@ -587,6 +592,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fadein",
+			"fadin",
+			"BuildKanbanStoryDiv",
+			"UpdateStoryHandlerComplete",
+			"UpdateUnderlyingStorySource",
+			"BuildKanbanStoryDiv",
+			"AddNewStoryUI",
+			"UpdateKanbanStoryComplete",
+			"classList",
+			"replaceChild",
+			"BuildListGUI",
+			"kanbanlist",
 			"UpdateCustomField",
 			"UpdateListForCanbanStory",
 			"edit-newnotetext",
@@ -702,19 +719,7 @@
 			"OpenStory",
 			"op",
 			"OpenStory",
-			"EditStory",
-			"Editstory",
-			"OPenedit",
-			"attachments",
-			"attac",
-			"priority",
-			"prioritylegend",
-			"priority",
-			"Delete",
-			"update",
-			"EditStory",
-			"delete",
-			".removeChild"
+			"EditStory"
 		],
 		"highlight": true,
 		"in_selection": false,

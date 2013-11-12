@@ -288,7 +288,7 @@ function Drop(event) {
 		Kanban.BlockUpdates = false;
 		StopLoading();
 	} finally {
-
+		ClearAllDragHoverAreas();
 	}
 
 }
@@ -701,13 +701,8 @@ function UpdateStoryHandlerComplete(result) {
 				///If its null, then we werent' editing the story, just dropping between the lists
 				Kanban.UpdateUnderlyingStorySource(foundStory);
 				//var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
-				foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
-				
-				if(foundStory.HandlerName == Kanban.CurrentUser.UserName) {
-					document.getElementById("storycontainer" + foundStory.ID).classList.add("mystory");
-				} else {
-					document.getElementById("storycontainer" + foundStory.ID).classList.remove("mystory");
-				}
+				foundStory.BuildKanbanStoryDiv();
+				foundStory.Element.classList.add("fadein");
 			}
 		} catch(e) {
 			console.log(e);

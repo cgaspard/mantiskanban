@@ -150,7 +150,12 @@ KanbanStory.prototype = {
 	get List() {
 		return this._list;
 	}, set List(value) {
-		this._list = value;
+		if(this.UsesCustomField) {
+
+		} else {
+			this._list = value;	
+		}
+		
 	},
 
 	get ID() {
@@ -160,14 +165,7 @@ KanbanStory.prototype = {
 	},
 
 	get ListID() {
-		if(this.UsesCustomField) {
-			for(var ci = 0; ci < this.StorySource.custom_fields.length; ci++) {
-				if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
-					return this.StorySource.custom_fields[ci].value
-				}
-			}
-		}
-		return this.StorySource.status.id
+		return this.List.ID;
 	},
 
 	get ProjectID() {
@@ -345,6 +343,10 @@ KanbanStory.prototype = {
 		var storyDiv = document.createElement("div");
 		storyDiv.Story = this;
 
+		if(this.ListID == null) {
+			this.List = Kanban.Lists[0];
+		}
+
 		storyDiv.setAttribute("id", "storydiv" + this.ID);
 		storyDiv.setAttribute("listid", "listid" + this.ListID);
 		storyDiv.setAttribute("class", "kanbanstorycontainer");
@@ -443,6 +445,7 @@ KanbanStory.prototype = {
 
 		if(this.Element != null) {
 			var replacedNode = this.Element.parentNode.replaceChild(storyDiv, this.Element);
+			this.Element.classList.add("fadein");
 		}
 
 		this.Element = storyDiv;
@@ -483,6 +486,7 @@ Kanban.UpdateUnderlyingStorySource = function(originalStory) {
 		return null;
 	} else {
 		originalStory.BuildKanbanStoryDiv();
+		originalStory.Element.classList.add("fadein");
 		return originalStory;
 	}
 
