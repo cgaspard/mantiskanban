@@ -354,6 +354,7 @@ KanbanStory.prototype = {
 		storyDiv.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyDiv.setAttribute("draggable", "true");
 		storyDiv.setAttribute("onclick", "EditStory('" + this.ID + "');");
+		storyDiv.setAttribute("category", this.CategoryID);
 
 		storyDiv.addEventListener('dragstart', DragStart, false);
 		storyDiv.addEventListener("dragend", DragEnd, false);

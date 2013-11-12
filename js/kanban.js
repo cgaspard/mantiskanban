@@ -254,6 +254,10 @@ function Drop(event) {
 	StartLoading();
 	Kanban.BlockUpdates = true;
 
+	if(sourceElement.Story.CategoryID == null) {
+		sourceElement.Story.CategoryID = Mantis.ProjectCategories[0];
+	}
+
 	try {
 
 		if(event.target.getAttribute("class") == "kanbanlist" && sourceElement.getAttribute("class").indexOf("storyinfobutton") < 0) {
@@ -356,6 +360,7 @@ function UpdateStoryFromFormData() {
 		thisStory.PriorityID = document.getElementById("edit-priority").value;
 		thisStory.StatusID = document.getElementById("edit-status").value;
 		thisStory.Reproduce = document.getElementById("edit-reproduce").value;
+		thisStory.CategoryID = document.getElementById("edit-category").value;
 		Mantis.IssueUpdate(thisStory.ID, thisStory.StorySource, UpdateKanbanStoryComplete);
 
 		CloseEditStory();
@@ -744,6 +749,8 @@ function EditStory(storyID) {
 	selectAssignedUser.options.length = 0;
 	var selectAddStatus = document.getElementById("edit-status");
 	selectAddStatus.options.length = 0;
+	var selectEditCategory = document.getElementById("edit-category");
+	selectEditCategory.options.length = 0;
 	var selectAddPriority = document.getElementById("edit-priority");
 	selectAddPriority.options.length = 0;
 	var selectStoryProject = document.getElementById("edit-project");
@@ -785,6 +792,22 @@ function EditStory(storyID) {
 	}
 	
 	for(var i = 0; i < Mantis.Priorities.length; i++) {
+		var priority = Mantis.Priorities[i];
+		selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name.capitalize(), priority.id);
+		if(thisStory.PriorityID == priority.id) {
+			selectAddPriority.selectedIndex = i;
+		}
+	}
+
+	for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
+		var category = Mantis.ProjectCategories[i];
+		selectEditCategory.options[selectEditCategory.options.length] = new Option(category.capitalize(), category);
+		if(thisStory.CategoryID == category.id) {
+			selectEditCategory.selectedIndex = i;
+		}
+	}
+
+	for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
 		var priority = Mantis.Priorities[i];
 		selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name.capitalize(), priority.id);
 		if(thisStory.PriorityID == priority.id) {
