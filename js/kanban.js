@@ -21,6 +21,16 @@ var Kanban = {
 	_listIDField: "ScrumBucket",
 	_currentUser : null,
 
+	GetCategoryIcon : function(category) {
+		if(Kanban.CategoryIconMap == undefined) {
+			return "";
+		} else if(Kanban.CategoryIconMap[category] == undefined) {
+			return "";
+		} else {
+			return Kanban.CategoryIconMap[category];
+		}
+	},
+
 	GetUserByID : function(userid) {
 		for(var ui = 0; ui < Kanban.CurrentProject.Users.lenth; ui++) {
 			if(Kanban.CurrentProject.Users[ui].ID == userid) return Kanban.CurrentProject.Users[ui];
@@ -802,16 +812,8 @@ function EditStory(storyID) {
 	for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
 		var category = Mantis.ProjectCategories[i];
 		selectEditCategory.options[selectEditCategory.options.length] = new Option(category.capitalize(), category);
-		if(thisStory.CategoryID == category.id) {
+		if(thisStory.CategoryID == category) {
 			selectEditCategory.selectedIndex = i;
-		}
-	}
-
-	for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
-		var priority = Mantis.Priorities[i];
-		selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name.capitalize(), priority.id);
-		if(thisStory.PriorityID == priority.id) {
-			selectAddPriority.selectedIndex = i;
 		}
 	}
 

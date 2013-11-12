@@ -175,6 +175,13 @@ KanbanStory.prototype = {
 		this.StorySource.project.id = value
 	},
 
+	get CategoryID() {
+		return this.StorySource.category;
+	},
+	set CategoryID(value) {
+		this.StorySource.category = value;
+	},
+
 	get ProjectName() {
 		return this.StorySource.project.name;
 	}, 
@@ -417,11 +424,14 @@ KanbanStory.prototype = {
 		storyDivTitle.setAttribute("listid", "listid" + this.ListID);
 		storyDivTitle.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivTitle.setAttribute("dropdivid", "dropdiv" + this.ID);
-		if(this.Attachments.length > 0) {
-			storyDivTitle.innerHTML = "<span class=\"glyphicon glyphicon-file\"></span> " + this.Summary;
-		} else {
-			storyDivTitle.innerHTML = this.Summary;
+		if(this.CategoryID != null) {
+			storyDivTitle.innerHTML += "<span class=\"categoryicon glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID) + "\"></span> ";
 		}
+		if(this.Attachments.length > 0) {
+			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-file\"></span> ";
+		}
+		storyDivTitle.innerHTML += this.Summary;
+		
 		storyContainerDiv.appendChild(storyDivTitle);
 
 		var storyDivButtonContainer = document.createElement("div");

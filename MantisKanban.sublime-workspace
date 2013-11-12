@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"story",
+				"StorySource"
+			],
+			[
+				"cate",
+				"category"
+			],
+			[
+				"CAte",
+				"CategoryIconMap"
+			],
+			[
+				"catego",
+				"CategoryID"
+			],
+			[
+				"Projectc",
+				"ProjectCategories"
+			],
+			[
+				"Categorie",
+				"ProjectCategories"
+			],
+			[
 				"List",
 				"ListID"
 			],
@@ -465,13 +489,13 @@
 	},
 	"file_history":
 	[
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/bootstrap/css/bootstrap.icon-large.min.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/bootstrap/css/bootstrap.icon-large.min.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/date.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
@@ -592,6 +616,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"BuildKanbanStoryDiv",
 			"fadein",
 			"fadin",
 			"BuildKanbanStoryDiv",
@@ -718,8 +743,7 @@
 			"		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
 			"OpenStory",
 			"op",
-			"OpenStory",
-			"EditStory"
+			"OpenStory"
 		],
 		"highlight": true,
 		"in_selection": false,
