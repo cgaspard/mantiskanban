@@ -50,6 +50,16 @@ function window_load() {
 
 }
 
+function ShallowCopy(o) {
+  var copy = Object.create(o);
+  for (prop in o) {
+    if (o.hasOwnProperty(prop)) {
+      copy[prop] = o[prop];
+    }
+  }
+  return copy;
+}
+
 function get_gravatar(email, size) {
  
     // MD5 (Message-Digest Algorithm) by WebToolkit

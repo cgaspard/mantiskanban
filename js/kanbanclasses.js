@@ -149,21 +149,41 @@ var KanbanStory = function(RawObject) {
 
 KanbanStory.prototype = {
 
-	get List() {
-		return this._list;
-	}, set List(value) {
-		if(this.UsesCustomField) {
-
-		} else {
-			this._list = value;	
-		}
-		
-	},
-
 	get ID() {
 		return this.StorySource.id;
 	}, set ID(value) {
 		this.StorySource.id = value;
+	},
+
+	get List() {
+		for(var li = 0; li < Kanban.Lists.length; li++) {
+			var kanbanList = Kanban.Lists[li];
+			if(Kanban.UsesCustomField) {
+				for(var ci = 0; ci < this.StorySource.custom_fields.length; ci++) {
+					if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
+						if(this.StorySource.custom_fields[ci].value == kanbanList.ID) {
+							return kanbanList;
+						}
+					}
+				}
+			} else {
+				if(kanbanList.ID == this.StatusID) {
+					return kanbanList;
+				}
+			}				
+		}
+		return null;
+	},
+	set List(value) {
+		if(Kanban.UsesCustomField) {
+			for(var ci = 0; ci < this.StorySource.custom_fields.length; ci++) {
+				if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
+					this.StorySource.custom_fields[ci].value == value.ID;
+				}
+			}
+		} else {
+			this.StatusID = value.ID;
+		}				
 	},
 
 	get ListID() {
@@ -492,17 +512,8 @@ Kanban.AddStoryAsyncCallback = function(result) {
 };
 
 Kanban.UpdateUnderlyingStorySource = function(originalStory) {
-	Mantis.IssueGet(originalStory.ID, function(mantisIssue) {
-		if(mantisIssue.project.id != Kanban.CurrentProject.ID) {
-			originalStory.Element.parentNode.removeChild(originalStory.Element);
-			return null;
-		} else {
-			/// Rebuild the story div
-			originalStory.StorySource = mantisIssue;
-			originalStory.BuildKanbanStoryDiv();
-			originalStory.Element.classList.add("nofadein");
-			return originalStory;
-		}
-	});
+	var mantisIssue = Mantis.IssueGet(originalStory.ID, null);
+	originalStory.StorySource = mantisIssue;
+	return originalStory;
 };
 

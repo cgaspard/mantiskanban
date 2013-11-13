@@ -494,7 +494,7 @@ var Mantis = {
 	},
 	
 	IssueGet : function(IssueID, callBack) {
-		hascallback = callBack == null ? false : true;
+		hascallback = callBack == null || callBack == undefined ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueGet.Name, Mantis.Methods.IssueGet.BuildParams(IssueID), hascallback, callBack);
 	},
 	IssueAttachmentGet : function(IssueAttachmentID, ContentType, callBack) {

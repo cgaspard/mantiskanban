@@ -38,6 +38,13 @@ var Kanban = {
 		return null;
 	},
 
+	GetListByID : function(listid) {
+		for(var li = 0; li < Kanban.Lists.length; li++) {
+			if(Kanban.Lists[li].ID == listid) return Kanban.Lists[li];
+		}
+		return null;
+	},
+
 	UndoInfo: {
 		StoryDiv: null,
 		ListDiv: null
@@ -175,6 +182,7 @@ var Kanban = {
 			kanbanListItem.Element = listDiv;
 			listDiv.setAttribute("class", "kanbanlist");
 			listDiv.setAttribute("id", "listid" + kanbanListItem.ID);
+			listDiv.setAttribute("listid", kanbanListItem.ID);
 			listDiv.addEventListener('dragover', HandleDragOver, false);
 			listDiv.addEventListener('dragenter', HandleDragEnter, false);
 			listDiv.addEventListener("drop", Drop, false);
@@ -307,6 +315,13 @@ function Drop(event) {
 
 }
 
+function MoveKanbanStoryToProperList(kanbanStory) {
+	// //Kanban.UsingCustomField && foundStory.List.ID != foundStory.ListID) || (!Kanban.UsingCustomField && 
+	var thisList = null;
+	thisList = Kanban.GetListByID(kanbanStory.StorySource.status.id);
+	thisList.AddNewStoryUI(kanbanStory);
+}
+
 function UpdateKanbanStoryComplete(result) {
 	console.log("UpdateKanbanStoryComplete " + result);
 	Kanban.BlockUpdates = false;
@@ -322,25 +337,22 @@ function UpdateKanbanStoryComplete(result) {
 		try {
 			var foundStory = Kanban.GetStoryByFieldValue("ID", document.getElementById("edit-story-id").value);
 			if(foundStory !== null) {
+
 				///If its null, then we werent' editing the story, just dropping between the lists
-				Kanban.UpdateUnderlyingStorySource(foundStory);
-				//var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
-				foundStory.Element.children[1].children[1].innerHTML = foundStory.Summary;
-				if(foundStory.HandlerName == Kanban.CurrentUser.UserName) {
-					document.getElementById("storycontainer" + foundStory.ID).classList.add("mystory");
-				} else {
-					document.getElementById("storycontainer" + foundStory.ID).classList.remove("mystory");
+
+
+				var foundStory = Kanban.UpdateUnderlyingStorySource(foundStory);
+
+				///Move it to the new location first before we rebuild the gui
+				if(foundStory.List.ID != document.getElementById(foundStory.Element.getAttribute("listid")).List.ID) {
+					MoveKanbanStoryToProperList(foundStory);
 				}
+
+				foundStory.BuildKanbanStoryDiv();
+				foundStory.Element.classList.add("nofadein");
+
+
 				/// Make sure the list is still valid
-				if(foundStory.List.ID != foundStory.ListID) {
-					for(var li = 0; li < Kanban.Lists.length; li++) {
-						var thisList = Kanban.Lists[li];
-						if(thisList.ID == foundStory.ListID) {
-							thisList.AddNewStoryUI(foundStory);
-						}
-					}
-				}
-				//foundStory.Element.children[1].children[1].innerHTML = newFoundStory.Summary;
 			}
 		} catch(e) {
 			console.log(e);
@@ -464,7 +476,7 @@ function SaveNewNote(storyID, noteText) {
 		var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
 		var newNote = Mantis.UpdateStructureMethods.Note.NewNote(noteText);
 		Mantis.IssueNoteAdd(editStory.ID, newNote);
-		editStory = Kanban.UpdateUnderlyingStorySource(editStory);
+		editStory = Kanban.UpdateUnderlyingStorySource(editStory, true);
 		AddNotesToStoryEditForm(editStory);
 		document.getElementById("edit-newnotetext").value = "";
 	} catch(e) {
@@ -713,10 +725,18 @@ function UpdateStoryHandlerComplete(result) {
 		try {
 			var foundStory = Kanban.GetStoryByFieldValue("ID", Kanban.LastUpdateStoryID);
 			if(foundStory !== null) {
+				foundStory = Kanban.UpdateUnderlyingStorySource(foundStory);
+			
+				if(foundStory.ProjectID != Kanban.CurrentProject.ID) {
+					foundStory.Element.parentNode.removeChild(foundStory.Element);
+					return;
+				}
+
 				///If its null, then we werent' editing the story, just dropping between the lists
-				Kanban.UpdateUnderlyingStorySource(foundStory);
+				
 				//var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
 				foundStory.BuildKanbanStoryDiv();
+				foundStory.JoinList();
 				foundStory.Element.classList.add("nofadein");
 			}
 		} catch(e) {
