@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"found",
+				"foundDefaultCategory"
+			],
+			[
+				"categ",
+				"category"
+			],
+			[
+				"buil",
+				"BuildListGUI"
+			],
+			[
+				"AddStory",
+				"AddNewStoryUI"
+			],
+			[
+				"lists",
+				"Lists"
+			],
+			[
+				"Use",
+				"UsesCustomField"
+			],
+			[
 				"story",
 				"StorySource"
 			],
@@ -42,10 +66,6 @@
 			[
 				"Custom",
 				"CustomFieldValue"
-			],
-			[
-				"Use",
-				"UserName"
 			],
 			[
 				"curr",
@@ -489,14 +509,14 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/bootstrap/css/bootstrap.icon-large.min.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/date.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
@@ -601,7 +621,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 111.0,
 		"where_history":
 		[
 			"",
@@ -616,6 +636,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"CustomField",
+			"openadd",
+			"UpdateUnderlyingStorySource",
+			"UpdateKanbanStoryComplete",
+			"UpdateUnderlyingStorySource",
+			"UpdateKanbanStoryComplete",
+			"AddNewStoryUI",
+			"IssueGet",
+			"UsesCustomField",
+			"ListID",
+			"UpdateKanbanStoryComplete",
+			"UpdateUnderlyingStorySource",
+			"UpdateUnderlyingStory",
+			"edit-story-new-note-save-button",
+			"BuildKanbanStoryDiv",
+			"fadein",
+			"BuildKanbanStoryDiv",
+			"fadein",
 			"BuildKanbanStoryDiv",
 			"fadein",
 			"fadin",
@@ -725,25 +763,7 @@
 			"in",
 			"insertchild",
 			"AddStory",
-			"addstory",
-			"append",
-			"AddStory",
-			": fixed",
-			"kanbanlist",
-			"addattachment",
-			"EditStory",
-			"attachmentdisplay",
-			"attachmentcontainer",
-			"attachmentsarea",
-			"area",
-			"attachmentsare",
-			"edit-story-attachment-container",
-			"AddAttachmentToStoryEditForm",
-			"		storyDiv.addEventListener('drop', Drop, false);\n		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
-			"		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
-			"OpenStory",
-			"op",
-			"OpenStory"
+			"addstory"
 		],
 		"highlight": true,
 		"in_selection": false,

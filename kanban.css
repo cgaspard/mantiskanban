@@ -518,7 +518,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 #prioritylegend { }
 
 #prioritylegend>div[priority] {
-	font-weight: normal;
 	border-top: 1px solid #444444;
 	border-left: 1px solid #444444;
 	border-bottom: 1px solid #444444;
@@ -537,41 +536,39 @@ div[priority="none"]{
 
 div[priority="low"]{
 	background-color: #74BBFB;
-	color:#000000;
+	color:#343434;
 }
 
 div[priority="normal"] {
 	background-color: #ffffff;
-	color:#000000;
+	color:#343434;
 }
-
 
 div[priority="high"]{
 	background-color: #ffff67;
-	color:#000000;
+	color:#343434;
 }
 
 div[priority="urgent"]{
 	background-color: #FF6600;
-	color:#000000;
+	color:#FFFFFF;
+}
+
+div[priority="immediate"]{
+	background-color: #fe0000;
+	color:#FFFFFF;
 }
 
 #prioritylegend>div[priority="immediate"] {
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-
 }
 
 #prioritylegend>div{
 	text-align: center;
-	font-weight: bold !important;
 	font-size: 14px;
 }
 
-div[priority="immediate"]{
-	background-color: #fe0000;
-	color:#000000;
-}
 
 .kanbanstorytitle{
 	height: 40px;
