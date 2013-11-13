@@ -717,7 +717,7 @@ function UpdateStoryHandlerComplete(result) {
 				Kanban.UpdateUnderlyingStorySource(foundStory);
 				//var newFoundStory = Kanban.GetStoryByFieldValue("ID", foundStory.ID);
 				foundStory.BuildKanbanStoryDiv();
-				foundStory.Element.classList.add("fadein");
+				foundStory.Element.classList.add("nofadein");
 			}
 		} catch(e) {
 			console.log(e);

@@ -385,6 +385,10 @@ html, body{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ) !important; /* IE6-9 */
 }
 
+.nofadein {
+  opacity: 1;
+ }
+
 .fadein {
 	-webkit-animation: fade 1.2s;
     animation: fade 1.2s;
@@ -511,9 +515,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 	vertical-align: middle;
 }
 
-#prioritylegend {
-	margin-top: 5px;
-}
+#prioritylegend { }
 
 #prioritylegend>div[priority] {
 	font-weight: normal;

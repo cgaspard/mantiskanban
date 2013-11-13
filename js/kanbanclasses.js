@@ -8,7 +8,6 @@ var KanbanUser = function(RawObject) {
 }
 
 KanbanUser.prototype = {
-
 	get UserName() {
 		return this.UserSource.name;
 	}, set UserName(value) {
@@ -31,6 +30,7 @@ KanbanUser.prototype = {
 		return this.UserSource.id;
 	}
 }
+
 var KanbanProject = function(RawObject) {
 	var self = this;
 	if(typeof(RawObject) == "string") {
@@ -43,6 +43,7 @@ var KanbanProject = function(RawObject) {
 	}
 	self._lists = [];
 }
+
 KanbanProject.prototype = {
 	get Lists() {
 		return this._lists;
@@ -82,7 +83,8 @@ var KanbanList = function(RawObject) {
 		this._stories = [];
 		this.Element = null;
 		this.UsesCustomField = false;
-	}	
+}	
+
 KanbanList.prototype = {
 
 	get Stories() {
@@ -456,7 +458,7 @@ KanbanStory.prototype = {
 
 		if(this.Element != null) {
 			var replacedNode = this.Element.parentNode.replaceChild(storyDiv, this.Element);
-			this.Element.classList.add("fadein");
+			//this.Element.classList.add("fadein");
 		}
 
 		this.Element = storyDiv;
@@ -490,16 +492,17 @@ Kanban.AddStoryAsyncCallback = function(result) {
 };
 
 Kanban.UpdateUnderlyingStorySource = function(originalStory) {
-	var mantisIssue = Mantis.IssueGet(originalStory.ID);
-	originalStory.StorySource = mantisIssue;
-	if(originalStory.ProjectID != Kanban.CurrentProject.ID) {
-		originalStory.Element.parentNode.removeChild(originalStory.Element);
-		return null;
-	} else {
-		originalStory.BuildKanbanStoryDiv();
-		originalStory.Element.classList.add("fadein");
-		return originalStory;
-	}
-
+	Mantis.IssueGet(originalStory.ID, function(mantisIssue) {
+		if(mantisIssue.project.id != Kanban.CurrentProject.ID) {
+			originalStory.Element.parentNode.removeChild(originalStory.Element);
+			return null;
+		} else {
+			/// Rebuild the story div
+			originalStory.StorySource = mantisIssue;
+			originalStory.BuildKanbanStoryDiv();
+			originalStory.Element.classList.add("nofadein");
+			return originalStory;
+		}
+	});
 };
 
