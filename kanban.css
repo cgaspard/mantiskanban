@@ -169,15 +169,7 @@ html, body{
 	width: 120px;
 	border-radius: 5px 5px 5px 5px;
 }
-.headerarea{
-	/*background: #666c70;*/
-	height: 85px;
-	width:100%;
-	background: #666c70
-	/*background: linear-gradient(to bottom, #666c70 1px,#555b60 80px, #d3d3d3 82px);*/
 
-
-}
 
 .newnotesavebutton, .kanbannewstory{
 	cursor: pointer;
@@ -220,23 +212,6 @@ html, body{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
 }
 
-.contentarea{
-	text-align: left;
-	position: relative;
-	top: 0px;
-	display:none;
-	width: 100%; 
-	height: calc(100% - 85px); 
-	border-top: 2px solid #000000;
-	border-bottom: 2px solid #000000;
-	background-color: #f6f6f6;
-	white-space: nowrap;
-	transition: height .5s;	
-}
-
-.contentarea[showingpriority="true"] {
-	height: calc(100% - 125px); 
-}
 
 #priorities-displayer {
 	display: none;
@@ -267,6 +242,32 @@ html, body{
 
 }
 
+
+.contentarea{
+	text-align: left;
+	position: relative;
+	top: 0px;
+	display:none;
+	width: 100%; 
+	height: calc(100% - 85px); 
+	border-top: 4px solid #bcbcbc;
+	border-bottom: 2px solid #000000;
+	background-color: #f6f6f6;
+	white-space: nowrap;
+	transition: height .5s;	
+}
+
+.contentarea[showingpriority="true"] {
+	height: calc(100% - 125px); 
+}
+
+.headerarea{
+	/*background: #666c70;*/
+	height: 85px;
+	width:100%;
+	background: #565656;
+}
+
 #kanbancontent{
 	top:0px;
 	height: 100%;
@@ -274,7 +275,7 @@ html, body{
 	padding-top: 5px;
 	overflow: auto;
 	display: inline-block;
-	background-color: #f6f6f6;
+	background-color: #006688;
 	padding: 10px 10px 10px 10px;
 	white-space: nowrap;
 	transition: width .5s;
@@ -289,7 +290,7 @@ html, body{
 	position: relative;
 	vertical-align: top;
 	display: inline-block;
-	max-height: 100%;
+	background-color: #efefef;
 	width: 250px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -298,6 +299,8 @@ html, body{
 	-ms-user-select: none;
 	user-select: none;
 	transition: width .5s;
+	border-radius: 4px 4px 4px 4px;
+	padding-bottom: 10px;
 }
 
 .kanbanliststorycontainer {
@@ -306,6 +309,7 @@ html, body{
 	overflow-y: auto;
 	overflow-x: hidden;
 	display:block;
+	background-color: #efefef;
 }
 
 .kanbanlisthidebtn {
@@ -314,55 +318,24 @@ html, body{
 
 .kanbanlistdroparea{
 	background: #d2ff52;
-	/* Old browsers */
-	background: -moz-linear-gradient(top, #d2ff52 0%, #91e842 100%);
-	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2ff52), color-stop(100%,#91e842));
-	/* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #d2ff52 0%,#91e842 100%);
-	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #d2ff52 0%,#91e842 100%);
-	/* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #d2ff52 0%,#91e842 100%);
-	/* IE10+ */
-	background: linear-gradient(to bottom, #d2ff52 0%,#91e842 100%);
-	/* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=0 );
-	/* IE6-9 */
-	border-radius: 0 0 5 5;
 	color: transparent;
-	padding: 5 5 5 5;
 	height: 30px;
-	-moz-box-shadow:
-	0px 1px 3px rgba(000,000,000,0.5),
-	inset 0px 0px 1px rgba(255,255,255,0.7);
-	-webkit-box-shadow:
-	0px 1px 3px rgba(000,000,000,0.5),
-	inset 0px 0px 1px rgba(255,255,255,0.7);
-	text-shadow:
-	0px -1px 0px rgba(000,000,000,0.4),
-	0px 1px 0px rgba(255,255,255,0.3);
-	border-bottom: solid 1px #000000;
-	border-left: solid 1px #000000;
-	border-right: solid 1px #000000;
-	padding-left:5px;
+	font-weight: bold;
 	padding-top: 5px;
+	display:none;
 }
 
 .kanbanlisttitle{
-	position: relative;
-    top: 0px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
+	font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+	font-size: 14px;
+	text-align: left;
 	font-weight: bold;
 	height: 30px;
-	color: #ffffff;
-	padding: 6px 12px;
-	background: -moz-linear-gradient(top, #6b6b6b 0%,	#000000);
-	background: -webkit-gradient(	linear, left top, left bottom,	from(#6b6b6b),	to(#000000));
-	text-shadow:
-		0px -1px 0px rgba(000,000,000,0.4),
-		0px 1px 0px rgba(255,255,255,0.3);
+	color: #000000;
+	padding-left: 10px;
+	padding-top: 5px;
+	background: #efefef; /* Old browsers */
+	border-radius: 4px 4px 0px 0px;
 }
 
 .kanbanlistspacer {
@@ -374,15 +347,14 @@ html, body{
 	opacity: 0;
 	/*display:none;*/
 	overflow:hidden; 
-	border: solid 1px #000000;
+	border: solid 1px #898989;
 	background: #f0f9ff; /* Old browsers */
-	background: -moz-linear-gradient(top,  #f0f9ff 0%, #cbebff 47%, #a1dbff 100%) !important; /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f9ff), color-stop(47%,#cbebff), color-stop(100%,#a1dbff)) !important; /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%) !important; /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%) !important; /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%) !important; /* IE10+ */
-	background: linear-gradient(to bottom,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%) !important; /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ) !important; /* IE6-9 */
+	border-radius: 6px 6px 6px 6px;
+	margin:5px 8px 0px 8px;
+}
+
+.kanbanstorycontainer:last-child {
+	margin-bottom: 4px;
 }
 
 .nofadein {
@@ -415,8 +387,8 @@ html, body{
 }
 
 .kanbanstory{
-	background: rgb(238,238,238);
-
+	/*background: rgb(238,238,238);*/
+	background-color: #FFFFFF;
 	display: table;
     table-layout: fixed;
     width: 100%;
@@ -507,7 +479,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 .kanbanstorypriority{
 	height: 40px;
 	background-color: #334477;
-	border-right: solid 1px #444444;
+	border-right: solid 1px #898989;
 	font-size: 15px;
 	padding-top: 10px;
 	font-family: Fixed, monospace;
@@ -571,6 +543,7 @@ div[priority="immediate"]{
 
 
 .kanbanstorytitle{
+	
 	height: 40px;
 	display: table-cell;
 	overflow: hidden;
