@@ -372,7 +372,7 @@ function LoadFilterAsync(FilterID, Page, Limit, Callback) {
 			var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
 			CreateKanbanStoriesFromMantisIssues(retObj);
 		} catch (e) {
-			Kanban.StopLoading();
+			StopLoading();
 			alert("Error Loading Stories: " + e.message);
 		}
 
