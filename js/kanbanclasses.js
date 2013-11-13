@@ -158,7 +158,7 @@ KanbanStory.prototype = {
 	get List() {
 		for(var li = 0; li < Kanban.Lists.length; li++) {
 			var kanbanList = Kanban.Lists[li];
-			if(Kanban.UsesCustomField) {
+			if(Kanban.UsingCustomField) {
 				for(var ci = 0; ci < this.StorySource.custom_fields.length; ci++) {
 					if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
 						if(this.StorySource.custom_fields[ci].value == kanbanList.ID) {
@@ -175,7 +175,7 @@ KanbanStory.prototype = {
 		return null;
 	},
 	set List(value) {
-		if(Kanban.UsesCustomField) {
+		if(Kanban.UsingCustomField) {
 			for(var ci = 0; ci < this.StorySource.custom_fields.length; ci++) {
 				if(this.StorySource.custom_fields[ci].field.name == Kanban._listIDField) {
 					this.StorySource.custom_fields[ci].value == value.ID;
