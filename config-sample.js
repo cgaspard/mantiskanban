@@ -28,6 +28,14 @@ Kanban.AutoStatusOnCustomField = {
 	}
 }
 
+/// Use this to set default icons for cateogories
+Kanban.CategoryIconMap =  {
+	"Bug" : "info-sign",
+	"Task" : "calendar",
+	"Feature" : "star"
+}
+
+
 /// This is used to just define the Default Settings object, this info gets saved to local storage for next login
 var DefaultSettings = {
 	username:"",

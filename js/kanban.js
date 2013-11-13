@@ -683,11 +683,18 @@ function OpenAddStory() {
 	}
 	selectAddPriority.selectedIndex = 0;
 
+	var foundDefaultCategory = false;
 	for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
 		var category = Mantis.ProjectCategories[i];
 		selectAddCategories.options[selectAddCategories.options.length] = new Option(category.capitalize(), category);
+		if(Kanban.DefaultCategory != undefined) {
+			if(Kanban.DefaultCategory == category) {
+				foundDefaultCategory = true;
+				selectAddCategories.selectedIndex = i;
+			}
+		}
 	}
-	selectAddCategories.selectedIndex = 0;
+	if(!foundDefaultCategory) selectAddCategories.selectedIndex = 0;
 
 	ShowAddStory();
 }
