@@ -559,12 +559,12 @@ div[priority="immediate"] {
 	position: relative;
 	left: 60px;
 	width: calc(100% - 65px);
-	padding-top: 10px;
+	padding-top: 12px;
 	overflow: hidden;
 	white-space: nowrap;
 	cursor: pointer !important;
 	padding-left: 7px;
-	font-size: 15px;
+	font-size: 13px;
 	vertical-align: middle;
 	text-align: left;
 	text-overflow:ellipsis;
