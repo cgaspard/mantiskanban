@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"pri",
+				"priority"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
 				"found",
 				"foundDefaultCategory"
 			],
@@ -100,10 +108,6 @@
 				"prioritylegend"
 			],
 			[
-				"pri",
-				"prioritylegend"
-			],
-			[
 				"border-rad",
 				"border-top-left-radius"
 			],
@@ -142,10 +146,6 @@
 			[
 				"origina",
 				"originalStory"
-			],
-			[
-				"text",
-				"text-decoration"
 			],
 			[
 				"b",
@@ -617,11 +617,11 @@
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 74.0
 	},
 	"find_in_files":
 	{
-		"height": 111.0,
+		"height": 114.0,
 		"where_history":
 		[
 			"",
@@ -636,6 +636,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"kanbanstorytitle",
+			"100deg",
+			"115deg",
+			"kanbanstory",
+			"storytitle",
+			"kanbantstorytitle",
+			"kanbanstorytitle",
+			"; :",
+			"colorCodes",
+			"kanbanstorytitle",
+			"contentarea",
+			"kanbanstory",
+			"priority",
+			":last",
+			"kanbanstory",
+			"kanbanstory	",
+			"kanbanstory",
+			"canbanstory",
+			"kanbanlist",
 			"CustomField",
 			"openadd",
 			"UpdateUnderlyingStorySource",
@@ -744,26 +763,7 @@
 			"notesarea",
 			"border-bottom",
 			"edit-story-ti",
-			"priority",
-			"#prioritylegend",
-			"priority",
-			"priority		",
-			"users",
-			"priorityleg",
-			" kanbanstorypriority",
-			"priority",
-			"priorit",
-			"priority",
-			"Login",
-			"login",
-			"priority",
-			"BuildKanbanStoryDiv",
-			"appendchild",
-			"insertchild",
-			"in",
-			"insertchild",
-			"AddStory",
-			"addstory"
+			"priority"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -771,6 +771,9 @@
 		"regex": true,
 		"replace_history":
 		[
+			"135deg",
+			"100deg",
+			" :",
 			"Kanban.CurrentUser",
 			"attachment",
 			"Attachment",
