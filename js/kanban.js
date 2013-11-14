@@ -838,6 +838,7 @@ function EditStory(storyID) {
 
 	for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
 		var category = Mantis.ProjectCategories[i];
+		if(category == null) category = "";
 		selectEditCategory.options[selectEditCategory.options.length] = new Option(category.capitalize(), category);
 		if(thisStory.CategoryID == category) {
 			selectEditCategory.selectedIndex = i;
