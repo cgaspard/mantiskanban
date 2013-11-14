@@ -10,6 +10,35 @@ String.prototype.htmlencode = function() {
 }
 
 function GetStyleCodeFor3Digits(digits) {
+	var colorObject = GetColorCodeFor3Digits(digits);
+	var textContrast = GetColorContrastForRBG(colorObject.first, colorObject.second, colorObject.third);
+	return "color: " + textContrast + "; background: linear-gradient(135deg, rgba(255,255,255,0) 0%,rgba(41,137,216,0) 50%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 51%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 100%) !important; /* W3C */"
+}
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+function GetColorContrastForRBG(r, g, b) {
+	var hexValue = rgbToHex(r, g, b);
+	return getContrastYIQ(hexValue);
+}
+
+function getContrastYIQ(hexcolor){
+	if(hexcolor.indexOf("#") > 0) hexcolor = hexcolor.replace("#", '');
+	var r = parseInt(hexcolor.substr(0,2),16);
+	var g = parseInt(hexcolor.substr(2,2),16);
+	var b = parseInt(hexcolor.substr(4,2),16);
+	var yiq = ((r*299)+(g*587)+(b*114))/1000;
+	return (yiq >= 128) ? '#343434' : 'white';
+}
+
+function GetColorCodeFor3Digits(digits) {
 	var first = Math.round(digits.charCodeAt(0) * 1.5);
 	var second = Math.round(digits.charCodeAt(1) * 1.5);
 	var third = Math.round(digits.charCodeAt(2) * 1.5);
@@ -46,7 +75,7 @@ function GetStyleCodeFor3Digits(digits) {
 	
 
 
-	return "color: #343434; background: linear-gradient(135deg, rgba(255,255,255,0) 0%,rgba(41,137,216,0) 50%,rgba(" + first + "," + second + "," + third + ",1) 51%,rgba(" + first + "," + second + "," + third + ",1) 100%) !important; /* W3C */"
+	return {"first":first, "second":second, "third":third};
 }
 
 var colorCodes = {
