@@ -428,7 +428,7 @@ KanbanStory.prototype = {
 		storyDivSeverityContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyContainerDiv.appendChild(storyDivSeverityContainer);
 
-		var storyDivSeverity = document.createElement("div");
+		var storyDivSeverity = document.createElement("section");
 		storyDivSeverity.setAttribute("class", "kanbanstorypriority");
 		storyDivSeverity.setAttribute("id", "storyseverity" + this.ID);
 		storyDivSeverity.setAttribute("priority", this.PriorityName);
@@ -436,7 +436,31 @@ KanbanStory.prototype = {
 		storyDivSeverity.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivSeverity.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyDivSeverity.innerHTML = this.ID;
+		if(this.CategoryID != null) {
+			storyDivSeverity.innerHTML += "<br><span class=\"categoryicon glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID) + "\"></span> ";
+		}
+
 		storyDivSeverityContainer.appendChild(storyDivSeverity);
+
+		var storyDivButtonContainer = document.createElement("section");
+		storyDivButtonContainer.setAttribute("class", "kabanhandlercontainer");
+		storyDivButtonContainer.setAttribute("onclick", "EditStory('" + this.ID + "');");
+		storyDivButtonContainer.setAttribute("listid", "listid" + this.ListID);
+		storyDivButtonContainer.setAttribute("storyid", "storydiv" + this.ID);
+		storyDivButtonContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
+		storyDivSeverityContainer.appendChild(storyDivButtonContainer);
+
+		var storyDivButton = document.createElement("div");
+		storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
+		storyDivButton.setAttribute("class", "handlercontainer");
+		storyDivButton.setAttribute("listid", "listid" + this.ListID);
+		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
+		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
+		if(this.HandlerName != "") {
+			storyDivButton.setAttribute("style", colorCodes[this.HandlerName.substring(0, 1).toUpperCase()].style);
+		}
+		storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
+		storyDivButtonContainer.appendChild(storyDivButton);
 
 		var storyDivTitle = document.createElement("span");
 		
@@ -446,9 +470,6 @@ KanbanStory.prototype = {
 		storyDivTitle.setAttribute("listid", "listid" + this.ListID);
 		storyDivTitle.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivTitle.setAttribute("dropdivid", "dropdiv" + this.ID);
-		if(this.CategoryID != null) {
-			storyDivTitle.innerHTML += "<span class=\"categoryicon glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID) + "\"></span> ";
-		}
 		if(this.Attachments.length > 0) {
 			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-file\"></span> ";
 		}
@@ -456,25 +477,7 @@ KanbanStory.prototype = {
 		
 		storyContainerDiv.appendChild(storyDivTitle);
 
-		var storyDivButtonContainer = document.createElement("div");
-		storyDivButtonContainer.setAttribute("class", "kabanhandlercontainer");
-		storyDivButtonContainer.setAttribute("onclick", "EditStory('" + this.ID + "');");
-		storyDivButtonContainer.setAttribute("listid", "listid" + this.ListID);
-		storyDivButtonContainer.setAttribute("storyid", "storydiv" + this.ID);
-		storyDivButtonContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
-		storyContainerDiv.appendChild(storyDivButtonContainer);
 
-		var storyDivButton = document.createElement("div");
-		storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
-		storyDivButton.setAttribute("class", "handlercontainer");
-		storyDivButton.setAttribute("listid", "listid" + this.ListID);
-		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
-		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
-		if(this.HandlerName != "") {
-			storyDivButton.setAttribute("style", " color: " + colorCodes[this.HandlerName.substring(0, 1).toUpperCase()].foreground + ";  background-color:" + colorCodes[this.HandlerName.substring(0, 1).toUpperCase()].background + ";");
-		}
-		storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
-		storyDivButtonContainer.appendChild(storyDivButton);
 
 		if(this.Element != null) {
 			var replacedNode = this.Element.parentNode.replaceChild(storyDiv, this.Element);
