@@ -172,7 +172,9 @@ KanbanStory.prototype = {
 				}
 			}				
 		}
-		return null;
+		/// Return the first list if none are available
+		return Kanban.Lists[0]
+		//return null;
 	},
 	set List(value) {
 		if(Kanban.UsingCustomField) {
