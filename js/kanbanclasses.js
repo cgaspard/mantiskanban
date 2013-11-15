@@ -426,6 +426,9 @@ KanbanStory.prototype = {
 
 		var kanbanStoryHeaderAreaDiv = document.createElement("div");
 		kanbanStoryHeaderAreaDiv.setAttribute("class", "kanbanstoryheaderarea");
+		kanbanStoryHeaderAreaDiv.setAttribute("listid", "listid" + this.ListID);
+		kanbanStoryHeaderAreaDiv.setAttribute("storyid", "storydiv" + this.ID);
+		kanbanStoryHeaderAreaDiv.setAttribute("dropdivid", "dropdiv" + this.ID);;
 		storyContainerDiv.appendChild(kanbanStoryHeaderAreaDiv);
 
 		var storyDivSeverity = document.createElement("section");

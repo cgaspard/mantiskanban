@@ -199,6 +199,7 @@ var Kanban = {
 			var listStoryContainer = document.createElement("div");
 			listStoryContainer.setAttribute("class", "kanbanliststorycontainer");
 			listStoryContainer.setAttribute("id", "kanbanliststorycontainer" + kanbanListItem.ID);
+			listStoryContainer.setAttribute("listid", "listid" + kanbanListItem.ID);
 			listDiv.appendChild(listStoryContainer);
 			listDiv.Container = listStoryContainer;
 			kanbanListItem.Container = listStoryContainer;
