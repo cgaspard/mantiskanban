@@ -286,7 +286,7 @@ html, body{
 }
  	
 .kanbanlist{
-	border: 1px solid #404040;
+	border: 1px solid #808080;
 	position: relative;
 	vertical-align: top;
 	display: inline-block;
@@ -347,8 +347,7 @@ html, body{
 	opacity: 0;
 	/*display:none;*/
 	overflow:hidden;
-	border: solid 1px #787878;
-	background: #f0f9ff; /* Old browsers */
+	border: solid 1px #ababab;
 	border-radius: 6px 6px 6px 6px;
 	margin:5px 8px 0px 8px;
 }
@@ -445,9 +444,7 @@ html, body{
 	background: #ffff88; /* Old browsers */
 }
 
-
 .kanbanstoryissuenumber{
-	border-left: solid 1px #898989;
 	display: block;
 	font-size: 12px;
 	font-weight: bolder;
@@ -458,7 +455,8 @@ html, body{
     top           : 0px;
     width: 60px;
     text-align: left;
-	background: linear-gradient(135deg, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(41,137,216,0) 51%,rgba(255,255,255,0) 100%); /* W3C */
+    color:#ffffff;
+	background: linear-gradient(135deg, #454545 0%, #454545 50%,rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%); /* W3C */
 }
 
 
@@ -478,12 +476,12 @@ html, body{
     top           : 0px;
     width: 60px;
     height: 40px;
-	background: linear-gradient(135deg, rgba(255,255,255,0) 0%,rgba(41,137,216,0) 50%,#FFFFFF 51%,#FFFFFF 100%) !important; /* W3C */
 	vertical-align: middle;
 	color:#FFFFFF;
 	padding-left: 30px;
 	padding-top: 16px;
-	border-right: 1px solid #454545;
+	border-right: 1px solid #ababab;
+	
 }
 
 .kanbanstoryprioritycontainer {
@@ -492,6 +490,7 @@ html, body{
 	left: 10px;
 	height: 3px;
 	width: 90%;
+
 }
 
 #prioritylegend { }
@@ -506,15 +505,6 @@ html, body{
 #prioritylegend>div[priority="none"] {
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;	
-}
-
-div[priority] {
-	font-weight: bold;
-}
-
-section[priority] {
-	background: linear-gradient(135deg, #565656 0%, #565656 50%,rgba(41,137,216,0) 51%,rgba(255,255,255,0) 100%); /* W3C */
-	color:#ffffff;
 }
 
 div[priority="none"] {
