@@ -4,76 +4,16 @@
 		"selected_items":
 		[
 			[
-				"pri",
-				"priority"
-			],
-			[
-				"text",
-				"text-align"
-			],
-			[
-				"found",
-				"foundDefaultCategory"
-			],
-			[
-				"categ",
-				"category"
-			],
-			[
-				"buil",
-				"BuildListGUI"
-			],
-			[
-				"AddStory",
-				"AddNewStoryUI"
-			],
-			[
-				"lists",
-				"Lists"
-			],
-			[
-				"Use",
-				"UsesCustomField"
-			],
-			[
-				"story",
-				"StorySource"
-			],
-			[
-				"cate",
-				"category"
-			],
-			[
-				"CAte",
-				"CategoryIconMap"
-			],
-			[
-				"catego",
-				"CategoryID"
-			],
-			[
-				"Projectc",
-				"ProjectCategories"
-			],
-			[
-				"Categorie",
-				"ProjectCategories"
-			],
-			[
-				"List",
-				"ListID"
-			],
-			[
-				"Clear",
-				"ClearAllDragHoverAreas"
-			],
-			[
 				"UpdateStr",
 				"UpdateStructureMethods"
 			],
 			[
 				"Custom",
 				"CustomFieldValue"
+			],
+			[
+				"Use",
+				"UserName"
 			],
 			[
 				"curr",
@@ -105,6 +45,10 @@
 			],
 			[
 				"priority",
+				"prioritylegend"
+			],
+			[
+				"pri",
 				"prioritylegend"
 			],
 			[
@@ -146,6 +90,10 @@
 			[
 				"origina",
 				"originalStory"
+			],
+			[
+				"text",
+				"text-decoration"
 			],
 			[
 				"b",
@@ -332,6 +280,10 @@
 				"StoryID"
 			],
 			[
+				"List",
+				"ListID  (variable)"
+			],
+			[
 				"project",
 				"ProjectCustomFields"
 			],
@@ -509,14 +461,14 @@
 	},
 	"file_history":
 	[
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/bootstrap/css/bootstrap.icon-large.min.css",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/home/cgaspard/Downloads/Server.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/date.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
@@ -617,11 +569,11 @@
 	],
 	"find":
 	{
-		"height": 74.0
+		"height": 41.0
 	},
 	"find_in_files":
 	{
-		"height": 114.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -636,56 +588,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"kanbanstorytitle",
-			"100deg",
-			"115deg",
 			"kanbanstory",
-			"storytitle",
-			"kanbantstorytitle",
-			"kanbanstorytitle",
-			"; :",
-			"colorCodes",
-			"kanbanstorytitle",
-			"contentarea",
+			"appendChild",
 			"kanbanstory",
-			"priority",
-			":last",
-			"kanbanstory",
-			"kanbanstory	",
-			"kanbanstory",
-			"canbanstory",
-			"kanbanlist",
-			"CustomField",
-			"openadd",
-			"UpdateUnderlyingStorySource",
-			"UpdateKanbanStoryComplete",
-			"UpdateUnderlyingStorySource",
-			"UpdateKanbanStoryComplete",
-			"AddNewStoryUI",
-			"IssueGet",
-			"UsesCustomField",
-			"ListID",
-			"UpdateKanbanStoryComplete",
-			"UpdateUnderlyingStorySource",
-			"UpdateUnderlyingStory",
-			"edit-story-new-note-save-button",
-			"BuildKanbanStoryDiv",
-			"fadein",
-			"BuildKanbanStoryDiv",
-			"fadein",
-			"BuildKanbanStoryDiv",
-			"fadein",
-			"fadin",
-			"BuildKanbanStoryDiv",
-			"UpdateStoryHandlerComplete",
-			"UpdateUnderlyingStorySource",
-			"BuildKanbanStoryDiv",
-			"AddNewStoryUI",
-			"UpdateKanbanStoryComplete",
-			"classList",
-			"replaceChild",
-			"BuildListGUI",
-			"kanbanlist",
+			"LoadFilterAsync",
+			"DoneLoadingIssuesCallback",
+			"LoadFilterAsync",
+			"SelectProject",
 			"UpdateCustomField",
 			"UpdateListForCanbanStory",
 			"edit-newnotetext",
@@ -763,6 +672,49 @@
 			"notesarea",
 			"border-bottom",
 			"edit-story-ti",
+			"priority",
+			"#prioritylegend",
+			"priority",
+			"priority		",
+			"users",
+			"priorityleg",
+			" kanbanstorypriority",
+			"priority",
+			"priorit",
+			"priority",
+			"Login",
+			"login",
+			"priority",
+			"BuildKanbanStoryDiv",
+			"appendchild",
+			"insertchild",
+			"in",
+			"insertchild",
+			"AddStory",
+			"addstory",
+			"append",
+			"AddStory",
+			": fixed",
+			"kanbanlist",
+			"addattachment",
+			"EditStory",
+			"attachmentdisplay",
+			"attachmentcontainer",
+			"attachmentsarea",
+			"area",
+			"attachmentsare",
+			"edit-story-attachment-container",
+			"AddAttachmentToStoryEditForm",
+			"		storyDiv.addEventListener('drop', Drop, false);\n		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
+			"		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
+			"OpenStory",
+			"op",
+			"OpenStory",
+			"EditStory",
+			"Editstory",
+			"OPenedit",
+			"attachments",
+			"attac",
 			"priority"
 		],
 		"highlight": true,
@@ -771,9 +723,6 @@
 		"regex": true,
 		"replace_history":
 		[
-			"135deg",
-			"100deg",
-			" :",
 			"Kanban.CurrentUser",
 			"attachment",
 			"Attachment",

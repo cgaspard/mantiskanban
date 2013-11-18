@@ -24,7 +24,8 @@ html, body{
 	width: 29%;
 	/*background-color: #dfdfdf;*/
 	padding: 15px 15px 15px 15px;
-	border-left: solid 2px #000000;f
+	border-left: solid 2px #000000;
+	position: absolute;
 }	
 
 #add-story-form  {
@@ -250,7 +251,6 @@ html, body{
 	display:none;
 	width: 100%; 
 	height: calc(100% - 85px); 
-	border-top: 4px solid #bcbcbc;
 	border-bottom: 2px solid #000000;
 	background-color: #f6f6f6;
 	white-space: nowrap;
