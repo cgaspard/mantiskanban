@@ -21,7 +21,7 @@ html, body{
 .editform {
 	overflow: auto;
 	height:100%;
-	width: 29%;
+	width: 30%;
 	/*background-color: #dfdfdf;*/
 	padding: 15px 15px 15px 15px;
 	border-left: solid 2px #000000;
@@ -50,14 +50,22 @@ html, body{
 	height: 200px;
 }
 
-#edit-description, #edit-reproduce{
+#edit-story-notes-container {
+	height: 100%;
+	background-color: #dedede;
+}
+
+#edit-story-new-note-save-button {
+	display:inline-block;
+}
+
+#edit-description, #edit-reproduce {
 	width: 100%;
 	height: 300px;
 }
 
 #edit-newnotetext {
-	height: 100px;
-	height: 150px;
+	display: inline-block;
 }
 
 .realcontentcontainer{
@@ -429,6 +437,9 @@ html, body{
 	max-height: 400px;
 	border: 2px solid orange;
 	cursor: hand;
+}
+
+.kanbanstory:hover > .kanbanstorytitle {
 }
 
 .kanbanstory.mystory{

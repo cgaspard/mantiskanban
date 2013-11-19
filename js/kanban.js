@@ -598,22 +598,16 @@ function AddNotesToStoryEditForm(KanbanStory) {
 		noteDiv.setAttribute("class", "notecontainer");
 		noteDiv.setAttribute("storyid", KanbanStory.ID);
 
+		var noteDate = new Date(Date.parse(thisNote.date_submitted));
+
 		var noteSubmitterDiv = document.createElement("div");
 		noteSubmitterDiv.setAttribute("class", "notesubmitter");
-		noteSubmitterDiv.innerHTML = thisNote.reporter.real_name;
+		noteSubmitterDiv.innerHTML = thisNote.reporter.real_name + " : " + noteDate.toLocaleString();
 		noteDiv.appendChild(noteSubmitterDiv);
-
-		var noteDateSubbmitedDiv = document.createElement("div");
-		noteDateSubbmitedDiv.setAttribute("class", "notedatesubmitted");
-		var testDate = new Date(Date.parse(thisNote.date_submitted));
-
-		//noteDateSubbmitedDiv.innerHTML = thisNote.date_submitted;
-		noteDateSubbmitedDiv.innerHTML = testDate;
-		noteDiv.appendChild(noteDateSubbmitedDiv);
 
 		var noteTextDiv = document.createElement("div");
 		noteTextDiv.setAttribute("class", "notetext");
-		noteTextDiv.innerHTML = "<pre>" + thisNote.text + "</pre>";
+		noteTextDiv.innerHTML = thisNote.text;
 		noteDiv.appendChild(noteTextDiv);
 
 		notesContainer.appendChild(noteDiv);
@@ -778,7 +772,7 @@ function EditStory(storyID) {
 
 	$("#edit-newnotetext").val("");
 
-	document.getElementById("edit-story-notes-container").scrollTop = 0;
+	document.getElementById("edit-story-notes-container").scrollTop = document.getElementById("edit-story-notes-container").clientHeight;
 	document.getElementById("edit-datesubmitted").innerHTML = thisStory.DateSubmitted;
 
 	var selectReportingUser = document.getElementById("edit-reporter");

@@ -573,7 +573,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 111.0,
 		"where_history":
 		[
 			"",
@@ -588,6 +588,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"editform",
+			"edit-newnotetext",
+			"edit-story-new-note-save-button",
+			"edit-story-notes-container",
 			"kanbanstory",
 			"appendChild",
 			"kanbanstory",
@@ -711,11 +715,7 @@
 			"op",
 			"OpenStory",
 			"EditStory",
-			"Editstory",
-			"OPenedit",
-			"attachments",
-			"attac",
-			"priority"
+			"Editstory"
 		],
 		"highlight": true,
 		"in_selection": false,
