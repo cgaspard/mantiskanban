@@ -433,7 +433,7 @@ div.notecontainer {
     table-layout: fixed;
     width: 100%;
 	/* border-radius: 2px 2px 2px 2px; */
-	
+	position:relative;
 	cursor: move;
 
 }
@@ -482,6 +482,13 @@ div.notecontainer {
 
 .kanbanstory.glow { 
 	background: #ffff88; /* Old browsers */
+}
+
+.label {
+	position: absolute;
+	top: -0px;
+	right: -0px;
+	z-index: 9999;
 }
 
 .kanbanstoryissuenumber{

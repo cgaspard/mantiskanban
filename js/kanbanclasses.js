@@ -238,6 +238,7 @@ KanbanStory.prototype = {
 	},
 
 	get Notes() {
+		if(this.StorySource.notes == undefined) return [];
 		return this.StorySource.notes;
 	},
 
@@ -423,7 +424,13 @@ KanbanStory.prototype = {
 		}
 		storyDiv.appendChild(storyContainerDiv);
 
-
+		if(this.Notes.length > 0) {
+			var notesBadge = document.createElement("div");
+			notesBadge.classList.add("label");
+			notesBadge.innerHTML += this.Notes.length;	
+			storyContainerDiv.appendChild(notesBadge);
+		}
+	
 		var kanbanStoryHeaderAreaDiv = document.createElement("div");
 		kanbanStoryHeaderAreaDiv.setAttribute("class", "kanbanstoryheaderarea");
 		kanbanStoryHeaderAreaDiv.setAttribute("listid", "listid" + this.ListID);
