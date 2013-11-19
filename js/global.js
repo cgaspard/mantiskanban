@@ -12,6 +12,13 @@ String.prototype.htmlencode = function() {
 function GetStyleCodeFor3Digits(digits) {
 	var colorObject = GetColorCodeFor3Digits(digits);
 	var textContrast = GetColorContrastForRBG(colorObject.first, colorObject.second, colorObject.third);
+	return "color: " + textContrast + "; background: rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) !important; /* W3C */"
+}
+
+
+function GetStyleCodeFor3DigitsHalfShaded(digits) {
+	var colorObject = GetColorCodeFor3Digits(digits);
+	var textContrast = GetColorContrastForRBG(colorObject.first, colorObject.second, colorObject.third);
 	return "color: " + textContrast + "; background: linear-gradient(135deg, rgba(255,255,255,0) 0%,rgba(41,137,216,0) 50%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 51%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 100%) !important; /* W3C */"
 }
 

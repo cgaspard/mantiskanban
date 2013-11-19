@@ -452,8 +452,6 @@ KanbanStory.prototype = {
 		storyDivButtonContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
 		kanbanStoryHeaderAreaDiv.appendChild(storyDivButtonContainer);
 
-
-
 		var storyDivButton = document.createElement("div");
 		storyDivButton.setAttribute("id", "storydivbutton" + this.ID);
 		storyDivButton.setAttribute("class", "handlercontainer");
@@ -461,7 +459,7 @@ KanbanStory.prototype = {
 		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
 		if(this.HandlerName != "") {
-			storyDivButton.setAttribute("style", GetStyleCodeFor3Digits(this.HandlerName.substring(0, 3)));
+			storyDivButton.setAttribute("style", GetStyleCodeFor3DigitsHalfShaded(this.HandlerName.substring(0, 3)));
 		}
 		storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
 		storyDivButtonContainer.appendChild(storyDivButton);

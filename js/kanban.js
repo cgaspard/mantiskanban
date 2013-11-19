@@ -603,11 +603,13 @@ function AddNotesToStoryEditForm(KanbanStory) {
 		var noteSubmitterDiv = document.createElement("div");
 		noteSubmitterDiv.setAttribute("class", "notesubmitter");
 		noteSubmitterDiv.innerHTML = thisNote.reporter.real_name + " : " + noteDate.toLocaleString();
+
 		noteDiv.appendChild(noteSubmitterDiv);
 
 		var noteTextDiv = document.createElement("div");
 		noteTextDiv.setAttribute("class", "notetext");
 		noteTextDiv.innerHTML = thisNote.text;
+		noteTextDiv.setAttribute("style", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3)));
 		noteDiv.appendChild(noteTextDiv);
 
 		notesContainer.appendChild(noteDiv);

@@ -51,7 +51,7 @@ html, body{
 }
 
 #edit-story-notes-container {
-	height: 100%;
+	overflow:auto;
 	background-color: #dedede;
 }
 
