@@ -9,10 +9,11 @@ String.prototype.htmlencode = function() {
   return el.innerHTML;
 }
 
-function GetStyleCodeFor3Digits(digits) {
+function GetStyleCodeFor3Digits(digits, opacity) {
+	var setOpacityTo = (opacity == undefined) ? "1" : opacity;
 	var colorObject = GetColorCodeFor3Digits(digits);
 	var textContrast = GetColorContrastForRBG(colorObject.first, colorObject.second, colorObject.third);
-	return "color: " + textContrast + "; background: rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) !important; /* W3C */"
+	return "color: " + textContrast + "; background: rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ", " + setOpacityTo + ") !important; /* W3C */"
 }
 
 

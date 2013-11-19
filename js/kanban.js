@@ -609,7 +609,7 @@ function AddNotesToStoryEditForm(KanbanStory) {
 		var noteTextDiv = document.createElement("div");
 		noteTextDiv.setAttribute("class", "notetext");
 		noteTextDiv.innerHTML = thisNote.text;
-		noteTextDiv.setAttribute("style", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3)));
+		noteTextDiv.setAttribute("style", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3), .8));
 		noteDiv.appendChild(noteTextDiv);
 
 		notesContainer.appendChild(noteDiv);
