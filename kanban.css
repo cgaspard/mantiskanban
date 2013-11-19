@@ -51,7 +51,7 @@ html, body{
 }
 
 #edit-story-notes-container {
-	overflow:auto;
+	height: calc(100% - 150px) !important;
 	background-color: #dedede;
 	padding: 2px !important;
 	overflow: scroll !important;
@@ -60,6 +60,15 @@ html, body{
 #edit-story-new-note-save-button{
 	width:100% !important;
 	margin-bottom: 5px !important;
+}
+
+hr.noteHorizonalRule {
+	margin: 1px;
+	color: #000;
+}
+
+div.fill:nth-child(1) {
+	height: 100% !important;
 }
 
 div.notecontainer {
@@ -144,7 +153,15 @@ div.notecontainer {
 }
 
 .editing-content {
+	height: calc(100% - 135px) !important;
+}
 
+.tab-content {
+	height: calc(100% - 45px) !important;
+}
+
+#tabs-4 {
+	height: calc(100% - 20px) !important;
 }
 
 

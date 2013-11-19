@@ -600,15 +600,15 @@ function AddNotesToStoryEditForm(KanbanStory) {
 
 		var noteDate = new Date(Date.parse(thisNote.date_submitted));
 
-		var noteSubmitterDiv = document.createElement("div");
-		noteSubmitterDiv.setAttribute("class", "notesubmitter");
-		noteSubmitterDiv.innerHTML = thisNote.reporter.real_name + " : " + noteDate.toLocaleString();
+		//var noteSubmitterDiv = document.createElement("div");
+		//noteSubmitterDiv.setAttribute("class", "notesubmitter");
+		//noteSubmitterDiv.innerHTML = thisNote.reporter.real_name + " : " + noteDate.toLocaleString();
 
-		noteDiv.appendChild(noteSubmitterDiv);
+		//noteDiv.appendChild(noteSubmitterDiv);
 
 		var noteTextDiv = document.createElement("div");
 		noteTextDiv.setAttribute("class", "notetext");
-		noteTextDiv.innerHTML = thisNote.text;
+		noteTextDiv.innerHTML = "<b>" + thisNote.reporter.real_name + " : " + noteDate.toLocaleString() + "</b><hr class='noteHorizonalRule'>" +thisNote.text;
 		noteTextDiv.setAttribute("style", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3), .8));
 		noteDiv.appendChild(noteTextDiv);
 
