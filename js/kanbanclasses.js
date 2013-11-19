@@ -424,12 +424,12 @@ KanbanStory.prototype = {
 		}
 		storyDiv.appendChild(storyContainerDiv);
 
-		if(this.Notes.length > 0) {
-			var notesBadge = document.createElement("div");
-			notesBadge.classList.add("label");
-			notesBadge.innerHTML += this.Notes.length;	
-			storyContainerDiv.appendChild(notesBadge);
-		}
+		// if(this.Notes.length > 0) {
+		// 	var notesBadge = document.createElement("div");
+		// 	notesBadge.classList.add("label");
+		// 	notesBadge.innerHTML += this.Notes.length;	
+		// 	storyContainerDiv.appendChild(notesBadge);
+		// }
 	
 		var kanbanStoryHeaderAreaDiv = document.createElement("div");
 		kanbanStoryHeaderAreaDiv.setAttribute("class", "kanbanstoryheaderarea");

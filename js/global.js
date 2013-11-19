@@ -16,6 +16,10 @@ function GetStyleCodeFor3Digits(digits, opacity) {
 	return "color: " + textContrast + "; background: rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ", " + setOpacityTo + ") !important; /* W3C */"
 }
 
+function FormatTextAsHTML(textToFormat) {
+	return textToFormat.replace("\r\n", "<br>").replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+}
+
 
 function GetStyleCodeFor3DigitsHalfShaded(digits) {
 	var colorObject = GetColorCodeFor3Digits(digits);

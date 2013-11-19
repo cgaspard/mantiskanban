@@ -472,6 +472,7 @@ function HandleDragLeave(e) {
 
 function SaveNewNote(storyID, noteText) {
 	try {
+		noteText = FormatTextAsHTML(noteText);
 		Kanban.BlockUpdates = true;
 		StartLoading();
 		var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
