@@ -588,6 +588,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"kanbanstory",
+			"edit-story-notes-container",
+			"GetStyleCodeFor3Digits",
+			"AddNotesToStoryEditForm",
+			"edit-story-notes-container",
 			"editform",
 			"edit-newnotetext",
 			"edit-story-new-note-save-button",
@@ -710,12 +715,7 @@
 			"edit-story-attachment-container",
 			"AddAttachmentToStoryEditForm",
 			"		storyDiv.addEventListener('drop', Drop, false);\n		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
-			"		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
-			"OpenStory",
-			"op",
-			"OpenStory",
-			"EditStory",
-			"Editstory"
+			"		storyDiv.addEventListener('drop', Drop, false);\nOpenStory"
 		],
 		"highlight": true,
 		"in_selection": false,
