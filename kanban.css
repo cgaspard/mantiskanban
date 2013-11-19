@@ -53,6 +53,18 @@ html, body{
 #edit-story-notes-container {
 	overflow:auto;
 	background-color: #dedede;
+	padding: 2px !important;
+	overflow: scroll !important;
+}
+
+#edit-story-new-note-save-button{
+	width:100% !important;
+	margin-bottom: 5px !important;
+}
+
+div.notecontainer {
+	padding:5px !important;
+	margin: 2px !important;
 }
 
 #edit-story-new-note-save-button {
