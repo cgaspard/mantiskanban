@@ -21,7 +21,7 @@ html, body{
 .editform {
 	overflow: auto;
 	height:100%;
-	width: 30%;
+	width: 575px;
 	/*background-color: #dfdfdf;*/
 	padding: 15px 15px 15px 15px;
 	border-left: solid 2px #000000;
@@ -319,7 +319,7 @@ div.notecontainer {
 }
 
 #kanbancontent[editing="true"] {
-	width: 70%;
+	width: calc(100% - 575px);
 }
  	
 .kanbanlist{

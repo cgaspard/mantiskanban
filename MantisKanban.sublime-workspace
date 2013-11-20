@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"html",
+				"htmlencode"
+			],
+			[
 				"UpdateStr",
 				"UpdateStructureMethods"
 			],
@@ -462,13 +466,14 @@
 	"file_history":
 	[
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/global.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Downloads/Server.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/date.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
@@ -573,7 +578,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 111.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -588,6 +593,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"600px",
+			"contentarea",
+			"SaveNewNote",
+			"save",
+			"edit-story-new-note-save-button",
+			"SaveNote",
 			"kanbanstory",
 			"edit-story-notes-container",
 			"GetStyleCodeFor3Digits",
@@ -709,13 +720,7 @@
 			"EditStory",
 			"attachmentdisplay",
 			"attachmentcontainer",
-			"attachmentsarea",
-			"area",
-			"attachmentsare",
-			"edit-story-attachment-container",
-			"AddAttachmentToStoryEditForm",
-			"		storyDiv.addEventListener('drop', Drop, false);\n		storyDiv.addEventListener('drop', Drop, false);\nOpenStory",
-			"		storyDiv.addEventListener('drop', Drop, false);\nOpenStory"
+			"attachmentsarea"
 		],
 		"highlight": true,
 		"in_selection": false,

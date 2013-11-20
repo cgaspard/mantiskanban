@@ -17,7 +17,12 @@ function GetStyleCodeFor3Digits(digits, opacity) {
 }
 
 function FormatTextAsHTML(textToFormat) {
-	return textToFormat.replace("\r\n", "<br>").replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+	var reNewLines=/[\n\r]/g;
+	textToFormat=textToFormat.replace(reNewLines, "<br />");
+	var reTabs=/[\t]/g;
+	textToFormat=textToFormat.replace(reTabs, "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+
+	return textToFormat.toString();
 }
 
 
