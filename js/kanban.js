@@ -617,6 +617,55 @@ function AddNotesToStoryEditForm(KanbanStory) {
 	}
 }
 
+function SearchForStory(localOnly) {
+
+	if(localOnly == undefined) localOnly = false;
+
+	var issueID = document.getElementById("searchfield").value;
+
+	var foundIssue = GetStoryIfLoaded(issueID);
+
+	if(foundIssue == null && (localOnly == undefined || !localOnly)) {
+		GetStoryIfNotLoaded(issueID, function(returnObj) {
+			if(returnObj == undefined || (returnObj.name != undefined && returnObj.name == "Error")) {
+				alert("Issue not found!");
+				return;
+			}
+
+			if(confirm("Issue is in a different project, would you like to switch?")) {
+				document.getElementById("seletedproject").value = returnObj.project.id;
+				SelectProject();
+			} 
+		});
+	} else if (foundIssue != null) {
+		EditStory(issueID);
+		document.getElementById("searchfield").value = "";
+	} else if (localOnly) {
+		alert("Unable to open issue, probably its closed and we don't support editing it yet.");
+	}
+}
+
+function GetStoryIfLoaded(issueID) {
+	for(var iid = 0; iid < Kanban.Stories.length; iid++) {
+		var thisStory =Kanban.Stories[iid];
+		if(thisStory.ID == issueID) {
+			return thisStory;
+		}
+	}
+	return null;
+}
+
+function GetStoryIfNotLoaded(issueID, callBack) {
+	if(callBack == undefined) {
+		//// Sync call
+		return Mantis.IssueGet(issueID);
+	} else {
+		/// Async call
+		Mantis.IssueGet(issueID, callBack);
+	}
+}
+
+
 
 function OpenAddStory() {
 	log("OpenAddStory Called");

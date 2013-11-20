@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"return",
+				"returnObj"
+			],
+			[
+				"retur",
+				"returnObj"
+			],
+			[
+				"retu",
+				"returnObj"
+			],
+			[
 				"html",
 				"htmlencode"
 			],
@@ -578,7 +590,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 111.0,
 		"where_history":
 		[
 			"",
@@ -593,6 +605,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"selectproject",
+			"SearchForStory",
+			"EditStory",
+			"DoneLoadingIssuesCallback",
+			"JoinList",
+			"new KanbanStory",
+			"projectlist",
+			"OpenEditStory",
 			"600px",
 			"contentarea",
 			"SaveNewNote",
@@ -712,15 +732,7 @@
 			"insertchild",
 			"AddStory",
 			"addstory",
-			"append",
-			"AddStory",
-			": fixed",
-			"kanbanlist",
-			"addattachment",
-			"EditStory",
-			"attachmentdisplay",
-			"attachmentcontainer",
-			"attachmentsarea"
+			"append"
 		],
 		"highlight": true,
 		"in_selection": false,

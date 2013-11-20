@@ -287,7 +287,7 @@ function Logout() {
 	ShowLoginArea();
 }
 
-function SelectProject() {
+function SelectProject(openStoryID) {
 	console.log("SelectProject() called.");
 
 	CloseEditStory();
@@ -307,7 +307,7 @@ function SelectProject() {
 
 	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
-	window.setTimeout("UpdateFilterList()", 100);
+	window.setTimeout("UpdateFilterList()", 0);
 
 	BuildKanbanListFromMantisStatuses();
 	
@@ -316,7 +316,14 @@ function SelectProject() {
 	document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.Name;
 
 	if(Mantis.DefaultFilterID !== null && Mantis.DefaultFilterID != 0) {
-		window.setTimeout("LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, DoneLoadingIssuesCallback)", 0);
+			window.setTimeout(function(filterID, retObj) {
+				LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, function(filterID, retObj) {
+					DoneLoadingIssuesCallback(filterID, retObj);
+					if(document.getElementById("searchfield").value != "") {
+						SearchForStory(true);
+					}
+				});
+			}, 0);
 		if(Mantis.ClosedIssuesFilterID !== null) {
 			window.setTimeout("LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback)", 0);
 		}
@@ -324,7 +331,13 @@ function SelectProject() {
 		var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
 		CreateKanbanStoriesFromMantisIssues(retObj);
 		$(".tempLoadingDiv").hide();//hide the loading gifs
+		if(document.getElementById("searchfield").value != "") {
+			SearchForStory(true);
+		}
+
 		StopLoading();
+
+
 	}
 }
 
@@ -458,7 +471,7 @@ function BuildProjectsGUI() {
 		var projectDiv = document.createElement("a");
 		projectDiv.setAttribute("id", "project" + Kanban.Projects[i].ID);
 		projectDiv.setAttribute("href", "");
-		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Kanban.Projects[i].ID + "'; SelectProject(); SwapSelectedProject(this.id); return false;");
+		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Kanban.Projects[i].ID + "'; document.getElementById('searchfield').value = ''; SelectProject(); SwapSelectedProject(this.id); return false;");
 		projectDiv.setAttribute("selected", Kanban.Projects[i].ID == preSelectedProjectID ? "true" : "false");
 		projectDiv.innerHTML = Kanban.Projects[i].Name;
 		projectLI.appendChild(projectDiv);

@@ -12,6 +12,11 @@
 	font-weight: bold;
 }
 
+#searchfield {
+	width: 100px;
+	padding-left: 10px;
+}
+
 .notecontainer {
 	/*
 	padding: 8 8 0 8;
