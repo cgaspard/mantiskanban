@@ -628,6 +628,7 @@ function SearchForStory(localOnly) {
 	if(foundIssue == null && (localOnly == undefined || !localOnly)) {
 		GetStoryIfNotLoaded(issueID, function(returnObj) {
 			if(returnObj == undefined || (returnObj.name != undefined && returnObj.name == "Error")) {
+				document.getElementById("searchfield").value = "";
 				alert("Issue not found!");
 				return;
 			}

@@ -54,7 +54,6 @@ html, body{
 	height: calc(100% - 150px) !important;
 	background-color: #dedede;
 	padding: 2px !important;
-	overflow: scroll !important;
 }
 
 #edit-story-new-note-save-button{

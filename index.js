@@ -48,6 +48,10 @@ function window_load() {
     
 	AutoLogin();
 
+	$(document).bind('keyup', 'shift+ctrl+g', function() {
+		document.getElementById("searchfield").focus();
+	});
+
 }
 
 function ShallowCopy(o) {

@@ -59,37 +59,35 @@
 						<img src="images/mantis_logo.png" class="mantislogo loggedin" />
 						<div style="display:inline-block">
 							<div id="selected-project-name">Project</div>
-							<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
-							<div class="btn-group">
-							  <button class="btn btn-primary btn-small dropdown-toggle" type="button" data-toggle="dropdown">
-							  	<i class="glyphicon glyphicon-dashboard"></i>
-								Select Project <span class="caret"></span>
-							  </button>						
-							  <ul id="projectlist" class="dropdown-menu">
-								<!-- dropdown menu links -->
-							  </ul>
-							</div>
-							<div class="btn-group">
-							  <a class="btn dropdown-toggle btn-warning btn-small" data-toggle="dropdown" href="#">
-								<i class="glyphicon glyphicon-filter"></i>
-								Select Filter
-								<span class="caret"></span>
-							  </a>
-							  <ul id="filterlist" class="dropdown-menu">
-								<!-- dropdown menu links -->
-							  </ul>
-							</div>
-							
+								<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
+								<div class="btn-group">
+								  <button class="btn btn-primary btn-small dropdown-toggle" type="button" data-toggle="dropdown">
+								  	<i class="glyphicon glyphicon-dashboard"></i>
+									Select Project <span class="caret"></span>
+								  </button>						
+								  <ul id="projectlist" class="dropdown-menu">
+									<!-- dropdown menu links -->
+								  </ul>
+								</div>
+								<div class="btn-group">
+								  <a class="btn dropdown-toggle btn-warning btn-small" data-toggle="dropdown" href="#">
+									<i class="glyphicon glyphicon-filter"></i>
+									Select Filter
+									<span class="caret"></span>
+								  </a>
+								  <ul id="filterlist" class="dropdown-menu">
+									<!-- dropdown menu links -->
+								  </ul>
+								</div>
 								<div class="btn btn-danger btn-small" onclick="OpenAddStory(); "><i class="glyphicon glyphicon-plus-sign"></i> Add Story</div>
 								<div class="btn btn-success btn-small" onclick="SelectProject();"><i class="glyphicon glyphicon-refresh"></i> Reload Kanban</div>
 								<div class="btn btn-info btn-small" onclick="ShowSettings();"><i class="glyphicon glyphicon-info-sign"></i> Settings</div>
 								<div class="btn btn-default btn-small" onclick="Logout();"><i class="glyphicon glyphicon-log-out"></i> Logout</div>
-							<div class="" style="display:inline-block; padding-left: 40px;">
-								<div class="btn btn-primary btn-small" onclick="SearchForStory()"><i class="glyphicon glyphicon-search"></i> Go To</div>
-								<input type="text" class="search-query" id="searchfield" placeholder="Issue #" class="input-medium search-query" onkeyup="if(event.keyCode == 13) { SearchForStory(); }"/>
+								<div class="" style="display:inline-block; padding-left: 40px;">
+									<div class="btn btn-primary btn-small" onclick="SearchForStory()"><i class="glyphicon glyphicon-search"></i> Go To</div>
+									<input type="text" class="search-query" id="searchfield" placeholder="Issue #" class="input-medium search-query" onkeyup="if(this.value.length > 0 && event.keyCode == 13) { SearchForStory(); }"/>
+								</div>
 							</div>
-														</div>
-
 						</div>
 					</div>
 				</div>

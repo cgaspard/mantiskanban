@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"se",
+				"searchfield"
+			],
+			[
 				"return",
 				"returnObj"
 			],
@@ -605,6 +609,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"issue not found",
+			"Issue",
+			"searchfield",
 			"selectproject",
 			"SearchForStory",
 			"EditStory",
@@ -729,10 +736,7 @@
 			"appendchild",
 			"insertchild",
 			"in",
-			"insertchild",
-			"AddStory",
-			"addstory",
-			"append"
+			"insertchild"
 		],
 		"highlight": true,
 		"in_selection": false,
