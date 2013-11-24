@@ -53,6 +53,14 @@ html, body{
 	padding-left: 20px;
 }
 
+.newfileattach {
+	padding: 5px;
+	margin-bottom: 5px;
+	border: 1px solid #454545;
+	border-radius: 3px;
+	background-color: #eeeeee;
+}
+
 .attachmentdeletebutton {
 	padding-right: 20px;
 }
@@ -65,7 +73,6 @@ html, body{
 
 
 #edit-story-new-attach-save-button{
-	width:100% !important;
 	margin-bottom: 5px !important;
 }
 
@@ -461,12 +468,17 @@ div.notecontainer {
 	width: 100%;
 }
 
+.newattachmentcontainer {
+	margin-top: 5px;
+
+}
+
 .attachmentcontainer {
 	display: table;
 	width: 100%;
 	padding-top: 10px;
 	text-align: left;
-
+	border-bottom: solid 1px #ffffff;
 }
 
 .attachmentsarea {

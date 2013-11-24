@@ -80,11 +80,11 @@ function window_load() {
           if(theFile.type == undefined || theFile.type == "") {
           	mimeType = "application/octet-stream";	
           } else {
-          	mimeType = file.type;
+          	mimeType = theFile.type;
           	
           }
           newAttachmentDiv.setAttribute("filetype", mimeType);	
-          newAttachmentDiv.innerHTML = theFile.name + " (" + mimeType + ") " + data.length + " bytes";
+          newAttachmentDiv.innerHTML = theFile.name + " (" + mimeType + ") " + Math.round(data.length / 1024, 2) + "Kb";
           document.getElementById('newAttachmentList').appendChild(newAttachmentDiv);
           document.getElementById('newAttachmentFile').value = "";
         };
