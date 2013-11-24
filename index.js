@@ -76,8 +76,11 @@ function window_load() {
           newAttachmentDiv.setAttribute("filedata", data);
           //newAttachmentDiv.setAttribute("filedataulr",e.target.result);
           newAttachmentDiv.setAttribute("filename", theFile.name);
-          if(theFile.type == undefined || theFile.type == "") theFile.type = "application/octet-stream"
-          newAttachmentDiv.setAttribute("filetype", theFile.type);
+          if(theFile.type == undefined || theFile.type == "") {
+          	newAttachmentDiv.setAttribute("filetype", "application/octet-stream");	
+          } else {
+          	newAttachmentDiv.setAttribute("filetype", theFile.type);	
+          }
           newAttachmentDiv.innerHTML = theFile.name + " (" + theFile.type + ") " + data.length + " bytes";
           document.getElementById('newAttachmentList').appendChild(newAttachmentDiv);
           document.getElementById('newAttachmentFile').value = "";
