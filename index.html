@@ -85,7 +85,7 @@
 								<div class="btn btn-default btn-small" onclick="Logout();"><i class="glyphicon glyphicon-log-out"></i> Logout</div>
 								<div class="" style="display:inline-block; padding-left: 40px;">
 									<div class="btn btn-primary btn-small" onclick="SearchForStory()"><i class="glyphicon glyphicon-search"></i> Go To</div>
-									<input type="text" class="search-query" id="searchfield" placeholder="Issue #" class="input-medium search-query" onkeyup="if(this.value.length > 0 && event.keyCode == 13) { SearchForStory(); }"/>
+									<input type="text" id="searchfield" placeholder="Issue #" class="form-control input-small search-query" onkeyup="if(this.value.length > 0 && event.keyCode == 13) { SearchForStory(); }"/>
 								</div>
 							</div>
 						</div>
@@ -120,43 +120,43 @@
 											<div class="control-group">
 												<label class="control-label" for="edit-summary">Summary:</label>
 												<div class="controls">
-													<input type="text" name="edit-summary" id="edit-summary" class="" />
+													<input type="text" name="edit-summary" id="edit-summary" class="form-control" />
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-project">Project:</label>
 												<div class="controls">
-													<select name="edit-project" id="edit-project" class=""></select>
+													<select name="edit-project" id="edit-project" class="form-control"></select>
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-status">Status:</label>
 												<div class="controls">
-													<select name="edit-status" id="edit-status" class=""></select>
+													<select name="edit-status" id="edit-status" class="form-control"></select>
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-priority">Priority:</label>
 												<div class="controls">
-													<select name="edit-priority" id="edit-priority" class=""></select>
+													<select name="edit-priority" id="edit-priority" class="form-control"></select>
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-category">Category</label>
 												<div class="controls">
-													<select name="edit-category" id="edit-category"></select>
+													<select name="edit-category" id="edit-category" class="form-control"></select>
 												</div>
 											</div>											
 											<div class="control-group">
 												<label class="control-label" for="edit-reporter">Reporter:</label>
 												<div class="controls">
-													<select name="edit-reporter" id="edit-reporter" class=""></select>
+													<select name="edit-reporter" id="edit-reporter" class="form-control"></select>
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-assignedto">Assigned To:</label>
 												<div class="controls">
-													<select name="edit-assignedto" id="edit-assignedto" class=""></select>
+													<select name="edit-assignedto" id="edit-assignedto" class="form-control"></select>
 												</div>
 											</div>
 											<div class="control-group">
@@ -169,20 +169,26 @@
 										</form>
 									</div>
 									<div class="tab-pane" id="tabs-2">
-										<textarea name="edit-description" id="edit-description" class="input-large"></textarea>
+										<textarea name="edit-description" id="edit-description" class="input-large form-control"></textarea>
 									</div>
 									<div class="tab-pane" id="tabs-3">
-										<textarea name="edit-reproduce" id="edit-reproduce" class="input-large"></textarea>
+										<textarea name="edit-reproduce" id="edit-reproduce" class="input-large form-control"></textarea>
 									</div>
 									<div class="tab-pane fill" id="tabs-4">
 										<div class="fill">
-										<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
-										<div class="btn btn-success addNoteButton" id="edit-story-new-note-save-button" name=""><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Note&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-arrow-up"></span></div><br>
-										<textarea class="edit-newnotetext input-large" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
+											<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
+											<div class="btn btn-success addNoteButton" id="edit-story-new-note-save-button" name=""><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Note&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-arrow-up"></span></div><br>
+											<textarea class="edit-newnotetext input-large form-control" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
 										</div>
 									</div>
-									<div class="tab-pane" id="tabs-5">
-										<div id="edit-story-attachment-container" name="edit-story-attachment-container" class="attachmentsarea"></div>
+									<div class="tab-pane fill" id="tabs-5">
+										<div class="fill">
+											<div id="edit-story-attachment-container" name="edit-story-attachment-container" class="attachmentsarea"></div>
+											<div class="btn btn-success addNoteButton" id="edit-story-new-attach-save-button" name="" onclick="SaveNewAttachments();"><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save Attachments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-arrow-up"></span></div>
+											<br>
+											<input type="file" class="btn form-input" value='Pick A File' id="newAttachmentFile" />
+											<output id="newAttachmentList"></output>
+										</div>
 									</div>
 									<div class="tab-pane" id="tab-6">
 

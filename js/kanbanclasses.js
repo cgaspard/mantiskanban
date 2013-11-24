@@ -242,6 +242,11 @@ KanbanStory.prototype = {
 		return this.StorySource.notes;
 	},
 
+	get Tags() {
+		if(this.StorySource.tags == undefined) return [];
+		return this.StorySource.tags;
+	},
+
 	get Attachments() {
 		return this.StorySource.attachments;
 	},
@@ -477,16 +482,22 @@ KanbanStory.prototype = {
 		storyDivTitle.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivTitle.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyDivTitle.innerHTML += this.Summary + "<br><span>&nbsp</span>";
+
 		if(this.CategoryID != null) {
-			storyDivSeverity.innerHTML += "<br><span class=\" glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID) + "\"></span> ";
+			storyDivTitle.innerHTML += "<span class=\" glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID) + "\"></span> ";
 		}
-		if(this.Attachments.length > 0) {
-			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-file\"></span> ";
+		if(this.Tags.length > 0) {
+			storyDivTitle.innerHTML += "<span class=\" glyphicon glyphicon-tags\"></span> ";
 		}
 		if(this.Notes.length > 0) {
 			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-th-list\"></span> ";
 		}		
-
+		if(this.Attachments.length > 0) {
+			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-file\"></span> ";
+		}
+		if(this.RelatedStories.length > 0) {
+			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-retweet\"></span> ";
+		}
 		storyContainerDiv.appendChild(storyDivTitle);
 
 		var storyDivSeverityContainer = document.createElement("div");
@@ -496,10 +507,6 @@ KanbanStory.prototype = {
 		storyDivSeverityContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyDivSeverityContainer.setAttribute("priority", this.PriorityName);
 		storyDivTitle.appendChild(storyDivSeverityContainer);
-
-		
-
-
 
 		if(this.Element != null) {
 			var replacedNode = this.Element.parentNode.replaceChild(storyDiv, this.Element);

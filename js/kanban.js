@@ -490,6 +490,59 @@ function SaveNewNote(storyID, noteText) {
 	}
 }
 
+function SaveNewAttachments() {
+	try {
+		if(Kanban.BlockUpdates) return;
+		Kanban.BlockUpdates = true;
+		StartLoading();
+		var attachmentList = document.getElementById("newAttachmentList");
+		for(var ach = 0; ach < attachmentList.childNodes.length; ach++) {
+			var attachmentDiv = attachmentList.childNodes[ach];
+			try {
+				var storyID = $("#edit-story-id").val();
+				var myStory = Kanban.GetStoryByFieldValue("ID", storyID);
+				Mantis.IssueAttachmentAdd(storyID,
+					attachmentDiv.getAttribute("filename"),
+					attachmentDiv.getAttribute("filetype"),
+					attachmentDiv.getAttribute("filedata"));
+			} catch (e) {
+				alert("Error Uploading Attachments: \r\n" + e.message);
+			}
+		}
+		while(attachmentList.childNodes.length > 0) {
+			attachmentList.removeChild(attachmentList.firstChild);
+		}
+		document.getElementById('newAttachmentFile').value = "";
+
+		myStory = Kanban.UpdateUnderlyingStorySource(myStory, true);
+		AddAttachmentToStoryEditForm(myStory);
+	} finally {
+		Kanban.BlockUpdates = false;
+		StopLoading();
+
+	}
+}
+
+function DeleteAttachment(AttachmentID) {
+	try {
+		if(!confirm("Are you sure you want to delete this attachment?")) return;
+
+		Kanban.BlockUpdates = true;
+		StartLoading();
+		Mantis.IssueAttachmentDelete(AttachmentID);
+		///If delete worked, remove the element
+		var attachmentElement = document.getElementById("attachmentcontainer" + AttachmentID);
+		if(!attachmentElement) return;
+		attachmentElement.parentNode.removeChild(attachmentElement);
+	} catch(e) {
+		alert("Error Deleting:" + e.message);
+	} finally {
+		Kanban.BlockUpdates = false;
+		StopLoading();
+
+	}
+
+}
 
 function AddAttachmentToStoryEditForm(KanbanStory) {
 	var attachmentsContainer = document.getElementById("edit-story-attachment-container");
@@ -513,20 +566,19 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 
 	for(var i = 0; i < KanbanStory.Attachments.length; i++) {
 		var thisAttachment = KanbanStory.Attachments[i];
+		var attachmentDiv = document.createElement("div");
+		attachmentDiv.setAttribute("id", "attachmentcontainer" + thisAttachment.id)
+		attachmentDiv.setAttribute("class", "attachmentcontainer");
+		attachmentDiv.setAttribute("storyid", KanbanStory.ID);
+		attachmentsContainer.appendChild(attachmentDiv);
+
+		var attachmentDeleteButton = document.createElement("div");
+		attachmentDeleteButton.setAttribute("class", "btn btn-small btn-danger attachmentdeletebutton");
+		attachmentDeleteButton.setAttribute("onclick", "DeleteAttachment(" + thisAttachment.id + ")");
+		attachmentDeleteButton.innerHTML = "<span class=\" glyphicon glyphicon-trash\"></span> Delete";
+		attachmentDiv.appendChild(attachmentDeleteButton);
 
 		if(thisAttachment.content_type.match("image")) {
-
-			/*
-			var attachmentLink = document.createElement("a");
-			attachmentLink.setAttribute("data-toggle", "lightbox");
-			attachmentLink.setAttribute("data-target", "#attachmentlightboxdiv" + thisAttachment.id);
-			attachmentLink.setAttribute("href", "#attachmentlightboxdiv" + thisAttachment.id);
-			attachmentsContainer.appendChild(attachmentLink);
-			*/
-			var attachmentDiv = document.createElement("div");
-			attachmentDiv.setAttribute("class", "attachmentcontainer");
-			attachmentDiv.setAttribute("storyid", KanbanStory.ID);
-
 			var attachmentImage = document.createElement("img");
 			attachmentImage.setAttribute("id", "attachment" + thisAttachment.id);
 			attachmentImage.setAttribute("src", "images/loading.gif");
@@ -542,13 +594,7 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 			});
 
 			attachmentDiv.appendChild(attachmentImage);
-			//attachmentLink.appendChild(attachmentImage);
-			attachmentsContainer.appendChild(attachmentDiv);
-
 		} else {
-			var attachmentDiv = document.createElement("div");
-			attachmentDiv.setAttribute("class", "attachmentcontainer");
-			attachmentDiv.setAttribute("storyid", KanbanStory.ID);
 
 			var attachmentFileName = document.createElement("a");
 			attachmentFileName.setAttribute("id", "attachment" + thisAttachment.id);
@@ -566,10 +612,6 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 
 			});			
 			attachmentDiv.appendChild(attachmentFileName);
-
-			//window.open("data:application/octet-stream;base64," + base64);
-
-			attachmentsContainer.appendChild(attachmentDiv);	
 		}
 
 		
@@ -813,6 +855,7 @@ function UpdateStoryHandlerComplete(result) {
 function EditStory(storyID) {
 
 	$('#myTab a:first').tab('show');
+	document.getElementById('newAttachmentFile').value = "";
 
 	//$("#tabs").tabs({
 	 	//active: 0

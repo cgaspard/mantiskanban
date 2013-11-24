@@ -49,12 +49,26 @@ html, body{
 	width: 100%;
 	height: 200px;
 }
+.attachmentname {
+	padding-left: 20px;
+}
+
+.attachmentdeletebutton {
+	padding-right: 20px;
+}
 
 #edit-story-notes-container {
 	height: calc(100% - 150px) !important;
 	background-color: #dedede;
 	padding: 2px !important;
 }
+
+
+#edit-story-new-attach-save-button{
+	width:100% !important;
+	margin-bottom: 5px !important;
+}
+
 
 #edit-story-new-note-save-button{
 	width:100% !important;
@@ -168,7 +182,7 @@ div.notecontainer {
 	background-color: #454545;
 	color:#FFFFFF;
 	border-radius: 10px 10px 10px 10px;
-	padding: 20px 10px 20px 10px;
+	padding: 10px 6px 10px 6px;
 	text-align: center;
 }
 
@@ -457,6 +471,17 @@ div.notecontainer {
 
 .attachmentsarea {
 	text-align: center;
+	width: 100%;
+	/*max-height: calc(100% - 400px);*/
+	overflow: auto;
+	border: solid 1px #cccccc;
+	padding: 15px 15px 15px 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px 5px 5px 5px;	
+	height: calc(100% - 150px) !important;
+	background-color: #dedede;
+
 }
 
 .kanbanimageattachment {
@@ -538,6 +563,10 @@ div.notecontainer {
 	width: 90%;
 
 }
+.kanbanstorytitle>span,.kanbanstorytitle>br,.kanbanstorytitle>.glyphicon {
+	font-size:8pt;
+
+}
 
 #prioritylegend { }
 
@@ -546,6 +575,10 @@ div.notecontainer {
 	border-left: 1px solid #444444;
 	border-bottom: 1px solid #444444;
 	width: 16%;
+}
+
+#searchfield {
+	display:inline;
 }
 
 #prioritylegend>div[priority="none"] {

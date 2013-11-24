@@ -1,6 +1,3 @@
-
-
-
 var Mantis = {
 	_currentprojectid : 0,
 	_projectcategories : [],
@@ -124,11 +121,14 @@ var Mantis = {
 
 	Params : {
 		Access : "access",
+		Content : "content",
 		Enumeration: "enumeration",
+		FileType : "file_type",
 		FilterID : "filter_id",
 		IssueID : "issue_id",
 		IssueID_Caps : "issueId",
 		Issue : "issue",
+		Name : "name",
 		Note : "note",
 		Password : "password",
 		PageNumber : "page_number",
@@ -320,6 +320,31 @@ var Mantis = {
 			
 		},
 
+		IssueAttachmentAdd : {
+			Name : "mc_issue_attachment_add",
+			BuildParams : function(issueID, fileName, fileType, fileContent) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
+				pl.add(Mantis.Params.IssueID, issueID);
+				pl.add(Mantis.Params.Name, fileName);
+				pl.add(Mantis.Params.FileType, fileType);
+				pl.add(Mantis.Params.Content, fileContent)
+				return pl;
+			}
+		},
+
+		IssueAttachmentDelete : {
+			Name : "mc_issue_attachment_delete",
+			BuildParams : function(issueAttachmentID) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
+				pl.add(Mantis.Params.IssueAttachmentID, issueAttachmentID);
+				return pl;
+			}
+		},
+
 		IssueSetTags : {
 			Name : "mc_issue_set_tags",
 			BuildParams : function(issueid, tagsDataArray) {
@@ -496,6 +521,22 @@ var Mantis = {
 	IssueGet : function(IssueID, callBack) {
 		hascallback = callBack == null || callBack == undefined ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueGet.Name, Mantis.Methods.IssueGet.BuildParams(IssueID), hascallback, callBack);
+	},
+
+	IssueAttachmentAdd : function(IssueID, FileName, FileType, FileContent, callBack) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL,  
+			Mantis.Methods.IssueAttachmentAdd.Name, 
+			Mantis.Methods.IssueAttachmentAdd.BuildParams(IssueID, FileName, FileType, FileContent), 
+			hascallback, callBack);
+	},
+	IssueAttachmentDelete : function(IssueAttachmentID, callBack) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL,  
+			Mantis.Methods.IssueAttachmentDelete.Name, 
+			Mantis.Methods.IssueAttachmentDelete.BuildParams(IssueAttachmentID), 
+			hascallback, callBack);
+
 	},
 	IssueAttachmentGet : function(IssueAttachmentID, ContentType, callBack) {
 		hascallback = callBack == null ? false : true;

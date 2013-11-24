@@ -21,6 +21,8 @@ window.addEventListener("load", window_load);
 
 function window_load() {
 
+	document.getElementById('newAttachmentFile').addEventListener('change', HandleFileSelect, false);
+
 	var preConfiguredMantisURL = DefaultSettings.connectURL;
 
 	LoadSettingsFromLocalStorage();
@@ -48,11 +50,43 @@ function window_load() {
     
 	AutoLogin();
 
+
+
+
 /*	$(document).bind('keyup', 'shift+ctrl+g', function() {
 		document.getElementById("searchfield").focus();
 	});*/
 
 }
+
+  function HandleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var newAttachmentDiv = document.createElement('div');
+          newAttachmentDiv.setAttribute("class", "newfileattach");
+          var data = e.target.result.substring(e.target.result.indexOf(",") + 1);
+          newAttachmentDiv.setAttribute("filedata", data);
+          //newAttachmentDiv.setAttribute("filedataulr",e.target.result);
+          newAttachmentDiv.setAttribute("filename", theFile.name);
+          newAttachmentDiv.setAttribute("filetype", theFile.type);
+          newAttachmentDiv.innerHTML = theFile.name + " (" + theFile.type + ") " + data.length + " bytes";
+          document.getElementById('newAttachmentList').appendChild(newAttachmentDiv);
+          document.getElementById('newAttachmentFile').value = "";
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
 
 function ShallowCopy(o) {
   var copy = Object.create(o);
