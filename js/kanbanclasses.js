@@ -446,9 +446,6 @@ KanbanStory.prototype = {
 		storyDivSeverity.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivSeverity.setAttribute("dropdivid", "dropdiv" + this.ID);
 		storyDivSeverity.innerHTML = this.ID;
-		if(this.CategoryID != null) {
-			storyDivSeverity.innerHTML += "<br><span class=\"categoryicon glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID) + "\"></span> ";
-		}
 		kanbanStoryHeaderAreaDiv.appendChild(storyDivSeverity);
 
 		var storyDivButtonContainer = document.createElement("section");
@@ -479,10 +476,17 @@ KanbanStory.prototype = {
 		storyDivTitle.setAttribute("listid", "listid" + this.ListID);
 		storyDivTitle.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivTitle.setAttribute("dropdivid", "dropdiv" + this.ID);
+		storyDivTitle.innerHTML += this.Summary + "<br><span>&nbsp</span>";
+		if(this.CategoryID != null) {
+			storyDivSeverity.innerHTML += "<br><span class=\" glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID) + "\"></span> ";
+		}
 		if(this.Attachments.length > 0) {
 			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-file\"></span> ";
 		}
-		storyDivTitle.innerHTML += this.Summary;
+		if(this.Notes.length > 0) {
+			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-th-list\"></span> ";
+		}		
+
 		storyContainerDiv.appendChild(storyDivTitle);
 
 		var storyDivSeverityContainer = document.createElement("div");

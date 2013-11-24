@@ -550,9 +550,10 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 			attachmentDiv.setAttribute("class", "attachmentcontainer");
 			attachmentDiv.setAttribute("storyid", KanbanStory.ID);
 
-			var attachmentFileName = document.createElement("div");
+			var attachmentFileName = document.createElement("a");
 			attachmentFileName.setAttribute("id", "attachment" + thisAttachment.id);
 			attachmentFileName.setAttribute("class", "attachmentname");
+			attachmentFileName.setAttribute("download", thisAttachment.filename);
 			attachmentFileName.innerHTML = thisAttachment.filename;
 			Mantis.IssueAttachmentGet(thisAttachment.id, thisAttachment.content_type, function(result, attachmentID, attachementContentType){
 				var foundAttachmentDiv = document.getElementById("attachment" + attachmentID);
@@ -560,7 +561,9 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 				resultText = result["#text"];
 				if(resultText == undefined) resultText = result;
 				//console.log("ATTACHMENT ID " + attachmentID + ": " + resultText);
-				foundAttachmentDiv.setAttribute("onclick", "window.open('data:application/octet-stream;base64,"+ resultText + "');");
+				foundAttachmentDiv.setAttribute("href", "data:application/octet-stream;base64,"+ resultText + "");
+
+
 			});			
 			attachmentDiv.appendChild(attachmentFileName);
 

@@ -451,7 +451,7 @@ div.notecontainer {
 	display: table;
 	width: 100%;
 	padding-top: 10px;
-	text-align: center;
+	text-align: left;
 
 }
 
@@ -532,7 +532,7 @@ div.notecontainer {
 
 .kanbanstoryprioritycontainer {
 	position:absolute;
-	top:0px;
+	bottom:0px;
 	left: 10px;
 	height: 3px;
 	width: 90%;
@@ -595,7 +595,7 @@ div[priority="immediate"] {
 	position: relative;
 	left: 60px;
 	width: calc(100% - 65px);
-	padding-top: 12px;
+	
 	overflow: hidden;
 	white-space: nowrap;
 	cursor: pointer !important;
