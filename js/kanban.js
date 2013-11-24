@@ -490,6 +490,14 @@ function SaveNewNote(storyID, noteText) {
 	}
 }
 
+function ClearUploadList() {
+	var attachmentList = document.getElementById('newAttachmentList')
+	while(attachmentList.childNodes.length > 0) {
+		attachmentList.removeChild(attachmentList.firstChild);
+	}
+	document.getElementById('newAttachmentFile').value = "";
+}
+
 function SaveNewAttachments() {
 	try {
 		if(Kanban.BlockUpdates) return;
@@ -855,7 +863,7 @@ function UpdateStoryHandlerComplete(result) {
 function EditStory(storyID) {
 
 	$('#myTab a:first').tab('show');
-	document.getElementById('newAttachmentFile').value = "";
+	ClearUploadList();
 
 	//$("#tabs").tabs({
 	 	//active: 0
