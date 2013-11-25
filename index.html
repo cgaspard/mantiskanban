@@ -108,55 +108,54 @@
 								<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 									<li class="active" ><a href="#tabs-1" data-toggle="tab">General</a></li>
 									<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
-									<li><a href="#tabs-3" data-toggle="tab">Steps</a></li>
-									<li><a href="#tabs-4" data-toggle="tab">Notes</a></li>
-									<li><a href="#tabs-5" data-toggle="tab">Attachments</a></li>
-									<li><a href="#tabs-6" data-toggle="tab">History</a></li>
+									<li><a href="#tabs-3" data-toggle="tab">Notes</a></li>
+									<li><a href="#tabs-4" data-toggle="tab">Attachments</a></li>
+									<li><a href="#tabs-5" data-toggle="tab">History</a></li>
 								</ul>
-								<div class="tab-content fill">
+								<div class="tab-content">
 									<div class="tab-pane active" id="tabs-1">
 										<form class="form-horizontal">
 											<input type="hidden" id="edit-story-id" name="edit-story-id" />
 											<div class="control-group">
 												<label class="control-label" for="edit-summary">Summary:</label>
 												<div class="controls">
-													<input type="text" name="edit-summary" id="edit-summary" class="form-control" />
+													<input type="text" name="edit-summary" id="edit-summary" class="form-control input-small" />
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-project">Project:</label>
 												<div class="controls">
-													<select name="edit-project" id="edit-project" class="form-control"></select>
+													<select name="edit-project" id="edit-project" class="form-control input-small"></select>
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-status">Status:</label>
 												<div class="controls">
-													<select name="edit-status" id="edit-status" class="form-control"></select>
+													<select name="edit-status" id="edit-status" class="form-control input-small"></select>
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-priority">Priority:</label>
 												<div class="controls">
-													<select name="edit-priority" id="edit-priority" class="form-control"></select>
+													<select name="edit-priority" id="edit-priority" class="form-control input-small"></select>
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-category">Category</label>
 												<div class="controls">
-													<select name="edit-category" id="edit-category" class="form-control"></select>
+													<select name="edit-category" id="edit-category" class="form-control input-small"></select>
 												</div>
 											</div>											
 											<div class="control-group">
 												<label class="control-label" for="edit-reporter">Reporter:</label>
 												<div class="controls">
-													<select name="edit-reporter" id="edit-reporter" class="form-control"></select>
+													<select name="edit-reporter" id="edit-reporter" class="form-control input-small"></select>
 												</div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="edit-assignedto">Assigned To:</label>
 												<div class="controls">
-													<select name="edit-assignedto" id="edit-assignedto" class="form-control"></select>
+													<select name="edit-assignedto" id="edit-assignedto" class="form-control input-small"></select>
 												</div>
 											</div>
 											<div class="control-group">
@@ -168,41 +167,41 @@
 
 										</form>
 									</div>
-									<div class="tab-pane" id="tabs-2">
-										<textarea name="edit-description" id="edit-description" class="input-large form-control"></textarea>
+									<div class="tab-pane form-controls" id="tabs-2">
+										<label for="edit-description">Description</label>
+										<textarea name="edit-description" id="edit-description" class="input-large form-control" placeholder="Description"></textarea>
+										<label for="edit-reproduce">Steps</label>
+										<textarea name="edit-reproduce" id="edit-reproduce" class="input-large form-control" placeholder="Steps"></textarea>
 									</div>
 									<div class="tab-pane" id="tabs-3">
-										<textarea name="edit-reproduce" id="edit-reproduce" class="input-large form-control"></textarea>
-									</div>
-									<div class="tab-pane fill" id="tabs-4">
 										<div class="fill">
 											<div id="edit-story-notes-container" name="edit-story-notes-container" class="notesarea"></div>
 											<div class="btn btn-success addNoteButton" id="edit-story-new-note-save-button" name=""><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Note&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-arrow-up"></span></div><br>
 											<textarea class="edit-newnotetext input-large form-control" id="edit-newnotetext" name="edit-newnotetext" title="Enter new notes here."></textarea>
 										</div>
 									</div>
-									<div class="tab-pane fill" id="tabs-5">
+									<div class="tab-pane" id="tabs-4">
 										<div class="fill">
 											<div id="edit-story-attachment-container" name="edit-story-attachment-container" class="attachmentsarea"></div>
 											<div class="btn-group">
-												<div class="btn btn-success" id="edit-story-new-attach-save-button" name="" onclick="SaveNewAttachments();"><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save Attachments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-arrow-up"></span></div>
+												<div class="btn btn-success" id="edit-story-new-attach-save-button" name="" onclick="SaveNewAttachments();"><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upload Attachments To Story&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-arrow-up"></span></div>
 												<div class="btn btn-warning" onclick="ClearUploadList();">Clear Upload List</div>
 											</div>
 											<br>
 
 											  <div style="position:relative;">
 													<a class='btn btn-primary' href='javascript:;'>
-														Choose File...
+														Choose File To Add...
 														<input type="file" id="newAttachmentFile" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
 													</a>
 													&nbsp;
 													<span class='label label-info' id="upload-file-info"></span>
 												</div>
-											<output id="newAttachmentList"></output>
+											<div id="newAttachmentList" class="newattachmentcontainer"></div>
 										</div>
 									</div>
-									<div class="tab-pane" id="tab-6">
-
+									<div class="tab-pane" id="tab-5">
+										History not available till Mantis Version 1.13
 									</div>
 								</div>
 						</div>
@@ -290,7 +289,7 @@
 												</div>
 											</td>
 											<td>
-												<span onclick="FitColsToScreen(); Kanban.SaveSettings(); CloseSettings();" class="btn btn-success" style="padding-top:0px !important; padding-bottom:0px !important;">Auto-Fit&nbsp;<span class="glyphicon glyphicon-resize-horizontal"></span></span>
+												<span onclick="FitColsToScreen(); Kanban.SaveSettings(); CloseSettings();" class="btn btn-success form-control" style="padding-top:0px !important; padding-bottom:0px !important;">Auto-Fit&nbsp;<span class="glyphicon glyphicon-resize-horizontal"></span></span>
 											</td>
 										</tr>
 										<tr>
@@ -301,7 +300,7 @@
 										<tr>
 											<td colspan="2">												
 												<div class="controls">
-													<input type="text" name="settings-connectURL" id="settings-connectURL" placeholder="Mantis Connect URL" />
+													<input type="text" name="settings-connectURL" id="settings-connectURL" class="form-control" placeholder="Mantis Connect URL" />
 												</div>
 											</td>
 										</tr>

@@ -763,7 +763,8 @@ function OpenAddStory() {
 	selectAssignedUser.options[selectAssignedUser.options.length] = new Option("None", "");
 	for(var i = 0; i < Kanban.CurrentProject.Users.length; i++) {
 		var user = Kanban.CurrentProject.Users[i];
-		selectAssignedUser.options[selectAssignedUser.options.length] = new Option(user.Name, user.ID);
+		var name = user.Name == undefined ? "ID: " + user.ID : user.Name;
+		selectAssignedUser.options[selectAssignedUser.options.length] = new Option(name, user.ID);
 	}
 	selectAssignedUser.selectedIndex = 0
 
@@ -797,6 +798,7 @@ function OpenAddStory() {
 	var foundDefaultCategory = false;
 	for(var i = 0; i < Mantis.ProjectCategories.length; i++) {
 		var category = Mantis.ProjectCategories[i];
+		if(category == null) continue;
 		selectAddCategories.options[selectAddCategories.options.length] = new Option(category.capitalize(), category);
 		if(Kanban.DefaultCategory != undefined) {
 			if(Kanban.DefaultCategory == category) {

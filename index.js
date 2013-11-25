@@ -352,25 +352,31 @@ function SelectProject(openStoryID) {
 
 	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
 
-	window.setTimeout("UpdateFilterList()", 0);
+	UpdateFilterList();
 
 	BuildKanbanListFromMantisStatuses();
 	
 	Kanban.BuildListGUI();
 
+	VerifyDefaultFitlers();
+
 	document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.Name;
 
 	if(Mantis.DefaultFilterID !== null && Mantis.DefaultFilterID != 0) {
-			window.setTimeout(function(filterID, retObj) {
-				LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, function(filterID, retObj) {
-					DoneLoadingIssuesCallback(filterID, retObj);
-					if(document.getElementById("searchfield").value != "") {
-						SearchForStory(true);
-					}
-				});
-			}, 0);
+		window.setTimeout(function(filterID, retObj) {
+			LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, function(filterID, retObj) {
+				DoneLoadingIssuesCallback(filterID, retObj);
+				if(document.getElementById("searchfield").value != "") {
+					SearchForStory(true);
+				}
+			});
+		}, 0);
 		if(Mantis.ClosedIssuesFilterID !== null) {
-			window.setTimeout("LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback)", 0);
+			window.setTimeout(
+				LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, 
+					Kanban.NumberOfClosedMessagesToLoad, 
+					DoneLoadingIssuesCallback), 0
+			);
 		}
 	} else {
 		var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
@@ -381,9 +387,25 @@ function SelectProject(openStoryID) {
 		}
 
 		StopLoading();
-
-
 	}
+}
+
+function VerifyDefaultFitlers() {
+	var foundClosedFilter = false;
+	var foundFilter = false;
+	for(var fcount = 0; fcount < Mantis.ProjectFilterList.length; fcount++) {
+		if(Mantis.ProjectFilterList[fcount].id == Mantis.DefaultFilterID) {
+			foundFilter = true;
+		}
+	}
+	for(var fcount = 0; fcount < Mantis.ProjectFilterList.length; fcount++) {
+		if(Mantis.ProjectFilterList[fcount].id == Mantis.ClosedIssuesFilterID) {
+			foundClosedFilter = true;
+		}
+	}
+	if(!foundFilter) Mantis.DefaultFilterID = null;
+	if(!foundClosedFilter) Mantis.ClosedIssuesFilterID = null;
+
 }
 
 function UpdateFilter(filterID) {
@@ -397,6 +419,7 @@ function UpdateFilterList() {
 
 	var filterList = document.getElementById("filterlist");
 	var filterListArray = Mantis.FilterGet(Mantis.CurrentProjectID)
+	Mantis.ProjectFilterList = filterListArray;
 
 	while(filterList.children.length > 0) { 
 	 	filterList.removeChild(filterList.children[0]);

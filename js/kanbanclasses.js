@@ -21,7 +21,8 @@ KanbanUser.prototype = {
 	},
 
 	get Name() {
-		return this.UserSource.real_name;
+
+		return this.UserSource.real_name == undefined ? this.UserSource.name : this.UserSource.real_name;
 	}, set Name(value) {
 		this.UserSource.real_name = value;
 	},
