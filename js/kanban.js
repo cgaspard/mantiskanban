@@ -522,7 +522,9 @@ function SaveNewAttachments() {
 		}
 		document.getElementById('newAttachmentFile').value = "";
 
-		myStory = Kanban.UpdateUnderlyingStorySource(myStory, true);
+		myStory = Kanban.UpdateUnderlyingStorySource(myStory);
+		myStory.BuildKanbanStoryDiv();
+		myStory.Element.classList.add("nofadein");
 		AddAttachmentToStoryEditForm(myStory);
 	} finally {
 		Kanban.BlockUpdates = false;
@@ -540,8 +542,15 @@ function DeleteAttachment(AttachmentID) {
 		Mantis.IssueAttachmentDelete(AttachmentID);
 		///If delete worked, remove the element
 		var attachmentElement = document.getElementById("attachmentcontainer" + AttachmentID);
+		var storyID = attachmentElement.getAttribute("storyid");
 		if(!attachmentElement) return;
+
+		///Update the UI
 		attachmentElement.parentNode.removeChild(attachmentElement);
+		var myStory = Kanban.GetStoryByFieldValue("ID", storyID);
+		myStory = Kanban.UpdateUnderlyingStorySource(myStory);
+		myStory.BuildKanbanStoryDiv();
+		myStory.Element.classList.add("nofadein");
 	} catch(e) {
 		alert("Error Deleting:" + e.message);
 	} finally {
@@ -583,6 +592,7 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 		var attachmentDeleteButton = document.createElement("div");
 		attachmentDeleteButton.setAttribute("class", "btn btn-small btn-danger attachmentdeletebutton");
 		attachmentDeleteButton.setAttribute("onclick", "DeleteAttachment(" + thisAttachment.id + ")");
+		attachmentDeleteButton.setAttribute("storyid", KanbanStory.ID);
 		attachmentDeleteButton.innerHTML = "<span class=\" glyphicon glyphicon-trash\"></span> Delete";
 		attachmentDiv.appendChild(attachmentDeleteButton);
 
