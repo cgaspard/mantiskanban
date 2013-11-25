@@ -372,11 +372,7 @@ function SelectProject(openStoryID) {
 			});
 		}, 0);
 		if(Mantis.ClosedIssuesFilterID !== null) {
-			window.setTimeout(
-				LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, 
-					Kanban.NumberOfClosedMessagesToLoad, 
-					DoneLoadingIssuesCallback), 0
-			);
+			window.setTimeout("LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback)", 0);
 		}
 	} else {
 		var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
@@ -453,8 +449,11 @@ function LoadFilterAsync(FilterID, Page, Limit, Callback) {
 			var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
 			CreateKanbanStoriesFromMantisIssues(retObj);
 		} catch (e) {
+			if(Mantis.DefaultFilterID == FilterID) Mantis.DefaultFilterID = null;
+			if(Mantis.ClosedIssuesFilterID == FilterID) Mantis.ClosedIssuesFilterID =  null;
+			saveCurrentSettings();
 			StopLoading();
-			alert("Error Loading Stories: " + e.message);
+			alert("Error Loading Stories For Filter: " + e.message);
 		}
 
 	} finally {
