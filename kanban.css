@@ -524,12 +524,7 @@ div.notecontainer {
 	background: #ffff88; /* Old browsers */
 }
 
-.label {
-	position: absolute;
-	top: -0px;
-	right: -0px;
-	z-index: 9999;
-}
+
 
 .kanbanstoryissuenumber{
 	display: block;
@@ -579,9 +574,18 @@ div.notecontainer {
 	width: 90%;
 
 }
-.kanbanstorytitle>span,.kanbanstorytitle>br,.kanbanstorytitle>.glyphicon {
+.kanbanstorytitle>span,.kanbanstorytitle>br,.kanbanstorytitlesecondrow>.glyphicon {
 	font-size:8pt;
+	margin-left: 3px;
+	padding-left: 3px;
+}
 
+
+.kanbanstorytitlesecondrow>.label {
+	margin-left: 8px;
+	text-overflow:ellipsis;
+	-o-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
 }
 
 #prioritylegend { }

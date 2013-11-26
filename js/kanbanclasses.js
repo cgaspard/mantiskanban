@@ -474,23 +474,48 @@ KanbanStory.prototype = {
 		storyDivTitle.setAttribute("listid", "listid" + this.ListID);
 		storyDivTitle.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivTitle.setAttribute("dropdivid", "dropdiv" + this.ID);
-		storyDivTitle.innerHTML += this.Summary + "<br><span>&nbsp</span>";
+		storyDivTitle.innerHTML += this.Summary;
+
+		var storyDivTitleSecondRow = document.createElement("div");
+		storyDivTitleSecondRow.setAttribute("class", "kanbanstorytitlesecondrow");
 
 		if(this.CategoryID != null) {
-			storyDivTitle.innerHTML += "<span class=\" glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID) + "\"></span> ";
+			var storyDivTitleSecondIcon = document.createElement("span");
+			storyDivTitleSecondIcon.setAttribute("class", "glyphicon glyphicon-" + Kanban.GetCategoryIcon(this.CategoryID));
+			storyDivTitleSecondRow.appendChild(storyDivTitleSecondIcon);
 		}
-		if(this.Tags.length > 0) {
-			storyDivTitle.innerHTML += "<span class=\" glyphicon glyphicon-tags\"></span> ";
-		}
+		// if(this.Tags.length > 0) {
+		// 	var storyDivTitleSecondIcon = document.createElement("span");
+		// 	storyDivTitleSecondIcon.setAttribute("class", "glyphicon glyphicon-tags");
+		// 	storyDivTitleSecondRow.appendChild(storyDivTitleSecondIcon);
+		// }
 		if(this.Notes.length > 0) {
-			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-th-list\"></span> ";
+			var storyDivTitleSecondIcon = document.createElement("span");
+			storyDivTitleSecondIcon.setAttribute("class", "glyphicon glyphicon-th-list");
+			storyDivTitleSecondRow.appendChild(storyDivTitleSecondIcon);
 		}		
 		if(this.Attachments.length > 0) {
-			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-file\"></span> ";
+			var storyDivTitleSecondIcon = document.createElement("span");
+			storyDivTitleSecondIcon.setAttribute("class", "glyphicon glyphicon-file");
+			storyDivTitleSecondRow.appendChild(storyDivTitleSecondIcon);
 		}
 		if(this.RelatedStories.length > 0) {
-			storyDivTitle.innerHTML += "<span class=\"glyphicon glyphicon-retweet\"></span> ";
+			var storyDivTitleSecondIcon = document.createElement("span");
+			storyDivTitleSecondIcon.setAttribute("class", "glyphicon glyphicon-retweet");
+			storyDivTitleSecondRow.appendChild(storyDivTitleSecondIcon);
 		}
+		if(this.Tags.length > 0) {
+			for(var tcnt = 0; tcnt < this.Tags.length; tcnt++) {
+				var thisTag = this.Tags[tcnt];
+				var tagDiv = document.createElement("span");
+				tagDiv.setAttribute("class", "label label-warning");
+				tagDiv.innerHTML = thisTag.name;
+
+				storyDivTitleSecondRow.appendChild(tagDiv);
+			}
+
+		}
+		storyDivTitle.appendChild(storyDivTitleSecondRow);
 		storyContainerDiv.appendChild(storyDivTitle);
 
 		var storyDivSeverityContainer = document.createElement("div");
