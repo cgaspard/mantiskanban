@@ -4,6 +4,90 @@
 		"selected_items":
 		[
 			[
+				"Save",
+				"saveCurrentSettings"
+			],
+			[
+				"Default",
+				"DefaultFilterID"
+			],
+			[
+				"fcou",
+				"fcount"
+			],
+			[
+				"Projef",
+				"ProjectFilterList"
+			],
+			[
+				"Get",
+				"GetStoryByFieldValue"
+			],
+			[
+				"atta",
+				"attachmentElement"
+			],
+			[
+				"paddi",
+				"padding-left"
+			],
+			[
+				"attac",
+				"attachmentElement"
+			],
+			[
+				"att",
+				"attachmentElement"
+			],
+			[
+				"attachmentI",
+				"AttachmentID"
+			],
+			[
+				"this",
+				"thisAttachment"
+			],
+			[
+				"Ge",
+				"GetStoryByFieldValue"
+			],
+			[
+				"Atta",
+				"Attachments"
+			],
+			[
+				"bloc",
+				"BlockUpdates"
+			],
+			[
+				"blo",
+				"BlockUpdates"
+			],
+			[
+				"child",
+				"childNodes"
+			],
+			[
+				"getElementBy",
+				"getElementById"
+			],
+			[
+				"IssueADd",
+				"IssueAttachmentAdd"
+			],
+			[
+				"newA",
+				"newAttachmentDiv"
+			],
+			[
+				"issueid",
+				"issueID"
+			],
+			[
+				"Issue",
+				"IssueID"
+			],
+			[
 				"se",
 				"searchfield"
 			],
@@ -76,20 +160,12 @@
 				"border-top-left-radius"
 			],
 			[
-				"att",
-				"attachmentID"
-			],
-			[
 				"result",
 				"resultText"
 			],
 			[
 				"tex",
 				"text-align"
-			],
-			[
-				"atta",
-				"attachmentLightBoxDiv"
 			],
 			[
 				"attachem",
@@ -220,10 +296,6 @@
 				"storyDivButtonContainer"
 			],
 			[
-				"Get",
-				"GetStoryByFieldValue  (function)"
-			],
-			[
 				"userrad",
 				"userRadioInputLabel"
 			],
@@ -342,10 +414,6 @@
 			[
 				"Projec",
 				"ProjectGetUsers  (namespace)"
-			],
-			[
-				"this",
-				"thisStory"
 			],
 			[
 				"Console",
@@ -481,6 +549,13 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Documents/RemoveFromOLinuxIno.txt",
+		"/home/cgaspard/restore.sql",
+		"/home/cgaspard/Downloads/Shane Lawyer(1).txt",
+		"/home/cgaspard/Desktop/Shane Lawyer.txt",
+		"/home/cgaspard/Downloads/Shane Lawyer.txt",
+		"/home/cgaspard/Downloads/database design.txt",
+		"/home/cgaspard/Downloads/tblsitebillinglog.sql",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/global.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
@@ -590,7 +665,7 @@
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
@@ -609,6 +684,50 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"buildkanbanstory",
+			"LoadFilterAsync",
+			"UpdateFilterList",
+			"LoadFilterAsync",
+			"selectproject",
+			"stoplo",
+			"kanbanuser",
+			"user",
+			"loadfilterasync",
+			"DoneLoadingIssuesCallback",
+			"selectProject",
+			"settings",
+			"form-control",
+			"settings",
+			"tabs-4",
+			"tabs-3",
+			"edit-reproduce",
+			"deleteattach",
+			"addattachment",
+			"BuildKanbanStoryDiv",
+			"UpdateUnderlyingStorySource",
+			"newfileattach",
+			"edit-story-new-attach-save-button",
+			"AddAttachmentToStoryEditForm",
+			"EditStory",
+			"EditSotry",
+			"editstory",
+			"icon",
+			"attachmentname",
+			"IssueAttachmentDelete",
+			"mc_issue_att",
+			"edit-story-new-note-save-button",
+			"attachmentsarea",
+			"a",
+			"edit-story-notes-container",
+			"attachmentsarea",
+			"notesarea",
+			"editing-header",
+			" class=\"form-control\"",
+			"<input",
+			"priority",
+			"attachmentcontain",
+			"AddAttachmentToStoryEditForm",
+			"addattach",
 			"issue not found",
 			"Issue",
 			"searchfield",
@@ -692,56 +811,12 @@
 			"assign",
 			"assign handler",
 			"assignhandler",
-			"builduser",
-			"OpenUserSelector",
-			"user-context-menu",
-			"attachment",
-			"CloseLightBox",
-			"edit-story-form",
-			"ShowPriorityLegend",
-			"transform",
-			"CloseAddStoryDialog",
-			"AddStory",
-			"add-story-form",
-			"edit-story-form",
-			"$('#edit-story-form').modal('hide')",
-			"$('#add-story-form').modal('hide')",
-			"CloseAddStoryDialog",
-			"AddStory",
-			"AddStoryFromFormData",
-			"selectproject",
-			"btn-gr",
-			"modal-header",
-			"AddStoryFromFormData",
-			"openaddstory",
-			"note",
-			"notes",
-			"notesarea",
-			"border-bottom",
-			"edit-story-ti",
-			"priority",
-			"#prioritylegend",
-			"priority",
-			"priority		",
-			"users",
-			"priorityleg",
-			" kanbanstorypriority",
-			"priority",
-			"priorit",
-			"priority",
-			"Login",
-			"login",
-			"priority",
-			"BuildKanbanStoryDiv",
-			"appendchild",
-			"insertchild",
-			"in",
-			"insertchild"
+			"builduser"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
 			"Kanban.CurrentUser",
