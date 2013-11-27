@@ -530,7 +530,7 @@ div.notecontainer {
 	display: block;
 	font-size: 12px;
 	font-weight: bolder;
-	height: 40px;
+	height: 45px;
 	padding-top: 2px;
 	padding-left: 4px;
     position      : absolute;
@@ -557,11 +557,11 @@ div.notecontainer {
     display: block;
     top           : 0px;
     width: 60px;
-    height: 40px;
+    height: 45px;
 	vertical-align: middle;
 	color:#FFFFFF;
 	padding-left: 30px;
-	padding-top: 16px;
+	padding-top: 20px;
 	border-right: 1px solid #ababab;
 	
 }
@@ -662,7 +662,7 @@ div[priority="immediate"] {
 
 
 .kanbanstorytitle{
-	height: 40px;
+	height: 45px;
 	display: inline-block;
 	position: relative;
 	left: 60px;
