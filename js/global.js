@@ -9,7 +9,14 @@ String.prototype.htmlencode = function() {
   return el.innerHTML;
 }
 
+function pad(width, string, padding) { 
+  return (width <= string.length) ? string : pad(width, padding + string, padding)
+}
+
 function GetStyleCodeFor3Digits(digits, opacity) {
+	if(digits.length > 3) digits = digits.substring(0, 3)
+	if(digits.length < 3) digits = pad(3, digits, "0");
+
 	var setOpacityTo = (opacity == undefined) ? "1" : opacity;
 	var colorObject = GetColorCodeFor3Digits(digits);
 	var textContrast = GetColorContrastForRBG(colorObject.first, colorObject.second, colorObject.third);
@@ -27,6 +34,9 @@ function FormatTextAsHTML(textToFormat) {
 
 
 function GetStyleCodeFor3DigitsHalfShaded(digits) {
+	if(digits.length > 3) digits = digits.substring(0, 3)
+	if(digits.length < 3) digits = pad(3, digits, "0");
+
 	var colorObject = GetColorCodeFor3Digits(digits);
 	var textContrast = GetColorContrastForRBG(colorObject.first, colorObject.second, colorObject.third);
 	return "color: " + textContrast + "; background: linear-gradient(135deg, rgba(255,255,255,0) 0%,rgba(41,137,216,0) 50%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 51%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 100%) !important; /* W3C */"

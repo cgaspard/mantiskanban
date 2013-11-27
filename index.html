@@ -64,7 +64,7 @@
 								<div class="otherbuttoncontiner" style="margin-bottom: 20px;">
 								<div class="btn-group">
 								  <button class="btn btn-primary btn-small dropdown-toggle" type="button" data-toggle="dropdown">
-								  	<i class="glyphicon glyphicon-dashboard"></i>
+									<i class="glyphicon glyphicon-dashboard"></i>
 									Select Project <span class="caret"></span>
 								  </button>						
 								  <ul id="projectlist" class="dropdown-menu">
@@ -112,7 +112,7 @@
 									<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
 									<li><a href="#tabs-3" data-toggle="tab">Notes</a></li>
 									<li><a href="#tabs-4" data-toggle="tab">Attachments</a></li>
-									<li><a href="#tabs-5" data-toggle="tab">History</a></li>
+									<li><a href="#tabs-5" data-toggle="tab">Tags</a></li>
 								</ul>
 								<div class="tab-content">
 									<div class="tab-pane active" id="tabs-1">
@@ -202,8 +202,27 @@
 											<div id="newAttachmentList" class="newattachmentcontainer"></div>
 										</div>
 									</div>
-									<div class="tab-pane" id="tab-5">
-										History not available till Mantis Version 1.13
+									<div class="tab-pane" id="tabs-5">
+										<div class="fill">
+											<span>Click To Remove</span>
+											<div class="tagscontainer" id="edit-story-tags-container">
+											</div>
+											<div>
+												<div class="input-group">
+													<div class="input-group-btn">
+														<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Add Existing <span class="caret"></span></button>
+														<ul id="edit-story-tags-list" class="dropdown-menu">
+															<li><a href="#">Tag 1</a></li>
+															<li><a href="#">Tag 2</a></li>
+														</ul>
+													</div>
+													<input type="text" id="edit-story-new-tag" class="form-control">
+													<div class="input-group-btn">
+												  		<div class="btn btn-danger" onclick="AddNewTagFromEditForm();"><span class="glyphicon glyphicon-plus"> Add New</span></div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 						</div>
@@ -291,7 +310,7 @@
 												</div>
 											</td>
 											<td>
-												<span onclick="FitColsToScreen(); Kanban.SaveSettings(); CloseSettings();" class="btn btn-success" style="padding-top:0px !important; padding-bottom:0px !important;">Auto-Fit&nbsp;<span class="glyphicon glyphicon-resize-horizontal"></span></span>
+												<span onclick="FitColsToScreen(); Kanban.SaveSettings(); CloseSettings();" class="btn btn-success">Auto-Fit&nbsp;<span class="glyphicon glyphicon-resize-horizontal"></span></span>
 											</td>
 										</tr>
 										<tr>

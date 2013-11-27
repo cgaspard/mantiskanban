@@ -39,6 +39,22 @@
 	border-radius: 5px 5px 5px 5px;
 }
 
+#edit-story-notes-container {
+	height: calc(100% - 150px) !important;
+	background-color: #dedede;
+	padding: 2px !important;
+}
+
+
+#edit-story-new-attach-save-button{
+	margin-bottom: 5px !important;
+}
+
+
+#edit-story-new-note-save-button{
+	width:100% !important;
+	margin-bottom: 5px !important;
+}
 #add-description {
 	width: 90%;
 }
@@ -49,6 +65,91 @@
 	display: block;
 }
 
+
+#edit-story-new-note-save-button {
+	display:inline-block;
+}
+
+#edit-description, #edit-reproduce {
+	width: 100%;
+	height: 200px;
+}
+
+#edit-newnotetext {
+	display: inline-block;
+}
+
+.editform {
+	overflow: auto;
+	height:100%;
+	width: 575px;
+	/*background-color: #dfdfdf;*/
+	padding: 15px 15px 15px 15px;
+	border-left: solid 2px #000000;
+	position: absolute;
+}	
+
+#add-story-form  {
+}
+
+
+#edit-story-form {
+}
+
+.tab-content {
+	padding-top: 10px;
+}
+
+#edit-story-title {
+	text-overflow:ellipsis;
+	-o-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+}
+
+#add-description {
+	width: 100%;
+	height: 200px;
+}
+
+
+.tagscontainer {
+	margin: 10px;
+	padding: 20px;
+	width: 100%;
+	/*max-height: calc(100% - 400px);*/
+	overflow: auto;
+	border: solid 1px #cccccc;
+	padding: 15px 15px 15px 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px 5px 5px 5px;
+	background-color: #dedede;
+}
+
+.tagscontainer>.label {
+	margin: 5px;
+}
+
+
+.editing-content {
+	height: calc(100% - 135px) !important;
+}
+
+.tab-content {
+	height: calc(100% - 45px) !important;
+}
+
+#tabs-3 {
+	height: calc(100% - 20px) !important;
+}
+
+#tabs-4 {
+	height: calc(100% - 50px) !important;
+}
+
+#tabs-5 {
+	height: calc(100% - 50px) !important;
+}
 
 .notetext {
 	font-size: 12pt;

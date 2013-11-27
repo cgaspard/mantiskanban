@@ -1,5 +1,9 @@
 var Kanban = {
 
+	Preload : function() {
+		Mantis.Preload();
+	},
+
 	get CurrentProject() {
 		for(var i = 0; i < Kanban.Projects.length; i++) {
 			if(document.getElementById("seletedproject").value == Kanban.Projects[i].ID) {
@@ -15,6 +19,10 @@ var Kanban = {
 		Kanban._currentUser = value;
 	},
 
+	get Tags() {
+		return Mantis.Tags;
+	},
+
 	BlockUpdates: false,
 	Dragging: false,
 	UsingCustomField: false,
@@ -23,9 +31,9 @@ var Kanban = {
 
 	GetCategoryIcon : function(category) {
 		if(Kanban.CategoryIconMap == undefined) {
-			return "";
+			return "bookmark";
 		} else if(Kanban.CategoryIconMap[category] == undefined) {
-			return "";
+			return "bookmark";
 		} else {
 			return Kanban.CategoryIconMap[category];
 		}
@@ -57,6 +65,7 @@ var Kanban = {
 	Projects: [],
 	Lists: [],
 	Stories: [],
+
 
 	/*
 	 * @name HasStory
@@ -561,6 +570,104 @@ function DeleteAttachment(AttachmentID) {
 
 }
 
+
+function LoadTagsInDropDown() {
+	var editFormTags = document.getElementById("edit-story-tags-list");
+	try {
+		while(editFormTags.childNodes.length > 0) {
+			editFormTags.removeChild(editFormTags.firstChild);
+		}
+	} catch(e) {}
+
+	for(var ti = 0; ti < Kanban.Tags.length; ti++) {
+		var thisTag = Kanban.Tags[ti];
+
+		var liTag = document.createElement("li");
+		var aTag = document.createElement("a");
+		aTag.innerHTML = thisTag.name;
+		aTag.setAttribute("value", thisTag.id);
+		aTag.setAttribute("href", "#");
+		aTag.setAttribute("onclick", "AddTagToEditingStory(" + thisTag.id + ");");
+
+		liTag.appendChild(aTag);
+
+		editFormTags.appendChild(liTag);
+
+	}
+}
+
+
+function AddTagsToStoryEditForm(KanbanStory) {
+
+	LoadTagsInDropDown();
+
+	var tagsContainer = document.getElementById("edit-story-tags-container");
+
+	try {
+		while(tagsContainer.childNodes.length > 0) {
+			tagsContainer.removeChild(tagsContainer.firstChild);
+		}
+	} catch(e) {}
+
+	for(var tcnt = 0; tcnt < KanbanStory.Tags.length; tcnt++) {
+		var thisTag = KanbanStory.Tags[tcnt];
+		var tagDiv = document.createElement("span");
+		tagDiv.setAttribute("class", "label label-warning");
+		tagDiv.setAttribute("onclick", "RemoveTagFromEditStory(" + thisTag.id + ")");
+		tagDiv.setAttribute("style", "cursor: pointer;")
+		//tagDiv.setAttribute("style", GetStyleCodeFor3Digits(thisTag.name) + "; cursor: pointer;")
+		tagDiv.setAttribute("title", "Click to remove");
+		tagDiv.innerHTML = thisTag.name;
+		tagsContainer.appendChild(tagDiv);
+	}
+
+
+}
+
+function AddNewTagFromEditForm() {
+	var newTagText = document.getElementById("edit-story-new-tag").value;
+	if(newTagText == "") return;
+	var newTagStructure = Mantis.UpdateStructureMethods.Tag.NewTag(newTagText, newTagText)
+	var newTagID = Mantis.TagAdd(newTagStructure);
+	Mantis.LoadTagsSync();
+	AddTagToEditingStory(newTagID);
+	document.getElementById("edit-story-new-tag").value = "";
+}
+
+function AddTagToEditingStory(tagID) {
+	var storyID = $("#edit-story-id").val();
+	var tagStory = Kanban.GetStoryByFieldValue("ID", storyID);
+	var foundTag = null;
+	for(var ti = 0; ti < Kanban.Tags.length; ti++) {
+		var thisTag = Kanban.Tags[ti];
+		if(tagID == thisTag.id) {
+			foundTag = thisTag;
+			break;
+		}
+	}
+
+	if(foundTag != null && !tagStory.HasTag(tagID)) {
+		tagStory.AddTag(foundTag);
+		Mantis.IssueSetTags(tagStory.ID, tagStory.Tags);
+		tagStory.BuildKanbanStoryDiv();
+		tagStory.Element.classList.add("nofadein");
+		AddTagsToStoryEditForm(tagStory);
+	}
+}
+
+function RemoveTagFromEditStory(tagID) {
+	//if(!confirm("Are you sure you want to remove this tag?")) return;
+
+	var storyID = $("#edit-story-id").val();
+	var tagStory = Kanban.GetStoryByFieldValue("ID", storyID);
+
+	tagStory.RemoveTag(tagID);
+	Mantis.IssueSetTags(tagStory.ID, tagStory.Tags);
+	tagStory.BuildKanbanStoryDiv();
+	tagStory.Element.classList.add("nofadein");
+	AddTagsToStoryEditForm(tagStory);
+}
+
 function AddAttachmentToStoryEditForm(KanbanStory) {
 	var attachmentsContainer = document.getElementById("edit-story-attachment-container");
 
@@ -569,6 +676,18 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 			attachmentsContainer.removeChild(attachmentsContainer.firstChild);
 		}
 	} catch(e) {}
+
+	if(KanbanStory.Tags == undefined || KanbanStory.Tags.length > 0) return;
+
+	for(var i = 0; i < KanbanStory.Attachments.length; i++) {
+		var thisAttachment = KanbanStory.Attachments[i];
+		var attachmentDiv = document.createElement("div");
+		attachmentDiv.setAttribute("id", "attachmentcontainer" + thisAttachment.id)
+		attachmentDiv.setAttribute("class", "attachmentcontainer");
+		attachmentDiv.setAttribute("storyid", KanbanStory.ID);
+		attachmentsContainer.appendChild(attachmentDiv);
+	}
+
 
 	/// This is what an attachment looks like
 	//  <xsd:element name="id" type="xsd:integer" minOccurs="0"/>
@@ -962,6 +1081,8 @@ function EditStory(storyID) {
 	AddNotesToStoryEditForm(thisStory);
 
 	AddAttachmentToStoryEditForm(thisStory);
+
+	AddTagsToStoryEditForm(thisStory);
 
 	//$('#edit-story-form').modal();
 	ShowEditStory();

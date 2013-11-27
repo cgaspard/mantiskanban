@@ -366,6 +366,33 @@ KanbanStory.prototype = {
 		}
 	},
 
+	AddTag : function(tag) {
+		this.StorySource.tags.push(tag);
+	},
+
+	RemoveTag : function(id) {
+		if(this.StorySource.tags != undefined) {
+			for(var qi = 0; qi < this.StorySource.tags.length; qi++) {
+				if(this.StorySource.tags[qi].id == id) {
+					this.StorySource.tags.splice(qi, 1);
+					return;
+				}
+			}
+		}
+		
+		
+	},
+
+	HasTag : function(tagID) {
+		if(this.StorySource.tags != undefined) {
+			for(var qi = 0; qi < this.StorySource.tags.length; qi++) {
+				if(this.StorySource.tags[qi].id == tagID) return true;
+			}
+		}
+		
+		return false;
+		
+	},
 	Save: function() {
 		this.StorySource.summary = this.Summary;
 		this.StorySource.status.id = this.List.ID;
@@ -509,6 +536,7 @@ KanbanStory.prototype = {
 				var thisTag = this.Tags[tcnt];
 				var tagDiv = document.createElement("span");
 				tagDiv.setAttribute("class", "label label-warning");
+				//tagDiv.setAttribute("style", GetStyleCodeFor3Digits(thisTag.name))
 				tagDiv.innerHTML = thisTag.name;
 
 				storyDivTitleSecondRow.appendChild(tagDiv);

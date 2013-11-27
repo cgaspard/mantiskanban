@@ -7,6 +7,7 @@ var Mantis = {
 	_projectcustomfields : [],
 	_accesslevels : [],
 	_userprojects : [],
+	_tags : [],
 	_defaultaccesslevelforuserenum : 10,
 	_defaultfilterid : null,
 	_closedissuesfilterid : null,
@@ -25,7 +26,12 @@ var Mantis = {
 		Mantis._accesslevels = [];
 		Mantis._userprojects = [];
 		Mantis._defaultaccesslevelforuserenum = 10;
+		Mantis._tags = [];
 	},
+
+	Preload : function() {
+		Mantis.LoadTagsAsync();
+	},	
 	
 	set DefaultFilterID(value) {
 		Mantis._defaultfilterid = value;
@@ -69,6 +75,23 @@ var Mantis = {
 		}
 		
 		return Mantis._statues;
+	},
+
+	get Tags() {
+		if(Mantis._tags == null || Mantis._tags.length == 0) {
+			Mantis._tags = Mantis.TagGetAll(0,9999);
+		}
+		return Mantis._tags;
+	},
+
+	LoadTagsAsync : function() {
+		Mantis.TagGetAll(0,9999, function(retObj) {
+			Mantis._tags = retObj.results;
+		});
+	},
+
+	LoadTagsSync : function() {
+		Mantis._tags = Mantis.TagGetAll(0,9999).results;
 	},
 	
 	get ProjectCategories() {
@@ -134,6 +157,7 @@ var Mantis = {
 		PageNumber : "page_number",
 		PerPage : "per_page",
 		ProjectID : "project_id",
+		Tag : "tag",
 		Tags : "tags",
 		UserName : "username",
 		IssueAttachmentID : "issue_attachment_id",
@@ -320,6 +344,17 @@ var Mantis = {
 			
 		},
 
+		TagAdd :  {
+			Name : "mc_tag_add",
+			BuildParams : function(tag) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
+				pl.add(Mantis.Params.Tag, tag);
+				return pl;
+			}
+		},
+
 		IssueAttachmentAdd : {
 			Name : "mc_issue_attachment_add",
 			BuildParams : function(issueID, fileName, fileType, fileContent) {
@@ -353,6 +388,18 @@ var Mantis = {
 				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
 				pl.add(Mantis.Params.IssueID, issueid);
 				pl.add(Mantis.Params.Tags, tagsDataArray);
+				return pl;
+			}
+		},
+
+		TagGetAll :  {
+			Name : "mc_tag_get_all",
+			BuildParams : function(pageNumber, perPage) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
+				pl.add(Mantis.Params.PageNumber, pageNumber);
+				pl.add(Mantis.Params.PerPage, perPage);
 				return pl;
 			}
 		},
@@ -489,6 +536,13 @@ var Mantis = {
 				return newIssue;   
 			}
 		},
+		Tag :  {
+
+			NewTag : function(name, description) {
+				return  {"name":name, "description":description};
+			}
+		},
+
 		Note : {
 			NewNote : function(notetext) {
 				return {
@@ -542,12 +596,18 @@ var Mantis = {
 		hascallback = callBack == null ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueAttachmentGet.Name, Mantis.Methods.IssueAttachmentGet.BuildParams(IssueAttachmentID), hascallback, function(returnData) { callBack(returnData, IssueAttachmentID, ContentType); });
 	},
+
+	TagAdd : function(Tag, callBack) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL, Mantis.Methods.TagAdd.Name, Mantis.Methods.TagAdd.BuildParams(Tag), hascallback, callBack);
+	},
+
 	IssueNoteAdd : function(IssueID, Note, callBack) {
 		hascallback = callBack == null ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueNoteAdd.Name, Mantis.Methods.IssueNoteAdd.BuildParams(IssueID, Note), hascallback, callBack);
 	},
 
-	IssueSetTags : function(IssueID, IssueTagsArray) {
+	IssueSetTags : function(IssueID, IssueTagsArray, callBack) {
 		hascallback = callBack == null ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueSetTags.Name, Mantis.Methods.IssueSetTags.BuildParams(IssueID, IssueTagsArray), hascallback, callBack);
 	},
@@ -564,6 +624,31 @@ var Mantis = {
 		
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueUpdate.Name, Mantis.Methods.IssueUpdate.BuildParams(IssueID, Issue), hascallback, callBack);
 	},
+
+	TagGetAll : function(PageNumber, PerPage, callBack) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.TagGetAll.Name, Mantis.Methods.TagGetAll.BuildParams(PageNumber, PerPage), hascallback, callBack);
+
+	},
+// <message name="mc_tag_get_allRequest">
+//   <part name="username" type="xsd:string" />
+//   <part name="password" type="xsd:string" />
+//   <part name="page_number" type="xsd:integer" />
+//   <part name="per_page" type="xsd:integer" /></message>
+// <message name="mc_tag_get_allResponse">
+//   <part name="return" type="tns:TagDataSearchResult" /></message>
+// <message name="mc_tag_addRequest">
+//   <part name="username" type="xsd:string" />
+//   <part name="password" type="xsd:string" />
+//   <part name="tag" type="tns:TagData" /></message>
+// <message name="mc_tag_addResponse">
+//   <part name="return" type="xsd:integer" /></message>
+// <message name="mc_tag_deleteRequest">
+//   <part name="username" type="xsd:string" />
+//   <part name="password" type="xsd:string" />
+//   <part name="tag_id" type="xsd:integer" /></message>
+// <message name="mc_tag_deleteResponse">
+//   <part name="return" type="xsd:boolean" /></message>	
 
 	Login : function(UserName, Password) {
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Login.Name, Mantis.Methods.Login.BuildParams(UserName, Password), false, null);

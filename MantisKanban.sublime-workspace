@@ -684,6 +684,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"GetCategoryIcon",
+			"secondrow",
+			"label",
+			"tag",
 			"buildkanbanstory",
 			"LoadFilterAsync",
 			"UpdateFilterList",
@@ -807,11 +811,7 @@
 			"buildproj",
 			"ShowProjectArea",
 			"login",
-			"assign handler",
-			"assign",
-			"assign handler",
-			"assignhandler",
-			"builduser"
+			"assign handler"
 		],
 		"highlight": true,
 		"in_selection": false,

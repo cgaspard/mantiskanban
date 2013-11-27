@@ -18,6 +18,7 @@ window.log = function(){
 };
 
 window.addEventListener("load", window_load);
+window.addEventListener("onresize", AutoAdjustListWidth);
 
 function window_load() {
 
@@ -49,9 +50,6 @@ function window_load() {
     });
     
 	AutoLogin();
-
-
-
 
 /*	$(document).bind('keyup', 'shift+ctrl+g', function() {
 		document.getElementById("searchfield").focus();
@@ -161,6 +159,8 @@ function Login() {
 	ShowProjectArea();
 	
 	SelectProject();
+
+	Mantis.Preload();
 
 	StopLoading();
 }
@@ -635,7 +635,17 @@ function saveSettingsToStorageMechanism(){
 
 }
 
+function AutoAdjustListWidth() {
+	var contentArea = document.getElementById("kanbancontent")
+	if(contentArea.clientWidt != contentArea.scrollWidth) {
+		var newWidth = FitColsToScreen();
+		document.getElementById("settings-list-width").value = newWidth;
+		modifyStyleRule(".kanbanlist", "width", newWidth);		
+	}
+}
+
 function FitColsToScreen(){
 	var newColumnWidth = Math.floor((window.innerWidth - 80) / 7) - 2; //-80 for padding compensation
 	document.getElementById("settings-list-width").value = newColumnWidth + "px";
+	return newColumnWidth + "px";
 }
