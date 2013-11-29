@@ -117,12 +117,9 @@ div.notecontainer {
 	height: 100%;
 }
 .loadingdiv{
-	position: relative;
-	padding-right: 60px;
-	padding-top: 10px;
-	color: #FFFFFF;
-	font-size: 15px;
-	font-weight: bold;
+ 	position:absolute; 
+ 	top: 6px;
+ 	right:6px;"	
 }
 .loadingdiv img{
 }
@@ -135,11 +132,10 @@ div.notecontainer {
 	display: inline;
 	height: 85px;
 }
-.otherbuttoncontiner {
+.otherbuttoncontainer {
 	vertical-align: middle;
 	display: inline;
 	height: 85px;
-
 }
 .projectlist{
 	display: inline;
@@ -158,7 +154,7 @@ div.notecontainer {
 
 #selected-project-name {
 	color: #FFFFFF !important;
-
+	display: inline-block;
 	margin-top: 5px !important;
 	margin-bottom: 3px;
 

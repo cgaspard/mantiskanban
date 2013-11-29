@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"STory",
+				"StorySource"
+			],
+			[
+				"this",
+				"thisTag"
+			],
+			[
+				"kanb",
+				"Kanban"
+			],
+			[
+				"Tag",
+				"TagGetAll"
+			],
+			[
+				"per",
+				"perPage"
+			],
+			[
+				"conten",
+				"contentArea"
+			],
+			[
 				"Save",
 				"saveCurrentSettings"
 			],
@@ -42,10 +66,6 @@
 			[
 				"attachmentI",
 				"AttachmentID"
-			],
-			[
-				"this",
-				"thisAttachment"
 			],
 			[
 				"Ge",
@@ -549,6 +569,9 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css.orig",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Documents/RemoveFromOLinuxIno.txt",
 		"/home/cgaspard/restore.sql",
 		"/home/cgaspard/Downloads/Shane Lawyer(1).txt",
@@ -560,8 +583,6 @@
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/global.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/home/cgaspard/Downloads/Server.txt",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/date.js",
@@ -669,7 +690,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 111.0,
 		"where_history":
 		[
 			"",
@@ -684,6 +705,44 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"loadingdiv",
+			"otherbuttoncontiner",
+			"selected-project-name",
+			"TagGetAll",
+			"addtagsto",
+			"HasTag",
+			"IssueSetTags",
+			"addtags",
+			"SelectProject",
+			"selectProject",
+			"tagscontainer",
+			"edit-story-notes-container",
+			"notesarea",
+			"TagGetAll",
+			"tagscontainer",
+			"TagGetAll",
+			"addtags",
+			"add",
+			"glyphicon",
+			"AddTags",
+			"LoadTagsAsync",
+			"GetStyleCodeFor3Digits",
+			"Mantis.Params",
+			"TagGetAll",
+			"AddTagsToStoryEditForm",
+			"AddATtachment",
+			"BuildKanbanStoryDiv",
+			"AddAttachment",
+			"OpenEdit",
+			"tagscontainer",
+			"edit-story-attachment-container",
+			"transition",
+			"transform",
+			"ApplySetting",
+			"applysetting",
+			"applysettin",
+			"FitColsToScreen",
+			"CloseSettings",
 			"GetCategoryIcon",
 			"secondrow",
 			"label",
@@ -773,45 +832,7 @@
 			"Mantis.CurrentUser",
 			"ProjectsGetUserAccessible",
 			"Login",
-			"Login : ",
-			"currentuser",
-			"currentuser]",
-			"currentuser",
-			"CurrentUser",
-			"f",
-			"ProjectUsers",
-			"EditStory",
-			"OpenEdit",
-			"openEdit",
-			"EditSotry",
-			"OpenEdit",
-			"DragOver",
-			"Drop()",
-			"priority",
-			"DoneLoadingIssuesCallback",
-			"LoadFilterAsync",
-			"Project",
-			"LoadKanbanProjects",
-			"applysettings",
-			"Login",
-			"Login()",
-			"189",
-			"glyph",
-			"settings",
-			"Login",
-			"LoadSettings",
-			"defaultsettings.kanba",
-			"DefaultSettings",
-			"defaultsettings",
-			"DefaultSettings",
-			"settings",
-			"kanbanlist",
-			"250px",
-			"CloseSettings",
-			"buildproj",
-			"ShowProjectArea",
-			"login",
-			"assign handler"
+			"Login : "
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -819,6 +840,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"otherbuttoncontainer",
 			"Kanban.CurrentUser",
 			"attachment",
 			"Attachment",
