@@ -168,14 +168,3 @@
 	padding: 10px 10px 10px 10px;
 	white-space: normal;
 }
-
-.controls > input {
-	width: 90%;
-}
-.controls > select {
-	width: 90%;
-}
-
-.controls > textarea {
-	width: 90%;
-}

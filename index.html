@@ -112,55 +112,74 @@
 									<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
 									<li><a href="#tabs-3" data-toggle="tab">Notes</a></li>
 									<li><a href="#tabs-4" data-toggle="tab">Attachments</a></li>
-									<li><a href="#tabs-5" data-toggle="tab">Tags</a></li>
+									<li><a href="#tabs-5" data-toggle="tab">History</a></li>
 								</ul>
 								<div class="tab-content">
 									<div class="tab-pane active" id="tabs-1">
 										<form class="form-horizontal">
 											<input type="hidden" id="edit-story-id" name="edit-story-id" />
-											<div class="control-group">
+											<div class="control-group col-xs-12">
 												<label class="control-label" for="edit-summary">Summary:</label>
 												<div class="controls">
 													<input type="text" name="edit-summary" id="edit-summary" class="form-control input-small" />
 												</div>
 											</div>
-											<div class="control-group">
+											<div class="control-group col-xs-12">
+												<label class="control-label" for="edit-summary">Tags:</label>
+												<div class="tagscontainer" id="edit-story-tags-container">
+												</div>
+												
+													<div class="input-group">
+														<div class="input-group-btn">
+															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Add Existing <span class="caret"></span></button>
+															<ul id="edit-story-tags-list" class="dropdown-menu">
+																<li><a href="#">Tag 1</a></li>
+																<li><a href="#">Tag 2</a></li>
+															</ul>
+														</div>
+														<input type="text" id="edit-story-new-tag" class="form-control">
+														<div class="input-group-btn">
+													  		<div class="btn btn-danger" onclick="AddNewTagFromEditForm();"><span class="glyphicon glyphicon-plus"> Add</span></div>
+														</div>
+													</div>
+											</div>										
+											<div class="control-group col-xs-6">
 												<label class="control-label" for="edit-project">Project:</label>
 												<div class="controls">
 													<select name="edit-project" id="edit-project" class="form-control input-small"></select>
 												</div>
 											</div>
-											<div class="control-group">
+											<div class="control-group col-xs-6">
 												<label class="control-label" for="edit-status">Status:</label>
 												<div class="controls">
 													<select name="edit-status" id="edit-status" class="form-control input-small"></select>
 												</div>
 											</div>
-											<div class="control-group">
+											<div class="control-group col-xs-6">
 												<label class="control-label" for="edit-priority">Priority:</label>
 												<div class="controls">
 													<select name="edit-priority" id="edit-priority" class="form-control input-small"></select>
 												</div>
 											</div>
-											<div class="control-group">
+											<div class="control-group col-xs-6">
 												<label class="control-label" for="edit-category">Category</label>
 												<div class="controls">
 													<select name="edit-category" id="edit-category" class="form-control input-small"></select>
 												</div>
 											</div>											
-											<div class="control-group">
+											<div class="control-group col-xs-6">
 												<label class="control-label" for="edit-reporter">Reporter:</label>
 												<div class="controls">
 													<select name="edit-reporter" id="edit-reporter" class="form-control input-small"></select>
 												</div>
 											</div>
-											<div class="control-group">
+											<div class="control-group col-xs-6">
 												<label class="control-label" for="edit-assignedto">Assigned To:</label>
 												<div class="controls">
 													<select name="edit-assignedto" id="edit-assignedto" class="form-control input-small"></select>
 												</div>
 											</div>
-											<div class="control-group">
+											<div class="control-group col-xs-10">
 												<label class="control-label" for="edit-datesubmitted">Date Submitted:</label>
 												<div class="controls">
 													<div style="display:inline-block;" id="edit-datesubmitted"></div>
@@ -204,24 +223,7 @@
 									</div>
 									<div class="tab-pane" id="tabs-5">
 										<div class="fill">
-											<span>Click To Remove</span>
-											<div class="tagscontainer" id="edit-story-tags-container">
-											</div>
-											<div>
-												<div class="input-group">
-													<div class="input-group-btn">
-														<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Add Existing <span class="caret"></span></button>
-														<ul id="edit-story-tags-list" class="dropdown-menu">
-															<li><a href="#">Tag 1</a></li>
-															<li><a href="#">Tag 2</a></li>
-														</ul>
-													</div>
-													<input type="text" id="edit-story-new-tag" class="form-control">
-													<div class="input-group-btn">
-												  		<div class="btn btn-danger" onclick="AddNewTagFromEditForm();"><span class="glyphicon glyphicon-plus"> Add New</span></div>
-													</div>
-												</div>
-											</div>
+											History
 										</div>
 									</div>
 								</div>
@@ -240,49 +242,49 @@
 								<div class="control-group">
 									<label class="control-label" for="add-summary">Summary</label>
 									<div class="controls">
-										<input type="text" name="add-summary" id="add-summary" placeholder="Summary" />
+										<input class="form-control" type="text" name="add-summary" id="add-summary" placeholder="Summary" />
 									</div>
 								</div>
 								<div class="contol-group" id="add-custom-field-container" name="add-custom-field-container">
 									<label class="control-label" for="add-custom-field">Bucket:</label>
 									<div class="controls">
-										<select name="add-custom-field" id="add-custom-field" ></select>
+										<select class="form-control" name="add-custom-field" id="add-custom-field" ></select>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="add-status">Status</label>
 									<div class="controls">
-										<select name="add-status" id="add-status" placeholder="Status"></select>
+										<select class="form-control" name="add-status" id="add-status" placeholder="Status"></select>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="add-priority">Priority</label>
 									<div class="controls">
-										<select name="add-priority" id="add-priority"></select>
+										<select class="form-control" name="add-priority" id="add-priority"></select>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="add-cateogry">Category</label>
 									<div class="controls">
-										<select name="add-category" id="add-category"></select>
+										<select class="form-control" name="add-category" id="add-category"></select>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="add-reporter">Reporter</label>
 									<div class="controls">
-										<select name="add-reporter" id="add-reporter"></select>
+										<select class="form-control" name="add-reporter" id="add-reporter"></select>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="add-assignedto">Handler</label>
 									<div class="controls">
-										<select name="add-assignedto" id="add-assignedto" class=""></select>
+										<select class="form-control" name="add-assignedto" id="add-assignedto" class=""></select>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="add-description">Description</label>
 									<div class="controls">
-										<textarea name="add-description" id="add-description" class="input-large"></textarea>
+										<textarea class="form-control" name="add-description" id="add-description" class="input-large"></textarea>
 									</div>
 								</div>
 							</form>
