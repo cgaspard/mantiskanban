@@ -7,7 +7,7 @@ var Mantis = {
 	_projectcustomfields : [],
 	_accesslevels : [],
 	_userprojects : [],
-	_prioritiees = null,
+	_priorities : : null,
 	_tags : [],
 	_defaultaccesslevelforuserenum : 10,
 	_defaultfilterid : null,
