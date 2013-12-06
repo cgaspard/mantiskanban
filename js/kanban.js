@@ -677,7 +677,7 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 		}
 	} catch(e) {}
 
-	if(KanbanStory.Tags == undefined || KanbanStory.Tags.length > 0) return;
+	if(KanbanStory.Attachments == undefined || KanbanStory.Attachments.length > 0) return;
 
 	for(var i = 0; i < KanbanStory.Attachments.length; i++) {
 		var thisAttachment = KanbanStory.Attachments[i];
