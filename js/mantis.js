@@ -7,6 +7,7 @@ var Mantis = {
 	_projectcustomfields : [],
 	_accesslevels : [],
 	_userprojects : [],
+	_prioritiees = null,
 	_tags : [],
 	_defaultaccesslevelforuserenum : 10,
 	_defaultfilterid : null,
@@ -20,7 +21,7 @@ var Mantis = {
 		Mantis._projectcategories = [];
 		Mantis._statues = null;
 		Mantis._severities = null;
-		Mantis._priorities = [];
+		Mantis._priorities = null;
 		Mantis._projectusers = [];
 		Mantis._projectcustomfields = [];
 		Mantis._accesslevels = [];

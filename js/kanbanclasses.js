@@ -289,7 +289,16 @@ KanbanStory.prototype = {
 	},
 
 	get HandlerName() {
-		return this.StorySource.handler !== undefined ? this.StorySource.handler.name : "";
+		if(this.StorySource.handler !== undefined) {
+			if(this.StorySource.handler.name != null && this.StorySource.handler.name != "") {
+				return this.StorySource.handler.name;
+			} else {
+				return this.StorySource.handler.username;
+			}
+
+		} else {
+			return "Unknown";
+		}
 	}, set HandlerName(value) {
 		if(this.StorySource.handler === undefined) {
 			this.StorySource.handler = {
