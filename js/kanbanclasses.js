@@ -293,11 +293,11 @@ KanbanStory.prototype = {
 			if(this.StorySource.handler.name != null && this.StorySource.handler.name != "") {
 				return this.StorySource.handler.name;
 			} else {
-				return this.StorySource.handler.username;
+				return this.StorySource.handler.real_name;
 			}
 
 		} else {
-			return "Unknown";
+			return "";
 		}
 	}, set HandlerName(value) {
 		if(this.StorySource.handler === undefined) {

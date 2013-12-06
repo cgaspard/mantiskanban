@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Story",
+				"StorySource"
+			],
+			[
 				"STory",
 				"StorySource"
 			],
@@ -690,7 +694,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 111.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -705,6 +709,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"addattachm",
+			"addtags",
+			"addattach",
+			"HandlerName",
 			"add-priority",
 			"loadingdiv",
 			"otherbuttoncontiner",
@@ -828,11 +836,7 @@
 			"UpdateCustomField",
 			"UpdateListForCanbanStory",
 			"edit-newnotetext",
-			"kanbanlist",
-			"kanbanlist {",
-			"Mantis.CurrentUser",
-			"ProjectsGetUserAccessible",
-			"Login"
+			"kanbanlist"
 		],
 		"highlight": true,
 		"in_selection": false,
