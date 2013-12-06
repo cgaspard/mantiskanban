@@ -3,6 +3,8 @@ mantiskanban
 
 Mantis Kanban that uses ajax and mantisconnect
 
+NEW!!! Live Demo http://162.242.147.66/mantisbt/mantiskanban/
+
 ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/images/mantis_logo.png "Logo")
 
 Requires Mantis vs 1.2.15 or greater.
