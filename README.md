@@ -54,6 +54,7 @@ JS Configuration: config.js
             username:"",
             stayLoggedIn:1,
             lastAccessTime:0,
+            autoResizeColumns: true,
             currentProject:Mantis.CurrentProjectSelection
         };
 

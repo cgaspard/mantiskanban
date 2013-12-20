@@ -41,6 +41,7 @@ var DefaultSettings = {
 	username:"",
 	stayLoggedIn:1,
 	lastAccessTime:0,
+	autoResizeColumns : true,
 	currentProject:Mantis.CurrentProjectSelection
 };
 

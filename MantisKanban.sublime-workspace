@@ -573,9 +573,10 @@
 	},
 	"file_history":
 	[
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
+		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css.orig",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/home/cgaspard/Documents/RemoveFromOLinuxIno.txt",
@@ -585,7 +586,6 @@
 		"/home/cgaspard/Downloads/Shane Lawyer.txt",
 		"/home/cgaspard/Downloads/database design.txt",
 		"/home/cgaspard/Downloads/tblsitebillinglog.sql",
-		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/global.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
@@ -709,6 +709,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"handler",
+			"KanbanUser",
 			"addattachm",
 			"addtags",
 			"addattach",
@@ -834,9 +836,7 @@
 			"LoadFilterAsync",
 			"SelectProject",
 			"UpdateCustomField",
-			"UpdateListForCanbanStory",
-			"edit-newnotetext",
-			"kanbanlist"
+			"UpdateListForCanbanStory"
 		],
 		"highlight": true,
 		"in_selection": false,
