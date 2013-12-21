@@ -709,6 +709,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"AutoAdjustListWidth",
 			"handler",
 			"KanbanUser",
 			"addattachm",
@@ -835,8 +836,7 @@
 			"DoneLoadingIssuesCallback",
 			"LoadFilterAsync",
 			"SelectProject",
-			"UpdateCustomField",
-			"UpdateListForCanbanStory"
+			"UpdateCustomField"
 		],
 		"highlight": true,
 		"in_selection": false,

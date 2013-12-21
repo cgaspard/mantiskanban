@@ -1108,6 +1108,10 @@ Kanban.SaveSettings = function() {
 
 Kanban.ApplySettingsAtLogin = function() {
 	modifyStyleRule(".kanbanlist", "width", DefaultSettings.kanbanListWidth);
+	if(DefaultSettings.autoResizeColumns) {
+		window.addEventListener("resize", AutoAdjustListWidth);
+		AutoAdjustListWidth();
+	}	
 }
 
 Kanban.ApplySettings = function() {
@@ -1124,6 +1128,7 @@ Kanban.ApplySettings = function() {
 Kanban.LoadRuntimeSettings = function() {
 	document.getElementById("settings-list-width").value = getStyleRule(".kanbanlist", "width");	
 	document.getElementById("settings-connectURL").value = DefaultSettings.connectURL;
+	document.getElementById("mantisURL").value = DefaultSettings.connectURL;
 }
 
 function ShowSettings() {
@@ -1132,6 +1137,7 @@ function ShowSettings() {
 	Kanban.LoadRuntimeSettings();
 	document.getElementById("edit-settings-form").style.display = "inline-block";
 	document.getElementById("settings-connectURL").value = DefaultSettings.connectURL;
+	document.getElementById("mantisURL").value = DefaultSettings.connectURL;
 	document.getElementById("kanbancontent").setAttribute("editing", "true");
 }
 

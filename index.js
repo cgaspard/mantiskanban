@@ -51,12 +51,6 @@ function window_load() {
     
 	AutoLogin();
 
-	if(DefaultSettings.autoResize) {
-
-		window.addEventListener("resize", AutoAdjustListWidth);
-		AutoAdjustListWidth();
-
-	}
 
 /*	$(document).bind('keyup', 'shift+ctrl+g', function() {
 		document.getElementById("searchfield").focus();
