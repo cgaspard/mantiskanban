@@ -1129,6 +1129,7 @@ Kanban.LoadRuntimeSettings = function() {
 	document.getElementById("settings-list-width").value = getStyleRule(".kanbanlist", "width");	
 	document.getElementById("settings-connectURL").value = DefaultSettings.connectURL;
 	document.getElementById("mantisURL").value = DefaultSettings.connectURL;
+	document.getElementById("settings-autofit-onresize").checked = DefaultSettings.autoResizeColumns;
 }
 
 function ShowSettings() {
@@ -1139,6 +1140,7 @@ function ShowSettings() {
 	document.getElementById("settings-connectURL").value = DefaultSettings.connectURL;
 	document.getElementById("mantisURL").value = DefaultSettings.connectURL;
 	document.getElementById("kanbancontent").setAttribute("editing", "true");
+	document.getElementById("settings-autofit-onresize").checked = DefaultSettings.autoResizeColumns;
 }
 
 function CloseSettings() {
