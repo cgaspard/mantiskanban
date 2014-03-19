@@ -9,9 +9,9 @@ NEW FEATURES!!!
 
 You can now link directly to projects an issues in the kanban. 
 
-Link to an issue like this: http://mantiskanban.com/mantisbt/index.html?issue=848
+Link to an issue like this: http://mantiskanban.com/mantisbt/mantiskanban/index.html?issue=22
 
-Link to a project like this: Link to an issue like this: http://mantiskanban.com/mantisbt/index.html?project=2
+Link to a project like this: Link to an issue like this: http://mantiskanban.com/mantisbt/mantiskanban/index.html?project=2
 
 ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/images/mantis_logo.png "Logo")
 
