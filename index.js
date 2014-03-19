@@ -176,14 +176,14 @@ function Login() {
 		document.getElementById("seletedproject").value = urlParams.project;
 	}
 
+	if(urlParams.issue) {
+		document.getElementById("searchfield").value = urlParams.issue;
+	}
+
 	SelectProject();
 
 	Mantis.Preload();
 
-	if(urlParams.issue) {
-		document.getElementById("searchfield").value = urlParams.issue;
-		SearchForStory();
-	}
 
 	StopLoading();
 
