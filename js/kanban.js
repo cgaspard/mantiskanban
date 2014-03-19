@@ -799,7 +799,7 @@ function AddNotesToStoryEditForm(KanbanStory) {
 	}
 }
 
-function SearchForStory(localOnly,) {
+function SearchForStory(localOnly) {
 
 	if(localOnly == undefined) localOnly = false;
 
