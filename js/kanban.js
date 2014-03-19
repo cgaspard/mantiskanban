@@ -815,7 +815,11 @@ function SearchForStory(localOnly) {
 				return;
 			}
 
-			if(confirm("Issue is in a different project, would you like to switch?")) {
+			if(document.getElementById("searchfield").value == urlParams.issue) {
+				/// the issue we are trying to load is coming from the querystring, so don't prompt the user, just switch projects
+				document.getElementById("seletedproject").value = returnObj.project.id;
+				SelectProject();
+			} else if(confirm("Issue is in a different project, would you like to switch?")) {
 				document.getElementById("seletedproject").value = returnObj.project.id;
 				SelectProject();
 			} 
