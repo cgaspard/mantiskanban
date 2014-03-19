@@ -17,6 +17,19 @@ window.log = function(){
 	}
 };
 
+var urlParams;
+(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
+
 window.addEventListener("load", window_load);
 
 
@@ -158,12 +171,22 @@ function Login() {
 	
 	HideLoginArea();
 	ShowProjectArea();
-	
+
+	if(urlParams.project) {
+		document.getElementById("seletedproject").value = urlParams.project;
+	}
+
 	SelectProject();
 
 	Mantis.Preload();
 
+	if(urlParams.issue) {
+		document.getElementById("searchfield").value = urlParams.issue;
+		SearchForStory();
+	}
+
 	StopLoading();
+
 }
 
 function DeleteIssue(kanbanIssue) {

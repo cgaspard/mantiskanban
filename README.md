@@ -5,6 +5,14 @@ Mantis Kanban that uses ajax and mantisconnect
 
 NEW!!! Live Demo http://mantiskanban.com/mantisbt/mantiskanban/
 
+NEW FEATURES!!! 
+
+You can now link directly to projects an issues in the kanban. 
+
+Link to an issue like this: http://mantiskanban.com/mantisbt/index.html?issue=848
+
+Link to a project like this: Link to an issue like this: http://mantiskanban.com/mantisbt/index.html?project=2
+
 ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/images/mantis_logo.png "Logo")
 
 Requires Mantis vs 1.2.15 or greater.
