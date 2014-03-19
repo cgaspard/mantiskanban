@@ -125,24 +125,26 @@
 												</div>
 											</div>
 											<div class="control-group col-xs-12">
-												<label class="control-label" for="edit-summary">Tags:</label>
-												<div class="tagscontainer" id="edit-story-tags-container">
-												</div>
-												
-													<div class="input-group">
-														<div class="input-group-btn">
-															<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Add Existing <span class="caret"></span></button>
-															<ul id="edit-story-tags-list" class="dropdown-menu">
-																<li><a href="#">Tag 1</a></li>
-																<li><a href="#">Tag 2</a></li>
-															</ul>
-														</div>
-														<input type="text" id="edit-story-new-tag" class="form-control">
-														<div class="input-group-btn">
-													  		<div class="btn btn-danger" onclick="AddNewTagFromEditForm();"><span class="glyphicon glyphicon-plus"> Add</span></div>
-														</div>
+												<label class="control-label" for="edit-summary">Tags (click to delete):</label>
+												<div class="tagsborderarea">
+													<div class="tagscontainer" id="edit-story-tags-container">
 													</div>
-											</div>										
+													
+														<div class="input-group">
+															<div class="input-group-btn">
+																<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Add Existing <span class="caret"></span></button>
+																<ul id="edit-story-tags-list" class="dropdown-menu">
+																	<li><a href="#">Tag 1</a></li>
+																	<li><a href="#">Tag 2</a></li>
+																</ul>
+															</div>
+															<input type="text" id="edit-story-new-tag" class="form-control">
+															<div class="input-group-btn">
+														  		<div class="btn btn-danger" onclick="AddNewTagFromEditForm();"><span class="glyphicon glyphicon-plus"> Add</span></div>
+															</div>
+														</div>
+													</div>										
+												</div>
 											<div class="control-group col-xs-6">
 												<label class="control-label" for="edit-project">Project:</label>
 												<div class="controls">

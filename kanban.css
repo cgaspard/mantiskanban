@@ -188,7 +188,7 @@ div.notecontainer {
 .editing-header {
 	background-color: #454545;
 	color:#FFFFFF;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 5px;
 	padding: 10px 6px 10px 6px;
 	text-align: center;
 }

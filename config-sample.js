@@ -1,5 +1,6 @@
 /// Point to the location of your server
 Mantis.ConnectURL = "http://bserver/api/soap/mantisconnect.php";
+Mantis.ServerHostname = "bserver.com";
 
 /// The default filter to use when loading a projects issues
 /// If you leave this null, mantis will load whatever the last filter you used when you logged into the php site.

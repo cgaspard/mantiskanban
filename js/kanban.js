@@ -1001,7 +1001,9 @@ function EditStory(storyID) {
 	//});
 
 	var thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
-	document.getElementById("edit-story-title").innerHTML = "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
+	/// Thanks to todace for sample code https://github.com/todace
+	document.getElementById("edit-story-title").innerHTML = "<a target=\"_new\" href=http://" + Mantis.ServerHostname + "/view.php?id=" + thisStory.ID + ">"+ thisStory.ID + "</a> &nbsp; " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
+	//document.getElementById("edit-story-title").innerHTML = "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
 	//$("#edit-story-form").dialog({ title: "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary) });
 	$("#edit-story-id").val(thisStory.ID);
 	$("#edit-summary").val(thisStory.Summary);
