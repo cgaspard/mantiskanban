@@ -163,15 +163,6 @@ function Login() {
 
 	Kanban.ApplySettingsAtLogin();
 
-	//saveCurrentSettings();
-	
-	LoadKanbanProjects();
-	BuildProjectsGUI();
-//	BuildProjectSelector();
-	
-	HideLoginArea();
-	ShowProjectArea();
-
 	if(urlParams.project) {
 		document.getElementById("seletedproject").value = urlParams.project;
 	}
@@ -179,11 +170,16 @@ function Login() {
 	if(urlParams.issue) {
 		document.getElementById("searchfield").value = urlParams.issue;
 	}
+	
+	LoadKanbanProjects();
+	BuildProjectsGUI();
+
+	HideLoginArea();
+	ShowProjectArea();
 
 	SelectProject();
 
 	Mantis.Preload();
-
 
 	StopLoading();
 
