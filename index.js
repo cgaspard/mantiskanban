@@ -167,15 +167,18 @@ function Login() {
 		document.getElementById("seletedproject").value = urlParams.project;
 	}
 
-	if(urlParams.issue) {
-		document.getElementById("searchfield").value = urlParams.issue;
-	}
-	
+
 	LoadKanbanProjects();
 	BuildProjectsGUI();
 
 	HideLoginArea();
 	ShowProjectArea();
+
+	if(urlParams.issue) {
+		document.getElementById("searchfield").value = urlParams.issue;
+		SearchForStory();
+		return;
+	}
 
 	SelectProject();
 
@@ -387,7 +390,7 @@ function SelectProject(openStoryID) {
 			LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, function(filterID, retObj) {
 				DoneLoadingIssuesCallback(filterID, retObj);
 				if(document.getElementById("searchfield").value != "") {
-					SearchForStory(true);
+					SearchForStory(false);
 				}
 			});
 		}, 0);
@@ -399,7 +402,7 @@ function SelectProject(openStoryID) {
 		CreateKanbanStoriesFromMantisIssues(retObj);
 		$(".tempLoadingDiv").hide();//hide the loading gifs
 		if(document.getElementById("searchfield").value != "") {
-			SearchForStory(true);
+			SearchForStory(false);
 		}
 
 		StopLoading();
