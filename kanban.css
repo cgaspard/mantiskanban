@@ -5,6 +5,8 @@ html, body{
 	background-repeat: no-repeat;
 	background: #d3d3d3;
 	overflow:hidden;
+	height: 100%;
+	width: 100%;
 	/*
 	background: #666c70;
 	background: -moz-linear-gradient(top, #666c70 1%, #555b60 98px, #d3d3d3 99px, #dbdbdb 100%);
@@ -354,11 +356,12 @@ div.notecontainer {
 }
  	
 .kanbanlist{
-	border: 1px solid #808080;
+
+	/*border: 1px solid #808080;*/
 	position: relative;
 	vertical-align: top;
 	display: inline-block;
-	background-color: #efefef;
+	background-color: transparent;
 	width: 250px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -369,15 +372,25 @@ div.notecontainer {
 	transition: width .25s;
 	border-radius: 4px 4px 4px 4px;
 	padding-bottom: 10px;
-}
+	height: calc(100% - 30px);
+	overflow: hidden;
+	}
 
 .kanbanliststorycontainer {
 	position: relative;
-	max-height: 100%;
+	min-height: 15px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	display:block;
-	background-color: #efefef;
+	display: block;
+	background-color: #EFEFEF;
+	max-height: calc(100% - 20px);
+	padding-bottom: 10px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	padding-top: 5px;
 }
 
 .kanbanlisthidebtn {
@@ -404,6 +417,11 @@ div.notecontainer {
 	padding-top: 5px;
 	background: #efefef; /* Old browsers */
 	border-radius: 4px 4px 0px 0px;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+	border-top: 1px solid #999;
+
+	/*z-index: 999;*/
 }
 
 .kanbanlistspacer {

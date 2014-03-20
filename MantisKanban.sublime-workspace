@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"subproj",
+				"subprojects"
+			],
+			[
+				"manti",
+				"Mantis"
+			],
+			[
+				"Buil",
+				"BuildProjectUI"
+			],
+			[
+				"project",
+				"projectLI"
+			],
+			[
 				"Story",
 				"StorySource"
 			],
@@ -158,10 +174,6 @@
 			[
 				"prec",
 				"preConfiguredMantisURL"
-			],
-			[
-				"manti",
-				"mantisURL"
 			],
 			[
 				"border",
@@ -400,10 +412,6 @@
 				"ListID  (variable)"
 			],
 			[
-				"project",
-				"ProjectCustomFields"
-			],
-			[
 				"projectsel",
 				"projectSelectBox"
 			],
@@ -573,6 +581,11 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
@@ -715,6 +728,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"LoadKanbanProjects",
+			"selected-project-name",
 			"SearchForStory",
 			"GetStoryIfNotLoaded",
 			"selectProject",
@@ -840,9 +855,7 @@
 			"save",
 			"edit-story-new-note-save-button",
 			"SaveNote",
-			"kanbanstory",
-			"edit-story-notes-container",
-			"GetStyleCodeFor3Digits"
+			"kanbanstory"
 		],
 		"highlight": true,
 		"in_selection": false,
