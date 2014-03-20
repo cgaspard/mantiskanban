@@ -45,6 +45,13 @@ var KanbanProject = function(RawObject) {
 }
 
 KanbanProject.prototype = {
+
+	IsSubProject : false,
+
+	ParentProject : null,
+
+	SubProjects : [],
+
 	get Lists() {
 		return this._lists;
 	},

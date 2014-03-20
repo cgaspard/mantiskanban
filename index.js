@@ -531,7 +531,6 @@ function BuildKanbanListFromMantisStatuses() {
 	}
 }
 
-
 function SwapSelectedProject(newProjectID) {
 	var nodeList = document.getElementsByClassName("projectbutton");
 	for(var i = 0; i < nodeList.length; i++) {
@@ -540,14 +539,48 @@ function SwapSelectedProject(newProjectID) {
 		} else {
 			nodeList[i].setAttribute("selected", "false");
 		}
-		
 	}
 }
 
 function LoadKanbanProjects() {
 	for(var i = 0; i < Mantis.UserProjects.length; i++) {
-		Kanban.Projects[i] = new KanbanProject(Mantis.UserProjects[i]);
+		var parentProject = new KanbanProject(Mantis.UserProjects[i]);
+		Kanban.Projects[Kanban.Projects.length] = parentProject;
+		if(parentProject.ProjectSource.subprojects.length > 0) {
+			AddProjectandSubProjectsToList(parentProject.ProjectSource.subprojects, parentProject);
+		}
 	}
+}
+
+function AddProjectandSubProjectsToList(projectList, parent) {
+	for(var q=0; q < projectList.length; q++) {
+		var subProject = new KanbanProject(projectList[q]);
+		Kanban.Projects[Kanban.Projects.length] = subProject;
+		subProject.ParentProject = parent;
+		subProject.IsSubProject = true;
+		parent.SubProjects[parent.SubProjects.length] = subProject;
+		if(subProject.ProjectSource.subprojects.length > 0) {
+			AddProjectandSubProjectsToList(subProject.ProjectSource.subprojects, subProject);
+		}
+	}
+}
+
+function BuildProjectUI(project, parent, preSelectedProjectID) {
+
+		var projectLI = document.createElement("li");
+		var projectDiv = document.createElement("a");
+		projectDiv.setAttribute("id", "project" + project.ID);
+		projectDiv.setAttribute("href", "");
+		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + project.ID + "'; document.getElementById('searchfield').value = ''; SelectProject(); SwapSelectedProject(this.id); return false;");
+		projectDiv.setAttribute("selected", project.ID == preSelectedProjectID ? "true" : "false");
+		if(project.IsSubProject) {
+			projectLI.classList.add("subproject");
+		}
+		projectDiv.innerHTML = project.Name;
+		projectLI.appendChild(projectDiv);
+
+		parent.appendChild(projectLI);
+
 }
 
 function BuildProjectsGUI() {
@@ -555,19 +588,10 @@ function BuildProjectsGUI() {
 	var preSelectedProjectID = document.getElementById("seletedproject").value == "" ? Kanban.Projects[0].ID : document.getElementById("seletedproject").value;
 	try { while(projectDivContainer.childNodes.length > 0) { projectDivContainer.removeChild(projectDivContainer.firstChild); } } catch(e) { }
 	for(var i = 0; i < Kanban.Projects.length; i++) {
+		
+		var thisProject = Kanban.Projects[i];
+		BuildProjectUI(thisProject, projectDivContainer, preSelectedProjectID);
 
-		var projectLI = document.createElement("li");
-
-		var projectDiv = document.createElement("a");
-		projectDiv.setAttribute("id", "project" + Kanban.Projects[i].ID);
-		projectDiv.setAttribute("href", "");
-		projectDiv.setAttribute("onclick", "document.getElementById('seletedproject').value = '" + Kanban.Projects[i].ID + "'; document.getElementById('searchfield').value = ''; SelectProject(); SwapSelectedProject(this.id); return false;");
-		projectDiv.setAttribute("selected", Kanban.Projects[i].ID == preSelectedProjectID ? "true" : "false");
-		projectDiv.innerHTML = Kanban.Projects[i].Name;
-		projectLI.appendChild(projectDiv);
-
-
-		projectDivContainer.appendChild(projectLI);
 	}
 
 	if(document.getElementById("seletedproject").value == "" || !Kanban.HasProject(document.getElementById("seletedproject").value)) {
