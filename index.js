@@ -383,7 +383,13 @@ function SelectProject(openStoryID) {
 
 	VerifyDefaultFitlers();
 
-	document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.Name;
+	if(Kanban.CurrentProject.ParentProject) {
+		document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.ParentProject.Name + "&nbsp;&nbsp;/&nbsp;&nbsp;" + Kanban.CurrentProject.Name;	
+	} else {
+		document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.Name;	
+	}
+
+	
 
 	if(Mantis.DefaultFilterID !== null && Mantis.DefaultFilterID != 0) {
 		window.setTimeout(function(filterID, retObj) {
