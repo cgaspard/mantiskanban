@@ -441,6 +441,7 @@ div.notecontainer {
 	border: solid 1px #ababab;
 	border-radius: 6px 6px 6px 6px;
 	margin:5px 8px 0px 8px;
+	-webkit-transform: scale3d(1,1,1);
 }
 
 .kanbanstorycontainer:last-child {
