@@ -756,6 +756,9 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 }
 
 function SaveNewTask(storyID, taskDescription) {
+	/// Requires mantis 1.3.0 at minimum
+	if(Mantis.Version() < "1.3.0") reutrn;
+
 	try {
 		taskDescription = FormatTextAsHTML(taskDescription);
 		Kanban.BlockUpdates = true;
@@ -778,6 +781,8 @@ function SaveNewTask(storyID, taskDescription) {
 	}
 }
 function ChangeTaskStatus(storyID, taskID, isChecked) {
+	/// Requires mantis 1.3.0 at minimum
+	if(Mantis.Version() < "1.3.0") reutrn;
 	try {
 		Kanban.BlockUpdates = true;
 		StartLoading();
@@ -804,6 +809,10 @@ function ChangeTaskStatus(storyID, taskID, isChecked) {
 }
 
 function ChangeTaskDescription(storyID, taskID, desc) {
+
+	/// Requires mantis 1.3.0 at minimum
+	if(Mantis.Version() < "1.3.0") reutrn;
+
 	try {
 		Kanban.BlockUpdates = true;
 		StartLoading();
@@ -833,6 +842,10 @@ function ChangeTaskDescription(storyID, taskID, desc) {
 * @description Adds existing task to the edit for of a story
 */
 function AddTasksToStoryEditForm(KanbanStory) {
+
+	/// Requires mantis 1.3.0 at minimum
+	if(Mantis.Version() < "1.3.0") reutrn;
+
 	var taskContainer = document.getElementById("edit-story-tasks-container");
 	var taskSaveButton = document.getElementById("edit-story-new-task-save-button");
 
