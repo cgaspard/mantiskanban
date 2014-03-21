@@ -20,6 +20,8 @@ Kanban.NumberOfClosedMessagesToLoad = 10;
 /// This is the default project to be selected
 Mantis.CurrentProjectSelection = "0";
 
+Mantis.TaskListField = "TaskList";
+
 /// When a project has a custom field, you can specify mantis statuses to change to when entering this bucket
 Kanban.AutoStatusOnCustomField = {
 	"ScrumBucket" : {

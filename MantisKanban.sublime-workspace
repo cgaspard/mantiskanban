@@ -581,6 +581,7 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
@@ -728,6 +729,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tempLoadingDiv",
+			"kanbanliststorycontainer",
+			"kanbanlisttitle",
 			"LoadKanbanProjects",
 			"selected-project-name",
 			"SearchForStory",
@@ -852,10 +856,7 @@
 			"600px",
 			"contentarea",
 			"SaveNewNote",
-			"save",
-			"edit-story-new-note-save-button",
-			"SaveNote",
-			"kanbanstory"
+			"save"
 		],
 		"highlight": true,
 		"in_selection": false,

@@ -112,7 +112,8 @@
 									<li><a href="#tabs-2" data-toggle="tab">Description</a></li>
 									<li><a href="#tabs-3" data-toggle="tab">Notes</a></li>
 									<li><a href="#tabs-4" data-toggle="tab">Attachments</a></li>
-									<li><a href="#tabs-5" data-toggle="tab">History</a></li>
+									<li><a href="#tabs-5" data-toggle="tab">Tasks</a></li>
+									<li><a href="#tabs-6" data-toggle="tab">History</a></li>
 								</ul>
 								<div class="tab-content">
 									<div class="tab-pane active" id="tabs-1">
@@ -225,9 +226,19 @@
 									</div>
 									<div class="tab-pane" id="tabs-5">
 										<div class="fill">
-											History
+											<textarea class="edit-newtasktext input-large form-control" id="edit-newtasktext" name="edit-newtasktext" title="Enter New Tasks Here"></textarea><br>
+											<div class="btn btn-success addTaskButton" id="edit-story-new-task-save-button" name="">
+												<span class="glyphicon glyphicon-arrow-down"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Task&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<span class="glyphicon glyphicon-arrow-down"></span>
+											</div>
+											<div id="edit-story-tasks-container" name="edit-story-tasks-container" class="tasksarea"></div>
 										</div>
 									</div>
+									<div class="tab-pane" id="tabs-6">
+										<div class="fill">
+											History
+										</div>
+									</div>									
 								</div>
 						</div>
 					</div>

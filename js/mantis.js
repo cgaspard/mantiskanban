@@ -555,6 +555,14 @@ var Mantis = {
 					"text" : notetext
 				};
 			}
+		},
+		Task :  {
+			NewTask : function(taskstatus, taskdescription) {
+				return {
+					"Status" : taskstatus,
+					"Description" : taskdescription
+				};
+			}
 		}
 	},
 

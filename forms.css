@@ -40,7 +40,7 @@
 }
 
 #edit-story-notes-container {
-	height: calc(100% - 150px) !important;
+	height: calc(100% - 100px);
 	background-color: #dedede;
 	padding: 2px !important;
 }
@@ -85,8 +85,9 @@
 	width: 575px;
 	/*background-color: #dfdfdf;*/
 	padding: 15px 15px 15px 15px;
-	border-left: solid 2px #000000;
+	border-left: solid 1px #000000;
 	position: absolute;
+	padding: 10px;
 }	
 
 #add-story-form  {

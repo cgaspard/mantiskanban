@@ -755,6 +755,130 @@ function AddAttachmentToStoryEditForm(KanbanStory) {
 	}
 }
 
+function SaveNewTask(storyID, taskDescription) {
+	try {
+		taskDescription = FormatTextAsHTML(taskDescription);
+		Kanban.BlockUpdates = true;
+		StartLoading();
+		var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
+		var newTask = Mantis.UpdateStructureMethods.Task.NewTask("open", taskDescription);
+		var taskList = editStory.Tasks;
+		taskList[taskList.length] = newTask;
+		editStory.Tasks = taskList;
+		Mantis.IssueUpdate(editStory.ID, editStory.StorySource);
+		editStory = Kanban.UpdateUnderlyingStorySource(editStory, true);
+		AddTasksToStoryEditForm(editStory);
+		document.getElementById("edit-newtasktext").value = "";
+	} catch(e) {
+		console.log(e);
+		alert("Error Saving Task: " + e.message);
+	} finally {
+		StopLoading();
+		Kanban.BlockUpdates = false;
+	}
+}
+function ChangeTaskStatus(storyID, taskID, isChecked) {
+	try {
+		Kanban.BlockUpdates = true;
+		StartLoading();
+		var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
+		var taskList = editStory.Tasks;
+		
+		if(isChecked) {
+			taskList[taskID].Status = "complete";
+		} else {
+			taskList[taskID].Status = "open";
+		}
+		editStory.Tasks = taskList;
+		Mantis.IssueUpdate(editStory.ID, editStory.StorySource);
+		editStory = Kanban.UpdateUnderlyingStorySource(editStory, true);
+		AddTasksToStoryEditForm(editStory);
+		document.getElementById("edit-newtasktext").value = "";
+	} catch(e) {
+		console.log(e);
+		alert("Error Saving Task: " + e.message);
+	} finally {
+		StopLoading();
+		Kanban.BlockUpdates = false;
+	}
+}
+
+function ChangeTaskDescription(storyID, taskID, desc) {
+	try {
+		Kanban.BlockUpdates = true;
+		StartLoading();
+		var editStory = Kanban.GetStoryByFieldValue("ID", storyID);
+		var taskList = editStory.Tasks;
+		
+		if(desc == taskList[taskID].Description) return;
+		
+		taskList[taskID].Description = desc;
+		editStory.Tasks = taskList;
+		Mantis.IssueUpdate(editStory.ID, editStory.StorySource);
+		editStory = Kanban.UpdateUnderlyingStorySource(editStory, true);
+		AddTasksToStoryEditForm(editStory);
+		document.getElementById("edit-newtasktext").value = "";
+	} catch(e) {
+		console.log(e);
+		alert("Error Saving Task: " + e.message);
+	} finally {
+		StopLoading();
+		Kanban.BlockUpdates = false;
+	}
+}
+
+/*
+* @name AddTasksToStoryEditForm
+* @param {KanbanStory} KanbanStory The story to display the tasks for
+* @description Adds existing task to the edit for of a story
+*/
+function AddTasksToStoryEditForm(KanbanStory) {
+	var taskContainer = document.getElementById("edit-story-tasks-container");
+	var taskSaveButton = document.getElementById("edit-story-new-task-save-button");
+
+	try {
+		while(taskContainer.childNodes.length > 0) {
+			taskContainer.removeChild(taskContainer.firstChild);
+		}
+	} catch(e) {}
+
+	taskSaveButton.setAttribute("onclick", "SaveNewTask(" + KanbanStory.ID + ", document.getElementById('edit-newtasktext').value);");
+
+	if(KanbanStory.Tasks === undefined) return;
+
+	for(var i = 0; i < KanbanStory.Tasks.length; i++) {
+		var thisTask = KanbanStory.Tasks[i];
+
+		var taskDiv = document.createElement("div");
+		taskDiv.setAttribute("class", "taskcontainer");
+		taskDiv.setAttribute("storyid", KanbanStory.ID);
+
+
+		var taskCompleted = document.createElement("input");
+		taskCompleted.setAttribute("type", "checkbox");
+		taskCompleted.setAttribute("storyid", KanbanStory.ID);
+		if(thisTask.Status == "complete") {
+			taskCompleted.setAttribute("checked", "");
+		}
+		taskCompleted.setAttribute("onmouseup", "ChangeTaskStatus(" + KanbanStory.ID + ", " + i + ", !this.checked);");
+		///TODO: update task field when unchecking and checking
+		taskDiv.appendChild(taskCompleted);
+
+		var taskTextDiv = document.createElement("div");
+		taskTextDiv.setAttribute("class", "tasktext");
+		if(thisTask.Status == "complete") {
+			taskTextDiv.setAttribute("style", "text-decoration: line-through;")
+		}
+		taskTextDiv.innerHTML = thisTask.Description;
+		taskTextDiv.setAttribute("onclick", "this.setAttribute('editing', 'true');this.contentEditable='true'; document.execCommand('selectAll',false,null);");
+		taskTextDiv.setAttribute("onblur", "ChangeTaskDescription(" + KanbanStory.ID + ", " + i + ", this.innerHTML);this.contentEditable='false';this.setAttribute('editing', 'false');");
+		//taskTextDiv.setAttribute("style", GetStyleCodeFor3Digits(thisTask.reporter.name.substring(0, 3), .8));
+		taskDiv.appendChild(taskTextDiv);
+
+		taskContainer.appendChild(taskDiv);
+	}
+}
+
 /*
 * @name AddNotesToStoryEditForm
 * @param {KanbanStory} KanbanStory The story to display the notes for
@@ -782,12 +906,6 @@ function AddNotesToStoryEditForm(KanbanStory) {
 		noteDiv.setAttribute("storyid", KanbanStory.ID);
 
 		var noteDate = new Date(Date.parse(thisNote.date_submitted));
-
-		//var noteSubmitterDiv = document.createElement("div");
-		//noteSubmitterDiv.setAttribute("class", "notesubmitter");
-		//noteSubmitterDiv.innerHTML = thisNote.reporter.real_name + " : " + noteDate.toLocaleString();
-
-		//noteDiv.appendChild(noteSubmitterDiv);
 
 		var noteTextDiv = document.createElement("div");
 		noteTextDiv.setAttribute("class", "notetext");
@@ -1083,6 +1201,8 @@ function EditStory(storyID) {
 			selectEditCategory.selectedIndex = i;
 		}
 	}
+
+	AddTasksToStoryEditForm(thisStory);
 
 	AddNotesToStoryEditForm(thisStory);
 

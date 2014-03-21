@@ -31,16 +31,6 @@ html, body{
 .dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
 .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
 
-.editform {
-	overflow: auto;
-	height:100%;
-	width: 575px;
-	/*background-color: #dfdfdf;*/
-	padding: 15px 15px 15px 15px;
-	border-left: solid 2px #000000;
-	position: absolute;
-}	
-
 #add-story-form  {
 }
 
@@ -78,19 +68,23 @@ html, body{
 	padding-right: 20px;
 }
 
-#edit-story-notes-container {
-	height: calc(100% - 150px) !important;
-	background-color: #dedede;
-	padding: 2px !important;
-}
-
-
 #edit-story-new-attach-save-button{
 	margin-bottom: 5px !important;
 }
 
 
 #edit-story-new-note-save-button{
+	width:100% !important;
+	margin-bottom: 5px !important;
+}
+
+#edit-story-tasks-container {
+	height: calc(100% - 70px) !important;
+	background-color: #dedede;
+	padding: 2px !important;
+}
+
+#edit-story-new-task-save-button{
 	width:100% !important;
 	margin-bottom: 5px !important;
 }
@@ -508,6 +502,18 @@ div.notecontainer {
 
 }
 
+.taskcontainer {
+    padding: 15px 0px 0px 25px;
+}
+.tasktext {
+	display: inline-block;
+	padding-left: 10px;
+	font-size: 12pt;
+	width: calc(100% - 40px);
+}
+.tasktext[editing="true"] {
+	background-color:#FFF;
+}
 .attachmentcontainer {
 	display: table;
 	width: 100%;
@@ -526,7 +532,7 @@ div.notecontainer {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border-radius: 5px 5px 5px 5px;	
-	height: calc(100% - 150px) !important;
+	height: calc(100% - 50px);
 	background-color: #dedede;
 
 }

@@ -249,6 +249,28 @@ KanbanStory.prototype = {
 		return this.StorySource.notes;
 	},
 
+	get Tasks() {
+		for(var iq = 0; iq < this.StorySource.custom_fields.length; iq++) {
+			var customField = this.StorySource.custom_fields[iq];
+			if(customField.field.name == Mantis.TaskListField) {
+				if(this.StorySource.custom_fields[iq].value == null) {
+				 return [];
+				} else {
+					return JSON.parse(this.StorySource.custom_fields[iq].value);
+				}
+			}
+		}
+		return [];
+	},
+	set Tasks(value) {
+		for(var iq = 0; iq < this.StorySource.custom_fields.length; iq++) {
+			var customField = this.StorySource.custom_fields[iq];
+			if(customField.field.name == Mantis.TaskListField) {
+				this.StorySource.custom_fields[iq].value = JSON.stringify(value);
+			}
+		}
+	},
+
 	get Tags() {
 		if(this.StorySource.tags == undefined) return [];
 		return this.StorySource.tags;
