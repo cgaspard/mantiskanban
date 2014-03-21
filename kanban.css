@@ -82,6 +82,7 @@ html, body{
 	height: calc(100% - 70px) !important;
 	background-color: #dedede;
 	padding: 2px !important;
+	overflow: auto;
 }
 
 #edit-story-new-task-save-button{
