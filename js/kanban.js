@@ -930,6 +930,49 @@ function AddNotesToStoryEditForm(KanbanStory) {
 	}
 }
 
+
+/*
+* @name AddHistoryToStoryEditForm
+* @param {KanbanStory} KanbanStory The story to display the histories for
+* @description Adds existing histories to the edit for of a story
+*/
+function AddHistoryToStoryEditForm(KanbanStory) {
+	var historysContainer = document.getElementById("edit-story-historys-container");
+
+	try {
+		while(historysContainer.childNodes.length > 0) {
+			historysContainer.removeChild(historysContainer.firstChild);
+		}
+	} catch(e) {}
+
+	if(KanbanStory.Histories === undefined) return;
+
+	for(var i = 0; i < KanbanStory.Histories.length; i++) {
+		var thisHistory = KanbanStory.Histories[i];
+
+		// <xsd:element name="date" type="xsd:integer"/>
+		// <xsd:element name="userid" type="xsd:integer"/>
+		// <xsd:element name="username" type="xsd:string"/>
+		// <xsd:element name="field" type="xsd:string"/>
+		// <xsd:element name="type" type="xsd:integer"/>
+		// <xsd:element name="old_value" type="xsd:string"/>
+		// <xsd:element name="new_value" type="xsd:string"/>
+
+		var historyDiv = document.createElement("div");
+		historyDiv.setAttribute("class", "historycontainer");
+		historyDiv.setAttribute("storyid", KanbanStory.ID);
+
+		var historyDate = new Date(Date.parse(thisHistory.date));
+
+		var historyTextDiv = document.createElement("div");
+		historyTextDiv.setAttribute("class", "historytext");
+		historyTextDiv.innerHTML = "<b>" + thisHistory.username + " : " + historyDate.toLocaleString() + "</b><br>" + thisHistory.field + ":" + thisHistory.old_value + " => " + thisHistory.new_value;
+		historyDiv.appendChild(historyTextDiv);
+
+		historysContainer.appendChild(historyDiv);
+	}
+}
+
 function SearchForStory(localOnly) {
 
 	if(localOnly == undefined) localOnly = false;
@@ -1214,8 +1257,11 @@ function EditStory(storyID) {
 			selectEditCategory.selectedIndex = i;
 		}
 	}
+	/// Requires mantis 1.3.0 at minimum
+	if(Mantis.Version() > "1.3.0") AddTasksToStoryEditForm(thisStory);
 
-	AddTasksToStoryEditForm(thisStory);
+	/// Requires mantis 1.3.0 at minimum
+	if(Mantis.Version() > "1.3.0") AddHistoryToStoryEditForm(thisStory);
 
 	AddNotesToStoryEditForm(thisStory);
 

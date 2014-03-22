@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"custom",
+				"customField"
+			],
+			[
 				"subproj",
 				"subprojects"
 			],
@@ -274,10 +278,6 @@
 			[
 				"remove",
 				"removeIndex"
-			],
-			[
-				"custom",
-				"custom_fields"
 			],
 			[
 				"cust",
@@ -581,11 +581,14 @@
 	},
 	"file_history":
 	[
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
@@ -729,6 +732,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Version",
+			"mc_version",
+			"mc_projects_get_user_accessible",
+			"[\"",
+			"UpdateUnderlyingStorySource",
+			"savenewNote",
+			"Note",
+			"note",
+			"task",
+			"edit-story-notes-container",
+			"addNoteButton",
+			"addnotebutton",
 			"tempLoadingDiv",
 			"kanbanliststorycontainer",
 			"kanbanlisttitle",
@@ -844,19 +859,7 @@
 			"addattach",
 			"issue not found",
 			"Issue",
-			"searchfield",
-			"selectproject",
-			"SearchForStory",
-			"EditStory",
-			"DoneLoadingIssuesCallback",
-			"JoinList",
-			"new KanbanStory",
-			"projectlist",
-			"OpenEditStory",
-			"600px",
-			"contentarea",
-			"SaveNewNote",
-			"save"
+			"searchfield"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -864,6 +867,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Task",
+			"task",
+			"var noteSaveButton = document.getElementById(\"edit-story-new-task-save-button\");\n\n	try {\n		while(notesContainer.childNodes.length > 0) {\n			notesContainer.removeChild(notesContainer.firstChild);\n		}\n	} catch(e) {}\n\n	noteSaveButton.setAttribute(\"onclick\", \"SaveNewNote(\" + KanbanStory.ID + \", document.getElementById('edit-newnotetext').value);\")\n\n	if(KanbanStory.Notes === undefined) return;\n\n	for(var i = 0; i < KanbanStory.Notes.length; i++) {\n		var thisNote = KanbanStory.Notes[i];\n\n		var noteDiv = document.createElement(\"div\");\n		noteDiv.setAttribute(\"class\", \"notecontainer\");\n		noteDiv.setAttribute(\"storyid\", KanbanStory.ID);\n\n		var noteDate = new Date(Date.parse(thisNote.date_submitted));\n\n		//var noteSubmitterDiv = document.createElement(\"div\");\n		//noteSubmitterDiv.setAttribute(\"class\", \"notesubmitter\");\n		//noteSubmitterDiv.innerHTML = thisNote.reporter.real_name + \" : \" + noteDate.toLocaleString();\n\n		//noteDiv.appendChild(noteSubmitterDiv);\n\n		var noteTextDiv = document.createElement(\"div\");\n		noteTextDiv.setAttribute(\"class\", \"notetext\");\n		noteTextDiv.innerHTML = \"<b>\" + thisNote.reporter.real_name + \" : \" + noteDate.toLocaleString() + \"</b><hr class='noteHorizonalRule'>\" + thisNote.text;\n		noteTextDiv.setAttribute(\"style\", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3), .8));\n		noteDiv.appendChild(noteTextDiv);\n\n		notesContainer.appendChild(noteDiv);\n	}",
+			"\n	try {\n		while(notesContainer.childNodes.length > 0) {\n			notesContainer.removeChild(notesContainer.firstChild);\n		}\n	} catch(e) {}\n\n	noteSaveButton.setAttribute(\"onclick\", \"SaveNewNote(\" + KanbanStory.ID + \", document.getElementById('edit-newnotetext').value);\")\n\n	if(KanbanStory.Notes === undefined) return;\n\n	for(var i = 0; i < KanbanStory.Notes.length; i++) {\n		var thisNote = KanbanStory.Notes[i];\n\n		var noteDiv = document.createElement(\"div\");\n		noteDiv.setAttribute(\"class\", \"notecontainer\");\n		noteDiv.setAttribute(\"storyid\", KanbanStory.ID);\n\n		var noteDate = new Date(Date.parse(thisNote.date_submitted));\n\n		//var noteSubmitterDiv = document.createElement(\"div\");\n		//noteSubmitterDiv.setAttribute(\"class\", \"notesubmitter\");\n		//noteSubmitterDiv.innerHTML = thisNote.reporter.real_name + \" : \" + noteDate.toLocaleString();\n\n		//noteDiv.appendChild(noteSubmitterDiv);\n\n		var noteTextDiv = document.createElement(\"div\");\n		noteTextDiv.setAttribute(\"class\", \"notetext\");\n		noteTextDiv.innerHTML = \"<b>\" + thisNote.reporter.real_name + \" : \" + noteDate.toLocaleString() + \"</b><hr class='noteHorizonalRule'>\" + thisNote.text;\n		noteTextDiv.setAttribute(\"style\", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3), .8));\n		noteDiv.appendChild(noteTextDiv);\n\n		notesContainer.appendChild(noteDiv);",
 			"otherbuttoncontainer",
 			"Kanban.CurrentUser",
 			"attachment",

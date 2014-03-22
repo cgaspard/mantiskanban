@@ -475,7 +475,19 @@ var Mantis = {
 				pl.add(Mantis.Params.IssueID, issueid);
 				return pl;
 			}
+		},
+
+		IssueGetHistory : {
+			Name : "mc_issue_get_history",
+			BuildParams : function(issueid) {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
+				pl.add(Mantis.Params.IssueID, issueid);
+				return pl;				
+			}
 		}
+		
 	},
 	
 	UpdateStructureMethods : {
@@ -584,6 +596,19 @@ var Mantis = {
 	IssueGet : function(IssueID, callBack) {
 		hascallback = callBack == null || callBack == undefined ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueGet.Name, Mantis.Methods.IssueGet.BuildParams(IssueID), hascallback, callBack);
+	},
+
+	IssueGetHistory : function(IssueID, callBack) {
+		// <xsd:element name="date" type="xsd:integer"/>
+		// <xsd:element name="userid" type="xsd:integer"/>
+		// <xsd:element name="username" type="xsd:string"/>
+		// <xsd:element name="field" type="xsd:string"/>
+		// <xsd:element name="type" type="xsd:integer"/>
+		// <xsd:element name="old_value" type="xsd:string"/>
+		// <xsd:element name="new_value" type="xsd:string"
+
+		hascallback = callBack == null || callBack == undefined ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.IssueGetHistory.Name, Mantis.Methods.IssueGetHistory.BuildParams(IssueID), hascallback, callBack);
 	},
 
 	IssueAttachmentAdd : function(IssueID, FileName, FileType, FileContent, callBack) {

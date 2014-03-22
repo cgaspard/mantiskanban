@@ -145,6 +145,7 @@ KanbanList.prototype = {
 
 var KanbanStory = function(RawObject) {
 	this._list = null;
+	this._histories = null;
 	this.StorySource = RawObject;
 	//alert(JSON.stringify(RawObject.notes))
 	this.UsesCustomField = false;
@@ -220,7 +221,6 @@ KanbanStory.prototype = {
 		this.StorySource.project.name = value
 	},
 
-
 	get StatusID() {
 		return this.StorySource.status.id;
 	},
@@ -247,6 +247,13 @@ KanbanStory.prototype = {
 	get Notes() {
 		if(this.StorySource.notes == undefined) return [];
 		return this.StorySource.notes;
+	},
+
+	get Histories() {
+		if(this._histories == null) {
+			this._histories = Mantis.IssueGetHistory(this.ID);
+		}
+		return this._histories;
 	},
 
 	get Tasks() {
