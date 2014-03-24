@@ -1,5 +1,7 @@
 var LoadingIssuesList = new Array();
 var DebugOn = false;
+var $ = jQuery;
+
 // usage: log('inside coolFunc',this,arguments);
 // http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
 // added this logging function from paul irish to debug if needed.
