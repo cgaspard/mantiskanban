@@ -593,16 +593,16 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
@@ -724,7 +724,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -745,6 +745,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"lightboximage",
+			"Task",
+			"Date",
 			"note",
 			"Note",
 			"note",
@@ -869,10 +872,7 @@
 			"EditSotry",
 			"editstory",
 			"icon",
-			"attachmentname",
-			"IssueAttachmentDelete",
-			"mc_issue_att",
-			"edit-story-new-note-save-button"
+			"attachmentname"
 		],
 		"highlight": true,
 		"in_selection": false,

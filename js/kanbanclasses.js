@@ -256,6 +256,10 @@ KanbanStory.prototype = {
 		return this._histories;
 	},
 
+	GetHistoriesAsync : function(callback) {
+		Mantis.IssueGetHistory(this.ID, callback);
+	},
+
 	get Tasks() {
 		for(var iq = 0; iq < this.StorySource.custom_fields.length; iq++) {
 			var customField = this.StorySource.custom_fields[iq];
@@ -520,7 +524,7 @@ KanbanStory.prototype = {
 
 		var storyDivButtonContainer = document.createElement("section");
 		storyDivButtonContainer.setAttribute("class", "kabanhandlercontainer");
-		storyDivButtonContainer.setAttribute("onclick", "EditStory('" + this.ID + "');");
+		//storyDivButtonContainer.setAttribute("onclick", "EditStory('" + this.ID + "');");
 		storyDivButtonContainer.setAttribute("listid", "listid" + this.ListID);
 		storyDivButtonContainer.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivButtonContainer.setAttribute("dropdivid", "dropdiv" + this.ID);
@@ -542,7 +546,7 @@ KanbanStory.prototype = {
 		
 		storyDivTitle.setAttribute("class", "kanbanstorytitle");
 		storyDivTitle.setAttribute("id", "storytitle" + this.ID);
-		storyDivTitle.setAttribute("onclick", "EditStory('" + this.ID + "');");
+		//storyDivTitle.setAttribute("onclick", "EditStory('" + this.ID + "');");
 		storyDivTitle.setAttribute("listid", "listid" + this.ListID);
 		storyDivTitle.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivTitle.setAttribute("dropdivid", "dropdiv" + this.ID);

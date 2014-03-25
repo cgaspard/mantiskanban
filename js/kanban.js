@@ -900,7 +900,7 @@ function AddTasksToStoryEditForm(KanbanStory) {
 function AddNotesToStoryEditForm(KanbanStory) {
 	var notesContainer = document.getElementById("edit-story-notes-container");
 	var noteSaveButton = document.getElementById("edit-story-new-note-save-button");
-
+	var noteTextArea = document.getElementById("edit-newnotetext");
 	try {
 		while(notesContainer.childNodes.length > 0) {
 			notesContainer.removeChild(notesContainer.firstChild);
@@ -908,6 +908,11 @@ function AddNotesToStoryEditForm(KanbanStory) {
 	} catch(e) {}
 
 	noteSaveButton.setAttribute("onclick", "SaveNewNote(" + KanbanStory.ID + ", document.getElementById('edit-newnotetext').value);")
+	noteTextArea.addEventListener("onkeydown", function (e) {
+		if ((keyCode == 10 || keyCode == 13) && event.ctrlKey) {
+			SaveNewNote(" + KanbanStory.ID + ", noteTextArea.value);
+		}
+	});
 
 	if(KanbanStory.Notes === undefined) return;
 
@@ -945,32 +950,37 @@ function AddHistoryToStoryEditForm(KanbanStory) {
 		}
 	} catch(e) {}
 
-	if(KanbanStory.Histories === undefined) return;
+	KanbanStory.GetHistoriesAsync(function(histories) {
 
-	for(var i = 0; i < KanbanStory.Histories.length; i++) {
-		var thisHistory = KanbanStory.Histories[i];
+		for(var i = 0; i < histories.length; i++) {
+			var thisHistory = histories[i];
 
-		// <xsd:element name="date" type="xsd:integer"/>
-		// <xsd:element name="userid" type="xsd:integer"/>
-		// <xsd:element name="username" type="xsd:string"/>
-		// <xsd:element name="field" type="xsd:string"/>
-		// <xsd:element name="type" type="xsd:integer"/>
-		// <xsd:element name="old_value" type="xsd:string"/>
-		// <xsd:element name="new_value" type="xsd:string"/>
+			// <xsd:element name="date" type="xsd:integer"/>
+			// <xsd:element name="userid" type="xsd:integer"/>
+			// <xsd:element name="username" type="xsd:string"/>
+			// <xsd:element name="field" type="xsd:string"/>
+			// <xsd:element name="type" type="xsd:integer"/>
+			// <xsd:element name="old_value" type="xsd:string"/>
+			// <xsd:element name="new_value" type="xsd:string"/>
 
-		var historyDiv = document.createElement("div");
-		historyDiv.setAttribute("class", "historycontainer");
-		historyDiv.setAttribute("storyid", KanbanStory.ID);
+			var historyDiv = document.createElement("div");
+			historyDiv.setAttribute("class", "historycontainer");
 
-		var historyDate = new Date(thisHistory.date * 1000);
+			var historyDate = new Date(thisHistory.date * 1000);
 
-		var historyTextDiv = document.createElement("div");
-		historyTextDiv.setAttribute("class", "historytext");
-		historyTextDiv.innerHTML = "<b>" + thisHistory.username + " : " + historyDate.toLocaleString() + "</b><br>" + thisHistory.field + ":" + thisHistory.old_value + " => " + thisHistory.new_value;
-		historyDiv.appendChild(historyTextDiv);
+			var historyTextDiv = document.createElement("div");
+			historyTextDiv.setAttribute("class", "historytext");
+			historyTextDiv.innerHTML = "<b>" + thisHistory.username + " : " + historyDate.toLocaleString() + "</b><br>" + thisHistory.field + ":" + thisHistory.old_value + " => " + thisHistory.new_value;
+			historyDiv.appendChild(historyTextDiv);
 
-		historysContainer.appendChild(historyDiv);
-	}
+			historysContainer.appendChild(historyDiv);
+		}
+	});
+	
+}
+
+function AddHistoryToStoryEditFormCallback(KanbanStory) {
+
 }
 
 function SearchForStory(localOnly) {
@@ -1171,18 +1181,12 @@ function UpdateStoryHandlerComplete(result) {
  */
 function EditStory(storyID) {
 
-	$('#myTab a:first').tab('show');
+	$('a[href=#tabs-1]').tab('show');
 	ClearUploadList();
-
-	//$("#tabs").tabs({
-	 	//active: 0
-	//});
 
 	var thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
 	/// Thanks to todace for sample code https://github.com/todace
 	document.getElementById("edit-story-title").innerHTML = "<a target=\"_new\" class=\"btn btn-primary\" href=http://" + Mantis.ServerHostname + "/view.php?id=" + thisStory.ID + ">"+ thisStory.ID + "</a> &nbsp; " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
-	//document.getElementById("edit-story-title").innerHTML = "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
-	//$("#edit-story-form").dialog({ title: "Edit Story: " + thisStory.ID + " " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary) });
 	$("#edit-story-id").val(thisStory.ID);
 	$("#edit-summary").val(thisStory.Summary);
 	$("#edit-description").val(thisStory.Description);
