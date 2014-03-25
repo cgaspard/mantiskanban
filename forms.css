@@ -81,13 +81,14 @@
 
 .editform {
 	overflow: auto;
-	height:100%;
+	height: 100%;
 	width: 575px;
-	/*background-color: #dfdfdf;*/
-	padding: 15px 15px 15px 15px;
-	border-left: solid 1px #000000;
+	background-color: #FFFFFF;
+	border-left: solid 1px #999;
+	border-top: 1px solid #999;
 	position: absolute;
 	padding: 10px;
+	border-top-left-radius: 6px;
 }	
 
 #add-story-form  {

@@ -1181,6 +1181,8 @@ function UpdateStoryHandlerComplete(result) {
  */
 function EditStory(storyID) {
 
+	document.getElementById("edit-story-notes-container").scrollTop = document.getElementById("edit-story-notes-container").clientHeight;
+
 	$('a[href=#tabs-1]').tab('show');
 	ClearUploadList();
 
@@ -1194,7 +1196,6 @@ function EditStory(storyID) {
 
 	$("#edit-newnotetext").val("");
 
-	document.getElementById("edit-story-notes-container").scrollTop = document.getElementById("edit-story-notes-container").clientHeight;
 	document.getElementById("edit-datesubmitted").innerHTML = thisStory.DateSubmitted;
 
 	var selectReportingUser = document.getElementById("edit-reporter");
@@ -1273,7 +1274,6 @@ function EditStory(storyID) {
 
 	AddTagsToStoryEditForm(thisStory);
 
-	//$('#edit-story-form').modal();
 	ShowEditStory();
 
 }

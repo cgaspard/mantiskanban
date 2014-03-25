@@ -12,6 +12,7 @@ var Mantis = {
 	_defaultaccesslevelforuserenum : 10,
 	_defaultfilterid : null,
 	_closedissuesfilterid : null,
+	_version : null,
 
 	ConnectURL : location.protocol + "//" + document.location.hostname + "/api/soap/mantisconnect.php",
 	
@@ -777,8 +778,13 @@ var Mantis = {
 	},
 	
 	Version : function(callBack) {
+		
+
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Version.Name, Mantis.Methods.Version.BuildParams(), hascallback, callBack);
+
+		if(Mantis._version != null && !hascallback) return Mantis._version;
+		Mantis._version = SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.Version.Name, Mantis.Methods.Version.BuildParams(), hascallback, callBack);
+		return Mantis._version;
 	}    
 }
 /*
