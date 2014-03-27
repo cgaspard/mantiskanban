@@ -52,3 +52,13 @@ var DefaultSettings = {
 	currentProject:Mantis.CurrentProjectSelection
 };
 
+
+/// List of Installed Themes should be here
+Kanban.Themes = 
+[
+	{name: "Default", stylesheet : "themes/default.css" },
+	{name: "Green", stylesheet : "themes/green.css"},
+	{name: "Trello", stylesheet : "themes/trello.css"},
+
+];
+
