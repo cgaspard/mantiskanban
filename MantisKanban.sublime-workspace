@@ -745,6 +745,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Version",
+			"addattachments",
+			"ClearUploadList",
+			"CleanUpload",
+			"GetSToryByFieldValue",
 			"lightboximage",
 			"Task",
 			"Date",
@@ -867,12 +872,7 @@
 			"UpdateUnderlyingStorySource",
 			"newfileattach",
 			"edit-story-new-attach-save-button",
-			"AddAttachmentToStoryEditForm",
-			"EditStory",
-			"EditSotry",
-			"editstory",
-			"icon",
-			"attachmentname"
+			"AddAttachmentToStoryEditForm"
 		],
 		"highlight": true,
 		"in_selection": false,

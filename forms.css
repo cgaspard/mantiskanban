@@ -89,6 +89,7 @@
 	position: absolute;
 	padding: 10px;
 	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
 }	
 
 #add-story-form  {
@@ -96,6 +97,7 @@
 
 
 #edit-story-form {
+
 }
 
 .tab-content {

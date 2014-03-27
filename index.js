@@ -40,6 +40,7 @@ function window_load() {
 	var preConfiguredMantisURL = DefaultSettings.connectURL;
 
 	LoadSettingsFromLocalStorage();
+	if(DefaultSettings.selectedStyle) Kanban.ApplyTheme(DefaultSettings.selectedStyle);
 
 	if(DefaultSettings.connectURL != undefined && DefaultSettings.connectURL != "") {
 		document.getElementById("mantisURL").value = DefaultSettings.connectURL;
@@ -702,3 +703,4 @@ function FitColsToScreen(){
 	document.getElementById("settings-list-width").value = newColumnWidth + "px";
 	return newColumnWidth + "px";
 }
+

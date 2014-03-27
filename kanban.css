@@ -3,7 +3,8 @@ html, body{
 	padding: 0;
 	border: 0;
 	background-repeat: no-repeat;
-	background: #d3d3d3;
+	background-color: #D3D3D3;
+	
 	overflow:hidden;
 	height: 100%;
 	width: 100%;
@@ -233,6 +234,7 @@ div.notecontainer {
 	padding-left: 10px;
 	color: #FFFFFF;
 	font-size: 20px;
+	/*background-color: #EFEFEF;*/
 }
 .loginarea input{
 	height: 30px;
@@ -293,8 +295,7 @@ div.notecontainer {
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 	padding: 4px 8px 4px 8px;
-	background: #003366;
-	background-color: #003355;
+background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);	
 	color: #FFFFFF;
 	cursor: pointer;
 }
@@ -319,12 +320,16 @@ div.notecontainer {
 	position: relative;
 	top: 0px;
 	display:none;
-	width: 100%; 
+	width: calc(100% - 10px); 
 	height: calc(100% - 85px); 
 	border-bottom: 1px solid #000000;
 	background-color: #cacacf;
 	white-space: nowrap;
 	transition: height .5s;	
+	margin-left: 5px;
+	margin-right: 5px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
 }
 
 .contentarea[showingpriority="true"] {
@@ -345,7 +350,7 @@ div.notecontainer {
 	padding-top: 5px;
 	overflow: auto;
 	display: inline-block;
-	background-color: #cacacf;
+	/*background-color: #cacacf;*/	
 	padding: 10px 10px 10px 10px;
 	white-space: nowrap;
 	transition: width .5s;
@@ -441,7 +446,7 @@ div.notecontainer {
 	border: solid 1px #ababab;
 	border-radius: 6px 6px 6px 6px;
 	margin:5px 8px 0px 8px;
-	-webkit-transform: scale3d(1,1,1);
+	/*-webkit-transform: scale3d(1,1,1);*/
 }
 
 .kanbanstorycontainer:last-child {

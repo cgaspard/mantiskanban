@@ -1286,11 +1286,18 @@ function HidePriorityLegend() {
 	document.getElementById("contentarea").setAttribute("showingpriority", "false");	
 }
 
+Kanban.ApplyTheme = function(styleID) {
+	DefaultSettings.selectedStyle = styleID;
+	var style = Kanban.Themes[styleID]
+	$("#themeLink").attr("href", style.stylesheet);
+}
+
 Kanban.SaveSettings = function() {
 	//modifyStyleRule(selectorText, value)
 	DefaultSettings.kanbanListWidth = document.getElementById("settings-list-width").value;
 	DefaultSettings.connectURL = document.getElementById("settings-connectURL").value;
 	DefaultSettings.autoResizeColumns = document.getElementById("settings-autofit-onresize").checked;
+	DefaultSettings.selectedStyle = document.getElementById("settings-selectedTheme").value;
 	saveSettingsToStorageMechanism();
 	Kanban.ApplySettings();
 }
@@ -1300,7 +1307,11 @@ Kanban.ApplySettingsAtLogin = function() {
 	if(DefaultSettings.autoResizeColumns) {
 		window.addEventListener("resize", AutoAdjustListWidth);
 		AutoAdjustListWidth();
-	}	
+	}
+	if(!DefaultSettings.selectedStyle) {
+		DefaultSettings.selectedStyle = 0;
+	}
+	Kanban.ApplyTheme(DefaultSettings.selectedStyle);
 }
 
 Kanban.ApplySettings = function() {
@@ -1312,6 +1323,8 @@ Kanban.ApplySettings = function() {
 		AutoAdjustListWidth();
 		window.addEventListener("resize", AutoAdjustListWidth);
 	}
+
+	Kanban.ApplyTheme(document.getElementById("settings-selectedTheme").value);
 }
 
 Kanban.LoadRuntimeSettings = function() {
@@ -1330,6 +1343,21 @@ function ShowSettings() {
 	document.getElementById("mantisURL").value = DefaultSettings.connectURL;
 	document.getElementById("kanbancontent").setAttribute("editing", "true");
 	document.getElementById("settings-autofit-onresize").checked = DefaultSettings.autoResizeColumns;
+
+	var settingsThemesChooser = document.getElementById("settings-selectedTheme");
+	settingsThemesChooser.options.length = 0;
+
+	var selecteStyle = 0;
+
+	if(DefaultSettings.selectedStyle) selectedStyle = DefaultSettings.selectedStyle;
+
+	for(var q = 0; q < Kanban.Themes.length; q++) {
+		var thisTheme = Kanban.Themes[q];
+		
+		settingsThemesChooser.options[q] = new Option(thisTheme.name, q);
+	}
+
+	settingsThemesChooser.selectedIndex = selectedStyle;
 }
 
 function CloseSettings() {

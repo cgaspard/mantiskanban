@@ -1,0 +1,18 @@
+html, body {
+	background: none repeat scroll 0% 0% rgba(108, 170, 85, 1);
+}
+
+.contentarea {
+	background-color: #6CAA55 !important;
+}
+
+.headerarea {
+	background-image: radial-gradient(#000 15%, transparent 16%), radial-gradient(#000 15%, transparent 16%), radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%), radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%);
+	background-repeat: repeat, repeat, repeat, repeat;
+	background-attachment: scroll, scroll, scroll, scroll;
+	background-position: 0px 0px, 8px 8px, 0px 1px, 8px 9px;
+	background-clip: border-box, border-box, border-box, border-box;
+	background-origin: padding-box, padding-box, padding-box, padding-box;
+	background-color: #3E3E3E;
+	background-size: 16px 16px;
+}

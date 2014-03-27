@@ -18,6 +18,9 @@
 		
 		<link crossorigin rel="stylesheet" href="kanban.css" />
 		<link crossorigin rel="stylesheet" href="forms.css" />
+
+	   <link id="themeLink" href="themes/default.css" rel="stylesheet" type="text/css" />
+
 		<link crossorigin rel="stylesheet" href="custom.css" />
 		
 		<script language="javascript" type="text/javascript" src="js/global.js"></script>
@@ -52,7 +55,7 @@
 								<input type="text" id="mantisURL" placeholder="Mantis URL" style="width: 325px;" value="" onclick=""><br>
 								<input type="submit" style="position: absolute; left: -9999px"/> 
 								<br>
-								<div id="loginButton" class="btn btn-success btn-small" onclick="Login();">Login</div>
+								<div id="loginButton" class="btn btn-primary btn-small" onclick="Login();">Login</div>
 							</form>
 						</div>
 					</form>
@@ -348,6 +351,17 @@
 												<div class="controls">
 													<input type="text" name="settings-connectURL" id="settings-connectURL" class="form-control" placeholder="Mantis Connect URL" />
 												</div>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<label class="control-label" for="settings-selectedTheme">Theme:</label>
+											</td>
+										</tr>										
+										<tr>
+											<td colspan="2">
+												<select id="settings-selectedTheme" name="settings-selectedTheme"class=" form-control input-small">
+												</select>
 											</td>
 										</tr>
 									</table>								
