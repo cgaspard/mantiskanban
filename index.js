@@ -691,7 +691,7 @@ function saveSettingsToStorageMechanism(){
 
 function AutoAdjustListWidth() {
 	var contentArea = document.getElementById("kanbancontent")
-	if(contentArea.clientWidt != contentArea.scrollWidth) {
+	if(contentArea.clientWidth != contentArea.scrollWidth) {
 		var newWidth = FitColsToScreen();
 		document.getElementById("settings-list-width").value = newWidth;
 		modifyStyleRule(".kanbanlist", "width", newWidth);		
@@ -699,7 +699,7 @@ function AutoAdjustListWidth() {
 }
 
 function FitColsToScreen(){
-	var newColumnWidth = Math.floor((window.innerWidth - 80) / 7) - 2; //-80 for padding compensation
+	var newColumnWidth = Math.floor((document.getElementById("contentarea") - 80) / Kanban.Lists.length) - 2; //-80 for padding compensation
 	document.getElementById("settings-list-width").value = newColumnWidth + "px";
 	return newColumnWidth + "px";
 }

@@ -5,9 +5,14 @@ html, body {
 }
 
 .contentarea {
-	background-color: #23719F !important;
+	background-color: rgba(23, 76, 107, 1) !important;
 }
 
 .headerarea {
 	background-color: rgba(23, 76, 107, 1) !important;
+}
+
+#kanbancontent {
+	background-color: #23719F !important;
+
 }

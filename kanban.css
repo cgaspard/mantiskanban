@@ -320,7 +320,7 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
 	position: relative;
 	top: 0px;
 	display:none;
-	width: calc(100% - 10px); 
+	width: 100%;
 	height: calc(100% - 85px); 
 	border-bottom: 1px solid #000000;
 	background-color: #cacacf;
