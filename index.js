@@ -391,8 +391,6 @@ function SelectProject(openStoryID) {
 		document.getElementById("selected-project-name").innerHTML = Kanban.CurrentProject.Name;	
 	}
 
-	
-
 	if(Mantis.DefaultFilterID !== null && Mantis.DefaultFilterID != 0) {
 		window.setTimeout(function(filterID, retObj) {
 			LoadFilterAsync(Mantis.DefaultFilterID, 0, 0, function(filterID, retObj) {

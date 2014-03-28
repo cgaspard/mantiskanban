@@ -970,8 +970,13 @@ function AddHistoryToStoryEditForm(KanbanStory) {
 
 			var historyTextDiv = document.createElement("div");
 			historyTextDiv.setAttribute("class", "historytext");
-			historyTextDiv.innerHTML = "<b>" + thisHistory.username + " : " + historyDate.toLocaleString() + "</b><br>" + thisHistory.field + ":" + thisHistory.old_value + " => " + thisHistory.new_value;
+			historyTextDiv.innerHTML = "<b>" + thisHistory.username + " : " + historyDate.toLocaleString() + "</b>";
 			historyDiv.appendChild(historyTextDiv);
+
+			var historyActionDiv = document.createElement("div");
+			historyActionDiv.setAttribute("class", "historyaction tags ");
+			historyActionDiv.innerHTML = "<a href=\"#\" class=\"label label-primary\">" + Mantis.HistoryUpdateTypes[thisHistory.type] + "</a>:<a href=\"#\" class=\"label label-warning\">" + thisHistory.field + "</a>--<a href=\"#\" class=\"label label-danger\">" + thisHistory.old_value + "</a>=><a href=\"#\" class=\"label label-success\">" + thisHistory.new_value;
+			historyDiv.appendChild(historyActionDiv);
 
 			historysContainer.appendChild(historyDiv);
 		}
