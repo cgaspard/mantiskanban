@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"clie",
+				"clientWidth"
+			],
+			[
+				"border-top",
+				"border-top-left-radius"
+			],
+			[
+				"Default",
+				"DefaultSettings"
+			],
+			[
+				"Apply",
+				"ApplyTheme"
+			],
+			[
+				"sele",
+				"selectedStyle"
+			],
+			[
 				"new",
 				"new_value"
 			],
@@ -66,10 +86,6 @@
 			[
 				"Save",
 				"saveCurrentSettings"
-			],
-			[
-				"Default",
-				"DefaultFilterID"
 			],
 			[
 				"fcou",
@@ -593,16 +609,19 @@
 	},
 	"file_history":
 	[
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/default.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/green.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/trello.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
@@ -724,9 +743,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"*",
 			"",
 			"*.css",
 			"",
@@ -745,6 +765,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"theme",
+			"headerarea",
+			"saveSettingsToStorageMechanism",
+			"settings",
+			"CloseStory",
+			"closestory",
+			"3d",
+			"headerarea",
 			"Version",
 			"addattachments",
 			"ClearUploadList",
@@ -864,15 +892,7 @@
 			"form-control",
 			"settings",
 			"tabs-4",
-			"tabs-3",
-			"edit-reproduce",
-			"deleteattach",
-			"addattachment",
-			"BuildKanbanStoryDiv",
-			"UpdateUnderlyingStorySource",
-			"newfileattach",
-			"edit-story-new-attach-save-button",
-			"AddAttachmentToStoryEditForm"
+			"tabs-3"
 		],
 		"highlight": true,
 		"in_selection": false,

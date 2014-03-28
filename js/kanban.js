@@ -1303,7 +1303,9 @@ Kanban.SaveSettings = function() {
 }
 
 Kanban.ApplySettingsAtLogin = function() {
-	modifyStyleRule(".kanbanlist", "width", DefaultSettings.kanbanListWidth);
+	try {
+		modifyStyleRule(".kanbanlist", "width", DefaultSettings.kanbanListWidth);
+	} catch(e)  {}
 	if(DefaultSettings.autoResizeColumns) {
 		window.addEventListener("resize", AutoAdjustListWidth);
 		AutoAdjustListWidth();
