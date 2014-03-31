@@ -240,32 +240,34 @@ function modifyStyleRule(selectorText, style, value) {
 		sheet = sheets[i];
 
 		// W3C model
-		if (sheet.cssRules) {
-			rules = sheet.cssRules;
+		try {
+			if (sheet.cssRules) {
+				rules = sheet.cssRules;
 
-			for (j=0, jLen=rules.length; j<jLen; j++) {
-				rule = rules[j];
+				for (j=0, jLen=rules.length; j<jLen; j++) {
+					rule = rules[j];
 
-				if (rule.selectorText == selectorText) {
-					rule.style[style] = value;
+					if (rule.selectorText == selectorText) {
+						rule.style[style] = value;
+					}
+				}
+			} else if (sheet.rules) {
+				rules = sheet.rules;
+
+				for (k=0, kLen=rules.length; k<kLen; k++) {
+					rule = rules[k];
+
+					// An alternative is to just modify rule.style.cssText,
+					// but this way keeps it consistent with W3C model
+			        if (rule.selectorText == selectorText) {
+			        	rule.style[style] = value;
+
+						// Alternative
+						// rule.style.cssText = value;
+			        }
 				}
 			}
-		} else if (sheet.rules) {
-			rules = sheet.rules;
-
-			for (k=0, kLen=rules.length; k<kLen; k++) {
-				rule = rules[k];
-
-				// An alternative is to just modify rule.style.cssText,
-				// but this way keeps it consistent with W3C model
-		        if (rule.selectorText == selectorText) {
-		        	rule.style[style] = value;
-
-					// Alternative
-					// rule.style.cssText = value;
-		        }
-			}
-		}		
+		} catch (e) { }	
 	}
 }
 

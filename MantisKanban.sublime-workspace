@@ -609,6 +609,8 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Desktop/Rims",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
@@ -617,7 +619,6 @@
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/green.css",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/trello.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
@@ -743,7 +744,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"*",
@@ -765,6 +766,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"historyaction",
+			"Addhistory",
+			"notesarea",
+			"tasksarea",
+			"buildlist",
+			"buildlistsgui",
+			"AutoAdjustListWidth",
+			"resize",
 			"theme",
 			"headerarea",
 			"saveSettingsToStorageMechanism",
@@ -884,15 +893,7 @@
 			"selectproject",
 			"stoplo",
 			"kanbanuser",
-			"user",
-			"loadfilterasync",
-			"DoneLoadingIssuesCallback",
-			"selectProject",
-			"settings",
-			"form-control",
-			"settings",
-			"tabs-4",
-			"tabs-3"
+			"user"
 		],
 		"highlight": true,
 		"in_selection": false,
