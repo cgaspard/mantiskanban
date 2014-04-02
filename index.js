@@ -43,7 +43,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	if(DefaultSettings.selectedStyle) Kanban.ApplyTheme(DefaultSettings.selectedStyle);
 	
 	// 2ms to apply the style before we turn the display on
-	document.getElementById("realcontentcontainer").classList.add("load");
+	window.setTimeout(function() {
+		document.getElementById("realcontentcontainer").classList.add("load");
+	}, 200);
 
 });
 
