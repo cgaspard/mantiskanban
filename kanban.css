@@ -4,7 +4,6 @@ html, body{
 	border: 0;
 	background-repeat: no-repeat;
 	background-color: #D3D3D3;
-	
 	overflow:hidden;
 	height: 100%;
 	width: 100%;
@@ -132,11 +131,11 @@ div.notecontainer {
 	height: 100%;
 	opacity: 0;
     
-    -webkit-transition: opacity .2s ease-in;
-       -moz-transition: opacity .2s ease-in;
-        -ms-transition: opacity .2s ease-in;
-         -o-transition: opacity .2s ease-in;
-            transition: opacity .2s ease-in;
+    -webkit-transition: opacity .3s ease-in;
+       -moz-transition: opacity .3s ease-in;
+        -ms-transition: opacity .3s ease-in;
+         -o-transition: opacity .3s ease-in;
+            transition: opacity .3s ease-in;
 }
 
 .realcontentcontainer.load {

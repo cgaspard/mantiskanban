@@ -35,11 +35,7 @@ var urlParams;
 })();
 
 window.addEventListener("load", window_load);
-
-
-function window_load() {
-
-	document.getElementById('newAttachmentFile').addEventListener('change', HandleFileSelect, false);
+window.addEventListener("DOMContentLoaded", function(){
 
 	var preConfiguredMantisURL = DefaultSettings.connectURL;
 
@@ -47,9 +43,16 @@ function window_load() {
 	if(DefaultSettings.selectedStyle) Kanban.ApplyTheme(DefaultSettings.selectedStyle);
 	
 	// 2ms to apply the style before we turn the display on
-	window.setTimeout(function() {
-		document.getElementById("realcontentcontainer").classList.add("load");
-	}, 50);
+	document.getElementById("realcontentcontainer").classList.add("load");
+
+});
+
+function window_load() {
+
+	document.getElementById('newAttachmentFile').addEventListener('change', HandleFileSelect, false);
+
+
+
 
 	if(DefaultSettings.connectURL != undefined && DefaultSettings.connectURL != "") {
 		document.getElementById("mantisURL").value = DefaultSettings.connectURL;
