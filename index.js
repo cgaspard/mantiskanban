@@ -41,6 +41,8 @@ function window_load() {
 
 	LoadSettingsFromLocalStorage();
 	if(DefaultSettings.selectedStyle) Kanban.ApplyTheme(DefaultSettings.selectedStyle);
+	
+	document.body.style.display = "block";
 
 	if(DefaultSettings.connectURL != undefined && DefaultSettings.connectURL != "") {
 		document.getElementById("mantisURL").value = DefaultSettings.connectURL;
@@ -65,9 +67,11 @@ function window_load() {
     
 	AutoLogin();
 
-/*	$(document).bind('keyup', 'shift+ctrl+g', function() {
+	/*
+	$(document).bind('keyup', 'shift+ctrl+g', function() {
 		document.getElementById("searchfield").focus();
-	});*/
+	});
+	*/
 
 }
 
@@ -158,6 +162,7 @@ function Login() {
 
 	LoadSettingsFromLocalStorage();
 	if(DefaultSettings.kanbanListWidth == undefined) {
+
 		DefaultSettings.kanbanListWidth = getStyleRule(".kanbanlist", "width");
 	}
 

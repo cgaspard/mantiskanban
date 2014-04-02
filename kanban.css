@@ -8,6 +8,7 @@ html, body{
 	overflow:hidden;
 	height: 100%;
 	width: 100%;
+
 	/*
 	background: #666c70;
 	background: -moz-linear-gradient(top, #666c70 1%, #555b60 98px, #d3d3d3 99px, #dbdbdb 100%);
@@ -20,6 +21,10 @@ html, body{
 	*/
 }
 
+
+body{
+	display: none;
+}
 .subproject {
 	margin-left: 20px;
 }

@@ -609,9 +609,9 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/Users/cgaspard/Desktop/Rims",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/default.css",
@@ -740,7 +740,7 @@
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -766,6 +766,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"modifyStyleRule",
+			"getStyleRule",
+			"style",
 			"historyaction",
 			"Addhistory",
 			"notesarea",
@@ -890,10 +893,7 @@
 			"LoadFilterAsync",
 			"UpdateFilterList",
 			"LoadFilterAsync",
-			"selectproject",
-			"stoplo",
-			"kanbanuser",
-			"user"
+			"selectproject"
 		],
 		"highlight": true,
 		"in_selection": false,
