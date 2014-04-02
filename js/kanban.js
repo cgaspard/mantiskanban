@@ -1315,10 +1315,6 @@ Kanban.ApplySettingsAtLogin = function() {
 		window.addEventListener("resize", AutoAdjustListWidth);
 		AutoAdjustListWidth();
 	}
-	if(!DefaultSettings.selectedStyle) {
-		DefaultSettings.selectedStyle = 0;
-	}
-	Kanban.ApplyTheme(DefaultSettings.selectedStyle);
 }
 
 Kanban.ApplySettings = function() {
