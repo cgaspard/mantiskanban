@@ -14,5 +14,43 @@ html, body {
 
 #kanbancontent {
 	background-color: #23719F !important;
+	opacity: 1;
+    -webkit-transition: opacity .3s ease-in;
+       -moz-transition: opacity .3s ease-in;
+        -ms-transition: opacity .3s ease-in;
+         -o-transition: opacity .3s ease-in;
+            transition: opacity .3s ease-in;
+}
+
+#edit-story-form {
+	opacity: 0;
+	position: absolute;
+	top: 10px;
+	display: inline-block;
+	z-index: 9999;
+	left: calc(50% - 235px);
+	height: 0px;
+	border-radius: 8px;
+}
+
+#edit-story-form[editing="true"] {
+	height: calc(100% - 50px);
+	opacity: 1;
+	transition: opacity .1s ease-in;
+    /*transition: height .3s ease;*/
+}
+
+#kanbancontent[editing="true"] {
+	width: 100% !important;
+	opacity: .6;
+    -webkit-transition: opacity .3s ease-in;
+       -moz-transition: opacity .3s ease-in;
+        -ms-transition: opacity .3s ease-in;
+         -o-transition: opacity .3s ease-in;
+            transition: opacity .3s ease-in;
+}
+
+
+#kanbancontent[editing="true"]>#edit-story-form {
 
 }

@@ -44,6 +44,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	// 2ms to apply the style before we turn the display on
 	window.setTimeout(function() {
+		document.getElementById("realcontentcontainer").style.visibility = 'visible';
 		document.getElementById("realcontentcontainer").classList.add("load");
 	}, 200);
 

@@ -1364,7 +1364,7 @@ function ShowSettings() {
 }
 
 function CloseSettings() {
-	document.getElementById("kanbancontent").setAttribute("editing", "false");	
+	document.getElementById("kanbancontent").setAttribute("editing", "false");
 	document.getElementById("edit-settings-form").style.display = "none";
 }
 
@@ -1373,22 +1373,26 @@ function ShowEditStory() {
 	CloseSettings();
 	document.getElementById("edit-story-form").style.display = "inline-block";
 	document.getElementById("kanbancontent").setAttribute("editing", "true");	
+	document.getElementById("edit-story-form").setAttribute("editing", "true");	
 }
 
 function ShowAddStory() {
 	CloseEditStory();
 	CloseSettings();
 	document.getElementById("add-story-form").style.display = "inline-block";
-	document.getElementById("kanbancontent").setAttribute("editing", "true");		
+	document.getElementById("kanbancontent").setAttribute("editing", "true");
+	document.getElementById("edit-story-form").setAttribute("editing", "true");		
 }
 
 function CloseEditStory() {
 	document.getElementById('kanbancontent').setAttribute('editing', 'false');
-	document.getElementById("edit-story-form").style.display = "none";
+	document.getElementById("edit-story-form").setAttribute("editing", "false");	
+	document.getElementById("edit-story-form").style.visibility = "invisible";
 }
 
 function CloseAddStory() {
 	document.getElementById('kanbancontent').setAttribute('editing', 'false');
-	document.getElementById("add-story-form").style.display = "none";
+	document.getElementById("edit-story-form").setAttribute("editing", "false");	
+	document.getElementById("add-story-form").style.visibility = "invisible";
 
 }
