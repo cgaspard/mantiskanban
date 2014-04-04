@@ -34,10 +34,12 @@ var urlParams;
        urlParams[decode(match[1])] = decode(match[2]);
 })();
 
+var preConfiguredMantisURL = "";
+
 window.addEventListener("load", window_load);
 window.addEventListener("DOMContentLoaded", function(){
 
-	var preConfiguredMantisURL = DefaultSettings.connectURL;
+	preConfiguredMantisURL = DefaultSettings.connectURL;
 
 	LoadSettingsFromLocalStorage();
 	if(DefaultSettings.selectedStyle) Kanban.ApplyTheme(DefaultSettings.selectedStyle);
