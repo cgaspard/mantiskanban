@@ -22,6 +22,50 @@ html, body {
             transition: opacity .3s ease-in;
 }
 
+.editing-header {
+	background-color: rgba(231, 231, 231, 1);
+	color: rgba(77, 77, 77, 1);
+	border-radius: 5px;
+	padding: 5px 5px 5px 5px;
+}
+
+#edit-settings-form {
+	opacity: 0;
+	position: absolute;
+	top: 10px;
+	display: inline-block;
+	z-index: 9999;
+	left: calc(50% - 235px);
+	height: 0px;
+	border-radius: 8px;
+}
+
+#edit-settings-form[editing="true"] {
+	height: calc(100% - 50px);
+	opacity: 1;
+	transition: opacity .1s ease-in;
+}
+
+
+
+#add-story-form {
+	opacity: 0;
+	position: absolute;
+	top: 10px;
+	display: inline-block;
+	z-index: 9999;
+	left: calc(50% - 235px);
+	height: 0px;
+	border-radius: 8px;
+}
+
+
+#add-story-form[editing="true"] {
+	height: calc(100% - 50px);
+	opacity: 1;
+	transition: opacity .1s ease-in;
+}
+
 #edit-story-form {
 	opacity: 0;
 	position: absolute;
@@ -37,7 +81,6 @@ html, body {
 	height: calc(100% - 50px);
 	opacity: 1;
 	transition: opacity .1s ease-in;
-    /*transition: height .3s ease;*/
 }
 
 #kanbancontent[editing="true"] {
@@ -48,9 +91,4 @@ html, body {
         -ms-transition: opacity .3s ease-in;
          -o-transition: opacity .3s ease-in;
             transition: opacity .3s ease-in;
-}
-
-
-#kanbancontent[editing="true"]>#edit-story-form {
-
 }

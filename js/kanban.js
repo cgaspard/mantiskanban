@@ -1341,6 +1341,7 @@ function ShowSettings() {
 	CloseAddStory();
 	CloseEditStory();
 	Kanban.LoadRuntimeSettings();
+	document.getElementById("edit-settings-form").setAttribute("editing", "true");
 	document.getElementById("edit-settings-form").style.display = "inline-block";
 	document.getElementById("settings-connectURL").value = DefaultSettings.connectURL;
 	document.getElementById("mantisURL").value = DefaultSettings.connectURL;
@@ -1365,14 +1366,15 @@ function ShowSettings() {
 
 function CloseSettings() {
 	document.getElementById("kanbancontent").setAttribute("editing", "false");
-	document.getElementById("edit-settings-form").style.display = "none";
+	document.getElementById("edit-settings-form").style.visibility = "invisible";
+	document.getElementById("edit-settings-form").setAttribute("editing", "false");		
 }
 
 function ShowEditStory() {
 	CloseAddStory();
 	CloseSettings();
+	document.getElementById("kanbancontent").setAttribute("editing", "true");
 	document.getElementById("edit-story-form").style.display = "inline-block";
-	document.getElementById("kanbancontent").setAttribute("editing", "true");	
 	document.getElementById("edit-story-form").setAttribute("editing", "true");	
 }
 
@@ -1380,8 +1382,8 @@ function ShowAddStory() {
 	CloseEditStory();
 	CloseSettings();
 	document.getElementById("add-story-form").style.display = "inline-block";
+	document.getElementById("add-story-form").setAttribute("editing", "true");		
 	document.getElementById("kanbancontent").setAttribute("editing", "true");
-	document.getElementById("edit-story-form").setAttribute("editing", "true");		
 }
 
 function CloseEditStory() {
@@ -1392,7 +1394,8 @@ function CloseEditStory() {
 
 function CloseAddStory() {
 	document.getElementById('kanbancontent').setAttribute('editing', 'false');
-	document.getElementById("edit-story-form").setAttribute("editing", "false");	
 	document.getElementById("add-story-form").style.visibility = "invisible";
+	document.getElementById("add-story-form").setAttribute("editing", "false");	
+	
 
 }
