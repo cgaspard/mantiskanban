@@ -1342,7 +1342,7 @@ function ShowSettings() {
 	CloseEditStory();
 	Kanban.LoadRuntimeSettings();
 	document.getElementById("edit-settings-form").setAttribute("editing", "true");
-	document.getElementById("edit-settings-form").style.display = "inline-block";
+	document.getElementById("edit-settings-form").style.visibility = "visible";
 	document.getElementById("settings-connectURL").value = DefaultSettings.connectURL;
 	document.getElementById("mantisURL").value = DefaultSettings.connectURL;
 	document.getElementById("kanbancontent").setAttribute("editing", "true");
@@ -1366,7 +1366,7 @@ function ShowSettings() {
 
 function CloseSettings() {
 	document.getElementById("kanbancontent").setAttribute("editing", "false");
-	document.getElementById("edit-settings-form").style.visibility = "invisible";
+	document.getElementById("edit-settings-form").style.visibility = "hidden";
 	document.getElementById("edit-settings-form").setAttribute("editing", "false");		
 }
 
@@ -1374,14 +1374,14 @@ function ShowEditStory() {
 	CloseAddStory();
 	CloseSettings();
 	document.getElementById("kanbancontent").setAttribute("editing", "true");
-	document.getElementById("edit-story-form").style.display = "inline-block";
+	document.getElementById("edit-story-form").style.visibility = "visible";
 	document.getElementById("edit-story-form").setAttribute("editing", "true");	
 }
 
 function ShowAddStory() {
 	CloseEditStory();
 	CloseSettings();
-	document.getElementById("add-story-form").style.display = "inline-block";
+	document.getElementById("add-story-form").style.visibility = "visible";
 	document.getElementById("add-story-form").setAttribute("editing", "true");		
 	document.getElementById("kanbancontent").setAttribute("editing", "true");
 }
@@ -1389,12 +1389,12 @@ function ShowAddStory() {
 function CloseEditStory() {
 	document.getElementById('kanbancontent').setAttribute('editing', 'false');
 	document.getElementById("edit-story-form").setAttribute("editing", "false");	
-	document.getElementById("edit-story-form").style.visibility = "invisible";
+	document.getElementById("edit-story-form").style.visibility = "hidden";
 }
 
 function CloseAddStory() {
 	document.getElementById('kanbancontent').setAttribute('editing', 'false');
-	document.getElementById("add-story-form").style.visibility = "invisible";
+	document.getElementById("add-story-form").style.visibility = "hidden";
 	document.getElementById("add-story-form").setAttribute("editing", "false");	
 	
 

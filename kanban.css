@@ -283,7 +283,7 @@ div.notecontainer {
 
 .kanbannewstory:hover{
 	background: #f85032; /* Old browsers */
-	background: -moz-linear-gradient(top,  #f85032 0%, #f16f5ceditform 50%, #f6290c 51%, #f02f17 71%, #e73827 100%); /* FF3.6+ */
+	background: -moz-linear-gradient(top,  #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f85032), color-stop(50%,#f16f5c), color-stop(51%,#f6290c), color-stop(71%,#f02f17), color-stop(100%,#e73827)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* Opera 11.10+ */
@@ -483,7 +483,7 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
 	height: 0px;
 	text-align: center;
 	background-color: rgb(217, 83, 79);
-	transition: height .3s ease;
+	transition: height .3s ease;add
 }
 .kanbandropper.over{
 	height: 40px;
