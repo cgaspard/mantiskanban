@@ -9,7 +9,7 @@ html, body {
 }
 
 .headerarea {
-	background-color: rgba(23, 76, 107, 1) !important;
+	background-color: rgba(5, 91, 138, 1);
 }
 
 #kanbancontent {
@@ -94,7 +94,7 @@ html, body {
 }
 
 .kanbanliststorycontainer {
-	max-height: calc(100% - 60px);
+	
 }
 
 .dot  {
