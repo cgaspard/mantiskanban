@@ -92,3 +92,11 @@ html, body {
          -o-transition: opacity .3s ease-in;
             transition: opacity .3s ease-in;
 }
+
+.kanbanliststorycontainer {
+	max-height: calc(100% - 60px);
+}
+
+.dot  {
+	background: #555;
+}

@@ -523,13 +523,13 @@ function DoneLoadingIssuesCallback(filterID, retObj) {
 }
 
 function StartLoading() {
-	document.getElementById("loadedimage").style.display = "none";
-	document.getElementById("loadingimage").style.display = "inline";
+	document.getElementById("loadedimage").style.visibility = 'hidden';
+	document.getElementById("loadingimage").style.visibility = 'visible';
 }
 
 function StopLoading() {
-	document.getElementById("loadingimage").style.display = "none";
-	document.getElementById("loadedimage").style.display = "inline";
+	document.getElementById("loadedimage").style.visibility = 'visible';
+	document.getElementById("loadingimage").style.visibility = 'hidden';
 }
 
 function BuildKanbanListFromMantisStatuses() {

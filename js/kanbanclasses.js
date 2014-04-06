@@ -244,6 +244,24 @@ KanbanStory.prototype = {
 		this.StorySource.status.name = value
 	},
 
+	get SeverityID() {
+		return this.StorySource.severity.id;
+	},
+	set SeverityID(value) {
+		this.StorySource.severity.id = value
+	},
+
+	get ResolutionID() {
+		return this.StorySource.resolution.id;
+	},
+	set ResolutionID(value) {
+		//if(value == null || value == "") {
+		//	this.StorySource.resolution = null;
+		//} else {
+			this.StorySource.resolution.id = value;
+		//}
+	},
+
 	get Notes() {
 		if(this.StorySource.notes == undefined) return [];
 		return this.StorySource.notes;

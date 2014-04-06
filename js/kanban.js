@@ -213,10 +213,20 @@ var Kanban = {
 			listDiv.Container = listStoryContainer;
 			kanbanListItem.Container = listStoryContainer;
 
-			var listTempLoadingGif = document.createElement("div");
-			listTempLoadingGif.innerHTML = '<center><div class="tempLoadingDiv"><img src="images/columnLoadingGif.gif"></div></center>';
-			listDiv.appendChild(listTempLoadingGif);
+			var loadingDivContainer = document.createElement("div");
+			loadingDivContainer.setAttribute("class", "loadingdivcontainer");
 
+			var listLoadingDiv = document.createElement("div");
+			listLoadingDiv.setAttribute("class", "loader tempLoadingDiv");
+			listLoadingDiv.innerHTML = "<div class=\"dot dot1\"></div><div class=\"dot dot2\"></div><div class=\"dot dot3\"></div><div class=\"dot dot4\"></div>"
+			//listLoadingDiv.innerHTML = '<center><div class="tempLoadingDiv"><img src="images/columnLoadingGif.gif"></div></center>';
+			
+			//var listLoadingInnerDiv = document.createElement("div");
+			//listLoadingInnerDiv.innerHTML = "Loading...";
+			//listLoadingDiv.appendChild(listLoadingInnerDiv);
+
+			loadingDivContainer.appendChild(listLoadingDiv);
+			listDiv.appendChild(loadingDivContainer);
 
 			var listDropArea = document.createElement("div");
 			listDropArea.setAttribute("class", "kanbanlistdroparea");
@@ -386,6 +396,21 @@ function UpdateStoryFromFormData() {
 			thisStory.HandlerID = null;
 		} else {
 			thisStory.HandlerID = document.getElementById("edit-assignedto").value;
+		}
+		if(document.getElementById("edit-assignedto").value == "") {
+			thisStory.HandlerID = null;
+		} else {
+			thisStory.HandlerID = document.getElementById("edit-assignedto").value;
+		}
+		if(document.getElementById("edit-severity").value == "") {
+			thisStory.SeverityID = null;
+		} else {
+			thisStory.SeverityID = document.getElementById("edit-severity").value;
+		}
+		if(document.getElementById("edit-resolution").value == "") {
+			thisStory.ResolutionID = null;
+		} else {
+			thisStory.ResolutionID = document.getElementById("edit-resolution").value;
 		}
 		thisStory.ProjectID = document.getElementById("edit-project").value;
 		thisStory.ReporterID = document.getElementById("edit-reporter").value;
@@ -1213,9 +1238,12 @@ function EditStory(storyID) {
 	selectEditCategory.options.length = 0;
 	var selectAddPriority = document.getElementById("edit-priority");
 	selectAddPriority.options.length = 0;
+	var selectEditSeverity = document.getElementById("edit-severity");
+	selectEditSeverity.options.length = 0;
+	var selectEditResolution = document.getElementById("edit-resolution");
+	selectEditResolution.options.length = 0;
 	var selectStoryProject = document.getElementById("edit-project");
 	selectStoryProject.options.length = 0;
-
 
 	for(var i = 0; i < Kanban.Projects.length; i++) {
 		var project = Kanban.Projects[i];
@@ -1256,6 +1284,24 @@ function EditStory(storyID) {
 		selectAddPriority.options[selectAddPriority.options.length] = new Option(priority.name.capitalize(), priority.id);
 		if(thisStory.PriorityID == priority.id) {
 			selectAddPriority.selectedIndex = i;
+		}
+	}
+
+	selectEditSeverity.options[selectEditSeverity.options.length] = new Option("--- Set To Default ---", "");
+	for(var i = 0; i < Mantis.Severities.length; i++) {
+		var severity = Mantis.Severities[i];
+		selectEditSeverity.options[selectEditSeverity.options.length] = new Option(severity.name.capitalize(), severity.id);
+		if(thisStory.SeverityID == severity.id) {
+			selectEditSeverity.selectedIndex = i + 1;
+		}
+	}
+
+	selectEditResolution.options[selectEditResolution.options.length] = new Option("--- Set To Default ---", "");
+	for(var i = 0; i < Mantis.Resolutions.length; i++) {
+		var resolution = Mantis.Resolutions[i];
+		selectEditResolution.options[selectEditResolution.options.length] = new Option(resolution.name.capitalize(), resolution.id);
+		if(thisStory.ResolutionID == resolution.id) {
+			selectEditResolution.selectedIndex = i + 1;
 		}
 	}
 

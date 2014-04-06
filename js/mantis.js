@@ -21,6 +21,7 @@ var Mantis = {
 		Mantis._currentprojectname = "";
 		Mantis._projectcategories = [];
 		Mantis._statues = null;
+		Mantis._resolutions = null;
 		Mantis._severities = null;
 		Mantis._priorities = null;
 		Mantis._projectusers = [];
@@ -65,6 +66,8 @@ var Mantis = {
 
 	Preload : function() {
 		Mantis.LoadTagsAsync();
+		Mantis.LoadSeveritiesAsync();
+		Mantis.LoadResolutionsAsync();
 	},	
 	
 	set DefaultFilterID(value) {
@@ -124,6 +127,18 @@ var Mantis = {
 		});
 	},
 
+	LoadResolutionsAsync : function() {
+		Mantis.EnumResolutions(function(retObject) {
+			Mantis._resolutions = retObject;
+		});
+	},
+
+	LoadSeveritiesAsync : function() {
+		Mantis.EnumSeverities(function(retObject) {
+			Mantis._severities = retObject;
+		});
+	},
+
 	LoadTagsSync : function() {
 		Mantis._tags = Mantis.TagGetAll(0,9999).results;
 	},
@@ -149,9 +164,16 @@ var Mantis = {
 		return Mantis._projectcustomfields;
 	},
 
-	get  Serverities() {
+	get  Resolutions() {
+		if(Mantis._resolutions == null) {
+			Mantis._resolutions = Mantis.EnumResolutions(Kanban.CurrentUser.UserName, Kanban.CurrentUser.Password, null);
+		}
+		return Mantis._resolutions;
+	},
+
+	get  Severities() {
 		if(Mantis._severities == null) {
-			Mantis._severities = Mantis.EnumServerities(Kanban.CurrentUser.UserName, Kanban.CurrentUser.Password, null);
+			Mantis._severities = Mantis.EnumSeverities(Kanban.CurrentUser.UserName, Kanban.CurrentUser.Password, null);
 		}
 		return Mantis._severities;
 	},
@@ -242,7 +264,17 @@ var Mantis = {
 			}
 		},
 		
-		EnumServerities : {
+		EnumResolutions : {
+			Name : "mc_enum_resolutions",
+			BuildParams : function() {
+				var pl = new SOAPClientParameters();
+				pl.add(Mantis.Params.UserName, Kanban.CurrentUser.UserName);
+				pl.add(Mantis.Params.Password, Kanban.CurrentUser.Password);
+				return pl;
+			}
+		},
+
+		EnumSeverities : {
 			Name : "mc_enum_severities",
 			BuildParams : function() {
 				var pl = new SOAPClientParameters();
@@ -761,10 +793,15 @@ var Mantis = {
 		hascallback = callBack == null ? false : true;
 		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumAccessLevels.Name, Mantis.Methods.EnumAccessLevels.BuildParams(), hascallback, callBack);
 	},
-	
-	EnumServerities : function(callBack) {
+
+	EnumResolutions : function(callBack) {
 		hascallback = callBack == null ? false : true;
-		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumServerities.Name, Mantis.Methods.EnumServerities.BuildParams(), hascallback, callBack);
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumResolutions.Name, Mantis.Methods.EnumResolutions.BuildParams(), hascallback, callBack);
+	},
+	
+	EnumSeverities : function(callBack) {
+		hascallback = callBack == null ? false : true;
+		return SOAPClient.invoke(Mantis.ConnectURL,  Mantis.Methods.EnumSeverities.Name, Mantis.Methods.EnumSeverities.BuildParams(), hascallback, callBack);
 	},
 	
 	EnumPriority : function(callBack) {

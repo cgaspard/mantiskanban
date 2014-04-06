@@ -16,3 +16,12 @@ html, body {
 	background-color: #3E3E3E;
 	background-size: 16px 16px;
 }
+
+.kanbanlist>.loader {
+	/*margin: -25px auto;
+	float: right;*/
+}
+
+.dot {
+	background: #333;
+}

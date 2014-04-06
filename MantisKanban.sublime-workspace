@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Enum",
+				"EnumServerities"
+			],
+			[
 				"clie",
 				"clientWidth"
 			],
@@ -468,10 +472,6 @@
 				"ProjectGetUsers"
 			],
 			[
-				"Enum",
-				"EnumAccessLevels"
-			],
-			[
 				"Projec",
 				"ProjectGetUsers  (namespace)"
 			],
@@ -609,20 +609,20 @@
 	},
 	"file_history":
 	[
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/trello.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/green.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
 		"/Users/cgaspard/Desktop/Rims",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/default.css",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/green.css",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/trello.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/custom.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config-sample.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
 		"/home/cgaspard/Projects/cgaspard/mantiskanban/index.html",
@@ -744,7 +744,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"*",
@@ -766,6 +766,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Serverities",
+			"EnumServerities",
+			"preConfiguredMantisURL",
+			"editform",
+			"realcontentcontainer",
+			"visibility",
+			"add-story",
+			"transform",
+			"editing",
+			"transition",
+			"[edit",
 			"modifyStyleRule",
 			"getStyleRule",
 			"style",
@@ -882,18 +893,7 @@
 			"transform",
 			"ApplySetting",
 			"applysetting",
-			"applysettin",
-			"FitColsToScreen",
-			"CloseSettings",
-			"GetCategoryIcon",
-			"secondrow",
-			"label",
-			"tag",
-			"buildkanbanstory",
-			"LoadFilterAsync",
-			"UpdateFilterList",
-			"LoadFilterAsync",
-			"selectproject"
+			"applysettin"
 		],
 		"highlight": true,
 		"in_selection": false,

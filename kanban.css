@@ -137,17 +137,18 @@ div.notecontainer {
     opacity: 1;
 }
 
+#loadingimage {
+	visibility: hidden;
+}
+
 .loadingdiv{
- 	position:absolute; 
- 	top: 6px;
- 	right:6px;"	
-}
-.loadingdiv img{
-}
-.loadingdiv span{
+ 	 
 	position:absolute;
-	left: -50px;
+	top:10px;
+	right:0px;
+	margin-right: 80px;
 	margin-bottom: 10px;
+
 }
 .filterlistcontainer {
 	display: inline;
@@ -215,9 +216,9 @@ div.notecontainer {
 }
 
 .editing-buttons {
-	padding: 15px 0px 15px 0px;
 	width: 100%;
 	display: table;
+	padding: 5px 0px 5px;
 }
 
 .editing-footer {
@@ -379,7 +380,6 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
 	user-select: none;
 	transition: width .25s;
 	border-radius: 4px 4px 4px 4px;
-	padding-bottom: 10px;
 	height: calc(100% - 30px);
 	overflow: hidden;
 	}
@@ -391,14 +391,11 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
 	overflow-x: hidden;
 	display: block;
 	background-color: #EFEFEF;
-	max-height: calc(100% - 20px);
-	padding-bottom: 10px;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
+	max-height: calc(100% - 60px);
 	border-left: 1px solid #999;
 	border-right: 1px solid #999;
-	border-bottom: 1px solid #999;
 	padding-top: 5px;
+	padding-left: 5px;
 }
 
 .kanbanlisthidebtn {
@@ -406,12 +403,22 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
 }
 
 .kanbanlistdroparea{
-	background: #d2ff52;
-	color: transparent;
+	border-left: 1px solid #ABABAB;
+	border-right: 1px solid #ABABAB;
+	border-bottom: 1px solid #ABABAB;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	background-color: #EFEFEF;
 	height: 30px;
 	font-weight: bold;
-	padding-top: 5px;
-	display:none;
+	color: #aaa;
+	padding-top: 4px;
+	text-align: center;
+}
+.loadingdivcontainer {
+	background-color: #EEE;
+	border-left: 1px solid #ABABAB;
+	border-right: 1px solid #ABABAB;
 }
 
 .tempLoadingDiv {
@@ -424,7 +431,6 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
 	font-size: 14px;
 	text-align: left;
 	font-weight: bold;
-	height: 30px;
 	color: #000000;
 	padding-left: 10px;
 	padding-top: 5px;
@@ -788,3 +794,65 @@ div[priority="immediate"] {
     margin: 0;
     padding: 0.3em;
 }
+
+
+/* change font size to change size */
+.loader {
+  font-size: 10px;
+  position: relative;
+  width: 4em;
+  height: 1em;
+  margin: 0px auto;
+}
+
+
+.dot {
+  width: 1em;
+  height: 1em;
+  border-radius: 0.5em;
+  background: #777;
+  position: absolute;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.loadingdiv .loader {
+	font-size: 20px;
+}
+
+.loadingdiv .dot {	
+	background: #CCC;
+}
+
+.dot1, .dot2 {
+  left: 0;
+}
+
+.dot3 { left: 1.5em; }
+
+.dot4 { left: 3em; }
+
+@keyframes reveal {
+  from { transform: scale(0.001); }
+  to { transform: scale(1); }
+}
+
+@keyframes slide {
+  to { transform: translateX(1.5em) }
+}
+
+
+.dot1 {
+  animation-name: reveal;
+}
+
+.dot2, .dot3 {
+  animation-name: slide;
+}
+
+.dot4 {
+  animation-name: reveal;
+  animation-direction: reverse; /* thx @HugoGiraudel */
+}
+
