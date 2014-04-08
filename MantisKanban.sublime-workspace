@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"found",
+				"foundRelation"
+			],
+			[
+				"visi",
+				"visibility"
+			],
+			[
+				"listload",
+				"listLoadingInnerDiv"
+			],
+			[
+				"list",
+				"listLoadingInnerDiv"
+			],
+			[
 				"Enum",
 				"EnumServerities"
 			],
@@ -609,15 +625,15 @@
 	},
 	"file_history":
 	[
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/trello.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanbanclasses.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/mantis.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/green.css",
-		"/Users/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.js",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/trello.css",
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/forms.css",
 		"/Users/cgaspard/Desktop/Rims",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/config.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/themes/default.css",
@@ -744,7 +760,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"*",
@@ -766,6 +782,32 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			":last",
+			"droparea",
+			"kanbanlistdrop",
+			"loadingimage",
+			"loadingdiv",
+			"loadingimage",
+			"loadingdiv",
+			".show",
+			"loadingdiv",
+			"loadingimage",
+			"tempLoadingDiv",
+			"progress",
+			"spin",
+			"listTempLoadingGif",
+			"columnloading",
+			"severity",
+			"Severity",
+			"<!",
+			"priority",
+			"severity",
+			"Severity",
+			"Severities",
+			"_severities",
+			"Severities",
+			"resolution",
+			"severities",
 			"Serverities",
 			"EnumServerities",
 			"preConfiguredMantisURL",
@@ -867,33 +909,7 @@
 			"IssueSetTags",
 			"addtags",
 			"SelectProject",
-			"selectProject",
-			"tagscontainer",
-			"edit-story-notes-container",
-			"notesarea",
-			"TagGetAll",
-			"tagscontainer",
-			"TagGetAll",
-			"addtags",
-			"add",
-			"glyphicon",
-			"AddTags",
-			"LoadTagsAsync",
-			"GetStyleCodeFor3Digits",
-			"Mantis.Params",
-			"TagGetAll",
-			"AddTagsToStoryEditForm",
-			"AddATtachment",
-			"BuildKanbanStoryDiv",
-			"AddAttachment",
-			"OpenEdit",
-			"tagscontainer",
-			"edit-story-attachment-container",
-			"transition",
-			"transform",
-			"ApplySetting",
-			"applysetting",
-			"applysettin"
+			"selectProject"
 		],
 		"highlight": true,
 		"in_selection": false,

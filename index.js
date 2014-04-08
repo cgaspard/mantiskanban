@@ -380,6 +380,8 @@ function Logout() {
 function SelectProject(openStoryID) {
 	console.log("SelectProject() called.");
 
+	StartLoading();
+
 	CloseEditStory();
 	CloseAddStory();
 
@@ -388,8 +390,6 @@ function SelectProject(openStoryID) {
 	//put selected project into localstorage so that next time the user logs in it loads their current project.
 	DefaultSettings.currentProject = Mantis.CurrentProjectID;
 	saveSettingsToStorageMechanism();
-
-	StartLoading();
 
 	Kanban.Lists = [];
 	Kanban.Stories = [];
@@ -421,9 +421,9 @@ function SelectProject(openStoryID) {
 					SearchForStory(false);
 				}
 			});
-		}, 0);
+		}, 10);
 		if(Mantis.ClosedIssuesFilterID !== null) {
-			window.setTimeout("LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback)", 0);
+			window.setTimeout("LoadFilterAsync(Mantis.ClosedIssuesFilterID, 1, Kanban.NumberOfClosedMessagesToLoad, DoneLoadingIssuesCallback)", 10);
 		}
 	} else {
 		var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);

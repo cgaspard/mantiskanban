@@ -165,7 +165,9 @@ var Kanban = {
 		if(foundStory.RelatedStories.length > 0) foundStory.Element.children[1].classList.add("glow");
 		for(var rel = 0; rel < foundStory.RelatedStories.length; rel++) {
 			var foundRelation = Kanban.GetStoryByFieldValue("ID", foundStory.RelatedStories[rel]);
-			foundRelation.Element.children[1].classList.add("glow");
+			if(foundRelation && foundRelation.Element) {
+				foundRelation.Element.children[1].classList.add("glow");
+			}
 		}
 	},
 
@@ -174,7 +176,9 @@ var Kanban = {
 		if(foundStory.RelatedStories.length > 0) foundStory.Element.children[1].classList.remove("glow");
 		for(var rel = 0; rel < foundStory.RelatedStories.length; rel++) {
 			var foundRelation = Kanban.GetStoryByFieldValue("ID", foundStory.RelatedStories[rel]);
-			foundRelation.Element.children[1].classList.remove("glow");
+			if(foundRelation && foundRelation.Element) {
+				foundRelation.Element.children[1].classList.remove("glow");
+			}
 		}
 	},
 

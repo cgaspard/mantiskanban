@@ -125,7 +125,7 @@ div.notecontainer {
 	width: 100%;
 	height: 100%;
 	opacity: 0;
-    visibility:invisible;
+    visibility:hidden;
     -webkit-transition: opacity .3s ease-in;
        -moz-transition: opacity .3s ease-in;
         -ms-transition: opacity .3s ease-in;
@@ -795,64 +795,71 @@ div[priority="immediate"] {
     padding: 0.3em;
 }
 
-
+/* http://codepen.io/desandro/pen/igHbG */
+/* change font size to change size */
+/* http://codepen.io/desandro/pen/igHbG */
 /* change font size to change size */
 .loader {
-  font-size: 10px;
-  position: relative;
-  width: 4em;
-  height: 1em;
-  margin: 0px auto;
+    font-size: 10px;
+    position: relative;
+    width: 4em;
+    height: 1em;
+    margin: 0px auto;
 }
-
 
 .dot {
-  width: 1em;
-  height: 1em;
-  border-radius: 0.5em;
-  background: #777;
-  position: absolute;
-  animation-duration: 0.5s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-}
-
-.loadingdiv .loader {
-	font-size: 20px;
-}
-
-.loadingdiv .dot {	
-	background: #CCC;
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    background: #333;
+    position: absolute;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-iteration-count: infinite;
 }
 
 .dot1, .dot2 {
-  left: 0;
+    left: 0;
 }
 
 .dot3 { left: 1.5em; }
 
 .dot4 { left: 3em; }
 
+@-webkit-keyframes reveal {
+    from { -webkit-transform: scale(0.001); }
+    to { -webkit-transform: scale(1); }
+}
 @keyframes reveal {
-  from { transform: scale(0.001); }
-  to { transform: scale(1); }
+    from { transform: scale(0.001); }
+    to { transform: scale(1); }
+}
+
+@-webkit-keyframes slide {
+    to { -webkit-transform: translateX(2em) }
 }
 
 @keyframes slide {
-  to { transform: translateX(1.5em) }
+    to { transform: translateX(2em) }
 }
 
 
 .dot1 {
-  animation-name: reveal;
+    -webkit-animation-name: reveal;
+    animation-name: reveal;
 }
 
 .dot2, .dot3 {
-  animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-name: slide;
 }
 
-.dot4 {
-  animation-name: reveal;
-  animation-direction: reverse; /* thx @HugoGiraudel */
+.dot4 {    
+    -webkit-animation-name: reveal;
+    -webkit-animation-direction: reverse;
+    animation-name: reveal;
+    animation-direction: reverse; /* thx @HugoGiraudel */
 }
-
