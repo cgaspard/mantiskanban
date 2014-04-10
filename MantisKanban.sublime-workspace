@@ -782,6 +782,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"selectproject",
+			"loadingdiv",
+			"opacity",
+			"opacity .3s",
+			"visibility",
 			":last",
 			"droparea",
 			"kanbanlistdrop",
@@ -904,12 +909,7 @@
 			"otherbuttoncontiner",
 			"selected-project-name",
 			"TagGetAll",
-			"addtagsto",
-			"HasTag",
-			"IssueSetTags",
-			"addtags",
-			"SelectProject",
-			"selectProject"
+			"addtagsto"
 		],
 		"highlight": true,
 		"in_selection": false,

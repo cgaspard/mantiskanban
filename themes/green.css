@@ -22,6 +22,10 @@ html, body {
 	float: right;*/
 }
 
-.dot {
+.kanbanlist .dot {
 	background: #333;
+}
+
+.dot {
+	background: #FFF;
 }
