@@ -797,20 +797,18 @@ div[priority="immediate"] {
 
 /* http://codepen.io/desandro/pen/igHbG */
 /* change font size to change size */
-/* http://codepen.io/desandro/pen/igHbG */
-/* change font size to change size */
 .loader {
-    font-size: 10px;
+    font-size: 20px;
     position: relative;
-    width: 4em;
-    height: 1em;
+    width: 60px;
+    height: 20px;
     margin: 0px auto;
 }
 
 .dot {
-    width: 1em;
-    height: 1em;
-    border-radius: 0.5em;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     background: #333;
     position: absolute;
     animation-duration: 0.5s;
@@ -825,9 +823,9 @@ div[priority="immediate"] {
     left: 0;
 }
 
-.dot3 { left: 1.5em; }
+.dot3 { left: 20px; }
 
-.dot4 { left: 3em; }
+.dot4 { left: 40px; }
 
 @-webkit-keyframes reveal {
     from { -webkit-transform: scale(0.001); }
@@ -839,11 +837,11 @@ div[priority="immediate"] {
 }
 
 @-webkit-keyframes slide {
-    to { -webkit-transform: translateX(2em) }
+    to { -webkit-transform: translateX(20px) }
 }
 
 @keyframes slide {
-    to { transform: translateX(2em) }
+    to { transform: translateX(20px) }
 }
 
 
