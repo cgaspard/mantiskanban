@@ -51,7 +51,7 @@ body {
 
 .noteheader {
 	padding-left: 55px;
-
+    
 }
 
 #edit-story-form {
@@ -232,6 +232,7 @@ div.notecontainer {
 	border-radius: 5px;
 	padding: 10px 6px 10px 6px;
 	text-align: center;
+	background-size: auto 100%;
 }
 
 .editing-buttons {
