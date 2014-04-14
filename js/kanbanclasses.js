@@ -28,6 +28,11 @@ KanbanUser.prototype = {
 
 	get ID () {
 		return this.UserSource.id;
+	},
+
+	get Email() {
+
+		return this.UserSource.email;
 	}
 }
 
@@ -324,6 +329,10 @@ KanbanStory.prototype = {
 
 	get DateSubmitted() {
 		return new Date(Date.parse(this.StorySource.date_submitted));
+	},
+
+	get AssignedToUser() {
+		return new KanbanUser(this.StorySource.handler);
 	},
 
 	get HandlerID() {

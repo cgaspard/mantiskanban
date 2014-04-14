@@ -951,13 +951,20 @@ function AddNotesToStoryEditForm(KanbanStory) {
 		var noteDiv = document.createElement("div");
 		noteDiv.setAttribute("class", "notecontainer");
 		noteDiv.setAttribute("storyid", KanbanStory.ID);
+		noteDiv.setAttribute("style", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3), .8));
 
 		var noteDate = new Date(Date.parse(thisNote.date_submitted));
 
+		var divNoteHeader = document.createElement("div");
+		divNoteHeader.setAttribute("class", "noteheader gravatarcontainer");
+		divNoteHeader.innerHTML = "<b>" + thisNote.reporter.real_name + "<br> " + noteDate.toLocaleString() + "</b>";
+		divNoteHeader.style.backgroundImage = "url(" + get_gravatar_image_url (thisNote.reporter.email, 40) + ")";
+
+		noteDiv.appendChild(divNoteHeader);
+
 		var noteTextDiv = document.createElement("div");
 		noteTextDiv.setAttribute("class", "notetext");
-		noteTextDiv.innerHTML = "<b>" + thisNote.reporter.real_name + " : " + noteDate.toLocaleString() + "</b><hr class='noteHorizonalRule'>" + thisNote.text;
-		noteTextDiv.setAttribute("style", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3), .8));
+		noteTextDiv.innerHTML = "<hr class='noteHorizonalRule'>" + thisNote.text;
 		noteDiv.appendChild(noteTextDiv);
 
 		notesContainer.appendChild(noteDiv);
@@ -1221,6 +1228,9 @@ function EditStory(storyID) {
 	ClearUploadList();
 
 	var thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
+
+	document.getElementById("editing-header").style.backgroundImage = "url(" + get_gravatar_image_url (thisStory.AssignedToUser.Email, 60) + ")";
+
 	/// Thanks to todace for sample code https://github.com/todace
 	document.getElementById("edit-story-title").innerHTML = "<a target=\"_new\" class=\"btn btn-primary\" href=http://" + Mantis.ServerHostname + "/view.php?id=" + thisStory.ID + ">"+ thisStory.ID + "</a> &nbsp; " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
 	$("#edit-story-id").val(thisStory.ID);

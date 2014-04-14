@@ -159,6 +159,9 @@ function Login() {
 		var retObj = Mantis.Login(document.getElementById("username").value, document.getElementById("password").value);
 		Kanban.CurrentUser = new KanbanUser(retObj.account_data);
 		Kanban.CurrentUser.Password = document.getElementById("password").value;
+
+		document.getElementById("gravatarcurrentuser").style.backgroundImage = "url(" + get_gravatar_image_url (Kanban.CurrentUser.Email, 35) + ")";
+
 	} catch (e) {
 		var form = document.getElementById("loginButton");
 		$(form).before('<center><div class="alert alert-danger text-center" style="width:320px !important"><b>Error:</b> ' + e.message + '<button type="button" class="close" data-dismiss="alert">&times;</button></div><center>');

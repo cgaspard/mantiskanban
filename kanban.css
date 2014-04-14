@@ -34,6 +34,25 @@ body {
 #add-story-form  {
 }
 
+.gravatarcurrentuser {
+	background-repeat:no-repeat;
+	/*background-attachment:fixed;*/
+	background-position:-1px -1px; 
+	margin-left: 10px;
+	display:inline-block;
+	width: 35px;
+	height: 35px;
+}
+
+.gravatarcontainer {
+	background-repeat:no-repeat;
+	background-position:0px 0px; 
+}
+
+.noteheader {
+	padding-left: 55px;
+
+}
 
 #edit-story-form {
 }
@@ -100,8 +119,8 @@ div.fill:nth-child(1) {
 }
 
 div.notecontainer {
-	padding:5px !important;
-	margin: 2px !important;
+	padding:15px !important;
+	margin-top: 10px !important;
 }
 
 #edit-story-new-note-save-button {
