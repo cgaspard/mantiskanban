@@ -56,7 +56,9 @@ function window_load() {
 
 	document.getElementById('newAttachmentFile').addEventListener('change', HandleFileSelect, false);
 
-
+	$(function () { 
+	    $("[data-toggle='tooltip']").tooltip(); 
+	});
 
 
 	if(DefaultSettings.connectURL != undefined && DefaultSettings.connectURL != "") {
@@ -396,6 +398,14 @@ function SelectProject(openStoryID) {
 
 	Kanban.Lists = [];
 	Kanban.Stories = [];
+	Kanban.AssignedUsers = [];
+	var assignedUserContainer = document.getElementById("project-users-gravatars-container");
+	try {
+		while(assignedUserContainer.childNodes.length > 0) {
+			assignedUserContainer.removeChild(assignedUserContainer.firstChild);
+		}
+	} catch(e) {}
+
 	Kanban.ClearListGUI();
 
 	Mantis.CurrentProjectID = document.getElementById("seletedproject").value;
@@ -423,6 +433,9 @@ function SelectProject(openStoryID) {
 				if(document.getElementById("searchfield").value != "") {
 					SearchForStory(false);
 				}
+				CreateListOfAssignedStories();
+				BuildKanbanAssignedUsersGUI();
+
 			});
 		}, 10);
 		if(Mantis.ClosedIssuesFilterID !== null) {
@@ -630,14 +643,65 @@ function BuildProjectsGUI() {
 	}
 }
 
+function BuildKanbanAssignedUsersGUI() {
+	var kanbanUserListContainer = document.getElementById("project-users-gravatars-container");
+	for(var kbu = 0; kbu < Kanban.AssignedUsers.length; kbu++) {
+		var thisUser = Kanban.AssignedUsers[kbu];
+		var userGravatar = document.createElement("a");
+		userGravatar.setAttribute("class", "gravatarcontainer userlistgravataritems");
+		userGravatar.style.backgroundImage = "url(" + get_gravatar_image_url (thisUser.Email, 30) + ")";
+		//userGravatar.setAttribute("data-container", "body");
+		userGravatar.setAttribute("data-toggle", "popover");
+		userGravatar.setAttribute("data-placement", "bottom");
+		//userGravatar.setAttribute("data-content", thisUser.Email);
+		//userGravatar.setAttribute("data-trigger", "hover");
+		userGravatar.setAttribute("title", thisUser.Email);
+		userGravatar.setAttribute("id", "ug" + thisUser.ID);
+
+		kanbanUserListContainer.appendChild(userGravatar);
+		$("#" + thisUser.ID).popover({
+	      trigger: 'hover',
+	      placement: 'bottom',
+	      html: true,
+	      content: thisUser.Email 
+	    });
+
+	}
+}
+
 function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {
 	Mantis.CurrentProjectID = obj[0].id;
 }
 
+function KanbanAssignedUserInList(userID) {
+	for(var kus = 0; kus < Kanban.AssignedUsers.length; kus++) {
+		var thisUser = Kanban.AssignedUsers[kus];
+		if(thisUser.ID == userID) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function CreateListOfAssignedStories() {
+	for(var si = 0; si < Kanban.Stories.length; si++) {
+		var story = Kanban.Stories[si];
+		try {
+			if(!KanbanAssignedUserInList(story.AssignedToUser.ID)) {
+				Kanban.AssignedUsers[Kanban.AssignedUsers.length] = story.AssignedToUser;
+			}
+		} catch (e) {
+
+		}
+	}
+}
+
 function CreateKanbanStoriesFromMantisIssues(obj) {
 	for(var is = 0; is < obj.length; is++) {
-		Kanban.AddStoryToArray(new KanbanStory(obj[is]));
+		var newStory = new KanbanStory(obj[is])
+		Kanban.AddStoryToArray(newStory);
 	}
+
 	
 }
 function AutoLogin(){

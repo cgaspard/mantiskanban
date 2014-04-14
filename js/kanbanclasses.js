@@ -31,7 +31,7 @@ KanbanUser.prototype = {
 	},
 
 	get Email() {
-
+		if(this.UserSource === undefined) return "";
 		return this.UserSource.email;
 	}
 }

@@ -34,6 +34,22 @@ body {
 #add-story-form  {
 }
 
+#project-users-gravatars-container {
+	display: inline;
+	padding-left: 100px;
+	margin-top: -10px;
+	vertical-align: bottom;
+}
+
+#project-users-gravatars-container .gravatarcontainer {
+width: 30px;
+height: 30px;
+display: inline-block;
+margin-left: 5px;
+border-radius: 3px;
+margin-top: 5px;
+}
+
 .gravatarcurrentuser {
 	background-repeat:no-repeat;
 	/*background-attachment:fixed;*/

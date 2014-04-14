@@ -65,6 +65,7 @@ var Kanban = {
 	Projects: [],
 	Lists: [],
 	Stories: [],
+	AssignedUsers : [],
 
 
 	/*
@@ -1229,7 +1230,7 @@ function EditStory(storyID) {
 
 	var thisStory = Kanban.GetStoryByFieldValue("ID", storyID);
 
-	document.getElementById("editing-header").style.backgroundImage = "url(" + get_gravatar_image_url (thisStory.AssignedToUser.Email, 60) + ")";
+	document.getElementById("editing-header").style.backgroundImage = "url(" + get_gravatar_image_url (thisStory.AssignedToUser.Email, 80) + ")";
 
 	/// Thanks to todace for sample code https://github.com/todace
 	document.getElementById("edit-story-title").innerHTML = "<a target=\"_new\" class=\"btn btn-primary\" href=http://" + Mantis.ServerHostname + "/view.php?id=" + thisStory.ID + ">"+ thisStory.ID + "</a> &nbsp; " + (thisStory.Summary.length > 40 ? thisStory.Summary.substring(0, 37) + "..." : thisStory.Summary);
