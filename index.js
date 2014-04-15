@@ -444,6 +444,8 @@ function SelectProject(openStoryID) {
 	} else {
 		var retObj = Mantis.ProjectGetIssues(Mantis.CurrentProjectID, 0, 0);
 		CreateKanbanStoriesFromMantisIssues(retObj);
+		CreateListOfAssignedStories();
+		BuildKanbanAssignedUsersGUI();		
 		$(".tempLoadingDiv").hide();//hide the loading gifs
 		if(document.getElementById("searchfield").value != "") {
 			SearchForStory(false);
