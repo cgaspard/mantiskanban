@@ -36,9 +36,20 @@ body {
 
 #project-users-gravatars-container {
 	display: inline;
-	padding-left: 100px;
-	margin-top: -10px;
+	background-color: #A2A2A2;
+	margin-left: 40px;
+	padding-right: 10px;
+	padding-left: 30px;
 	vertical-align: bottom;
+	visibility: visible;
+	font-weight: bold;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 25px;
+}
+
+#project-users-gravatars-container:empty {
+	visibility: hidden;
 }
 
 #project-users-gravatars-container .gravatarcontainer {

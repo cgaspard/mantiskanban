@@ -645,28 +645,32 @@ function BuildProjectsGUI() {
 
 function BuildKanbanAssignedUsersGUI() {
 	var kanbanUserListContainer = document.getElementById("project-users-gravatars-container");
+	kanbanUserListContainer.innerHTML = "Users:";
+
 	for(var kbu = 0; kbu < Kanban.AssignedUsers.length; kbu++) {
 		var thisUser = Kanban.AssignedUsers[kbu];
 		var userGravatar = document.createElement("a");
 		userGravatar.setAttribute("class", "gravatarcontainer userlistgravataritems");
 		userGravatar.style.backgroundImage = "url(" + get_gravatar_image_url (thisUser.Email, 30) + ")";
 		//userGravatar.setAttribute("data-container", "body");
-		userGravatar.setAttribute("data-toggle", "popover");
+		userGravatar.setAttribute("data-toggle", "tooltip");
 		userGravatar.setAttribute("data-placement", "bottom");
+		userGravatar.setAttribute("data-trigger", "hover");
+		userGravatar.setAttribute("data-html", "true");
+
 		//userGravatar.setAttribute("data-content", thisUser.Email);
 		//userGravatar.setAttribute("data-trigger", "hover");
-		userGravatar.setAttribute("title", thisUser.Email);
+		userGravatar.setAttribute("title", thisUser.Name);
+		userGravatar.setAttribute("data-content", "<b>" + thisUser.Email + "</b><div style=\"border: solid 1px #bbb; padding-left: 5px;" + GetStyleCodeFor3DigitsHalfShaded(thisUser.UserName.substring(0, 3)) + "\">" + thisUser.UserName.substring(0, 1).toUpperCase() + thisUser.UserName.substring(1, 2) + "</div>");
 		userGravatar.setAttribute("id", "ug" + thisUser.ID);
 
 		kanbanUserListContainer.appendChild(userGravatar);
-		$("#" + thisUser.ID).popover({
-	      trigger: 'hover',
-	      placement: 'bottom',
-	      html: true,
-	      content: thisUser.Email 
-	    });
 
 	}
+
+	$(function () { 
+    	$("[data-toggle='tooltip']").popover({html:true}); 
+	});
 }
 
 function SelectFirstMantisProjectUserAccessAccessTo(obj, doc) {

@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"ths",
+				"thisUser"
+			],
+			[
+				"kanbanuser",
+				"kanbanUserListContainer"
+			],
+			[
+				"cre",
+				"createElement"
+			],
+			[
+				"Assi",
+				"AssignedUsers"
+			],
+			[
+				"Assigned",
+				"AssignedToUser"
+			],
+			[
+				"bac",
+				"background-position"
+			],
+			[
 				"found",
 				"foundRelation"
 			],
@@ -490,18 +514,6 @@
 			[
 				"Projec",
 				"ProjectGetUsers  (namespace)"
-			],
-			[
-				"Console",
-				"ConsoleHistory"
-			],
-			[
-				"un",
-				"unlink"
-			],
-			[
-				"lock",
-				"LOCKFILE"
 			]
 		]
 	},
@@ -625,6 +637,7 @@
 	},
 	"file_history":
 	[
+		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/gravatar.js",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/kanban.css",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/index.html",
 		"/Users/cgaspard/Projects/cgaspard/mantiskanban/js/kanban.js",
@@ -751,8 +764,7 @@
 		"/Users/cgaspard/Temp/omni.jar Folder/defaults/preferences/firefox.js",
 		"/Applications/Galactians2.app/Contents/Info.plist",
 		"/Users/cgaspard/Downloads/mygaitbrowser1.4.1/content/forms/firstrun.js",
-		"/Users/cgaspard/Scripts/MoveFilesToAlfaFolders.sh",
-		"/Applications/Firefox 3.6.app/Contents/MacOS/application.ini"
+		"/Users/cgaspard/Scripts/MoveFilesToAlfaFolders.sh"
 	],
 	"find":
 	{
@@ -760,7 +772,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"*",
@@ -782,6 +794,26 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"create",
+			"BuildKanbanAssignedUsersGUI",
+			"Build",
+			"remove",
+			"selectProject",
+			"CreateKanbanStoriesFromMantisIssues",
+			"clear",
+			"CreateKanbanStoriesFromMantisIssues",
+			"editing-header",
+			"notecontainer",
+			"notetext",
+			"AddNotesToStoryEditForm",
+			"notetext",
+			"gravatarcontainer",
+			"edit-story-he",
+			"EditStory",
+			"StoryEdit",
+			"OPenEdit",
+			"gravatarcurrentuser",
+			"login",
 			"selectproject",
 			"loadingdiv",
 			"opacity",
@@ -889,27 +921,7 @@
 			"searchforstory",
 			"Tags",
 			"tagscontainer",
-			"edit-story-tags",
-			"ListWidth",
-			"AutoAdjustListWidth",
-			"ApplySettingsAtLogin",
-			"HandleDragOver",
-			"HandleDragOverf",
-			"transition",
-			"sec",
-			"AutoAdjustListWidth",
-			"handler",
-			"KanbanUser",
-			"addattachm",
-			"addtags",
-			"addattach",
-			"HandlerName",
-			"add-priority",
-			"loadingdiv",
-			"otherbuttoncontiner",
-			"selected-project-name",
-			"TagGetAll",
-			"addtagsto"
+			"edit-story-tags"
 		],
 		"highlight": true,
 		"in_selection": false,
