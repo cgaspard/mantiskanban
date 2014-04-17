@@ -227,7 +227,7 @@ div.notecontainer {
 }
 
 #selected-project-name {
-	color: #FFFFFF !important;
+	color: #FFFFFF;
 	display: inline-block;
 	margin-top: 5px !important;
 	margin-bottom: 3px;
