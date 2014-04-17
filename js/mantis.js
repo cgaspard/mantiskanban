@@ -166,14 +166,14 @@ var Mantis = {
 
 	get  Resolutions() {
 		if(Mantis._resolutions == null) {
-			Mantis._resolutions = Mantis.EnumResolutions(Kanban.CurrentUser.UserName, Kanban.CurrentUser.Password, null);
+			Mantis._resolutions = Mantis.EnumResolutions();
 		}
 		return Mantis._resolutions;
 	},
 
 	get  Severities() {
 		if(Mantis._severities == null) {
-			Mantis._severities = Mantis.EnumSeverities(Kanban.CurrentUser.UserName, Kanban.CurrentUser.Password, null);
+			Mantis._severities = Mantis.EnumSeverities();
 		}
 		return Mantis._severities;
 	},

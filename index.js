@@ -736,7 +736,7 @@ function LoadSettingsFromLocalStorage(){
 	//if the settings exist load them into the DefaultSettings
 	if(localStorage.mantiskanbanSettings != "" && localStorage.mantiskanbanSettings != null && localStorage.mantiskanbanSettings != "undefined")
 	{
-		log("Local story exists!!!");
+		log("Local settings exists!!!");
 		DefaultSettings = JSON.parse(localStorage.mantiskanbanSettings);
 		log("loaded user saved settings into the DefaultSettings");
 		log(JSON.stringify(DefaultSettings));
