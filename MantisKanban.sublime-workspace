@@ -772,7 +772,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"*",
@@ -794,6 +794,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"addnotes",
+			"GetStyleCodeFor3Digits",
+			"GetStyleCodeFor3DigitsHalfShaded",
 			"create",
 			"BuildKanbanAssignedUsersGUI",
 			"Build",
@@ -918,10 +921,7 @@
 			"SearchForStory",
 			"GetStoryIfNotLoaded",
 			"selectProject",
-			"searchforstory",
-			"Tags",
-			"tagscontainer",
-			"edit-story-tags"
+			"searchforstory"
 		],
 		"highlight": true,
 		"in_selection": false,

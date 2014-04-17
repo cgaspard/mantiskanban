@@ -952,6 +952,7 @@ function AddNotesToStoryEditForm(KanbanStory) {
 		var noteDiv = document.createElement("div");
 		noteDiv.setAttribute("class", "notecontainer");
 		noteDiv.setAttribute("storyid", KanbanStory.ID);
+		if(thisNote.reporter.name === undefined) thisNote.reporter.name = "User " + thisNote.reporter.id;
 		noteDiv.setAttribute("style", GetStyleCodeFor3Digits(thisNote.reporter.name.substring(0, 3), .8));
 
 		var noteDate = new Date(Date.parse(thisNote.date_submitted));
