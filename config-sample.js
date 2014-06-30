@@ -33,7 +33,7 @@ Kanban.AutoStatusOnCustomField = {
 	}
 }
 
-/// Use this to set default icons for cateogories
+/// Use this to set default icons for categories
 Kanban.CategoryIconMap =  {
 	"Bug" : "info-sign",
 	"Task" : "calendar",
