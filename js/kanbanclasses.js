@@ -622,6 +622,27 @@ KanbanStory.prototype = {
 		storyDivTitle.appendChild(storyDivTitleSecondRow);
 		storyContainerDiv.appendChild(storyDivTitle);
 
+		/* David */
+		if (this.Tasks.length > 0)
+		{
+			var completeTasks = 0;
+			for( var i = 0; i < this.Tasks.length; i++ ) {
+				var thisTask = this.Tasks[i];
+				if ( thisTask.Status == "complete" ) {
+					completeTasks++;
+				}
+			}
+			
+			var percentCompleteTask = (completeTasks / this.Tasks.length) * 100;
+			
+			var storyDivProgressContainer = document.createElement("div");
+			storyDivProgressContainer.setAttribute("class", "kanbanstoryprogresscontainer");
+			var storySpanProgressContainer = document.createElement("span");
+			storySpanProgressContainer.setAttribute("style", "width: "+ percentCompleteTask + "%");
+			storyDivProgressContainer.appendChild(storySpanProgressContainer);
+			storyDivTitle.appendChild(storyDivProgressContainer);
+		}
+		
 		var storyDivSeverityContainer = document.createElement("div");
 		storyDivSeverityContainer.setAttribute("class", "kanbanstoryprioritycontainer");
 		storyDivSeverityContainer.setAttribute("listid", "listid" + this.ListID);
