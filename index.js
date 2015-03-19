@@ -51,9 +51,9 @@ function window_load() {
 
 	//make sure that the username and password form doesnt actually submit. 
 	//need this here as a fail safe because jQuery is included.
-	$('#userLoginForm').submit(function() {
+	$('#userLoginForm').submit(function(e) {
+		e.preventDefault();
   		Login();
-  		return false;
 	});
 
 	$("#project-selector").hide();
