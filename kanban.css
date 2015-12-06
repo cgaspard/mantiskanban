@@ -718,30 +718,32 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
 	border-bottom-right-radius: 10px;	
 }
 
-div[priority="none"] {
+/* ------ priority color css start -------- */
+div[priority="none"], div[priority="無"] {
 	background-color: #104E8B;
 	color:#FFFFFF;
 }
-div[priority="low"] {
+div[priority="low"], div[priority="低"] {
 	background-color: #74BBFB;
 	color:#343434;
 }
-div[priority="normal"] {
+div[priority="normal"], div[priority="一般"] {
 	background-color: #cdcdcd;
 	color:#000000;
 }
-div[priority="high"] {
+div[priority="high"], div[priority="高"] {
 	background-color: #CCEB05;
 	color:#343434;
 }
-div[priority="urgent"] {
+div[priority="urgent"], div[priority="緊急"] {
 	background-color: #FF6600;
 	color:#FFFFFF;
 }
-div[priority="immediate"] {
+div[priority="immediate"], div[priority="馬上"] {
 	background-color: #fe0000;
 	color:#FFFFFF;
 }
+/* ----- priority color css ends --------- */
 
 #prioritylegend>div[priority="immediate"] {
 	border-top-left-radius: 10px;
