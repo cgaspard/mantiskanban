@@ -28,6 +28,17 @@
 		<script language="javascript" type="text/javascript" src="config.js"></script>
 		<script language="javascript" type="text/javascript" src="index.js"></script>
 		<script language="javascript" type="text/javascript" src="i18n/i18n.js"></script>
+		<script>
+			function setProjListHeight(){
+						  $("#projectlist").css({'max-height' : $("#contentarea").height() + 'px'});
+				  }
+
+				  $(window).on('resize', function () {
+						  setProjListHeight();
+				  });
+				  setProjListHeight();
+		  	});
+		</script>
 		
 		<title>Mantis Kanban</title>
 
@@ -68,7 +79,7 @@
 										<i class="glyphicon glyphicon-dashboard"></i>
 										<span class="i18ntext" data-text-id="textSelectProject"></span><span class="caret"></span>
 									</button>						
-									<ul id="projectlist" class="dropdown-menu">
+									<ul id="projectlist" class="dropdown-menu" style="overflow: auto;">
 									<!-- dropdown menu links -->
 									</ul>
 								</div>
