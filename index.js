@@ -156,7 +156,12 @@ function Login() {
 	log("Login() called.");
 	
 	document.getElementById("username").focus();
-	Mantis.ConnectURL = document.getElementById("mantisURL").value;
+	
+	if ( "" == document.getElementById("mantisURL").value ) {
+		document.getElementById("mantisURL").value = Mantis.ConnectURL;
+	} else {
+		Mantis.ConnectURL = document.getElementById("mantisURL").value;
+	}
 	
 	try {
 		var retObj = Mantis.Login(document.getElementById("username").value, document.getElementById("password").value);
