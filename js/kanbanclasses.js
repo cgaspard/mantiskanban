@@ -564,7 +564,8 @@ KanbanStory.prototype = {
 		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
 		if(this.HandlerName != "") {
-			storyDivButton.setAttribute("style", GetStyleCodeFor3DigitsHalfShaded(this.HandlerName.substring(0, 3)));
+			//storyDivButton.setAttribute("style", GetStyleCodeFor3DigitsHalfShaded(this.HandlerName.substring(this.HandlerName.length - 1) + this.HandlerName.substring(0, 2) ));
+			storyDivButton.setAttribute("style", GetStyleCodeFor3DigitsHalfShaded(this.HandlerName));
 		}
 		storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
 		storyDivButtonContainer.appendChild(storyDivButton);
@@ -622,6 +623,27 @@ KanbanStory.prototype = {
 		storyDivTitle.appendChild(storyDivTitleSecondRow);
 		storyContainerDiv.appendChild(storyDivTitle);
 
+		/* David */
+		if (this.Tasks.length > 0)
+		{
+			var completeTasks = 0;
+			for( var i = 0; i < this.Tasks.length; i++ ) {
+				var thisTask = this.Tasks[i];
+				if ( thisTask.Status == "complete" ) {
+					completeTasks++;
+				}
+			}
+			
+			var percentCompleteTask = (completeTasks / this.Tasks.length) * 100;
+			
+			var storyDivProgressContainer = document.createElement("div");
+			storyDivProgressContainer.setAttribute("class", "kanbanstoryprogresscontainer");
+			var storySpanProgressContainer = document.createElement("span");
+			storySpanProgressContainer.setAttribute("style", "width: "+ percentCompleteTask + "%");
+			storyDivProgressContainer.appendChild(storySpanProgressContainer);
+			storyDivTitle.appendChild(storyDivProgressContainer);
+		}
+		
 		var storyDivSeverityContainer = document.createElement("div");
 		storyDivSeverityContainer.setAttribute("class", "kanbanstoryprioritycontainer");
 		storyDivSeverityContainer.setAttribute("listid", "listid" + this.ListID);
