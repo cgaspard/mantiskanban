@@ -42,6 +42,18 @@ function GetStyleCodeFor3DigitsHalfShaded(digits) {
 	return "color: " + textContrast + "; background: linear-gradient(135deg, rgba(255,255,255,0) 0%,rgba(41,137,216,0) 50%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 51%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 100%) !important; /* W3C */"
 }
 
+function GetStyleCodeForStringHalfShaded(string) {
+	var colorObject = GetColorCodeForString(string);
+	var textContrast = GetColorContrastForRBG(colorObject.first, colorObject.second, colorObject.third);
+	return "color: " + textContrast + "; background: linear-gradient(180deg, rgba(255,255,255,0) 0%,rgba(41,137,216,0) 50%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 51%,rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) 100%) !important; /* W3C */"
+}
+
+function GetStyleCodeForStringFullShaded(string) {
+	var colorObject = GetColorCodeForString(string);
+	var textContrast = GetColorContrastForRBG(colorObject.first, colorObject.second, colorObject.third);
+	return "color: " + textContrast + "; background-color: rgba(" + colorObject.first + "," + colorObject.second + "," + colorObject.third + ",1) !important; /* W3C */"
+}
+
 function componentToHex(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
@@ -103,6 +115,13 @@ function GetColorCodeFor3Digits(digits) {
 
 
 	return {"first":first, "second":second, "third":third};
+}
+
+function GetColorCodeForString( string ) {
+	var colorHash = new ColorHash( {lightness: 0.65, saturation: 0.65} );
+	var color = colorHash.rgb( string )
+	
+	return {"first":color[0], "second":color[1], "third":color[2]};
 }
 
 var colorCodes = {

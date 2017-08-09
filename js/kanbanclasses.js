@@ -564,9 +564,9 @@ KanbanStory.prototype = {
 		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
 		if(this.HandlerName != "") {
-			storyDivButton.setAttribute("style", GetStyleCodeFor3DigitsHalfShaded(this.HandlerName.substring(0, 3)));
+			storyDivButton.setAttribute("style", GetStyleCodeForStringHalfShaded(this.HandlerName));
 		}
-		storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
+		storyDivButton.innerHTML = this.HandlerName;
 		storyDivButtonContainer.appendChild(storyDivButton);
 
 		var storyDivTitle = document.createElement("span");

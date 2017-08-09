@@ -664,7 +664,7 @@ function BuildKanbanAssignedUsersGUI() {
 		//userGravatar.setAttribute("data-content", thisUser.Email);
 		//userGravatar.setAttribute("data-trigger", "hover");
 		userGravatar.setAttribute("title", thisUser.Name);
-		userGravatar.setAttribute("data-content", "<b>" + thisUser.Email + "</b><div style=\"color:#000 !important; border: solid 1px #bbb; padding-left: 5px;" + GetStyleCodeFor3DigitsHalfShaded(thisUser.UserName.substring(0, 3)) + "\">" + thisUser.UserName.substring(0, 1).toUpperCase() + thisUser.UserName.substring(1, 2) + "</div>");
+		userGravatar.setAttribute("data-content", "<b>" + thisUser.Email + "</b><div style=\"color:#000 !important; border: solid 1px #bbb; padding-left: 5px;" + GetStyleCodeForStringFullShaded(thisUser.UserName) + "\">" + thisUser.UserName + "</div>");
 		userGravatar.setAttribute("id", "ug" + thisUser.ID);
 
 		kanbanUserListContainer.appendChild(userGravatar);

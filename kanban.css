@@ -648,7 +648,7 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
     width: 60px;
     text-align: left;
     color:#ffffff;
-	background: linear-gradient(135deg, #454545 0%, #454545 50%,rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%); /* W3C */
+	background: linear-gradient(180deg, #454545 0%, #454545 50%,rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%); /* W3C */
 }
 
 
@@ -662,7 +662,7 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
 	color:#FFFFFF;
 	font-weight: bold;
 	font-size: 12pt;
-	text-align:center;
+	text-align:left;
     position      : absolute;
     display: block;
     top           : 0px;
@@ -670,10 +670,17 @@ background: none repeat scroll 0% 0% rgba(57, 130, 203, 1);
     height: 45px;
 	vertical-align: middle;
 	color:#FFFFFF;
-	padding-left: 30px;
+	padding-left: 4px;
 	padding-top: 20px;
 	border-right: 1px solid #ababab;
-	
+	overflow: hidden;
+	text-overflow: clip;
+
+}
+
+.handlercontainer:hover {
+	text-overflow: inherit;
+    overflow: visible;
 }
 
 .kanbanstoryprioritycontainer {
