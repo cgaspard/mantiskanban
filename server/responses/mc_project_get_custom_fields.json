@@ -1,0 +1,20 @@
+{
+    "id": "1",
+    "name": "ScrumBucket",
+    "type": "6",
+    "possible_values": "Backlog|Sprint|Current|Complete|Testing|TestingComplete|Release",
+    "default_value": "Backlog",
+    "valid_regexp": "",
+    "access_level_r": "10",
+    "access_level_rw": "10",
+    "length_min": "0",
+    "length_max": "0",
+    "display_report": "false",
+    "display_update": "true",
+    "display_resolved": "false",
+    "display_closed": "false",
+    "require_report": "false",
+    "require_update": "false",
+    "require_resolved": "false",
+    "require_closed": "false"
+ }

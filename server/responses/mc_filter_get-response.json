@@ -1,0 +1,18 @@
+{
+    "Envelope": {
+       "Body": {
+          "mc_filter_getResponse": {
+             "return": {
+                "_SOAP-ENC:arrayType": "ns1:FilterData[0]",
+                "_xsi:type": "SOAP-ENC:Array"
+             }
+          }
+       },
+       "_xmlns:SOAP-ENV": "http://schemas.xmlsoap.org/soap/envelope/",
+       "_xmlns:ns1": "http://futureware.biz/mantisconnect",
+       "_xmlns:SOAP-ENC": "http://schemas.xmlsoap.org/soap/encoding/",
+       "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+       "_xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+       "_SOAP-ENV:encodingStyle": "http://schemas.xmlsoap.org/soap/encoding/"
+    }
+ }

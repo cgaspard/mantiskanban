@@ -1,0 +1,20 @@
+{
+    "id": "4",
+    "name": "MyGait",
+    "status": {
+        "id": "10",
+        "name": "development"
+    },
+    "enabled": "true",
+    "view_state": {
+        "id": "10",
+        "name": "public"
+    },
+    "access_min": {
+        "id": "10",
+        "name": "viewer"
+    },
+    "file_path": "",
+    "description": "",
+    "subprojects": []
+}

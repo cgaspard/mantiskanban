@@ -1,0 +1,146 @@
+{
+    "Envelope": {
+       "Body": {
+          "mc_project_get_custom_fieldsResponse": {
+             "return": {
+                "item": {
+                   "field": {
+                      "id": {
+                         "_xsi:type": "xsd:integer",
+                         "__text": "1",
+                         "toString": [
+                            null
+                         ]
+                      },
+                      "name": {
+                         "_xsi:type": "xsd:string",
+                         "__text": "ScrumBucket",
+                         "toString": [
+                            null
+                         ]
+                      },
+                      "_xsi:type": "ns1:ObjectRef"
+                   },
+                   "type": {
+                      "_xsi:type": "xsd:integer",
+                      "__text": "6",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "possible_values": {
+                      "_xsi:type": "xsd:string",
+                      "__text": "Backlog|Sprint|Current|Complete|Testing|TestingComplete|Release",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "default_value": {
+                      "_xsi:type": "xsd:string",
+                      "__text": "Backlog",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "valid_regexp": {
+                      "_xsi:type": "xsd:string"
+                   },
+                   "access_level_r": {
+                      "_xsi:type": "xsd:integer",
+                      "__text": "10",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "access_level_rw": {
+                      "_xsi:type": "xsd:integer",
+                      "__text": "10",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "length_min": {
+                      "_xsi:type": "xsd:integer",
+                      "__text": "0",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "length_max": {
+                      "_xsi:type": "xsd:integer",
+                      "__text": "0",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "display_report": {
+                      "_xsi:type": "xsd:boolean",
+                      "__text": "false",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "display_update": {
+                      "_xsi:type": "xsd:boolean",
+                      "__text": "true",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "display_resolved": {
+                      "_xsi:type": "xsd:boolean",
+                      "__text": "false",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "display_closed": {
+                      "_xsi:type": "xsd:boolean",
+                      "__text": "false",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "require_report": {
+                      "_xsi:type": "xsd:boolean",
+                      "__text": "false",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "require_update": {
+                      "_xsi:type": "xsd:boolean",
+                      "__text": "false",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "require_resolved": {
+                      "_xsi:type": "xsd:boolean",
+                      "__text": "false",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "require_closed": {
+                      "_xsi:type": "xsd:boolean",
+                      "__text": "false",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "_xsi:type": "ns1:CustomFieldDefinitionData"
+                },
+                "_SOAP-ENC:arrayType": "ns1:CustomFieldDefinitionData[1]",
+                "_xsi:type": "SOAP-ENC:Array"
+             }
+          }
+       },
+       "_xmlns:SOAP-ENV": "http://schemas.xmlsoap.org/soap/envelope/",
+       "_xmlns:ns1": "http://futureware.biz/mantisconnect",
+       "_xmlns:SOAP-ENC": "http://schemas.xmlsoap.org/soap/encoding/",
+       "_xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+       "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+       "_SOAP-ENV:encodingStyle": "http://schemas.xmlsoap.org/soap/encoding/"
+    }
+ }

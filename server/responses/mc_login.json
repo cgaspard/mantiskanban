@@ -1,0 +1,11 @@
+{
+    "account_data": {
+       "id": "2",
+       "name": "cgaspard",
+       "real_name": "Corey Gaspard",
+       "email": "corey.gaspard@mygait.net",
+       "_xsi:type": "ns1:AccountData"
+    },
+    "access_level": "90",
+    "timezone": "Asia/Shanghai"
+ }

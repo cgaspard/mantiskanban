@@ -1,0 +1,62 @@
+{
+    "Envelope": {
+       "Body": {
+          "mc_loginResponse": {
+             "return": {
+                "account_data": {
+                   "id": {
+                      "_xsi:type": "xsd:integer",
+                      "__text": "2",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "name": {
+                      "_xsi:type": "xsd:string",
+                      "__text": "cgaspard",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "real_name": {
+                      "_xsi:type": "xsd:string",
+                      "__text": "Corey Gaspard",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "email": {
+                      "_xsi:type": "xsd:string",
+                      "__text": "corey.gaspard@mygait.net",
+                      "toString": [
+                         null
+                      ]
+                   },
+                   "_xsi:type": "ns1:AccountData"
+                },
+                "access_level": {
+                   "_xsi:type": "xsd:integer",
+                   "__text": "90",
+                   "toString": [
+                      null
+                   ]
+                },
+                "timezone": {
+                   "_xsi:type": "xsd:string",
+                   "__text": "Asia/Shanghai",
+                   "toString": [
+                      null
+                   ]
+                },
+                "_xsi:type": "ns1:UserData"
+             }
+          }
+       },
+       "_xmlns:SOAP-ENV": "http://schemas.xmlsoap.org/soap/envelope/",
+       "_xmlns:ns1": "http://futureware.biz/mantisconnect",
+       "_xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+       "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+       "_xmlns:SOAP-ENC": "http://schemas.xmlsoap.org/soap/encoding/",
+       "_SOAP-ENV:encodingStyle": "http://schemas.xmlsoap.org/soap/encoding/"
+    }
+ }

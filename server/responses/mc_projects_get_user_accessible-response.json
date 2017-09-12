@@ -1,0 +1,619 @@
+{
+    "Envelope": {
+       "Body": {
+          "mc_projects_get_user_accessibleResponse": {
+             "return": {
+                "item": [
+                   {
+                      "id": {
+                         "_xsi:type": "xsd:integer",
+                         "__text": "4",
+                         "toString": [
+                            null
+                         ]
+                      },
+                      "name": {
+                         "_xsi:type": "xsd:string",
+                         "__text": "MyGait",
+                         "toString": [
+                            null
+                         ]
+                      },
+                      "status": {
+                         "id": {
+                            "_xsi:type": "xsd:integer",
+                            "__text": "10",
+                            "toString": [
+                               null
+                            ]
+                         },
+                         "name": {
+                            "_xsi:type": "xsd:string",
+                            "__text": "development",
+                            "toString": [
+                               null
+                            ]
+                         },
+                         "_xsi:type": "ns1:ObjectRef"
+                      },
+                      "enabled": {
+                         "_xsi:type": "xsd:boolean",
+                         "__text": "true",
+                         "toString": [
+                            null
+                         ]
+                      },
+                      "view_state": {
+                         "id": {
+                            "_xsi:type": "xsd:integer",
+                            "__text": "10",
+                            "toString": [
+                               null
+                            ]
+                         },
+                         "name": {
+                            "_xsi:type": "xsd:string",
+                            "__text": "public",
+                            "toString": [
+                               null
+                            ]
+                         },
+                         "_xsi:type": "ns1:ObjectRef"
+                      },
+                      "access_min": {
+                         "id": {
+                            "_xsi:type": "xsd:integer",
+                            "__text": "10",
+                            "toString": [
+                               null
+                            ]
+                         },
+                         "name": {
+                            "_xsi:type": "xsd:string",
+                            "__text": "viewer",
+                            "toString": [
+                               null
+                            ]
+                         },
+                         "_xsi:type": "ns1:ObjectRef"
+                      },
+                      "file_path": {
+                         "_xsi:type": "xsd:string"
+                      },
+                      "description": {
+                         "_xsi:type": "xsd:string"
+                      },
+                      "subprojects": {
+                         "item": [
+                            {
+                               "id": {
+                                  "_xsi:type": "xsd:integer",
+                                  "__text": "2",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "name": {
+                                  "_xsi:type": "xsd:string",
+                                  "__text": "ArcticFox",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "status": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "development",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "enabled": {
+                                  "_xsi:type": "xsd:boolean",
+                                  "__text": "true",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "view_state": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "public",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "access_min": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "viewer",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "file_path": {
+                                  "_xsi:type": "xsd:string"
+                               },
+                               "description": {
+                                  "_xsi:type": "xsd:string"
+                               },
+                               "subprojects": {
+                                  "item": [
+                                     {
+                                        "id": {
+                                           "_xsi:type": "xsd:integer",
+                                           "__text": "1",
+                                           "toString": [
+                                              null
+                                           ]
+                                        },
+                                        "name": {
+                                           "_xsi:type": "xsd:string",
+                                           "__text": "Electron",
+                                           "toString": [
+                                              null
+                                           ]
+                                        },
+                                        "status": {
+                                           "id": {
+                                              "_xsi:type": "xsd:integer",
+                                              "__text": "10",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "name": {
+                                              "_xsi:type": "xsd:string",
+                                              "__text": "development",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "_xsi:type": "ns1:ObjectRef"
+                                        },
+                                        "enabled": {
+                                           "_xsi:type": "xsd:boolean",
+                                           "__text": "true",
+                                           "toString": [
+                                              null
+                                           ]
+                                        },
+                                        "view_state": {
+                                           "id": {
+                                              "_xsi:type": "xsd:integer",
+                                              "__text": "10",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "name": {
+                                              "_xsi:type": "xsd:string",
+                                              "__text": "public",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "_xsi:type": "ns1:ObjectRef"
+                                        },
+                                        "access_min": {
+                                           "id": {
+                                              "_xsi:type": "xsd:integer",
+                                              "__text": "10",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "name": {
+                                              "_xsi:type": "xsd:string",
+                                              "__text": "viewer",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "_xsi:type": "ns1:ObjectRef"
+                                        },
+                                        "file_path": {
+                                           "_xsi:type": "xsd:string"
+                                        },
+                                        "description": {
+                                           "_xsi:type": "xsd:string"
+                                        },
+                                        "subprojects": {
+                                           "_SOAP-ENC:arrayType": "ns1:ProjectData[0]",
+                                           "_xsi:type": "SOAP-ENC:Array"
+                                        },
+                                        "_xsi:type": "ns1:ProjectData"
+                                     },
+                                     {
+                                        "id": {
+                                           "_xsi:type": "xsd:integer",
+                                           "__text": "3",
+                                           "toString": [
+                                              null
+                                           ]
+                                        },
+                                        "name": {
+                                           "_xsi:type": "xsd:string",
+                                           "__text": "Firefox",
+                                           "toString": [
+                                              null
+                                           ]
+                                        },
+                                        "status": {
+                                           "id": {
+                                              "_xsi:type": "xsd:integer",
+                                              "__text": "10",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "name": {
+                                              "_xsi:type": "xsd:string",
+                                              "__text": "development",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "_xsi:type": "ns1:ObjectRef"
+                                        },
+                                        "enabled": {
+                                           "_xsi:type": "xsd:boolean",
+                                           "__text": "true",
+                                           "toString": [
+                                              null
+                                           ]
+                                        },
+                                        "view_state": {
+                                           "id": {
+                                              "_xsi:type": "xsd:integer",
+                                              "__text": "10",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "name": {
+                                              "_xsi:type": "xsd:string",
+                                              "__text": "public",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "_xsi:type": "ns1:ObjectRef"
+                                        },
+                                        "access_min": {
+                                           "id": {
+                                              "_xsi:type": "xsd:integer",
+                                              "__text": "10",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "name": {
+                                              "_xsi:type": "xsd:string",
+                                              "__text": "viewer",
+                                              "toString": [
+                                                 null
+                                              ]
+                                           },
+                                           "_xsi:type": "ns1:ObjectRef"
+                                        },
+                                        "file_path": {
+                                           "_xsi:type": "xsd:string"
+                                        },
+                                        "description": {
+                                           "_xsi:type": "xsd:string"
+                                        },
+                                        "subprojects": {
+                                           "_SOAP-ENC:arrayType": "ns1:ProjectData[0]",
+                                           "_xsi:type": "SOAP-ENC:Array"
+                                        },
+                                        "_xsi:type": "ns1:ProjectData"
+                                     }
+                                  ],
+                                  "_SOAP-ENC:arrayType": "ns1:ProjectData[2]",
+                                  "_xsi:type": "SOAP-ENC:Array"
+                               },
+                               "_xsi:type": "ns1:ProjectData"
+                            },
+                            {
+                               "id": {
+                                  "_xsi:type": "xsd:integer",
+                                  "__text": "5",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "name": {
+                                  "_xsi:type": "xsd:string",
+                                  "__text": "eFocus",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "status": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "development",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "enabled": {
+                                  "_xsi:type": "xsd:boolean",
+                                  "__text": "true",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "view_state": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "public",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "access_min": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "viewer",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "file_path": {
+                                  "_xsi:type": "xsd:string"
+                               },
+                               "description": {
+                                  "_xsi:type": "xsd:string"
+                               },
+                               "subprojects": {
+                                  "_SOAP-ENC:arrayType": "ns1:ProjectData[0]",
+                                  "_xsi:type": "SOAP-ENC:Array"
+                               },
+                               "_xsi:type": "ns1:ProjectData"
+                            },
+                            {
+                               "id": {
+                                  "_xsi:type": "xsd:integer",
+                                  "__text": "6",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "name": {
+                                  "_xsi:type": "xsd:string",
+                                  "__text": "IN2L",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "status": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "development",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "enabled": {
+                                  "_xsi:type": "xsd:boolean",
+                                  "__text": "true",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "view_state": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "public",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "access_min": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "viewer",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "file_path": {
+                                  "_xsi:type": "xsd:string"
+                               },
+                               "description": {
+                                  "_xsi:type": "xsd:string"
+                               },
+                               "subprojects": {
+                                  "_SOAP-ENC:arrayType": "ns1:ProjectData[0]",
+                                  "_xsi:type": "SOAP-ENC:Array"
+                               },
+                               "_xsi:type": "ns1:ProjectData"
+                            },
+                            {
+                               "id": {
+                                  "_xsi:type": "xsd:integer",
+                                  "__text": "7",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "name": {
+                                  "_xsi:type": "xsd:string",
+                                  "__text": "Pointsmith",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "status": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "development",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "enabled": {
+                                  "_xsi:type": "xsd:boolean",
+                                  "__text": "true",
+                                  "toString": [
+                                     null
+                                  ]
+                               },
+                               "view_state": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "public",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "access_min": {
+                                  "id": {
+                                     "_xsi:type": "xsd:integer",
+                                     "__text": "10",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "name": {
+                                     "_xsi:type": "xsd:string",
+                                     "__text": "viewer",
+                                     "toString": [
+                                        null
+                                     ]
+                                  },
+                                  "_xsi:type": "ns1:ObjectRef"
+                               },
+                               "file_path": {
+                                  "_xsi:type": "xsd:string"
+                               },
+                               "description": {
+                                  "_xsi:type": "xsd:string"
+                               },
+                               "subprojects": {
+                                  "_SOAP-ENC:arrayType": "ns1:ProjectData[0]",
+                                  "_xsi:type": "SOAP-ENC:Array"
+                               },
+                               "_xsi:type": "ns1:ProjectData"
+                            }
+                         ],
+                         "_SOAP-ENC:arrayType": "ns1:ProjectData[4]",
+                         "_xsi:type": "SOAP-ENC:Array"
+                      },
+                      "_xsi:type": "ns1:ProjectData"
+                   }
+                ],
+                "_SOAP-ENC:arrayType": "ns1:ProjectData[1]",
+                "_xsi:type": "SOAP-ENC:Array"
+             }
+          }
+       },
+       "_xmlns:SOAP-ENV": "http://schemas.xmlsoap.org/soap/envelope/",
+       "_xmlns:ns1": "http://futureware.biz/mantisconnect",
+       "_xmlns:SOAP-ENC": "http://schemas.xmlsoap.org/soap/encoding/",
+       "_xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+       "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+       "_SOAP-ENV:encodingStyle": "http://schemas.xmlsoap.org/soap/encoding/"
+    }
+ }
