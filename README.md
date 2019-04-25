@@ -3,7 +3,7 @@ mantiskanban
 
 Mantis Kanban that uses ajax and mantisconnect
 
-LIVE DEMO!!! http://mantiskanban.com/mantisbt/mantiskanban/
+LIVE DEMO!!! mantiskanban.com/mantisbt/mantiskanban/ <<<< DONT GO HERE, SITE TRIES TO INSTALL SOFTWARE - PUPS
 
 ![Alt text](https://raw.github.com/cgaspard/mantiskanban/master/images/mantis_logo.png "Logo")
 
