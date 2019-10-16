@@ -503,10 +503,10 @@ KanbanStory.prototype = {
 		storyDivButton.setAttribute("listid", "listid" + this.ListID);
 		storyDivButton.setAttribute("storyid", "storydiv" + this.ID);
 		storyDivButton.setAttribute("dropdivid", "dropdiv" + this.ID);
-		if(this.HandlerName != "") {
+		if(this.HandlerName != "" && typeof this.HandlerName !== "undefined") {
 			storyDivButton.setAttribute("style", GetStyleCodeFor3DigitsHalfShaded(this.HandlerName.substring(0, 3)));
+			storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
 		}
-		storyDivButton.innerHTML = this.HandlerName.substring(0, 1).toUpperCase() + this.HandlerName.substring(1, 2);
 		storyDivButtonContainer.appendChild(storyDivButton);
 
 		var storyDivTitle = document.createElement("span");
